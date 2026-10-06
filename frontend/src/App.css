@@ -1,0 +1,66 @@
+/* Base container covering the full viewport */
+.dashboard-grid {
+  display: grid;
+  height: 100vh;
+  padding: 1rem;
+  gap: 1rem;
+  box-sizing: border-box;
+
+  /* 3 columns: Left sidebar (280px), Main center (flexible), Right sidebar (300px) */
+  grid-template-columns: 320px 1fr 220px;
+
+  /* 2 rows: Top section takes most height, PPM graph takes bottom slice */
+  grid-template-rows: 1.2fr 1fr;
+
+  /* Visual map of all 5 panels */
+  grid-template-areas:
+    "comparison team  statistics"
+    "comparison ppm   upcoming";
+}
+
+/* Base style for all rounded cards */
+.panel {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  min-width: 0;
+  /* Prevents content from forcing grid cells wider */
+  min-height: 0;
+  /* Prevents content from forcing grid rows taller */
+}
+
+/* Assign each component to its area */
+.panel-comparison {
+  grid-area: comparison;
+}
+
+.panel-team {
+  grid-area: team;
+}
+
+.panel-ppm {
+  grid-area: ppm;
+}
+
+.panel-statistics {
+  grid-area: statistics;
+}
+
+.panel-upcoming {
+  grid-area: upcoming;
+}
+
+/* Optional: Clean typography helpers */
+.panel h2,
+.panel h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #f8fafc;
+}
+
+.panel p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
