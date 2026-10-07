@@ -1,5 +1,6 @@
 // src/App.tsx
 import './App.css';
+import { TeamPanel } from './components/TeamPanel';
 
 function App() {
   return (
@@ -13,9 +14,7 @@ function App() {
       {/* 2. Main Center Content */}
       <main className="panel panel-team">
         <h2>My Team</h2>
-        <p>
-
-        </p>
+        <TeamPanel />
       </main>
 
       {/* 3. Right Top */}
