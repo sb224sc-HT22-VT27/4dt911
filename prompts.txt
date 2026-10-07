@@ -1,0 +1,1 @@
+Remake this SVG into a react component. (Attached the card from figma)
