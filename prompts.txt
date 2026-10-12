@@ -30,3 +30,5 @@ export interface Constructor {
     championshipPoints: number; // Actual points this season
 }
 Use these and create mocking data for 22 drivers and 11 constructors
+
+I need to separate these files into more structured filesystem. Give me an example of how i could setup each folder and their contents.
