@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import { F1Card, type CardItem } from './F1Card';
 
 const INITIAL_DRIVERS: (CardItem | null)[] = [
-    { id: 'alo', name: 'Fernando Alonso', number: '14', team: 'Aston Martin', price: 8, ownership: 8, expectedPoints: 12, accentColor: '#17362d' },
-    { id: 'ver', name: 'Max Verstappen', number: '1', team: 'Red Bull Racing', price: 30, ownership: 68, expectedPoints: 25, accentColor: '#1e293b' },
-    { id: 'nor', name: 'Lando Norris', number: '4', team: 'McLaren', price: 27, ownership: 55, expectedPoints: 21, accentColor: '#3d2516' },
-    { id: 'lec', name: 'Charles Leclerc', number: '16', team: 'Ferrari', price: 24, ownership: 42, expectedPoints: 19, accentColor: '#3b1818' },
-    { id: 'ham', name: 'Lewis Hamilton', number: '44', team: 'Mercedes', price: 21, ownership: 30, expectedPoints: 15, accentColor: '#163835' },
+    { id: 'alo', name: 'Fernando Alonso', number: '14', team: 'Aston Martin', price: 8, ownership: 8, expectedPoints: 12, avatarColor: '#17362d' },
+    { id: 'ver', name: 'Max Verstappen', number: '1', team: 'Red Bull Racing', price: 30, ownership: 68, expectedPoints: 25, avatarColor: '#1e293b' },
+    { id: 'nor', name: 'Lando Norris', number: '4', team: 'McLaren', price: 27, ownership: 55, expectedPoints: 21, avatarColor: '#3d2516' },
+    { id: 'lec', name: 'Charles Leclerc', number: '16', team: 'Ferrari', price: 24, ownership: 42, expectedPoints: 19, avatarColor: '#3b1818' },
+    { id: 'ham', name: 'Lewis Hamilton', number: '44', team: 'Mercedes', price: 21, ownership: 30, expectedPoints: 15, avatarColor: '#163835' },
 ];
 
 const INITIAL_CONSTRUCTORS: (CardItem | null)[] = [
-    { id: 'c-redbull', name: 'Red Bull Racing', number: 'RB', team: 'Constructor', price: 29, ownership: 62, expectedPoints: 37, accentColor: '#1e293b' },
-    { id: 'c-mclaren', name: 'McLaren', number: 'MCL', team: 'Constructor', price: 28, ownership: 58, expectedPoints: 38, accentColor: '#3d2516' },
+    { id: 'c-redbull', name: 'Red Bull Racing', number: 'RB', team: 'Constructor', price: 29, ownership: 62, expectedPoints: 37, avatarColor: '#1e293b' },
+    { id: 'c-mclaren', name: 'McLaren', number: 'MCL', team: 'Constructor', price: 28, ownership: 58, expectedPoints: 38, avatarColor: '#3d2516' },
 ];
 
 export const TeamPanel: React.FC = () => {
