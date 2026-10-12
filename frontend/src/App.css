@@ -10,7 +10,7 @@
   grid-template-columns: 320px 1fr 220px;
 
   /* 2 rows: Top section takes most height, PPM graph takes bottom slice */
-  grid-template-rows: 1.2fr 1fr;
+  grid-template-rows: 1.6fr 1fr;
 
   /* Visual map of all 5 panels */
   grid-template-areas:
@@ -309,4 +309,311 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* Picker Overlay */
+.picker-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.picker-dialog {
+  background-color: #111615;
+  border: 1px solid #1e3b33;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 480px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #1e2926;
+}
+
+.picker-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #f1f5f9;
+}
+
+.picker-close-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.picker-close-btn:hover {
+  color: #ffffff;
+}
+
+.picker-list {
+  padding: 0.75rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.picker-row {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  background-color: #161c1b;
+  border: 1px solid #222d2a;
+  border-radius: 8px;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.picker-row:hover:not(.picker-row-disabled) {
+  background-color: #1d2524;
+  border-color: #277960;
+}
+
+.picker-row-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.picker-color-strip {
+  width: 4px;
+  height: 28px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.picker-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.picker-meta strong {
+  color: #f8fafc;
+  font-size: 0.85rem;
+}
+
+.picker-meta span {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.picker-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-right: 0.5rem;
+}
+
+.picker-stats span:first-child {
+  font-weight: 700;
+  color: #2dd4bf;
+}
+
+.picker-select-btn {
+  background-color: #277960;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.picker-select-btn:disabled {
+  background-color: #242c2a;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+/* Header bar holding the budget widget */
+.team-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Pushes title to left, budget to right */
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.team-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+/* Budget Pill Container */
+.budget-pill-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #101413;
+  border: 1.5px solid #1e3b33;
+  border-radius: 12px;
+  padding: 6px 12px;
+  transition: all 0.2s ease;
+}
+
+/* Warning styling when over budget */
+.budget-pill-container.budget-warning {
+  border-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.08);
+  animation: pulse-border 1.5s infinite;
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.budget-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.budget-label {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.budget-warning .budget-label {
+  color: #ef4444;
+}
+
+.budget-values {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.budget-rem-val {
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.rem-positive {
+  color: #2dd4bf;
+}
+
+.rem-negative {
+  color: #ef4444;
+}
+
+.budget-slash {
+  color: #475569;
+  font-size: 0.85rem;
+}
+
+.budget-total-val {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 1px 4px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.budget-total-val:hover {
+  background-color: #1e2926;
+  color: #f1f5f9;
+}
+
+.budget-edit-icon {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.budget-total-val:hover .budget-edit-icon {
+  color: #2dd4bf;
+}
+
+/* Edit Mode Inline Input */
+.budget-edit-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #f8fafc;
+  font-size: 0.85rem;
+}
+
+.budget-input {
+  width: 55px;
+  background-color: #18221f;
+  border: 1px solid #277960;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 1px 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  outline: none;
+}
+
+.budget-alert-badge {
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+/* Over Budget styling in modal picker */
+.picker-budget-hint {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.picker-budget-hint strong {
+  color: #2dd4bf;
+}
+
+.stat-price-over {
+  color: #ef4444 !important;
 }

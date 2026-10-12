@@ -13,7 +13,6 @@ function App() {
 
       {/* 2. Main Center Content */}
       <main className="panel panel-team">
-        <h2>My Team</h2>
         <TeamPanel />
       </main>
 
