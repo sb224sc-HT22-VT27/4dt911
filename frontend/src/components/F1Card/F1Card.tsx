@@ -1,4 +1,5 @@
 // src/components/F1Card.tsx
+import './F1Card.css';
 import React, { useState } from 'react';
 
 export interface CardItem {

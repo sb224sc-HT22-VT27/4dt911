@@ -1,7 +1,8 @@
 // src/components/TeamPanel.tsx
 import React, { useState } from 'react';
-import { F1Card, type CardItem } from './F1Card';
-import { MOCK_DRIVERS, MOCK_CONSTRUCTORS, type Driver, type Constructor } from '../data/cards';
+import { F1Card, type CardItem } from '../F1Card/F1Card';
+import { MOCK_DRIVERS, MOCK_CONSTRUCTORS, type Driver, type Constructor } from '../../data/cards';
+import './TeamPanel.css';
 
 const driverToCardItem = (d: Driver): CardItem => ({
     id: d.id,
@@ -188,7 +189,7 @@ export const TeamPanel: React.FC = () => {
                 ))}
             </div>
 
-            {/* Row 2: 2 Constructors on Left + 3 Slots Reserved */}
+            {/* Row 2: 2 Constructors on Left + 2-Column Box + 3 Buttons */}
             <div className="team-grid-5">
                 {constructors.map((c, index) => (
                     <F1Card
@@ -201,7 +202,26 @@ export const TeamPanel: React.FC = () => {
                     />
                 ))}
 
-                <div className="team-extra-space" />
+                {/* Box spanning columns 3 & 4 (under driver cards 3 and 4) */}
+                <div className="team-slot-box">
+                    <div className="slot-box-header">Predicted Team Points</div>
+                    <div className="slot-box-content">
+                        <span>p10, p50, p90 graph </span>
+                    </div>
+                </div>
+
+                {/* 3 stacked buttons occupying column 5 (under driver card 5) */}
+                <div className="team-actions-col">
+                    <button type="button" className="team-action-btn">
+                        Optimize
+                    </button>
+                    <button type="button" className="team-action-btn">
+                        Transfers
+                    </button>
+                    <button type="button" className="team-action-btn">
+                        Chips
+                    </button>
+                </div>
             </div>
 
             {/* Modal Picker with Budget Limit Blocker */}
