@@ -1,6 +1,11 @@
 .DS_Store
 **\cache\
 
+# Data files
+data/f1-fantasy-data
+data/kaggle-base-data
+data/openf1-telemetry-data
+
 # Logs
 logs
 *.log
@@ -25,3 +30,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.png

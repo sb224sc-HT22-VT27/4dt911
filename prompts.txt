@@ -1,1 +1,3 @@
 Remake this SVG into a react component. (Attached the card from figma)
+
+Combine these three scripts into data pipeline and document the functions. (Attached three .py files one which handles kaggle fetch and versioning cache, one the fetches all available data from openF1 API and one that scrapes the F1 Fantasy site)
