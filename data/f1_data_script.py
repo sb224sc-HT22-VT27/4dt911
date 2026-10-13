@@ -18,6 +18,10 @@ import seaborn as sns
 
 sns.set_theme(style="whitegrid")
 
+# ruff: noqa: UP017
+# ruff: noqa: FURB162
+# ruff: noqa: BLE001
+
 LOCAL_KAGGLE_DIR = "./kaggle-base-data"
 LOCAL_OPENF1_DIR = "./openf1-telemetry-data"
 LOCAL_FANTASY_DIR = "./f1-fantasy-data"
@@ -140,7 +144,7 @@ def load_all_kaggle_files() -> dict[str, pd.DataFrame]:
               f"'{KAGGLE_DATASET_HANDLE}': {type(e).__name__}: {e}")
         had = (f" A local copy of version {log['published_version']} (fetched {log.get('fetched_at_utc')}) exists "
                f"but could not be verified as the latest, so it was not used.") if log.get("published_version") else ""
-        raise RuntimeError(f" [ERROR] Could not check/download the latest published version of "
+        raise RuntimeError(f"  [ERROR] Could not check/download the latest published version of "
                            f"'{KAGGLE_DATASET_HANDLE}': {type(e).__name__}: {e}.{had}") from e
     print(f"  [INFO] Latest published version of '{KAGGLE_DATASET_HANDLE}': {version}")
 
@@ -173,10 +177,10 @@ def load_all_kaggle_files() -> dict[str, pd.DataFrame]:
             kaggle_dfs[table_name] = pd.read_csv(path)
             print(f"  [INFO] Loaded table: '{table_name}' ({len(kaggle_dfs[table_name]):,} rows, {len(kaggle_dfs[table_name].columns)} cols)")
         except Exception as err:
-            raise RuntimeError(f" [ERROR] Could not read '{table_name}': {err}")
+            raise RuntimeError(f"  [ERROR] Could not read '{table_name}': {err}")
 
     if not kaggle_dfs:
-        raise RuntimeError(f" [ERROR] No readable CSV tables found in '{LOCAL_KAGGLE_DIR}'.")
+        raise RuntimeError(f"  [ERROR] No readable CSV tables found in '{LOCAL_KAGGLE_DIR}'.")
     return kaggle_dfs
 
 
@@ -212,7 +216,6 @@ def _openf1_get(endpoint: str, params: dict, strict: bool = False) -> list:
 
 def _openf1_parse_dt(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
-
 
 def _openf1_collect_race_sessions(cutoff: datetime) -> pd.DataFrame:
     """
@@ -787,7 +790,7 @@ def generate_data_report(sources=ALL_SOURCES):
     # Plot 2: OpenF1 Lap Duration (spans every race from 2023 through the run-time cut-off)
     if df_openf1 is not None and 'lap_duration' in df_openf1.columns:
         sns.boxplot(y=df_openf1['lap_duration'].dropna(), ax=axes[0, 1], color='darkorange')
-        axes[0, 1].set_title("OpenF1: Lap Duration Variance (s), 2023–latest race")
+        axes[0, 1].set_title("OpenF1: Lap Duration Variance (s), 2023 - latest race")
     else:
         _unavailable(axes[0, 1], "OpenF1: Lap Duration Variance (s)", _why("openf1"))
 
