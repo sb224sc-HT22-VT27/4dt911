@@ -32,3 +32,6 @@ export interface Constructor {
 Use these and create mocking data for 22 drivers and 11 constructors
 
 I need to separate these files into more structured filesystem. Give me an example of how i could setup each folder and their contents.
+
+Convert this svg graph into react that diplays the team points distribution using mock numbers based on predicted points for each driver/constructor in the lineup.
+

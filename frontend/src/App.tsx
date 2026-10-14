@@ -1,7 +1,6 @@
 // src/App.tsx
 import './App.css';
 import { TeamPanel } from './components/TeamPanel/TeamPanel';
-
 function App() {
   return (
     <div className="dashboard-grid">
