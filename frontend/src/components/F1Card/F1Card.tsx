@@ -1,4 +1,5 @@
 // src/components/F1Card.tsx
+import './F1Card.css';
 import React, { useState } from 'react';
 
 export interface CardItem {
@@ -9,7 +10,7 @@ export interface CardItem {
     price: number;
     ownership: number;
     expectedPoints: number;
-    accentColor?: string;
+    avatarColor?: string;
 }
 
 interface F1CardProps {
@@ -55,7 +56,7 @@ export const F1Card: React.FC<F1CardProps> = ({
                     <div
                         className="f1-price-pill"
                         style={{
-                            backgroundColor: item.accentColor || '#277960'
+                            backgroundColor: item.avatarColor || '#277960'
                         }}
                     >
                         €{item.price}
@@ -85,7 +86,7 @@ export const F1Card: React.FC<F1CardProps> = ({
                     {item.number && (
                         <span
                             className="f1-watermark-number"
-                            style={{ color: item.accentColor || '#17362d' }}
+                            style={{ color: item.avatarColor || '#17362d' }}
                         >
                             {item.number}
                         </span>
