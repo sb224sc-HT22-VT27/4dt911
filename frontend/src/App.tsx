@@ -24,13 +24,13 @@ function App() {
       {/* 4. Right Bottom */}
       <section className="panel panel-upcoming">
         <h3>Upcoming</h3>
-        <p>Next matches, schedule, or events.</p>
+        <p>Next races, schedule, or events.</p>
       </section>
 
       {/* 5. Center Bottom */}
       <section className="panel panel-ppm">
         <h3>PPM Graph</h3>
-        <p>Points/performance graph placeholder.</p>
+        <p>Points/performance graph.</p>
       </section>
     </div>
   );
