@@ -1,7 +1,29 @@
 // src/App.tsx
+import { useState } from 'react';
 import './App.css';
 import { TeamPanel } from './components/TeamPanel/TeamPanel';
+import { AnalyticsPanel } from './components/AnalyticsPanel/AnalyticsPanel';
+import type { CardItem } from './types/f1';
+
 function App() {
+  const [drivers, setDrivers] = useState<(CardItem | null)[]>([]);
+  const [constructors, setConstructors] = useState<(CardItem | null)[]>([]);
+
+  // Calculate live total predicted points whenever the roster changes
+  const totalPredictedPoints = Number(
+    [...drivers.filter(Boolean), ...constructors.filter(Boolean)]
+      .reduce((acc, item) => acc + (item?.expectedPoints || 0), 0)
+      .toFixed(1)
+  );
+
+  const handleTeamChange = (
+    updatedDrivers: (CardItem | null)[],
+    updatedConstructors: (CardItem | null)[]
+  ) => {
+    setDrivers(updatedDrivers);
+    setConstructors(updatedConstructors);
+  };
+
   return (
     <div className="dashboard-grid">
       {/* 1. Left Sidebar */}
@@ -12,7 +34,7 @@ function App() {
 
       {/* 2. Main Center Content */}
       <main className="panel panel-team">
-        <TeamPanel />
+        <TeamPanel onTeamChange={handleTeamChange} />
       </main>
 
       {/* 3. Right Top */}
@@ -29,8 +51,11 @@ function App() {
 
       {/* 5. Center Bottom */}
       <section className="panel panel-ppm">
-        <h3>PPM Graph</h3>
-        <p>Points/performance graph.</p>
+        <AnalyticsPanel
+          drivers={drivers}
+          constructors={constructors}
+          totalPredictedPoints={totalPredictedPoints}
+        />
       </section>
     </div>
   );

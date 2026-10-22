@@ -1,9 +1,8 @@
 // src/components/TeamPanel.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { F1Card, type CardItem } from '../F1Card/F1Card';
 import { MOCK_DRIVERS, MOCK_CONSTRUCTORS, type Driver, type Constructor } from '../../data/cards';
 import './TeamPanel.css';
-import { DistGraph } from '../DistGraph';
 
 const driverToCardItem = (d: Driver): CardItem => ({
     id: d.id,
@@ -46,9 +45,23 @@ interface PickerState {
     slotIndex: number;
 }
 
-export const TeamPanel: React.FC = () => {
+interface TeamPanelProps {
+    onTeamChange?: (
+        drivers: (CardItem | null)[],
+        constructors: (CardItem | null)[]
+    ) => void;
+}
+
+export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
     const [drivers, setDrivers] = useState<(CardItem | null)[]>(INITIAL_DRIVERS);
     const [constructors, setConstructors] = useState<(CardItem | null)[]>(INITIAL_CONSTRUCTORS);
+
+    // Sync with App whenever roster changes
+    useEffect(() => {
+        if (onTeamChange) {
+            onTeamChange(drivers, constructors);
+        }
+    }, [drivers, constructors, onTeamChange]);
 
     // Budget State: Default 100.0M
     const [totalBudget, setTotalBudget] = useState<number>(100.0);
@@ -60,6 +73,8 @@ export const TeamPanel: React.FC = () => {
         type: 'driver',
         slotIndex: 0,
     });
+
+
 
     // Calculate current total cost of the team
     const currentCost = [
@@ -121,11 +136,6 @@ export const TeamPanel: React.FC = () => {
     const selectedDriverIds = new Set(drivers.filter(Boolean).map((d) => d!.id));
     const selectedConstructorIds = new Set(constructors.filter(Boolean).map((c) => c!.id));
 
-    const totalPredictedPoints = Number(
-        [...drivers.filter(Boolean), ...constructors.filter(Boolean)]
-            .reduce((acc, item) => acc + (item?.expectedPoints || 0), 0)
-            .toFixed(1)
-    );
 
     return (
         <div className="team-workspace">
@@ -196,26 +206,19 @@ export const TeamPanel: React.FC = () => {
                 ))}
             </div>
 
-            {/* Row 2: 2 Constructors on Left + 2-Column Box + 3 Buttons */}
+            {/* Row 2: Two 2-column Constructors + 3 Buttons */}
             <div className="team-grid-5">
                 {constructors.map((c, index) => (
-                    <F1Card
-                        key={c ? c.id : `constructor-slot-${index}`}
-                        item={c || undefined}
-                        type="constructor"
-                        slotIndex={index}
-                        onRemove={handleRemoveConstructor}
-                        onAdd={handleOpenPicker}
-                    />
-                ))}
-
-                {/* Box spanning columns 3 & 4 (under driver cards 3 and 4) */}
-                <div className="team-slot-box">
-                    <div className="slot-box-header">Predicted Team Points</div>
-                    <div className="slot-box-content">
-                        <DistGraph p50={totalPredictedPoints} />
+                    <div key={c ? c.id : `constructor-slot-${index}`} className="constructor-span-2">
+                        <F1Card
+                            item={c || undefined}
+                            type="constructor"
+                            slotIndex={index}
+                            onRemove={handleRemoveConstructor}
+                            onAdd={handleOpenPicker}
+                        />
                     </div>
-                </div>
+                ))}
 
                 {/* 3 stacked buttons occupying column 5 (under driver card 5) */}
                 <div className="team-actions-col">
