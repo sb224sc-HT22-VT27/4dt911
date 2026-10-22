@@ -1,5 +1,6 @@
 .DS_Store
 **\cache\
+.venv
 
 # Data files
 data/f1-fantasy-data
