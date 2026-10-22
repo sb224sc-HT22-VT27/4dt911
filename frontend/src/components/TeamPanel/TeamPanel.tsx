@@ -1,43 +1,34 @@
-// src/components/TeamPanel.tsx
+// src/components/TeamPanel/TeamPanel.tsx
 import React, { useState, useEffect } from 'react';
 import { F1Card, type CardItem } from '../F1Card/F1Card';
-import { MOCK_DRIVERS, MOCK_CONSTRUCTORS, type Driver, type Constructor } from '../../data/cards';
+import type { Driver, Constructor } from '../../types/f1';
 import './TeamPanel.css';
 
-const driverToCardItem = (d: Driver): CardItem => ({
+const API_BASE = 'http://localhost:8000';
+
+// Convert backend Driver schema to CardItem
+const driverToCardItem = (d: any): CardItem => ({
     id: d.id,
     name: d.name,
     number: d.number,
     team: d.team,
-    price: d.price,
-    ownership: d.ownership,
-    expectedPoints: d.predictedPoints,
-    avatarColor: d.avatarColor,
+    price: Number(d.price) || 0,
+    ownership: Number(d.ownership) || 0,
+    expectedPoints: Number(d.predictedPoints ?? d.predicted_points ?? 0),
+    avatarColor: d.avatarColor || d.avatar_color || '#1e3a8a',
 });
 
-const constructorToCardItem = (c: Constructor): CardItem => ({
+// Convert backend Constructor schema to CardItem
+const constructorToCardItem = (c: any): CardItem => ({
     id: c.id,
     name: c.name,
     number: c.code,
     team: 'Constructor',
-    price: c.price,
-    ownership: c.ownership,
-    expectedPoints: c.predictedPoints,
-    avatarColor: c.avatarColor,
+    price: Number(c.price) || 0,
+    ownership: Number(c.ownership) || 0,
+    expectedPoints: Number(c.predictedPoints ?? c.predicted_points ?? 0),
+    avatarColor: c.avatarColor || c.avatar_color || '#1e3a8a',
 });
-
-const INITIAL_DRIVERS: (CardItem | null)[] = [
-    driverToCardItem(MOCK_DRIVERS.find((d) => d.id === 'alo')!),
-    driverToCardItem(MOCK_DRIVERS.find((d) => d.id === 'ver')!),
-    driverToCardItem(MOCK_DRIVERS.find((d) => d.id === 'nor')!),
-    driverToCardItem(MOCK_DRIVERS.find((d) => d.id === 'lec')!),
-    driverToCardItem(MOCK_DRIVERS.find((d) => d.id === 'ham')!),
-];
-
-const INITIAL_CONSTRUCTORS: (CardItem | null)[] = [
-    constructorToCardItem(MOCK_CONSTRUCTORS.find((c) => c.id === 'c-redbull')!),
-    constructorToCardItem(MOCK_CONSTRUCTORS.find((c) => c.id === 'c-mclaren')!),
-];
 
 interface PickerState {
     isOpen: boolean;
@@ -53,15 +44,15 @@ interface TeamPanelProps {
 }
 
 export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
-    const [drivers, setDrivers] = useState<(CardItem | null)[]>(INITIAL_DRIVERS);
-    const [constructors, setConstructors] = useState<(CardItem | null)[]>(INITIAL_CONSTRUCTORS);
+    // Live pools from FastAPI
+    const [availableDrivers, setAvailableDrivers] = useState<Driver[]>([]);
+    const [availableConstructors, setAvailableConstructors] = useState<Constructor[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
-    // Sync with App whenever roster changes
-    useEffect(() => {
-        if (onTeamChange) {
-            onTeamChange(drivers, constructors);
-        }
-    }, [drivers, constructors, onTeamChange]);
+    // Active Team Roster
+    const [drivers, setDrivers] = useState<(CardItem | null)[]>([null, null, null, null, null]);
+    const [constructors, setConstructors] = useState<(CardItem | null)[]>([null, null]);
 
     // Budget State: Default 100.0M
     const [totalBudget, setTotalBudget] = useState<number>(100.0);
@@ -74,7 +65,72 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
         slotIndex: 0,
     });
 
+    // Fetch from FastAPI endpoints on mount
+    useEffect(() => {
+        const fetchRoster = async () => {
+            try {
+                setLoading(true);
+                setError(null);
 
+                const [driversRes, constructorsRes] = await Promise.all([
+                    fetch(`${API_BASE}/drivers/`),
+                    fetch(`${API_BASE}/constructors/`),
+                ]);
+
+                if (!driversRes.ok || !constructorsRes.ok) {
+                    throw new Error('Failed to fetch roster from the FastAPI server.');
+                }
+
+                const driversData = await driversRes.json();
+                const constructorsData = await constructorsRes.json();
+
+                setAvailableDrivers(driversData);
+                setAvailableConstructors(constructorsData);
+
+                // Populate initial 5 drivers
+                const preferredDriverIds = ['alo', 'ver', 'nor', 'lec', 'ham'];
+                const initialDriversList: (CardItem | null)[] = preferredDriverIds.map((id) => {
+                    const match = driversData.find((d: any) => d.id === id);
+                    return match ? driverToCardItem(match) : null;
+                });
+
+                // Fill empty slots with first available drivers if preferred IDs were not in CSV
+                const remainingDrivers = driversData
+                    .filter((d: any) => !preferredDriverIds.includes(d.id))
+                    .map(driverToCardItem);
+
+                const finalDrivers = initialDriversList.map((d) => d || remainingDrivers.shift() || null);
+                setDrivers(finalDrivers);
+
+                // Populate initial 2 constructors
+                const preferredConstructorIds = ['c-redbull', 'c-mclaren'];
+                const initialConstructorsList: (CardItem | null)[] = preferredConstructorIds.map((id) => {
+                    const match = constructorsData.find((c: any) => c.id === id);
+                    return match ? constructorToCardItem(match) : null;
+                });
+
+                const remainingConstructors = constructorsData
+                    .filter((c: any) => !preferredConstructorIds.includes(c.id))
+                    .map(constructorToCardItem);
+
+                const finalConstructors = initialConstructorsList.map((c) => c || remainingConstructors.shift() || null);
+                setConstructors(finalConstructors);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : 'Unknown connection error');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchRoster();
+    }, []);
+
+    // Sync roster changes with parent (App.tsx / AnalyticsPanel)
+    useEffect(() => {
+        if (onTeamChange) {
+            onTeamChange(drivers, constructors);
+        }
+    }, [drivers, constructors, onTeamChange]);
 
     // Calculate current total cost of the team
     const currentCost = [
@@ -136,10 +192,33 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
     const selectedDriverIds = new Set(drivers.filter(Boolean).map((d) => d!.id));
     const selectedConstructorIds = new Set(constructors.filter(Boolean).map((c) => c!.id));
 
+    if (loading) {
+        return (
+            <div className="team-workspace" style={{ alignItems: 'center', justifyContent: 'center', minHeight: 250 }}>
+                <p style={{ color: '#2dd4bf', fontWeight: 600 }}>Loading F1 Fantasy data from FastAPI...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="team-workspace" style={{ alignItems: 'center', justifyContent: 'center', minHeight: 250, gap: '1rem' }}>
+                <p style={{ color: '#ef4444', fontWeight: 600 }}>⚠️ Connection Error: {error}</p>
+                <button
+                    type="button"
+                    className="team-action-btn"
+                    style={{ padding: '6px 14px', maxWidth: 140 }}
+                    onClick={() => window.location.reload()}
+                >
+                    Retry
+                </button>
+            </div>
+        );
+    }
 
     return (
         <div className="team-workspace">
-            {/* Top Header Row with Budget Indicator in Top-Left */}
+            {/* Top Header Row with Budget Indicator in Top-Right */}
             <div className="team-header-bar">
                 <h2 className="team-title">My Team</h2>
 
@@ -220,7 +299,7 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
                     </div>
                 ))}
 
-                {/* 3 stacked buttons occupying column 5 (under driver card 5) */}
+                {/* 3 stacked buttons occupying column 5 */}
                 <div className="team-actions-col">
                     <button type="button" className="team-action-btn">
                         Optimize
@@ -234,7 +313,7 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
                 </div>
             </div>
 
-            {/* Modal Picker with Budget Limit Blocker */}
+            {/* Modal Picker populated directly from FastAPI */}
             {picker.isOpen && (
                 <div className="picker-overlay" onClick={() => setPicker((p) => ({ ...p, isOpen: false }))}>
                     <div className="picker-dialog" onClick={(e) => e.stopPropagation()}>
@@ -256,10 +335,13 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
 
                         <div className="picker-list">
                             {picker.type === 'driver'
-                                ? MOCK_DRIVERS.map((d) => {
+                                ? availableDrivers.map((d: any) => {
                                     const isSelected = selectedDriverIds.has(d.id);
-                                    const isTooExpensive = d.price > remainingBudget;
+                                    const price = Number(d.price) || 0;
+                                    const isTooExpensive = price > remainingBudget;
                                     const isDisabled = isSelected || isTooExpensive;
+                                    const predictedPts = Number(d.predictedPoints ?? d.predicted_points ?? 0);
+                                    const color = d.avatarColor || d.avatar_color || '#1e3a8a';
 
                                     return (
                                         <div
@@ -267,16 +349,16 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
                                             className={`picker-row ${isDisabled ? 'picker-row-disabled' : ''}`}
                                             onClick={() => !isDisabled && handleSelectItem(driverToCardItem(d))}
                                         >
-                                            <span className="picker-color-strip" style={{ backgroundColor: d.avatarColor }} />
+                                            <span className="picker-color-strip" style={{ backgroundColor: color }} />
                                             <div className="picker-meta">
                                                 <strong>{d.name}</strong>
                                                 <span>{d.team} (#{d.number})</span>
                                             </div>
                                             <div className="picker-stats">
                                                 <span className={isTooExpensive ? 'stat-price-over' : ''}>
-                                                    €{d.price}M
+                                                    €{price}M
                                                 </span>
-                                                <span>{d.predictedPoints} pts</span>
+                                                <span>{predictedPts} pts</span>
                                             </div>
                                             <button
                                                 type="button"
@@ -288,10 +370,13 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
                                         </div>
                                     );
                                 })
-                                : MOCK_CONSTRUCTORS.map((c) => {
+                                : availableConstructors.map((c: any) => {
                                     const isSelected = selectedConstructorIds.has(c.id);
-                                    const isTooExpensive = c.price > remainingBudget;
+                                    const price = Number(c.price) || 0;
+                                    const isTooExpensive = price > remainingBudget;
                                     const isDisabled = isSelected || isTooExpensive;
+                                    const predictedPts = Number(c.predictedPoints ?? c.predicted_points ?? 0);
+                                    const color = c.avatarColor || c.avatar_color || '#1e3a8a';
 
                                     return (
                                         <div
@@ -299,16 +384,16 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
                                             className={`picker-row ${isDisabled ? 'picker-row-disabled' : ''}`}
                                             onClick={() => !isDisabled && handleSelectItem(constructorToCardItem(c))}
                                         >
-                                            <span className="picker-color-strip" style={{ backgroundColor: c.avatarColor }} />
+                                            <span className="picker-color-strip" style={{ backgroundColor: color }} />
                                             <div className="picker-meta">
                                                 <strong>{c.name}</strong>
                                                 <span>{c.code}</span>
                                             </div>
                                             <div className="picker-stats">
                                                 <span className={isTooExpensive ? 'stat-price-over' : ''}>
-                                                    €{c.price}M
+                                                    €{price}M
                                                 </span>
-                                                <span>{c.predictedPoints} pts</span>
+                                                <span>{predictedPts} pts</span>
                                             </div>
                                             <button
                                                 type="button"
