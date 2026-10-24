@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { DistGraph } from './DistGraph';
 import { PpmEfficiencyView } from './PpmEfficiencyView';
-import { TeamBreakdownView } from './TeamBreakDownView';
+import { TeamBreakdownView } from './TeamBreakdownView';
 import type { CardItem } from '../../types/f1';
 import './AnalyticsPanel.css';
 
@@ -37,9 +37,9 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
                     <button
                         type="button"
                         className={`analytics-tab-btn ${activeTab === 'efficiency' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('efficiency')}
+                        onClick={() => setActiveTab('distribution')}
                     >
-                        PPM Efficiency
+                        PPM Graph (TBD)
                     </button>
                     <button
                         type="button"
