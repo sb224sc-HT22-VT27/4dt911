@@ -28,17 +28,23 @@ LOCAL_FANTASY_DIR = "./f1-fantasy-data"
 KAGGLE_DATASET_HANDLE = "jtrotman/formula-1-race-data"
 # Records which published Kaggle version the local copy is, so every run can check it against the latest.
 KAGGLE_CACHE_LOG = os.path.join(LOCAL_KAGGLE_DIR, "kaggle_cache_log.json")
-KAGGLE_LOG_HISTORY = 25   # how many past checks to keep in the log
+KAGGLE_LOG_HISTORY = 25  # how many past checks to keep in the log
 
-ALL_SOURCES = ("kaggle", "openf1", "fantasy")   # default: fetch everything
+ALL_SOURCES = ("kaggle", "openf1", "fantasy")  # default: fetch everything
 
 OPENF1_BASE_URL = "https://api.openf1.org/v1"
 OPENF1_START_YEAR = 2023
 OPENF1_COMBINED_FILENAME = f"all_laps_{OPENF1_START_YEAR}_to_latest.csv"
-OPENF1_WEATHER_COLS = {"air_temperature", "track_temperature", "humidity"}  # present in every cached race file
-OPENF1_REQUEST_DELAY = 2.0   # polite delay between calls to the free API
+OPENF1_WEATHER_COLS = {
+    "air_temperature",
+    "track_temperature",
+    "humidity",
+}  # present in every cached race file
+OPENF1_REQUEST_DELAY = 2.0  # polite delay between calls to the free API
 OPENF1_MAX_RETRIES = 3
-OPENF1_WEATHER_TOLERANCE = pd.Timedelta(minutes=5)  # max gap when matching a lap to a weather reading
+OPENF1_WEATHER_TOLERANCE = pd.Timedelta(
+    minutes=5
+)  # max gap when matching a lap to a weather reading
 
 # OpenF1 session_name -> file code. (2023 called sprint qualifying "Sprint Shootout".)
 OPENF1_SESSION_CODES = {
@@ -51,7 +57,10 @@ OPENF1_SESSION_CODES = {
     "Qualifying": "Q",
     "Race": "R",
 }
-OPENF1_SESSION_COLS = {"session_code", "session_name"}  # present in every cached session file
+OPENF1_SESSION_COLS = {
+    "session_code",
+    "session_name",
+}  # present in every cached session file
 
 
 class PartialDataError(RuntimeError):
@@ -80,7 +89,9 @@ def _kaggle_read_log() -> dict:
         print("  [INFO] No cache log found; treating the local copy as unverified.")
         return {}
     except (OSError, ValueError) as e:
-        print(f"  [ERROR] Kaggle cache log unreadable ({e}); treating the local copy as unverified.")
+        print(
+            f"  [ERROR] Kaggle cache log unreadable ({e}); treating the local copy as unverified."
+        )
         return {}
 
 
@@ -101,10 +112,13 @@ def _kaggle_published_version() -> tuple[int, str]:
     Returns (N, that directory).
     """
     import kagglehub  # ImportError / network / auth errors propagate to the caller
+
     path = str(kagglehub.dataset_download(KAGGLE_DATASET_HANDLE))
     m = re.search(r"versions[\\/](\d+)[\\/]*$", path)
     if not m:
-        raise RuntimeError(f"  [ERROR] Could not read the published version number from kagglehub's path '{path}'.")
+        raise RuntimeError(
+            f"  [ERROR] Could not read the published version number from kagglehub's path '{path}'."
+        )
     return int(m.group(1)), path
 
 
@@ -113,11 +127,16 @@ def _kaggle_local_matches_log(log: dict, version: int) -> tuple[bool, str]:
     if log.get("dataset") != KAGGLE_DATASET_HANDLE:
         return False, "no cache log for this dataset"
     if log.get("published_version") != version:
-        return False, f"published version changed ({log.get('published_version')} -> {version})"
+        return (
+            False,
+            f"published version changed ({log.get('published_version')} -> {version})",
+        )
     files = log.get("files") or {}
     if not files:
         return False, "cache log lists no files (previous sync did not finish)"
-    local = {os.path.basename(f) for f in glob.glob(os.path.join(LOCAL_KAGGLE_DIR, "*.csv"))}
+    local = {
+        os.path.basename(f) for f in glob.glob(os.path.join(LOCAL_KAGGLE_DIR, "*.csv"))
+    }
     if local != set(files):
         return False, "local CSV files differ from the cache log"
     for name, size in files.items():
@@ -130,10 +149,14 @@ def _kaggle_sync_local(src_dir: str, log: dict) -> dict:
     """Replaces the local CSVs with those of src_dir; returns {file name: size}."""
     sources = glob.glob(os.path.join(src_dir, "*.csv"))
     if not sources:
-        raise RuntimeError(f"  [ERROR] The downloaded dataset at '{src_dir}' contains no CSV files.")
+        raise RuntimeError(
+            f"  [ERROR] The downloaded dataset at '{src_dir}' contains no CSV files."
+        )
     os.makedirs(LOCAL_KAGGLE_DIR, exist_ok=True)
     # Invalidate the log first: if we're interrupted mid-copy, the next run re-syncs.
-    _kaggle_write_log({**log, "published_version": None, "files": {}, "status": "sync in progress"})
+    _kaggle_write_log(
+        {**log, "published_version": None, "files": {}, "status": "sync in progress"}
+    )
     for old in glob.glob(os.path.join(LOCAL_KAGGLE_DIR, "*.csv")):
         os.remove(old)
     files = {}
@@ -165,34 +188,62 @@ def load_all_kaggle_files() -> dict[str, pd.DataFrame]:
     try:
         version, src_dir = _kaggle_published_version()
     except Exception as e:
-        print(f"  [ERROR] Could not check/download the latest published version of "
-              f"'{KAGGLE_DATASET_HANDLE}': {type(e).__name__}: {e}")
-        had = (f" A local copy of version {log['published_version']} (fetched {log.get('fetched_at_utc')}) exists "
-               f"but could not be verified as the latest, so it was not used.") if log.get("published_version") else ""
-        raise RuntimeError(f"  [ERROR] Could not check/download the latest published version of "
-                           f"'{KAGGLE_DATASET_HANDLE}': {type(e).__name__}: {e}.{had}") from e
+        print(
+            f"  [ERROR] Could not check/download the latest published version of "
+            f"'{KAGGLE_DATASET_HANDLE}': {type(e).__name__}: {e}"
+        )
+        had = (
+            (
+                f" A local copy of version {log['published_version']} (fetched {log.get('fetched_at_utc')}) exists "
+                f"but could not be verified as the latest, so it was not used."
+            )
+            if log.get("published_version")
+            else ""
+        )
+        raise RuntimeError(
+            f"  [ERROR] Could not check/download the latest published version of "
+            f"'{KAGGLE_DATASET_HANDLE}': {type(e).__name__}: {e}.{had}"
+        ) from e
     print(f"  [INFO] Latest published version of '{KAGGLE_DATASET_HANDLE}': {version}")
 
     up_to_date, reason = _kaggle_local_matches_log(log, version)
     previous_version = log.get("published_version")
     now = _utc_now_iso()
     if up_to_date:
-        print(f"  [INFO] Local copy at '{LOCAL_KAGGLE_DIR}' is version {version} (fetched {log.get('fetched_at_utc')}). Skipping copy.")
+        print(
+            f"  [INFO] Local copy at '{LOCAL_KAGGLE_DIR}' is version {version} (fetched {log.get('fetched_at_utc')}). Skipping copy."
+        )
         action = "up-to-date"
     else:
         print(f"  [INFO] Updating local copy at '{LOCAL_KAGGLE_DIR}': {reason}.")
         if not log and glob.glob(os.path.join(LOCAL_KAGGLE_DIR, "*.csv")):
-            print("  [WARNING] found an unversioned local copy (no cache log); replacing it with the published version.")
+            print(
+                "  [WARNING] found an unversioned local copy (no cache log); replacing it with the published version."
+            )
         log["files"] = _kaggle_sync_local(src_dir, log)
-        log.update({"dataset": KAGGLE_DATASET_HANDLE, "published_version": version,
-                    "fetched_at_utc": now, "source_path": src_dir, "status": "ok"})
+        log.update(
+            {
+                "dataset": KAGGLE_DATASET_HANDLE,
+                "published_version": version,
+                "fetched_at_utc": now,
+                "source_path": src_dir,
+                "status": "ok",
+            }
+        )
         action = "downloaded"
 
     log["last_checked_utc"] = now
-    log["history"] = (log.get("history", []) + [{
-        "checked_at_utc": now, "published_version": version,
-        "previous_local_version": previous_version, "action": action,
-    }])[-KAGGLE_LOG_HISTORY:]
+    log["history"] = (
+        log.get("history", [])
+        + [
+            {
+                "checked_at_utc": now,
+                "published_version": version,
+                "previous_local_version": previous_version,
+                "action": action,
+            }
+        ]
+    )[-KAGGLE_LOG_HISTORY:]
     _kaggle_write_log(log)
 
     kaggle_dfs, unreadable = {}, []
@@ -200,7 +251,9 @@ def load_all_kaggle_files() -> dict[str, pd.DataFrame]:
         table_name = os.path.basename(path).replace(".csv", "")
         try:
             kaggle_dfs[table_name] = pd.read_csv(path)
-            print(f"  [INFO] Loaded table: '{table_name}' ({len(kaggle_dfs[table_name]):,} rows, {len(kaggle_dfs[table_name].columns)} cols)")
+            print(
+                f"  [INFO] Loaded table: '{table_name}' ({len(kaggle_dfs[table_name]):,} rows, {len(kaggle_dfs[table_name].columns)} cols)"
+            )
         except Exception as err:
             print(f"  [ERROR] Could not read '{table_name}': {err}")
             unreadable.append(table_name)
@@ -208,14 +261,18 @@ def load_all_kaggle_files() -> dict[str, pd.DataFrame]:
     if not kaggle_dfs:
         raise RuntimeError(f"No readable CSV tables found in '{LOCAL_KAGGLE_DIR}'.")
     if unreadable:
-        raise PartialDataError(f"{len(unreadable)} Kaggle table(s) could not be read",
-                               kaggle_dfs, sorted(unreadable))
+        raise PartialDataError(
+            f"{len(unreadable)} Kaggle table(s) could not be read",
+            kaggle_dfs,
+            sorted(unreadable),
+        )
     return kaggle_dfs
 
 
 # ---------------------------------------------------------------------------
 # OpenF1 helpers (internal) — used by fetch_openf1_data()
 # ---------------------------------------------------------------------------
+
 
 def _openf1_get(endpoint: str, params: dict, strict: bool = False) -> list:
     """
@@ -231,12 +288,18 @@ def _openf1_get(endpoint: str, params: dict, strict: bool = False) -> list:
             return resp.json()
         except requests.RequestException as e:
             if attempt == OPENF1_MAX_RETRIES:
-                print(f"  [ERROR] Failed {endpoint} {params} after {OPENF1_MAX_RETRIES} tries: {e}")
+                print(
+                    f"  [ERROR] Failed {endpoint} {params} after {OPENF1_MAX_RETRIES} tries: {e}"
+                )
                 if strict:
-                    raise RuntimeError(f"OpenF1 request failed: {endpoint} {params}: {e}") from e
+                    raise RuntimeError(
+                        f"OpenF1 request failed: {endpoint} {params}: {e}"
+                    ) from e
                 return []
-            wait = 2 ** attempt
-            print(f"  [ERROR] {endpoint} attempt {attempt} failed ({e}); retrying in {wait}s")
+            wait = 2**attempt
+            print(
+                f"  [ERROR] {endpoint} attempt {attempt} failed ({e}); retrying in {wait}s"
+            )
             time.sleep(wait)
         finally:
             time.sleep(OPENF1_REQUEST_DELAY)
@@ -246,9 +309,13 @@ def _openf1_get(endpoint: str, params: dict, strict: bool = False) -> list:
 def _openf1_parse_dt(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
+
 def _openf1_race_dir_name(year, location) -> str:
     """'2023-Austin', '2024-Sao_Paulo': one directory per race weekend."""
-    safe = re.sub(r"[^\w\-]+", "_", str(location or "unknown").strip()).strip("_") or "unknown"
+    safe = (
+        re.sub(r"[^\w\-]+", "_", str(location or "unknown").strip()).strip("_")
+        or "unknown"
+    )
     return f"{year}-{safe}"
 
 
@@ -273,23 +340,33 @@ def _openf1_collect_sessions(cutoff: datetime) -> pd.DataFrame:
 
     known = df["session_name"].isin(OPENF1_SESSION_CODES)
     if (~known).any():
-        print(f"  [INFO] Ignoring unmapped session types: {sorted(df.loc[~known, 'session_name'].unique())}")
+        print(
+            f"  [INFO] Ignoring unmapped session types: {sorted(df.loc[~known, 'session_name'].unique())}"
+        )
     df = df[known].copy()
     if df.empty:
         return df
     df["session_code"] = df["session_name"].map(OPENF1_SESSION_CODES)
 
     # One directory per meeting; if two meetings in a year share a location name, add the meeting key.
-    df["race_dir"] = [_openf1_race_dir_name(y, loc) for y, loc in zip(df["year"], df["location"])]
+    df["race_dir"] = [
+        _openf1_race_dir_name(y, loc) for y, loc in zip(df["year"], df["location"])
+    ]
     clash = df.groupby("race_dir")["meeting_key"].nunique()
     for d in clash[clash > 1].index:
         mask = df["race_dir"] == d
         df.loc[mask, "race_dir"] = d + "_" + df.loc[mask, "meeting_key"].astype(str)
 
     df["date_start_dt"] = df["date_start"].apply(_openf1_parse_dt)
-    ends = df["date_end"] if "date_end" in df.columns else pd.Series([None] * len(df), index=df.index)
-    df["date_end_dt"] = [_openf1_parse_dt(e) if isinstance(e, str) and e else st
-                         for e, st in zip(ends, df["date_start_dt"])]
+    ends = (
+        df["date_end"]
+        if "date_end" in df.columns
+        else pd.Series([None] * len(df), index=df.index)
+    )
+    df["date_end_dt"] = [
+        _openf1_parse_dt(e) if isinstance(e, str) and e else st
+        for e, st in zip(ends, df["date_start_dt"])
+    ]
 
     if "is_cancelled" in df.columns:
         df = df[~df["is_cancelled"].fillna(False)]
@@ -309,8 +386,15 @@ def _openf1_attach_weather(laps_df: pd.DataFrame, session_key) -> pd.DataFrame:
     if not weather:
         # No weather published for this session — return laps unchanged,
         # but still add empty weather columns so the schema stays consistent.
-        for col in ["air_temperature", "track_temperature", "humidity",
-                    "rainfall", "wind_speed", "wind_direction", "pressure"]:
+        for col in [
+            "air_temperature",
+            "track_temperature",
+            "humidity",
+            "rainfall",
+            "wind_speed",
+            "wind_direction",
+            "pressure",
+        ]:
             laps_df[col] = np.nan
         return laps_df
 
@@ -322,10 +406,20 @@ def _openf1_attach_weather(laps_df: pd.DataFrame, session_key) -> pd.DataFrame:
         return laps_df
 
     laps_df = laps_df.copy()
-    laps_df["date_start"] = pd.to_datetime(laps_df["date_start"], format="ISO8601", utc=True, errors="coerce")
+    laps_df["date_start"] = pd.to_datetime(
+        laps_df["date_start"], format="ISO8601", utc=True, errors="coerce"
+    )
 
-    weather_cols = ["date", "air_temperature", "track_temperature", "humidity",
-                     "rainfall", "wind_speed", "wind_direction", "pressure"]
+    weather_cols = [
+        "date",
+        "air_temperature",
+        "track_temperature",
+        "humidity",
+        "rainfall",
+        "wind_speed",
+        "wind_direction",
+        "pressure",
+    ]
     weather_cols = [c for c in weather_cols if c in weather_df.columns]
 
     # merge_asof requires a non-null join key, but some laps (e.g. the first
@@ -361,13 +455,17 @@ def _openf1_find_upcoming_race() -> dict:
     for year in (now.year, now.year + 1):
         sessions = _openf1_get("sessions", {"year": year, "session_name": "Race"})
         upcoming = [
-            s for s in sessions
-            if _openf1_parse_dt(s["date_start"]) > now and not s.get("is_cancelled", False)
+            s
+            for s in sessions
+            if _openf1_parse_dt(s["date_start"]) > now
+            and not s.get("is_cancelled", False)
         ]
         if upcoming:
             nxt = min(upcoming, key=lambda s: s["date_start"])
             return {
-                "race_name": nxt.get("location") or nxt.get("circuit_short_name") or "Unknown",
+                "race_name": nxt.get("location")
+                or nxt.get("circuit_short_name")
+                or "Unknown",
                 "race_date": _openf1_parse_dt(nxt["date_start"]),
                 "session_key": nxt.get("session_key"),
                 "meeting_key": nxt.get("meeting_key"),
@@ -398,15 +496,17 @@ def _openf1_download_all_races(output_dir: str, cutoff: datetime) -> pd.DataFram
         raise RuntimeError("[ERROR] No finished sessions found up to the cut-off.")
 
     n = len(race_sessions)
-    print(f"  [INFO] Found {n} finished sessions across {race_sessions['race_dir'].nunique()} race weekends "
-          f"from {OPENF1_START_YEAR} through {race_sessions['date_end_dt'].max().date()}. Collecting laps...")
+    print(
+        f"  [INFO] Found {n} finished sessions across {race_sessions['race_dir'].nunique()} race weekends "
+        f"from {OPENF1_START_YEAR} through {race_sessions['date_end_dt'].max().date()}. Collecting laps..."
+    )
 
     frames, failed, no_data = [], [], []
     for i, row in race_sessions.iterrows():
         session_key = row["session_key"]
         code = row["session_code"]
         label = f"{row['race_dir']}/{code}"
-        tag = f"[{i + 1}/{n}] {label}" # type: ignore
+        tag = f"[{i + 1}/{n}] {label}"  # type: ignore
         race_path = os.path.join(output_dir, row["race_dir"])
         os.makedirs(race_path, exist_ok=True)
         file_path = os.path.join(race_path, f"{code}.csv")
@@ -414,19 +514,26 @@ def _openf1_download_all_races(output_dir: str, cutoff: datetime) -> pd.DataFram
         if os.path.exists(file_path):
             try:
                 cached = pd.read_csv(file_path)
-                if (len(cached) > 0 and OPENF1_WEATHER_COLS.issubset(cached.columns)
-                        and OPENF1_SESSION_COLS.issubset(cached.columns)):
+                if (
+                    len(cached) > 0
+                    and OPENF1_WEATHER_COLS.issubset(cached.columns)
+                    and OPENF1_SESSION_COLS.issubset(cached.columns)
+                ):
                     print(f"  [INFO] {tag}: already saved ({len(cached):,} rows)")
                     frames.append(cached)
                     continue
-                print(f"  [GET] {tag}: saved file is empty or predates weather/session columns; re-downloading")
+                print(
+                    f"  [GET] {tag}: saved file is empty or predates weather/session columns; re-downloading"
+                )
             except Exception as e:
                 print(f"  [GET] {tag}: saved file unreadable ({e}); re-downloading")
 
         try:
             laps = _openf1_get("laps", {"session_key": session_key}, strict=True)
             if not laps:
-                print(f"  [INFO] {tag}: OpenF1 has no lap data for this session, skipping.")
+                print(
+                    f"  [INFO] {tag}: OpenF1 has no lap data for this session, skipping."
+                )
                 no_data.append(label)
                 continue
             laps_df = pd.DataFrame(laps)
@@ -446,8 +553,10 @@ def _openf1_download_all_races(output_dir: str, cutoff: datetime) -> pd.DataFram
         frames.append(laps_df)
 
     if not frames:
-        raise RuntimeError(f"No lap data could be loaded for any of the {n} sessions "
-                           f"({len(failed)} failed to download, {len(no_data)} have no published lap data).")
+        raise RuntimeError(
+            f"No lap data could be loaded for any of the {n} sessions "
+            f"({len(failed)} failed to download, {len(no_data)} have no published lap data)."
+        )
     if no_data:
         print(f"  [INFO] Note: no lap data published for: {', '.join(no_data)}")
 
@@ -456,10 +565,16 @@ def _openf1_download_all_races(output_dir: str, cutoff: datetime) -> pd.DataFram
     combined_df = pd.read_csv(combined_path)
     combined_df.attrs["expected_sessions"] = n
     combined_df.attrs["no_data_sessions"] = list(no_data)
-    print(f"  [INFO] Saved combined dataset ({len(combined_df):,} rows) to {combined_path}")
+    print(
+        f"  [INFO] Saved combined dataset ({len(combined_df):,} rows) to {combined_path}"
+    )
 
     if failed:
-        raise PartialDataError(f"{len(failed)} of {n} session(s) could not be downloaded; nothing was substituted. ", combined_df, failed)
+        raise PartialDataError(
+            f"{len(failed)} of {n} session(s) could not be downloaded; nothing was substituted. ",
+            combined_df,
+            failed,
+        )
     return combined_df
 
 
@@ -480,7 +595,9 @@ def fetch_openf1_data() -> pd.DataFrame:
     cutoff = datetime.now(timezone.utc)
     print(f"  [INFO] Cut-off (script run time): {cutoff:%Y-%m-%d %H:%M:%S} UTC")
     df = _openf1_download_all_races(LOCAL_OPENF1_DIR, cutoff)
-    print(f"  [INFO] Loaded OpenF1 lap metrics ({len(df):,} records, including weather).")
+    print(
+        f"  [INFO] Loaded OpenF1 lap metrics ({len(df):,} records, including weather)."
+    )
     return df
 
 
@@ -506,8 +623,10 @@ def _save_fantasy_csv(df: pd.DataFrame, filename: str) -> str:
 # name (e.g. Liam Lawson at two teams) stay separate rows.
 # ---------------------------------------------------------------------------
 
-FANTASY_STATS_URL = "https://fantasy.formula1.com/en/statistics/details?tab=driver&filter=fPoints"
-FANTASY_FEED_MARKER = "statistics/driverconstructors"   # part of the feed's url
+FANTASY_STATS_URL = (
+    "https://fantasy.formula1.com/en/statistics/details?tab=driver&filter=fPoints"
+)
+FANTASY_FEED_MARKER = "statistics/driverconstructors"  # part of the feed's url
 FANTASY_FEED_WAIT_SECONDS = 15
 FANTASY_SOURCE_LABEL = "F1 Fantasy statistics feed (current season snapshot)"
 
@@ -518,26 +637,45 @@ FANTASY_FEED_KEY_TO_COL = {
     "priceChange": "valuation_change",
     "mostPicked": "selected_by_pct",
     "pointsPermillion": "value_for_money",
-    "overTakepoints": "overtakes",          # as published; may be overtake points
+    "overTakepoints": "overtakes",  # as published; may be overtake points
     "podiumsStats": "podiums",
-    "topFinshed": "top10_finishes",         # (sic) the site's own spelling
+    "topFinshed": "top10_finishes",  # (sic) the site's own spelling
     "mostDnf": "dnfs",
     "fastestLap": "fastest_lap_awards",
     "driverOfday": "dotds",
     "fastestPitstopstats": "fastest_pitstop_awards",
 }
 # columns that only exist for one entity type
-FANTASY_NOT_APPLICABLE = {"driver": {"fastest_pitstop_awards"}, "constructor": {"dotds"}}
+FANTASY_NOT_APPLICABLE = {
+    "driver": {"fastest_pitstop_awards"},
+    "constructor": {"dotds"},
+}
 # The site only lists entities that have a selection %; absent means none.
 FANTASY_MISSING_MEANS_ZERO = {"selected_by_pct"}
 
-_FANTASY_STAT_ORDER = ["price_m", "selected_by_pct", "fantasy_points_total", "avg_fantasy_points",
-                       "valuation_change", "value_for_money", "overtakes", "podiums",
-                       "top10_finishes", "dnfs", "fastest_lap_awards"]
-FANTASY_DRIVER_COLS = (["season", "player_id", "driver_name", "team_id", "team_name"] + _FANTASY_STAT_ORDER
-                       + ["dotds", "upcoming_race", "upcoming_race_date", "data_source"])
-FANTASY_TEAM_COLS = (["season", "player_id", "team_name"] + _FANTASY_STAT_ORDER
-                     + ["fastest_pitstop_awards", "upcoming_race", "upcoming_race_date", "data_source"])
+_FANTASY_STAT_ORDER = [
+    "price_m",
+    "selected_by_pct",
+    "fantasy_points_total",
+    "avg_fantasy_points",
+    "valuation_change",
+    "value_for_money",
+    "overtakes",
+    "podiums",
+    "top10_finishes",
+    "dnfs",
+    "fastest_lap_awards",
+]
+FANTASY_DRIVER_COLS = (
+    ["season", "player_id", "driver_name", "team_id", "team_name"]
+    + _FANTASY_STAT_ORDER
+    + ["dotds", "upcoming_race", "upcoming_race_date", "data_source"]
+)
+FANTASY_TEAM_COLS = (
+    ["season", "player_id", "team_name"]
+    + _FANTASY_STAT_ORDER
+    + ["fastest_pitstop_awards", "upcoming_race", "upcoming_race_date", "data_source"]
+)
 
 
 def _fantasy_capture_feed() -> dict:
@@ -553,7 +691,10 @@ def _fantasy_capture_feed() -> dict:
     captured = []
 
     def on_response(resp):
-        if FANTASY_FEED_MARKER in resp.url and "json" in (resp.headers.get("content-type") or "").lower():
+        if (
+            FANTASY_FEED_MARKER in resp.url
+            and "json" in (resp.headers.get("content-type") or "").lower()
+        ):
             try:
                 captured.append((resp.url, resp.json()))
             except Exception:
@@ -562,9 +703,12 @@ def _fantasy_capture_feed() -> dict:
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         try:
-            ctx = browser.new_context(user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"))
+            ctx = browser.new_context(
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+                )
+            )
             page = ctx.new_page()
             page.on("response", on_response)
             page.goto(FANTASY_STATS_URL, wait_until="domcontentloaded", timeout=60000)
@@ -581,7 +725,9 @@ def _fantasy_capture_feed() -> dict:
     print("  [INFO] Closed the browser.")
 
     if not captured:
-        raise RuntimeError(f"[ERROR] The statistics feed ('{FANTASY_FEED_MARKER}') was not loaded by the page.")
+        raise RuntimeError(
+            f"[ERROR] The statistics feed ('{FANTASY_FEED_MARKER}') was not loaded by the page."
+        )
     url, data = captured[-1]
     print(f"  [INFO] Feed: {url}")
     return data
@@ -594,11 +740,13 @@ def _fantasy_parse_feed(data: dict) -> tuple[list, list, list, list]:
         season = feed.get("season")
         sections = {"driver": feed["driver"], "constructor": feed["constructor"]}
     except (KeyError, TypeError) as e:
-        raise RuntimeError(f"[ERROR] Unexpected feed structure (missing {e}); the site may have changed.") from e
+        raise RuntimeError(
+            f"[ERROR] Unexpected feed structure (missing {e}); the site may have changed."
+        ) from e
 
     out, unknown, defaulted = {}, [], []
     for etype, blocks in sections.items():
-        entities = {}   # player id -> row
+        entities = {}  # player id -> row
         for block in blocks:
             key = block["config"]["key"]
             col = FANTASY_FEED_KEY_TO_COL.get(key)
@@ -608,12 +756,22 @@ def _fantasy_parse_feed(data: dict) -> tuple[list, list, list, list]:
             for p in block["participants"]:
                 name = p.get("playername") or p.get("teamname")
                 pid = p.get("playerid")
-                if pid is None:   # the feed sometimes lists an entity without an id: match by name
-                    pid = next((k for k, r in entities.items() if r["_name"] == name), name)
-                row = entities.setdefault(str(pid), {
-                    "season": season, "player_id": str(pid), "_name": name,
-                    "team_id": p.get("teamid"), "team_name": p.get("teamname") if etype == "driver" else name,
-                })
+                if (
+                    pid is None
+                ):  # the feed sometimes lists an entity without an id: match by name
+                    pid = next(
+                        (k for k, r in entities.items() if r["_name"] == name), name
+                    )
+                row = entities.setdefault(
+                    str(pid),
+                    {
+                        "season": season,
+                        "player_id": str(pid),
+                        "_name": name,
+                        "team_id": p.get("teamid"),
+                        "team_name": p.get("teamname") if etype == "driver" else name,
+                    },
+                )
                 if row.get("price_m") is None and p.get("curvalue") is not None:
                     row["price_m"] = p["curvalue"]
                 if p.get("statvalue") is None:
@@ -634,7 +792,9 @@ def _fantasy_parse_feed(data: dict) -> tuple[list, list, list, list]:
     return out["driver"], out["constructor"], unknown, defaulted
 
 
-def _fantasy_to_frame(rows: list, etype: str, cols: list, upcoming: dict) -> pd.DataFrame:
+def _fantasy_to_frame(
+    rows: list, etype: str, cols: list, upcoming: dict
+) -> pd.DataFrame:
     if not rows:
         raise RuntimeError(f"The feed contained no {etype} rows.")
     df = pd.DataFrame(rows)
@@ -643,19 +803,29 @@ def _fantasy_to_frame(rows: list, etype: str, cols: list, upcoming: dict) -> pd.
     df["data_source"] = FANTASY_SOURCE_LABEL
     for col in cols:
         if col not in df.columns:
-            df[col] = np.nan   # never invented: left empty and reported below
-    df = df[cols].sort_values(["team_name"] + (["driver_name"] if etype == "driver" else []))
+            df[col] = np.nan  # never invented: left empty and reported below
+    df = df[cols].sort_values(
+        ["team_name"] + (["driver_name"] if etype == "driver" else [])
+    )
     df = df.reset_index(drop=True)
 
-    applicable = [c for c in cols if c not in FANTASY_NOT_APPLICABLE[etype]
-                  and c not in ("upcoming_race", "upcoming_race_date", "team_id")]
+    applicable = [
+        c
+        for c in cols
+        if c not in FANTASY_NOT_APPLICABLE[etype]
+        and c not in ("upcoming_race", "upcoming_race_date", "team_id")
+    ]
     for col in ("price_m", "fantasy_points_total"):
         if df[col].isna().all():
-            raise RuntimeError(f"No '{col}' values for any {etype}; the feed layout may have changed.")
+            raise RuntimeError(
+                f"No '{col}' values for any {etype}; the feed layout may have changed."
+            )
     gaps = df[applicable].isna().sum()
     gaps = gaps[gaps > 0]
     if not gaps.empty:
-        print(f"  [WARNING] ({etype}): empty cells left as NaN (not filled): {gaps.to_dict()}")
+        print(
+            f"  [WARNING] ({etype}): empty cells left as NaN (not filled): {gaps.to_dict()}"
+        )
     return df
 
 
@@ -676,25 +846,42 @@ def fetch_formula_fantasy(upcoming: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     print("\n[STAGE 3] Processing Formula Fantasy Data (Drivers & Constructors)")
     if upcoming:
-        print(f"  [INFO] Costs below apply to the upcoming race: {upcoming['race_name']} "
-              f"({upcoming['race_date'].date()})")
+        print(
+            f"  [INFO] Costs below apply to the upcoming race: {upcoming['race_name']} "
+            f"({upcoming['race_date'].date()})"
+        )
     else:
-        print("  [INFO] Could not determine the upcoming race (season may be between calendars); "
-              "costs are still current, just unlabeled by race.")
-        
-    driver_rows, team_rows, unknown, defaulted = _fantasy_parse_feed(_fantasy_capture_feed())
+        print(
+            "  [INFO] Could not determine the upcoming race (season may be between calendars); "
+            "costs are still current, just unlabeled by race."
+        )
+
+    driver_rows, team_rows, unknown, defaulted = _fantasy_parse_feed(
+        _fantasy_capture_feed()
+    )
     if unknown:
-        print(f"  [WARNING] feed filters with no column mapping (add to FANTASY_FEED_KEY_TO_COL): {unknown}")
+        print(
+            f"  [WARNING] feed filters with no column mapping (add to FANTASY_FEED_KEY_TO_COL): {unknown}"
+        )
     if defaulted:
-        print(f"  [INFO] No value for {len(defaulted)} cells; treated as 0 "
-              f"(entity has none): {sorted(defaulted)}")
+        print(
+            f"  [INFO] No value for {len(defaulted)} cells; treated as 0 "
+            f"(entity has none): {sorted(defaulted)}"
+        )
 
     df_drivers = _fantasy_to_frame(driver_rows, "driver", FANTASY_DRIVER_COLS, upcoming)
     df_teams = _fantasy_to_frame(team_rows, "constructor", FANTASY_TEAM_COLS, upcoming)
+    from f1_linkage import link_fantasy_drivers, link_fantasy_teams
+
+    df_drivers = link_fantasy_drivers(df_drivers)
+    df_teams = link_fantasy_teams(df_teams)
+
     _save_fantasy_csv(df_drivers, "drivers.csv")
     _save_fantasy_csv(df_teams, "teams.csv")
     print("  [INFO] Saved fantasy data to CSV files.")
-    print(f"  [INFO] Loaded {len(df_drivers)} drivers and {len(df_teams)} constructors from the F1 Fantasy statistics feed.")
+    print(
+        f"  [INFO] Loaded {len(df_drivers)} drivers and {len(df_teams)} constructors from the F1 Fantasy statistics feed."
+    )
     return df_drivers, df_teams
 
 
@@ -711,7 +898,9 @@ def _run_stage(name: str, fn, *args):
         return fn(*args), None
     except PartialDataError as e:
         print(f"\n[WARNING] {name} INCOMPLETE: {e}")
-        print("[WARNING] Continuing with the partial data; the missing parts are NOT substituted.")
+        print(
+            "[WARNING] Continuing with the partial data; the missing parts are NOT substituted."
+        )
         return e.partial, e
     except Exception as e:
         print(f"\n[ERROR] {name} FAILED: {type(e).__name__}: {e}")
@@ -743,10 +932,14 @@ def fetch_sources(sources=ALL_SOURCES) -> dict:
     sources = tuple(sources)
     unknown = set(sources) - set(ALL_SOURCES)
     if unknown:
-        raise ValueError(f"Unknown source(s) {sorted(unknown)}; choose from {list(ALL_SOURCES)}")
+        raise ValueError(
+            f"Unknown source(s) {sorted(unknown)}; choose from {list(ALL_SOURCES)}"
+        )
 
-    print(f"Sources selected: {', '.join(s for s in ALL_SOURCES if s in sources)}"
-          f"{'' if len(sources) == len(ALL_SOURCES) else '   (others skipped)'}\n")
+    print(
+        f"Sources selected: {', '.join(s for s in ALL_SOURCES if s in sources)}"
+        f"{'' if len(sources) == len(ALL_SOURCES) else '   (others skipped)'}\n"
+    )
 
     failures: dict[str, Exception] = {}
     kaggle_tables = df_openf1 = df_fantasy_drivers = df_fantasy_teams = None
@@ -761,15 +954,23 @@ def fetch_sources(sources=ALL_SOURCES) -> dict:
             failures["OpenF1"] = err
     if "fantasy" in sources:
         # the upcoming race (a light OpenF1 lookup) only labels the fantasy prices
-        upcoming_race, _ = _run_stage("OpenF1 upcoming race lookup", _openf1_find_upcoming_race)
-        fantasy, err = _run_stage("Formula Fantasy", fetch_formula_fantasy, upcoming_race or {})
+        upcoming_race, _ = _run_stage(
+            "OpenF1 upcoming race lookup", _openf1_find_upcoming_race
+        )
+        fantasy, err = _run_stage(
+            "Formula Fantasy", fetch_formula_fantasy, upcoming_race or {}
+        )
         if err:
             failures["Formula Fantasy"] = err
         df_fantasy_drivers, df_fantasy_teams = fantasy if fantasy else (None, None)
 
-    return {"kaggle_tables": kaggle_tables or {}, "df_openf1": df_openf1,
-            "df_fantasy_drivers": df_fantasy_drivers, "df_fantasy_teams": df_fantasy_teams,
-            "failures": failures}
+    return {
+        "kaggle_tables": kaggle_tables or {},
+        "df_openf1": df_openf1,
+        "df_fantasy_drivers": df_fantasy_drivers,
+        "df_fantasy_teams": df_fantasy_teams,
+        "failures": failures,
+    }
 
 
 def _print_completeness(sources, data: dict) -> bool:
@@ -806,27 +1007,43 @@ def _print_completeness(sources, data: dict) -> bool:
                 expected = df.attrs.get("expected_sessions")
                 no_data = df.attrs.get("no_data_sessions", [])
                 failed = err.missing if isinstance(err, PartialDataError) else []
-                loaded = (expected - len(failed) - len(no_data)) if expected is not None else None
-                counts = f" - {loaded} of {expected} sessions loaded" if loaded is not None else ""
+                loaded = (
+                    (expected - len(failed) - len(no_data))
+                    if expected is not None
+                    else None
+                )
+                counts = (
+                    f" - {loaded} of {expected} sessions loaded"
+                    if loaded is not None
+                    else ""
+                )
                 print(f"  {label}: {'PARTIAL' if failed else 'COMPLETE'}{counts}")
                 if failed:
-                    print(f"\t[MISSING] {len(failed)} session(s) failed to download, by weekend:")
+                    print(
+                        f"\t[MISSING] {len(failed)} session(s) failed to download, by weekend:"
+                    )
                     for line in _group_sessions(failed):
                         print(f"\t  - {line}")
                 if no_data:
-                    print(f"\t[MISSING] {len(no_data)} session(s) have no lap data published by OpenF1, by weekend:")
+                    print(
+                        f"\t[MISSING] {len(no_data)} session(s) have no lap data published by OpenF1, by weekend:"
+                    )
                     for line in _group_sessions(no_data):
                         print(f"\t  - {line}")
                 if "air_temperature" in df.columns and len(df):
                     gap = int(df["air_temperature"].isna().sum())
                     if gap:
-                        print(f"\t[MISSING] weather readings absent for {gap:,} of {len(df):,} laps "
-                              f"({gap / len(df):.1%}): no reading within {OPENF1_WEATHER_TOLERANCE.total_seconds() / 60:.0f} min, or none published")
+                        print(
+                            f"\t[MISSING] weather readings absent for {gap:,} of {len(df):,} laps "
+                            f"({gap / len(df):.1%}): no reading within {OPENF1_WEATHER_TOLERANCE.total_seconds() / 60:.0f} min, or none published"
+                        )
 
         else:  # fantasy
             drivers, teams = data["df_fantasy_drivers"], data["df_fantasy_teams"]
             if err is None and drivers is not None and teams is not None:
-                print(f"  {label}: COMPLETE - {len(drivers)} drivers, {len(teams)} constructors (current snapshot)")
+                print(
+                    f"  {label}: COMPLETE - {len(drivers)} drivers, {len(teams)} constructors (current snapshot)"
+                )
             else:
                 print(f"  {label}: MISSING - no drivers or constructors loaded")
 
@@ -855,9 +1072,16 @@ def generate_data_report(sources=ALL_SOURCES, data: dict | None = None) -> bool:
     df_fantasy_teams = data["df_fantasy_teams"]
     failures = data["failures"]
 
-    have = {"kaggle": bool(kaggle_tables), "openf1": df_openf1 is not None,
-            "fantasy": df_fantasy_drivers is not None or df_fantasy_teams is not None}
-    partial = {src for src, label in _SOURCE_LABELS.items() if isinstance(failures.get(label), PartialDataError)}
+    have = {
+        "kaggle": bool(kaggle_tables),
+        "openf1": df_openf1 is not None,
+        "fantasy": df_fantasy_drivers is not None or df_fantasy_teams is not None,
+    }
+    partial = {
+        src
+        for src, label in _SOURCE_LABELS.items()
+        if isinstance(failures.get(label), PartialDataError)
+    }
 
     def _why(src: str, default: str) -> str:
         if src not in sources:
@@ -872,7 +1096,9 @@ def generate_data_report(sources=ALL_SOURCES, data: dict | None = None) -> bool:
     print("\n\n[REPORT] F1 DATA REPORT")
     complete = _print_completeness(sources, data)
     if not complete:
-        print("  NOTE: the sections below describe only the data that was actually loaded.")
+        print(
+            "  NOTE: the sections below describe only the data that was actually loaded."
+        )
 
     # 1. Total Data Points & Dimensions Breakdown
     print("\n\n[DATA] DATA POINTS & DIMENSIONS BREAKDOWN")
@@ -883,7 +1109,9 @@ def generate_data_report(sources=ALL_SOURCES, data: dict | None = None) -> bool:
             rows, cols = df.shape
             points = rows * cols
             total_data_points += points
-            print(f"  Table '{name}': {rows:,} rows x {cols} cols = {points:,} data points")
+            print(
+                f"  Table '{name}': {rows:,} rows x {cols} cols = {points:,} data points"
+            )
     elif "kaggle" in sources:
         print("Kaggle Tables:\n  [MISSING] no tables loaded.")
 
@@ -899,7 +1127,9 @@ def generate_data_report(sources=ALL_SOURCES, data: dict | None = None) -> bool:
             continue
         rows, cols = df.shape
         total_data_points += rows * cols
-        print(f"\n{label}:\n  1 table: {rows:,} rows x {cols} cols = {rows * cols:,} data points")
+        print(
+            f"\n{label}:\n  1 table: {rows:,} rows x {cols} cols = {rows * cols:,} data points"
+        )
 
     print(f"\nTOTAL COMBINED DATA POINTS: {total_data_points:,}")
 
@@ -918,14 +1148,22 @@ def generate_data_report(sources=ALL_SOURCES, data: dict | None = None) -> bool:
     for name, df in all_datasets.items():
         num = df.select_dtypes(include=[np.number]).columns.tolist()
         try:
-            cat = df.select_dtypes(include=['object', 'category', 'bool', 'str']).columns.tolist()
+            cat = df.select_dtypes(
+                include=["object", "category", "bool", "str"]
+            ).columns.tolist()
         except TypeError:
             # Older pandas versions don't recognize 'str' as a dtype name.
-            cat = df.select_dtypes(include=['object', 'category', 'bool']).columns.tolist()
-        dt = df.select_dtypes(include=['datetime64', 'datetime64[ns, UTC]']).columns.tolist()
+            cat = df.select_dtypes(
+                include=["object", "category", "bool"]
+            ).columns.tolist()
+        dt = df.select_dtypes(
+            include=["datetime64", "datetime64[ns, UTC]"]
+        ).columns.tolist()
         print(f"\n[{name}]")
         print(f"  Numeric ({len(num)}): {num[:4]}{'...' if len(num) > 4 else ''}")
-        print(f"  Categorical/Nominal ({len(cat)}): {cat[:4]}{'...' if len(cat) > 4 else ''}")
+        print(
+            f"  Categorical/Nominal ({len(cat)}): {cat[:4]}{'...' if len(cat) > 4 else ''}"
+        )
         print(f"  Temporal ({len(dt)}): {dt}")
 
     # 4. Data Cleanup Assessment
@@ -934,26 +1172,46 @@ def generate_data_report(sources=ALL_SOURCES, data: dict | None = None) -> bool:
         print("  [MISSING] no datasets were loaded, so nothing was assessed.")
     for name, df in all_datasets.items():
         nulls = df.isnull().sum().sum()
-        hashable_cols = [c for c in df.columns if not df[c].apply(lambda x: isinstance(x, list)).any()]
+        hashable_cols = [
+            c
+            for c in df.columns
+            if not df[c].apply(lambda x: isinstance(x, list)).any()
+        ]
         dups = df.duplicated(subset=hashable_cols).sum()
-        print(f"  [INFO] Dataset '{name}': {nulls:,} missing cells | {dups:,} duplicate rows")
+        print(
+            f"  [INFO] Dataset '{name}': {nulls:,} missing cells | {dups:,} duplicate rows"
+        )
 
     if not complete:
-        print("[WARNING] THIS REPORT IS BASED ON INCOMPLETE DATA - see [DATA] DATA COMPLETENESS above for exactly what is missing.")
+        print(
+            "[WARNING] THIS REPORT IS BASED ON INCOMPLETE DATA - see [DATA] DATA COMPLETENESS above for exactly what is missing."
+        )
     return complete
 
 
 def main(argv=None) -> None:
     ap = argparse.ArgumentParser(
         description="F1 data pipeline. With no source flags every source is fetched; "
-                    "pass one or more source flags to fetch only those sources. "
-                    "The data report is only produced with --report.")
-    ap.add_argument("--kaggle", action="store_true", help="fetch only the Kaggle tables")
-    ap.add_argument("--openf1", action="store_true", help="fetch only the OpenF1 session lap/weather data")
-    ap.add_argument("--fantasy", action="store_true", help="fetch only the Formula Fantasy data")
-    ap.add_argument("--report", action="store_true",
-                    help="also print the data report and write the distribution plots "
-                         "(produced even if some data is missing; the missing data is listed)")
+        "pass one or more source flags to fetch only those sources. "
+        "The data report is only produced with --report."
+    )
+    ap.add_argument(
+        "--kaggle", action="store_true", help="fetch only the Kaggle tables"
+    )
+    ap.add_argument(
+        "--openf1",
+        action="store_true",
+        help="fetch only the OpenF1 session lap/weather data",
+    )
+    ap.add_argument(
+        "--fantasy", action="store_true", help="fetch only the Formula Fantasy data"
+    )
+    ap.add_argument(
+        "--report",
+        action="store_true",
+        help="also print the data report and write the distribution plots "
+        "(produced even if some data is missing; the missing data is listed)",
+    )
     a = ap.parse_args(argv)
     sources = tuple(src for src in ALL_SOURCES if getattr(a, src)) or ALL_SOURCES
 
