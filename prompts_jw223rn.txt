@@ -35,3 +35,4 @@ I need to separate these files into more structured filesystem. Give me an examp
 
 Convert this svg graph into react that diplays the team points distribution using mock numbers based on predicted points for each driver/constructor in the lineup.
 
+This view should have different tabs i can switch between. How do i add that?
