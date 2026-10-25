@@ -9,3 +9,7 @@
 - [Data Fetched 2026-10-21 in a zip](https://drive.google.com/file/d/1WslXtM_Y1lDhHIFlHMJJCnSh3h18pmfk/view?usp=sharing), place in data/ directory the three data source directories.
 
 To populate the data directory create a `.venv` and install the `requirements.txt` and run `playwright install chromium` after, then redirect yourself into the data directory and run the `f1_data_script.py` without flags fetches all data sources otherwise specified sources can be fetch by following flags `--kaggle --openf1 --fantasy`.
+
+## Local hosting
+
+In project root run the command `docker compose up -d` to start the application, to shut it down and clean up after usage run `docker compose down` && `docker system prune -a --volumes`.
