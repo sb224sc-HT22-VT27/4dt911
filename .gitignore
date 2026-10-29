@@ -1,6 +1,6 @@
 .DS_Store
-**\cache\
 .venv
+**/cache/
 
 # Data files
 data/f1-fantasy-data
@@ -34,3 +34,4 @@ dist-ssr
 *.png
 *.pptx
 *.zip
+*.pyc

@@ -381,3 +381,15 @@
     color: #64748b;
     cursor: not-allowed;
 }
+
+/* Makes each constructor card span 2 columns */
+.constructor-span-2 {
+    grid-column: span 2;
+    width: 100%;
+}
+
+/* Ensure the inner F1Card stretches to fill the whole 2-column width */
+.constructor-span-2 .f1-card,
+.constructor-span-2 .f1-card-empty {
+    width: 100%;
+}
