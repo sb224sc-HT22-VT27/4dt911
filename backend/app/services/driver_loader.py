@@ -1,5 +1,10 @@
 import pandas as pd
 from app.schemas.driver import Driver
+# Temporary using random
+import random as rd
+from app.helpers import teams
+
+
 
 
 def load_drivers_from_csv(file_path: str) -> list[Driver]:
@@ -12,26 +17,32 @@ def load_drivers_from_csv(file_path: str) -> list[Driver]:
     # Convert the DataFrame to a list of Team objects
     drivers = []
     for _, row in df.iterrows():
+        predicted = rd.randint(10,40)
         driver = Driver(
             # Info
             id=str(row['player_id']),
             name=str(row['driver_name']),
-            number=0, #row[''],
+            number=str(row['driver_number']),
             code="", #row['code'],
             team=str(row['team_name']),
             team_id=str(row['team_id']),
-            avatarColor="", #row['avatarColor']
+            avatarColor=teams.get(row["team_key"], "#FFFFFF"), #row['avatarColor']
 
             # Stats
             price=row['price_m'],
             ownership=row['selected_by_pct'],
             fantasyPoints=row['fantasy_points_total'],
-            predictedPoints=0, #row[''],
+            # Swap to real prediction
+            predictedPoints=predicted, #row[''],
             championshipPoints=0, #row[''],
         )
         drivers.append(driver)
 
     return drivers
+
+
+
+
 
 if __name__ == "__main__":
     # Example usage

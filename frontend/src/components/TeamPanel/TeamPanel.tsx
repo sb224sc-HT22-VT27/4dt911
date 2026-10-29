@@ -30,6 +30,75 @@ const constructorToCardItem = (c: any): CardItem => ({
     avatarColor: c.avatarColor || c.avatar_color || '#1e3a8a',
 });
 
+// Knapsack/Roster Optimizer
+function findOptimalRoster(
+    allDrivers: CardItem[],
+    allConstructors: CardItem[],
+    budgetLimit: number
+): { bestDrivers: CardItem[]; bestConstructors: CardItem[] } | null {
+    if (allDrivers.length < 5 || allConstructors.length < 2) return null;
+
+    // 1. All 2-constructor pairs
+    const constructorPairs: { items: [CardItem, CardItem]; cost: number; points: number }[] = [];
+    for (let i = 0; i < allConstructors.length; i++) {
+        for (let j = i + 1; j < allConstructors.length; j++) {
+            const c1 = allConstructors[i];
+            const c2 = allConstructors[j];
+            const cost = c1.price + c2.price;
+            if (cost < budgetLimit) {
+                constructorPairs.push({
+                    items: [c1, c2],
+                    cost,
+                    points: c1.expectedPoints + c2.expectedPoints,
+                });
+            }
+        }
+    }
+
+    // 2. All 5-driver combinations
+    const driverGroups: { items: CardItem[]; cost: number; points: number }[] = [];
+    const n = allDrivers.length;
+
+    for (let a = 0; a < n - 4; a++) {
+        for (let b = a + 1; b < n - 3; b++) {
+            for (let c = b + 1; c < n - 2; c++) {
+                for (let d = c + 1; d < n - 1; d++) {
+                    for (let e = d + 1; e < n; e++) {
+                        const group = [allDrivers[a], allDrivers[b], allDrivers[c], allDrivers[d], allDrivers[e]];
+                        const cost = group.reduce((sum, d) => sum + d.price, 0);
+                        if (cost < budgetLimit) {
+                            const points = group.reduce((sum, d) => sum + d.expectedPoints, 0);
+                            driverGroups.push({ items: group, cost, points });
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 3. Find highest point total within budget
+    let maxPoints = -1;
+    let bestDrivers: CardItem[] = [];
+    let bestConstructors: CardItem[] = [];
+
+    for (const cPair of constructorPairs) {
+        const budgetLeft = budgetLimit - cPair.cost;
+        for (const dGroup of driverGroups) {
+            if (dGroup.cost <= budgetLeft + 0.0001) {
+                const totalPoints = cPair.points + dGroup.points;
+                if (totalPoints > maxPoints) {
+                    maxPoints = totalPoints;
+                    bestDrivers = dGroup.items;
+                    bestConstructors = cPair.items;
+                }
+            }
+        }
+    }
+
+    if (maxPoints === -1) return null;
+    return { bestDrivers, bestConstructors };
+}
+
 interface PickerState {
     isOpen: boolean;
     type: 'driver' | 'constructor';
@@ -44,17 +113,14 @@ interface TeamPanelProps {
 }
 
 export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
-    // Live pools from FastAPI
     const [availableDrivers, setAvailableDrivers] = useState<Driver[]>([]);
     const [availableConstructors, setAvailableConstructors] = useState<Constructor[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Active Team Roster
     const [drivers, setDrivers] = useState<(CardItem | null)[]>([null, null, null, null, null]);
     const [constructors, setConstructors] = useState<(CardItem | null)[]>([null, null]);
 
-    // Budget State: Default 100.0M
     const [totalBudget, setTotalBudget] = useState<number>(100.0);
     const [isEditingBudget, setIsEditingBudget] = useState<boolean>(false);
     const [tempBudgetValue, setTempBudgetValue] = useState<string>('100.0');
@@ -65,7 +131,6 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
         slotIndex: 0,
     });
 
-    // Fetch from FastAPI endpoints on mount
     useEffect(() => {
         const fetchRoster = async () => {
             try {
@@ -87,14 +152,12 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
                 setAvailableDrivers(driversData);
                 setAvailableConstructors(constructorsData);
 
-                // Populate initial 5 drivers
                 const preferredDriverIds = ['alo', 'ver', 'nor', 'lec', 'ham'];
                 const initialDriversList: (CardItem | null)[] = preferredDriverIds.map((id) => {
                     const match = driversData.find((d: any) => d.id === id);
                     return match ? driverToCardItem(match) : null;
                 });
 
-                // Fill empty slots with first available drivers if preferred IDs were not in CSV
                 const remainingDrivers = driversData
                     .filter((d: any) => !preferredDriverIds.includes(d.id))
                     .map(driverToCardItem);
@@ -102,7 +165,6 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
                 const finalDrivers = initialDriversList.map((d) => d || remainingDrivers.shift() || null);
                 setDrivers(finalDrivers);
 
-                // Populate initial 2 constructors
                 const preferredConstructorIds = ['c-redbull', 'c-mclaren'];
                 const initialConstructorsList: (CardItem | null)[] = preferredConstructorIds.map((id) => {
                     const match = constructorsData.find((c: any) => c.id === id);
@@ -125,14 +187,12 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
         fetchRoster();
     }, []);
 
-    // Sync roster changes with parent (App.tsx / AnalyticsPanel)
     useEffect(() => {
         if (onTeamChange) {
             onTeamChange(drivers, constructors);
         }
     }, [drivers, constructors, onTeamChange]);
 
-    // Calculate current total cost of the team
     const currentCost = [
         ...drivers.filter(Boolean),
         ...constructors.filter(Boolean),
@@ -141,7 +201,6 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
     const remainingBudget = Number((totalBudget - currentCost).toFixed(1));
     const isOverBudget = remainingBudget < 0;
 
-    // Handlers for budget input
     const handleSaveBudget = () => {
         const parsed = parseFloat(tempBudgetValue);
         if (!isNaN(parsed) && parsed > 0) {
@@ -187,6 +246,22 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
             });
         }
         setPicker((prev) => ({ ...prev, isOpen: false }));
+    };
+
+    // Optimize Button Logic
+    const handleOptimize = () => {
+        const driverItems = availableDrivers.map(driverToCardItem);
+        const constructorItems = availableConstructors.map(constructorToCardItem);
+
+        const result = findOptimalRoster(driverItems, constructorItems, totalBudget);
+
+        if (!result) {
+            alert(`No team could be found under €${totalBudget}M. Please increase your budget.`);
+            return;
+        }
+
+        setDrivers(result.bestDrivers);
+        setConstructors(result.bestConstructors);
     };
 
     const selectedDriverIds = new Set(drivers.filter(Boolean).map((d) => d!.id));
@@ -301,7 +376,11 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({ onTeamChange }) => {
 
                 {/* 3 stacked buttons occupying column 5 */}
                 <div className="team-actions-col">
-                    <button type="button" className="team-action-btn">
+                    <button
+                        type="button"
+                        className="team-action-btn"
+                        onClick={handleOptimize}
+                    >
                         Optimize
                     </button>
                     <button type="button" className="team-action-btn">
