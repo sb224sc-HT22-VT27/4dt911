@@ -36,3 +36,6 @@ I need to separate these files into more structured filesystem. Give me an examp
 Convert this svg graph into react that diplays the team points distribution using mock numbers based on predicted points for each driver/constructor in the lineup.
 
 This view should have different tabs i can switch between. How do i add that?
+
+{'race_name': 'United States Grand Prix', 'date': '2026-10-25', 'driver': 'lando_norris', 'predictions': {'qualifying_position': 3, 'race_position': 4, 'dnf_probability': np.float64(4.7)}, 'fantasy_points': {'floor_p10': np.float64(9.5), 'expected_p50': np.float64(23.1), 'ceiling_p90': np.float64(45.0)}}
+This is the output our api endpoint should send, create mockdata i can use to test the frontend for all drivers from round 18 and forwards.

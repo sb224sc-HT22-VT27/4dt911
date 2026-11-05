@@ -1,0 +1,1996 @@
+{
+    "2026": {
+        "18": {
+            "max_verstappen": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 17,
+                    "dnf_probability": 10.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.8,
+                    "expected_p50": 11.2,
+                    "ceiling_p90": 25.3
+                }
+            },
+            "sergio_perez": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 6,
+                    "dnf_probability": 6.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.7,
+                    "expected_p50": 22.9,
+                    "ceiling_p90": 31.8
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 3,
+                    "dnf_probability": 10.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.3,
+                    "expected_p50": 26.5,
+                    "ceiling_p90": 37.6
+                }
+            },
+            "george_russell": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 21,
+                    "dnf_probability": 14.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 6.4,
+                    "ceiling_p90": 19.9
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 11,
+                    "dnf_probability": 8.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 10.1,
+                    "expected_p50": 16.2,
+                    "ceiling_p90": 28.7
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 13,
+                    "dnf_probability": 5.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.7,
+                    "expected_p50": 12.6,
+                    "ceiling_p90": 25.3
+                }
+            },
+            "lando_norris": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 10,
+                    "dnf_probability": 5.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 8.1,
+                    "expected_p50": 18.1,
+                    "ceiling_p90": 26.2
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 14,
+                    "dnf_probability": 2.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.1,
+                    "expected_p50": 14.5,
+                    "ceiling_p90": 32.7
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 22,
+                    "dnf_probability": 1.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.3,
+                    "expected_p50": 7.2,
+                    "ceiling_p90": 17.4
+                }
+            },
+            "lance_stroll": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 8,
+                    "dnf_probability": 9.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.6,
+                    "expected_p50": 20.9,
+                    "ceiling_p90": 38.4
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 4,
+                    "dnf_probability": 5.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.0,
+                    "expected_p50": 22.2,
+                    "ceiling_p90": 30.9
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 7,
+                    "dnf_probability": 3.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.0,
+                    "expected_p50": 21.3,
+                    "ceiling_p90": 29.4
+                }
+            },
+            "alex_albon": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 5,
+                    "dnf_probability": 14.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 18.4,
+                    "expected_p50": 23.8,
+                    "ceiling_p90": 32.4
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 16,
+                    "dnf_probability": 3.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 11.0,
+                    "ceiling_p90": 27.0
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 15,
+                    "dnf_probability": 5.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.5,
+                    "expected_p50": 13.5,
+                    "ceiling_p90": 33.2
+                }
+            },
+            "liam_lawson": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 18,
+                    "dnf_probability": 12.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.6,
+                    "expected_p50": 9.3,
+                    "ceiling_p90": 17.9
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 12,
+                    "dnf_probability": 3.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.6,
+                    "expected_p50": 14.4,
+                    "ceiling_p90": 29.1
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 20,
+                    "dnf_probability": 7.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 8.2,
+                    "ceiling_p90": 24.9
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 19,
+                    "dnf_probability": 8.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 6.2,
+                    "ceiling_p90": 22.9
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 1,
+                    "dnf_probability": 12.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.9,
+                    "expected_p50": 25.4,
+                    "ceiling_p90": 39.8
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 9,
+                    "dnf_probability": 1.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 10.4,
+                    "expected_p50": 17.2,
+                    "ceiling_p90": 26.9
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 2,
+                    "dnf_probability": 8.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.7,
+                    "expected_p50": 23.3,
+                    "ceiling_p90": 38.6
+                }
+            }
+        },
+        "19": {
+            "max_verstappen": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 18,
+                    "dnf_probability": 6.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.2,
+                    "expected_p50": 10.7,
+                    "ceiling_p90": 26.6
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 10,
+                    "dnf_probability": 8.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.2,
+                    "expected_p50": 16.5,
+                    "ceiling_p90": 31.9
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 13,
+                    "dnf_probability": 10.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.3,
+                    "expected_p50": 16.0,
+                    "ceiling_p90": 27.4
+                }
+            },
+            "george_russell": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 8,
+                    "dnf_probability": 8.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.5,
+                    "expected_p50": 20.4,
+                    "ceiling_p90": 29.6
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 16,
+                    "dnf_probability": 6.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 4.2,
+                    "expected_p50": 10.8,
+                    "ceiling_p90": 24.4
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 15,
+                    "dnf_probability": 13.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 7.3,
+                    "expected_p50": 13.9,
+                    "ceiling_p90": 32.0
+                }
+            },
+            "lando_norris": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 9,
+                    "dnf_probability": 5.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.8,
+                    "expected_p50": 20.3,
+                    "ceiling_p90": 38.0
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 19,
+                    "dnf_probability": 2.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.6,
+                    "expected_p50": 9.9,
+                    "ceiling_p90": 23.3
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 3,
+                    "dnf_probability": 9.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.8,
+                    "expected_p50": 22.8,
+                    "ceiling_p90": 37.6
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 14,
+                    "dnf_probability": 7.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.5,
+                    "expected_p50": 15.3,
+                    "ceiling_p90": 32.6
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 4,
+                    "dnf_probability": 5.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 16.9,
+                    "expected_p50": 22.0,
+                    "ceiling_p90": 40.5
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 17,
+                    "dnf_probability": 8.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.6,
+                    "expected_p50": 8.6,
+                    "ceiling_p90": 27.8
+                }
+            },
+            "alex_albon": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 1,
+                    "dnf_probability": 11.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.4,
+                    "expected_p50": 25.5,
+                    "ceiling_p90": 40.2
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 7,
+                    "dnf_probability": 3.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 16.4,
+                    "expected_p50": 22.5,
+                    "ceiling_p90": 38.7
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 5,
+                    "dnf_probability": 7.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.3,
+                    "expected_p50": 21.7,
+                    "ceiling_p90": 39.8
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 20,
+                    "dnf_probability": 6.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 8.7,
+                    "ceiling_p90": 18.2
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 11,
+                    "dnf_probability": 6.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.7,
+                    "expected_p50": 17.2,
+                    "ceiling_p90": 26.4
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 12,
+                    "dnf_probability": 14.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.4,
+                    "expected_p50": 14.2,
+                    "ceiling_p90": 23.6
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 2,
+                    "dnf_probability": 1.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 19.8,
+                    "expected_p50": 26.4,
+                    "ceiling_p90": 45.2
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 21,
+                    "dnf_probability": 9.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 8.7,
+                    "ceiling_p90": 18.8
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 22,
+                    "dnf_probability": 3.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 4.1,
+                    "ceiling_p90": 15.2
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 6,
+                    "dnf_probability": 5.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.4,
+                    "expected_p50": 23.5,
+                    "ceiling_p90": 36.3
+                }
+            }
+        },
+        "20": {
+            "max_verstappen": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 11,
+                    "dnf_probability": 13.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 8.3,
+                    "expected_p50": 15.6,
+                    "ceiling_p90": 32.0
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 12,
+                    "dnf_probability": 3.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 7.2,
+                    "expected_p50": 13.5,
+                    "ceiling_p90": 25.9
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 16,
+                    "dnf_probability": 14.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.6,
+                    "expected_p50": 11.6,
+                    "ceiling_p90": 29.9
+                }
+            },
+            "george_russell": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 10,
+                    "dnf_probability": 13.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.8,
+                    "expected_p50": 18.6,
+                    "ceiling_p90": 37.9
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 13,
+                    "dnf_probability": 11.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 4.0,
+                    "expected_p50": 13.6,
+                    "ceiling_p90": 27.9
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 2,
+                    "dnf_probability": 3.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 18.4,
+                    "expected_p50": 25.1,
+                    "ceiling_p90": 39.3
+                }
+            },
+            "lando_norris": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 17,
+                    "dnf_probability": 6.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.6,
+                    "expected_p50": 11.3,
+                    "ceiling_p90": 22.2
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 20,
+                    "dnf_probability": 1.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.4,
+                    "expected_p50": 9.2,
+                    "ceiling_p90": 22.7
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 4,
+                    "dnf_probability": 11.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.6,
+                    "expected_p50": 23.4,
+                    "ceiling_p90": 42.6
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 21,
+                    "dnf_probability": 12.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 4.7,
+                    "ceiling_p90": 14.4
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 3,
+                    "dnf_probability": 6.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 19.3,
+                    "expected_p50": 26.1,
+                    "ceiling_p90": 40.7
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 6,
+                    "dnf_probability": 6.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.2,
+                    "expected_p50": 23.5,
+                    "ceiling_p90": 35.6
+                }
+            },
+            "alex_albon": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 7,
+                    "dnf_probability": 11.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.9,
+                    "expected_p50": 22.9,
+                    "ceiling_p90": 36.4
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 15,
+                    "dnf_probability": 11.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.2,
+                    "expected_p50": 10.2,
+                    "ceiling_p90": 28.7
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 18,
+                    "dnf_probability": 6.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.8,
+                    "expected_p50": 11.5,
+                    "ceiling_p90": 25.8
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 1,
+                    "dnf_probability": 4.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.5,
+                    "expected_p50": 25.3,
+                    "ceiling_p90": 38.5
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 5,
+                    "dnf_probability": 11.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 10.3,
+                    "expected_p50": 22.2,
+                    "ceiling_p90": 30.7
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 9,
+                    "dnf_probability": 14.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 8.4,
+                    "expected_p50": 17.6,
+                    "ceiling_p90": 26.5
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 14,
+                    "dnf_probability": 3.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.6,
+                    "expected_p50": 14.8,
+                    "ceiling_p90": 26.0
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 8,
+                    "dnf_probability": 14.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.3,
+                    "expected_p50": 20.4,
+                    "ceiling_p90": 32.0
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 19,
+                    "dnf_probability": 2.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 8.5,
+                    "ceiling_p90": 17.1
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 22,
+                    "dnf_probability": 11.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 5.8,
+                    "ceiling_p90": 14.2
+                }
+            }
+        },
+        "21": {
+            "max_verstappen": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 12,
+                    "dnf_probability": 11.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.2,
+                    "expected_p50": 15.7,
+                    "ceiling_p90": 30.2
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 20,
+                    "dnf_probability": 9.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 8.1,
+                    "ceiling_p90": 22.4
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 10,
+                    "dnf_probability": 10.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 7.9,
+                    "expected_p50": 17.5,
+                    "ceiling_p90": 36.4
+                }
+            },
+            "george_russell": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 2,
+                    "dnf_probability": 12.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.7,
+                    "expected_p50": 27.1,
+                    "ceiling_p90": 39.0
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 21,
+                    "dnf_probability": 7.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 6.1,
+                    "ceiling_p90": 16.5
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 13,
+                    "dnf_probability": 13.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.1,
+                    "expected_p50": 15.3,
+                    "ceiling_p90": 35.0
+                }
+            },
+            "lando_norris": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 18,
+                    "dnf_probability": 14.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.2,
+                    "expected_p50": 11.7,
+                    "ceiling_p90": 25.7
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 22,
+                    "dnf_probability": 4.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 6.5,
+                    "ceiling_p90": 25.4
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 16,
+                    "dnf_probability": 8.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.9,
+                    "expected_p50": 11.7,
+                    "ceiling_p90": 29.3
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 6,
+                    "dnf_probability": 2.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.7,
+                    "expected_p50": 21.5,
+                    "ceiling_p90": 34.8
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 1,
+                    "dnf_probability": 13.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 18.8,
+                    "expected_p50": 27.1,
+                    "ceiling_p90": 41.1
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 8,
+                    "dnf_probability": 13.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 10.7,
+                    "expected_p50": 18.7,
+                    "ceiling_p90": 35.1
+                }
+            },
+            "alex_albon": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 11,
+                    "dnf_probability": 13.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.6,
+                    "expected_p50": 16.0,
+                    "ceiling_p90": 31.0
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 5,
+                    "dnf_probability": 6.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.6,
+                    "expected_p50": 21.1,
+                    "ceiling_p90": 32.5
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 15,
+                    "dnf_probability": 12.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.1,
+                    "expected_p50": 11.5,
+                    "ceiling_p90": 22.7
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 4,
+                    "dnf_probability": 12.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.3,
+                    "expected_p50": 22.9,
+                    "ceiling_p90": 37.8
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 14,
+                    "dnf_probability": 11.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.8,
+                    "expected_p50": 14.5,
+                    "ceiling_p90": 26.2
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 9,
+                    "dnf_probability": 14.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.2,
+                    "expected_p50": 19.5,
+                    "ceiling_p90": 32.8
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 3,
+                    "dnf_probability": 7.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.0,
+                    "expected_p50": 22.3,
+                    "ceiling_p90": 31.3
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 17,
+                    "dnf_probability": 10.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.3,
+                    "expected_p50": 8.1,
+                    "ceiling_p90": 19.7
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 7,
+                    "dnf_probability": 3.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.4,
+                    "expected_p50": 20.0,
+                    "ceiling_p90": 28.2
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 19,
+                    "dnf_probability": 14.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.6,
+                    "expected_p50": 6.9,
+                    "ceiling_p90": 18.4
+                }
+            }
+        },
+        "22": {
+            "max_verstappen": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 5,
+                    "dnf_probability": 11.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 10.3,
+                    "expected_p50": 22.0,
+                    "ceiling_p90": 40.5
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 21,
+                    "dnf_probability": 6.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 7.1,
+                    "ceiling_p90": 23.4
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 20,
+                    "dnf_probability": 12.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.0,
+                    "expected_p50": 9.0,
+                    "ceiling_p90": 28.2
+                }
+            },
+            "george_russell": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 7,
+                    "dnf_probability": 1.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.0,
+                    "expected_p50": 19.5,
+                    "ceiling_p90": 34.6
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 8,
+                    "dnf_probability": 14.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.6,
+                    "expected_p50": 19.9,
+                    "ceiling_p90": 34.9
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 10,
+                    "dnf_probability": 14.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.2,
+                    "expected_p50": 15.2,
+                    "ceiling_p90": 23.3
+                }
+            },
+            "lando_norris": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 6,
+                    "dnf_probability": 8.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.3,
+                    "expected_p50": 20.7,
+                    "ceiling_p90": 29.5
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 11,
+                    "dnf_probability": 13.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.6,
+                    "expected_p50": 15.5,
+                    "ceiling_p90": 25.9
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 15,
+                    "dnf_probability": 3.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.4,
+                    "expected_p50": 13.7,
+                    "ceiling_p90": 24.1
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 3,
+                    "dnf_probability": 3.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 16.0,
+                    "expected_p50": 26.2,
+                    "ceiling_p90": 38.5
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 16,
+                    "dnf_probability": 9.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.9,
+                    "expected_p50": 11.5,
+                    "ceiling_p90": 20.3
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 14,
+                    "dnf_probability": 13.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.8,
+                    "expected_p50": 15.6,
+                    "ceiling_p90": 35.0
+                }
+            },
+            "alex_albon": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 1,
+                    "dnf_probability": 15.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 18.4,
+                    "expected_p50": 27.8,
+                    "ceiling_p90": 38.5
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 22,
+                    "dnf_probability": 7.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 5.6,
+                    "ceiling_p90": 15.4
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 2,
+                    "dnf_probability": 7.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 18.4,
+                    "expected_p50": 26.4,
+                    "ceiling_p90": 40.3
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 13,
+                    "dnf_probability": 4.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 4.1,
+                    "expected_p50": 15.5,
+                    "ceiling_p90": 24.6
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 9,
+                    "dnf_probability": 7.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.5,
+                    "expected_p50": 19.4,
+                    "ceiling_p90": 36.0
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 12,
+                    "dnf_probability": 9.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 7.9,
+                    "expected_p50": 17.3,
+                    "ceiling_p90": 29.7
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 19,
+                    "dnf_probability": 6.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 10.4,
+                    "ceiling_p90": 22.0
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 17,
+                    "dnf_probability": 9.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.5,
+                    "expected_p50": 12.4,
+                    "ceiling_p90": 31.0
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 4,
+                    "dnf_probability": 8.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.7,
+                    "expected_p50": 21.1,
+                    "ceiling_p90": 33.7
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 18,
+                    "dnf_probability": 5.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.0,
+                    "expected_p50": 8.1,
+                    "ceiling_p90": 27.2
+                }
+            }
+        },
+        "23": {
+            "max_verstappen": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 3,
+                    "dnf_probability": 10.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.8,
+                    "expected_p50": 24.3,
+                    "ceiling_p90": 39.3
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 4,
+                    "dnf_probability": 6.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.5,
+                    "expected_p50": 25.5,
+                    "ceiling_p90": 37.1
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 11,
+                    "dnf_probability": 1.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.2,
+                    "expected_p50": 17.5,
+                    "ceiling_p90": 36.0
+                }
+            },
+            "george_russell": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 12,
+                    "dnf_probability": 12.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.5,
+                    "expected_p50": 17.6,
+                    "ceiling_p90": 31.0
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 6,
+                    "dnf_probability": 10.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.6,
+                    "expected_p50": 20.0,
+                    "ceiling_p90": 33.1
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 9,
+                    "dnf_probability": 9.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.3,
+                    "expected_p50": 18.5,
+                    "ceiling_p90": 33.7
+                }
+            },
+            "lando_norris": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 5,
+                    "dnf_probability": 4.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.3,
+                    "expected_p50": 23.9,
+                    "ceiling_p90": 34.5
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 20,
+                    "dnf_probability": 12.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 5.3,
+                    "ceiling_p90": 15.3
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 19,
+                    "dnf_probability": 7.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.3,
+                    "expected_p50": 10.6,
+                    "ceiling_p90": 24.3
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 22,
+                    "dnf_probability": 2.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 3.6,
+                    "ceiling_p90": 15.7
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 16,
+                    "dnf_probability": 14.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.2,
+                    "expected_p50": 11.8,
+                    "ceiling_p90": 30.3
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 21,
+                    "dnf_probability": 1.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 7.4,
+                    "ceiling_p90": 23.1
+                }
+            },
+            "alex_albon": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 1,
+                    "dnf_probability": 6.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.9,
+                    "expected_p50": 28.7,
+                    "ceiling_p90": 44.5
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 14,
+                    "dnf_probability": 2.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 7.0,
+                    "expected_p50": 12.6,
+                    "ceiling_p90": 32.3
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 17,
+                    "dnf_probability": 6.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.0,
+                    "expected_p50": 9.8,
+                    "ceiling_p90": 19.6
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 18,
+                    "dnf_probability": 14.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 9.3,
+                    "ceiling_p90": 26.0
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 10,
+                    "dnf_probability": 4.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.3,
+                    "expected_p50": 15.4,
+                    "ceiling_p90": 28.6
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 15,
+                    "dnf_probability": 1.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.6,
+                    "expected_p50": 12.3,
+                    "ceiling_p90": 22.8
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 7,
+                    "dnf_probability": 12.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.9,
+                    "expected_p50": 22.0,
+                    "ceiling_p90": 37.8
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 8,
+                    "dnf_probability": 7.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.0,
+                    "expected_p50": 19.8,
+                    "ceiling_p90": 33.7
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 2,
+                    "dnf_probability": 1.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 18.2,
+                    "expected_p50": 26.8,
+                    "ceiling_p90": 41.7
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 13,
+                    "dnf_probability": 10.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.2,
+                    "expected_p50": 13.2,
+                    "ceiling_p90": 32.3
+                }
+            }
+        }
+    }
+}
