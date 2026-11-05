@@ -1,0 +1,940 @@
+{
+    "2026": {
+        "18": {
+            "1": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 1,
+                "drivers_included": [
+                    "max_verstappen",
+                    "sergio_perez"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 10.8,
+                    "expected_p50": 27.0,
+                    "ceiling_p90": 43.2
+                }
+            },
+            "2": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 2,
+                "drivers_included": [
+                    "lewis_hamilton",
+                    "george_russell"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 8.8,
+                    "expected_p50": 22.1,
+                    "ceiling_p90": 35.3
+                }
+            },
+            "3": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 3,
+                "drivers_included": [
+                    "charles_leclerc",
+                    "carlos_sainz"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 13.5,
+                    "expected_p50": 33.6,
+                    "ceiling_p90": 53.8
+                }
+            },
+            "4": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 4,
+                "drivers_included": [
+                    "lando_norris",
+                    "oscar_piastri"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 2.6,
+                    "expected_p50": 6.5,
+                    "ceiling_p90": 10.4
+                }
+            },
+            "5": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 5,
+                "drivers_included": [
+                    "fernando_alonso",
+                    "lance_stroll"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 3.2,
+                    "expected_p50": 8.1,
+                    "ceiling_p90": 12.9
+                }
+            },
+            "6": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 6,
+                "drivers_included": [
+                    "esteban_ocon",
+                    "pierre_gasly"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 3.5,
+                    "expected_p50": 8.8,
+                    "ceiling_p90": 14.0
+                }
+            },
+            "7": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 7,
+                "drivers_included": [
+                    "alex_albon",
+                    "franco_colapinto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 2.0,
+                    "expected_p50": 5.1,
+                    "ceiling_p90": 8.1
+                }
+            },
+            "8": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 8,
+                "drivers_included": [
+                    "yuki_tsunoda",
+                    "liam_lawson"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 3.7,
+                    "expected_p50": 9.3,
+                    "ceiling_p90": 14.8
+                }
+            },
+            "9": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 9,
+                "drivers_included": [
+                    "valtteri_bottas",
+                    "gabriel_bortoleto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 12.4,
+                    "expected_p50": 31.1,
+                    "ceiling_p90": 49.7
+                }
+            },
+            "10": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 10,
+                "drivers_included": [
+                    "nico_hulkenberg",
+                    "oliver_bearman"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 12.0,
+                    "expected_p50": 30.0,
+                    "ceiling_p90": 48.0
+                }
+            },
+            "11": {
+                "race_name": "United States Grand Prix",
+                "date": "2026-10-25",
+                "team_id": 11,
+                "drivers_included": [
+                    "andrea_kimi_antonelli",
+                    "isack_hadjar"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 8.0,
+                    "expected_p50": 20.1,
+                    "ceiling_p90": 32.2
+                }
+            }
+        },
+        "19": {
+            "1": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 1,
+                "drivers_included": [
+                    "max_verstappen",
+                    "sergio_perez"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 10.4,
+                    "expected_p50": 26.0,
+                    "ceiling_p90": 41.6
+                }
+            },
+            "2": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 2,
+                "drivers_included": [
+                    "lewis_hamilton",
+                    "george_russell"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 2.7,
+                    "expected_p50": 6.7,
+                    "ceiling_p90": 10.7
+                }
+            },
+            "3": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 3,
+                "drivers_included": [
+                    "charles_leclerc",
+                    "carlos_sainz"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 13.8,
+                    "expected_p50": 34.5,
+                    "ceiling_p90": 55.3
+                }
+            },
+            "4": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 4,
+                "drivers_included": [
+                    "lando_norris",
+                    "oscar_piastri"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 15.5,
+                    "expected_p50": 38.9,
+                    "ceiling_p90": 62.2
+                }
+            },
+            "5": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 5,
+                "drivers_included": [
+                    "fernando_alonso",
+                    "lance_stroll"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 5.3,
+                    "expected_p50": 13.2,
+                    "ceiling_p90": 21.1
+                }
+            },
+            "6": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 6,
+                "drivers_included": [
+                    "esteban_ocon",
+                    "pierre_gasly"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 11.6,
+                    "expected_p50": 29.0,
+                    "ceiling_p90": 46.5
+                }
+            },
+            "7": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 7,
+                "drivers_included": [
+                    "alex_albon",
+                    "franco_colapinto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 4.0,
+                    "expected_p50": 9.9,
+                    "ceiling_p90": 15.8
+                }
+            },
+            "8": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 8,
+                "drivers_included": [
+                    "yuki_tsunoda",
+                    "liam_lawson"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 4.9,
+                    "expected_p50": 12.3,
+                    "ceiling_p90": 19.6
+                }
+            },
+            "9": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 9,
+                "drivers_included": [
+                    "valtteri_bottas",
+                    "gabriel_bortoleto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 7.7,
+                    "expected_p50": 19.2,
+                    "ceiling_p90": 30.7
+                }
+            },
+            "10": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 10,
+                "drivers_included": [
+                    "nico_hulkenberg",
+                    "oliver_bearman"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 13.4,
+                    "expected_p50": 33.5,
+                    "ceiling_p90": 53.7
+                }
+            },
+            "11": {
+                "race_name": "Mexico City Grand Prix",
+                "date": "2026-11-01",
+                "team_id": 11,
+                "drivers_included": [
+                    "andrea_kimi_antonelli",
+                    "isack_hadjar"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 10.2,
+                    "expected_p50": 25.6,
+                    "ceiling_p90": 40.9
+                }
+            }
+        },
+        "20": {
+            "1": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 1,
+                "drivers_included": [
+                    "max_verstappen",
+                    "sergio_perez"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 9.2,
+                    "expected_p50": 23.1,
+                    "ceiling_p90": 36.9
+                }
+            },
+            "2": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 2,
+                "drivers_included": [
+                    "lewis_hamilton",
+                    "george_russell"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 10.9,
+                    "expected_p50": 27.1,
+                    "ceiling_p90": 43.4
+                }
+            },
+            "3": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 3,
+                "drivers_included": [
+                    "charles_leclerc",
+                    "carlos_sainz"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 5.2,
+                    "expected_p50": 12.9,
+                    "ceiling_p90": 20.7
+                }
+            },
+            "4": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 4,
+                "drivers_included": [
+                    "lando_norris",
+                    "oscar_piastri"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 4.5,
+                    "expected_p50": 11.2,
+                    "ceiling_p90": 17.9
+                }
+            },
+            "5": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 5,
+                "drivers_included": [
+                    "fernando_alonso",
+                    "lance_stroll"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 3.7,
+                    "expected_p50": 9.3,
+                    "ceiling_p90": 14.9
+                }
+            },
+            "6": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 6,
+                "drivers_included": [
+                    "esteban_ocon",
+                    "pierre_gasly"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 5.9,
+                    "expected_p50": 14.7,
+                    "ceiling_p90": 23.5
+                }
+            },
+            "7": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 7,
+                "drivers_included": [
+                    "alex_albon",
+                    "franco_colapinto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 9.5,
+                    "expected_p50": 23.9,
+                    "ceiling_p90": 38.2
+                }
+            },
+            "8": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 8,
+                "drivers_included": [
+                    "yuki_tsunoda",
+                    "liam_lawson"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 8.6,
+                    "expected_p50": 21.4,
+                    "ceiling_p90": 34.3
+                }
+            },
+            "9": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 9,
+                "drivers_included": [
+                    "valtteri_bottas",
+                    "gabriel_bortoleto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 10.9,
+                    "expected_p50": 27.2,
+                    "ceiling_p90": 43.5
+                }
+            },
+            "10": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 10,
+                "drivers_included": [
+                    "nico_hulkenberg",
+                    "oliver_bearman"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 12.1,
+                    "expected_p50": 30.2,
+                    "ceiling_p90": 48.3
+                }
+            },
+            "11": {
+                "race_name": "Sao Paulo Grand Prix",
+                "date": "2026-11-08",
+                "team_id": 11,
+                "drivers_included": [
+                    "andrea_kimi_antonelli",
+                    "isack_hadjar"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 11.1,
+                    "expected_p50": 27.9,
+                    "ceiling_p90": 44.6
+                }
+            }
+        },
+        "21": {
+            "1": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 1,
+                "drivers_included": [
+                    "max_verstappen",
+                    "sergio_perez"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 13.7,
+                    "expected_p50": 34.2,
+                    "ceiling_p90": 54.8
+                }
+            },
+            "2": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 2,
+                "drivers_included": [
+                    "lewis_hamilton",
+                    "george_russell"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 15.2,
+                    "expected_p50": 37.9,
+                    "ceiling_p90": 60.6
+                }
+            },
+            "3": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 3,
+                "drivers_included": [
+                    "charles_leclerc",
+                    "carlos_sainz"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 4.7,
+                    "expected_p50": 11.7,
+                    "ceiling_p90": 18.7
+                }
+            },
+            "4": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 4,
+                "drivers_included": [
+                    "lando_norris",
+                    "oscar_piastri"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 10.9,
+                    "expected_p50": 27.2,
+                    "ceiling_p90": 43.6
+                }
+            },
+            "5": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 5,
+                "drivers_included": [
+                    "fernando_alonso",
+                    "lance_stroll"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 5.7,
+                    "expected_p50": 14.2,
+                    "ceiling_p90": 22.7
+                }
+            },
+            "6": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 6,
+                "drivers_included": [
+                    "esteban_ocon",
+                    "pierre_gasly"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 4.7,
+                    "expected_p50": 11.7,
+                    "ceiling_p90": 18.8
+                }
+            },
+            "7": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 7,
+                "drivers_included": [
+                    "alex_albon",
+                    "franco_colapinto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 13.1,
+                    "expected_p50": 32.7,
+                    "ceiling_p90": 52.3
+                }
+            },
+            "8": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 8,
+                "drivers_included": [
+                    "yuki_tsunoda",
+                    "liam_lawson"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 15.6,
+                    "expected_p50": 39.1,
+                    "ceiling_p90": 62.5
+                }
+            },
+            "9": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 9,
+                "drivers_included": [
+                    "valtteri_bottas",
+                    "gabriel_bortoleto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 7.8,
+                    "expected_p50": 19.5,
+                    "ceiling_p90": 31.2
+                }
+            },
+            "10": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 10,
+                "drivers_included": [
+                    "nico_hulkenberg",
+                    "oliver_bearman"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 10.6,
+                    "expected_p50": 26.5,
+                    "ceiling_p90": 42.5
+                }
+            },
+            "11": {
+                "race_name": "Las Vegas Grand Prix",
+                "date": "2026-11-21",
+                "team_id": 11,
+                "drivers_included": [
+                    "andrea_kimi_antonelli",
+                    "isack_hadjar"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 5.8,
+                    "expected_p50": 14.4,
+                    "ceiling_p90": 23.0
+                }
+            }
+        },
+        "22": {
+            "1": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 1,
+                "drivers_included": [
+                    "max_verstappen",
+                    "sergio_perez"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 5.1,
+                    "expected_p50": 12.7,
+                    "ceiling_p90": 20.3
+                }
+            },
+            "2": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 2,
+                "drivers_included": [
+                    "lewis_hamilton",
+                    "george_russell"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 9.7,
+                    "expected_p50": 24.3,
+                    "ceiling_p90": 38.9
+                }
+            },
+            "3": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 3,
+                "drivers_included": [
+                    "charles_leclerc",
+                    "carlos_sainz"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 7.4,
+                    "expected_p50": 18.5,
+                    "ceiling_p90": 29.6
+                }
+            },
+            "4": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 4,
+                "drivers_included": [
+                    "lando_norris",
+                    "oscar_piastri"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 11.0,
+                    "expected_p50": 27.5,
+                    "ceiling_p90": 44.0
+                }
+            },
+            "5": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 5,
+                "drivers_included": [
+                    "fernando_alonso",
+                    "lance_stroll"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 13.5,
+                    "expected_p50": 33.8,
+                    "ceiling_p90": 54.1
+                }
+            },
+            "6": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 6,
+                "drivers_included": [
+                    "esteban_ocon",
+                    "pierre_gasly"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 2.1,
+                    "expected_p50": 5.3,
+                    "ceiling_p90": 8.5
+                }
+            },
+            "7": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 7,
+                "drivers_included": [
+                    "alex_albon",
+                    "franco_colapinto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 12.3,
+                    "expected_p50": 30.8,
+                    "ceiling_p90": 49.3
+                }
+            },
+            "8": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 8,
+                "drivers_included": [
+                    "yuki_tsunoda",
+                    "liam_lawson"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 15.8,
+                    "expected_p50": 39.4,
+                    "ceiling_p90": 63.1
+                }
+            },
+            "9": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 9,
+                "drivers_included": [
+                    "valtteri_bottas",
+                    "gabriel_bortoleto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 14.8,
+                    "expected_p50": 37.0,
+                    "ceiling_p90": 59.2
+                }
+            },
+            "10": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 10,
+                "drivers_included": [
+                    "nico_hulkenberg",
+                    "oliver_bearman"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 6.9,
+                    "expected_p50": 17.4,
+                    "ceiling_p90": 27.8
+                }
+            },
+            "11": {
+                "race_name": "Qatar Grand Prix",
+                "date": "2026-11-29",
+                "team_id": 11,
+                "drivers_included": [
+                    "andrea_kimi_antonelli",
+                    "isack_hadjar"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 10.8,
+                    "expected_p50": 27.1,
+                    "ceiling_p90": 43.4
+                }
+            }
+        },
+        "23": {
+            "1": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 1,
+                "drivers_included": [
+                    "max_verstappen",
+                    "sergio_perez"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 5.9,
+                    "expected_p50": 14.8,
+                    "ceiling_p90": 23.6
+                }
+            },
+            "2": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 2,
+                "drivers_included": [
+                    "lewis_hamilton",
+                    "george_russell"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 15.6,
+                    "expected_p50": 39.0,
+                    "ceiling_p90": 62.4
+                }
+            },
+            "3": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 3,
+                "drivers_included": [
+                    "charles_leclerc",
+                    "carlos_sainz"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 14.8,
+                    "expected_p50": 37.0,
+                    "ceiling_p90": 59.2
+                }
+            },
+            "4": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 4,
+                "drivers_included": [
+                    "lando_norris",
+                    "oscar_piastri"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 8.6,
+                    "expected_p50": 21.6,
+                    "ceiling_p90": 34.6
+                }
+            },
+            "5": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 5,
+                "drivers_included": [
+                    "fernando_alonso",
+                    "lance_stroll"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 2.5,
+                    "expected_p50": 6.3,
+                    "ceiling_p90": 10.1
+                }
+            },
+            "6": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 6,
+                "drivers_included": [
+                    "esteban_ocon",
+                    "pierre_gasly"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 11.7,
+                    "expected_p50": 29.1,
+                    "ceiling_p90": 46.6
+                }
+            },
+            "7": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 7,
+                "drivers_included": [
+                    "alex_albon",
+                    "franco_colapinto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 8.7,
+                    "expected_p50": 21.8,
+                    "ceiling_p90": 34.9
+                }
+            },
+            "8": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 8,
+                "drivers_included": [
+                    "yuki_tsunoda",
+                    "liam_lawson"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 11.1,
+                    "expected_p50": 27.7,
+                    "ceiling_p90": 44.3
+                }
+            },
+            "9": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 9,
+                "drivers_included": [
+                    "valtteri_bottas",
+                    "gabriel_bortoleto"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 8.1,
+                    "expected_p50": 20.4,
+                    "ceiling_p90": 32.6
+                }
+            },
+            "10": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 10,
+                "drivers_included": [
+                    "nico_hulkenberg",
+                    "oliver_bearman"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 5.9,
+                    "expected_p50": 14.7,
+                    "ceiling_p90": 23.5
+                }
+            },
+            "11": {
+                "race_name": "Abu Dhabi Grand Prix",
+                "date": "2026-12-06",
+                "team_id": 11,
+                "drivers_included": [
+                    "andrea_kimi_antonelli",
+                    "isack_hadjar"
+                ],
+                "fantasy_points": {
+                    "floor_p10": 13.1,
+                    "expected_p50": 32.7,
+                    "ceiling_p90": 52.2
+                }
+            }
+        }
+    }
+}
