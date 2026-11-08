@@ -1,56 +1,50 @@
 // src/components/AnalyticsPanel/TeamBreakdownView.tsx
 import React from 'react';
-import type { CardItem } from '../../types/f1';
+import { pointsFor, RISK_LABELS, type CardItem, type Risk } from '../../types/f1';
 
 interface TeamBreakdownViewProps {
-    drivers: (CardItem | null)[];
-    constructors: (CardItem | null)[];
-    totalPredictedPoints: number;
+    team: CardItem[];
+    risk: Risk;
 }
 
-export const TeamBreakdownView: React.FC<TeamBreakdownViewProps> = ({
-    drivers,
-    constructors,
-    totalPredictedPoints,
-}) => {
-    const allRoster = [...drivers.filter(Boolean), ...constructors.filter(Boolean)] as CardItem[];
+export const TeamBreakdownView: React.FC<TeamBreakdownViewProps> = ({ team, risk }) => {
+    const total = team.reduce((acc, item) => acc + Math.max(0, pointsFor(item, risk)), 0);
 
-    if (allRoster.length === 0 || totalPredictedPoints <= 0) {
+    if (team.length === 0 || total <= 0) {
         return <div className="breakdown-empty">No roster selections yet.</div>;
     }
 
+    const rows = [...team].sort((a, b) => pointsFor(b, risk) - pointsFor(a, risk));
+
     return (
         <div className="breakdown-wrapper">
-            {/* 1. Stacked Percentage Bar */}
+            <span className="breakdown-title">
+                Share of team {RISK_LABELS[risk].toLowerCase()} points ({total.toFixed(1)} pts)
+            </span>
             <div className="breakdown-stacked-bar">
-                {allRoster.map((item) => {
-                    const pct = Math.round((item.expectedPoints / totalPredictedPoints) * 100);
-                    return (
-                        <div
-                            key={item.id}
-                            className="stacked-bar-segment"
-                            style={{
-                                width: `${pct}%`,
-                                backgroundColor: item.avatarColor || '#2dd4bf',
-                            }}
-                            title={`${item.name}: ${item.expectedPoints} pts (${pct}%)`}
-                        />
-                    );
-                })}
+                {rows.map((item) => (
+                    <div
+                        key={item.id}
+                        className="stacked-bar-segment"
+                        style={{
+                            width: `${(Math.max(0, pointsFor(item, risk)) / total) * 100}%`,
+                            backgroundColor: item.avatarColor,
+                        }}
+                        title={`${item.name}: ${pointsFor(item, risk)} pts`}
+                    />
+                ))}
             </div>
 
-            {/* 2. Chip List of Shares */}
             <div className="breakdown-chips-grid">
-                {allRoster.map((item) => {
-                    const pct = Math.round((item.expectedPoints / totalPredictedPoints) * 100);
-                    return (
-                        <div key={item.id} className="breakdown-chip">
-                            <span className="chip-dot" style={{ backgroundColor: item.avatarColor || '#2dd4bf' }} />
-                            <span className="chip-name">{item.name.split(' ').pop()}</span>
-                            <strong className="chip-val">{pct}%</strong>
-                        </div>
-                    );
-                })}
+                {rows.map((item) => (
+                    <div key={item.id} className="breakdown-chip">
+                        <span className="chip-dot" style={{ backgroundColor: item.avatarColor }} />
+                        <span className="chip-name">{item.kind === 'driver' ? item.code : item.name}</span>
+                        <strong className="chip-val">
+                            {Math.round((Math.max(0, pointsFor(item, risk)) / total) * 100)}%
+                        </strong>
+                    </div>
+                ))}
             </div>
         </div>
     );

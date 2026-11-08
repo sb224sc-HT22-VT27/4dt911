@@ -1,226 +1,108 @@
-// src/components/PpmGraph.tsx
-import React, { useMemo } from 'react';
+// src/components/AnalyticsPanel/DistGraph.tsx
+import React from 'react';
 import * as d3 from 'd3';
+import { RISK_LABELS, type Risk } from '../../types/f1';
 
 interface DistGraphProps {
-    p50: number; // Base predicted points from the selected team
+    p10: number;
+    p50: number;
+    p90: number;
+    risk: Risk;
 }
 
-export const DistGraph: React.FC<DistGraphProps> = ({ p50 }) => {
-    // P10 (30% drop) and P90 (50% boost)
-    const p10 = Math.round(p50 * 0.7);
-    const p90 = Math.round(p50 * 1.5);
-    const median = Math.round(p50);
+const Z90 = 1.2816; // z-score of the 90th percentile
 
-    const width = 420;
-    const height = 150;
-    const margin = { top: 32, right: 30, bottom: 25, left: 30 };
+export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => {
+    const width = 520;
+    const height = 170;
+    const margin = { top: 28, right: 24, bottom: 26, left: 24 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
-    // Approximate normal distribution curve over standard deviations [-3, 3]
-    const { pathData, areaData, getXForVal, getYForVal } = useMemo(() => {
-        // Treat P10 as -1.28 standard deviations and P90 as +1.28 standard deviations
-        const stdDev = (p90 - p10) / 2.56 || 10;
-        const minX = median - 3.2 * stdDev;
-        const maxX = median + 3.2 * stdDev;
+    // Split normal: separate spread below and above the median so P10/P90 can be asymmetric
+    const sigmaLow = Math.max((p50 - p10) / Z90, 1);
+    const sigmaHigh = Math.max((p90 - p50) / Z90, 1);
+    const density = (x: number) => {
+        const z = (x - p50) / (x < p50 ? sigmaLow : sigmaHigh);
+        return Math.exp(-0.5 * z * z);
+    };
 
-        const xScale = d3.scaleLinear().domain([minX, maxX]).range([0, innerWidth]);
-
-        // Gaussian probability density function: f(x) = exp(-0.5 * ((x - mu) / sigma)^2)
-        const points: [number, number][] = [];
-        const stepCount = 80;
-        const stepSize = (maxX - minX) / stepCount;
-
-        let maxY = 0;
-        for (let i = 0; i <= stepCount; i++) {
-            const val = minX + i * stepSize;
-            const z = (val - median) / stdDev;
-            const yVal = Math.exp(-0.5 * z * z);
-            if (yVal > maxY) maxY = yVal;
-            points.push([val, yVal]);
-        }
-
-        const yScale = d3.scaleLinear().domain([0, maxY]).range([innerHeight, 0]);
-
-        // Line and area generators
-        const lineGenerator = d3
-            .line<[number, number]>()
-            .x((d) => xScale(d[0]))
-            .y((d) => yScale(d[1]))
-            .curve(d3.curveBasis);
-
-        const areaGenerator = d3
+    const minX = p50 - 3 * sigmaLow;
+    const maxX = p50 + 3 * sigmaHigh;
+    const xScale = d3.scaleLinear().domain([minX, maxX]).range([0, innerWidth]);
+    const yScale = d3.scaleLinear().domain([0, 1]).range([innerHeight, 0]);
+    const points = d3.range(0, 101).map((i) => {
+        const val = minX + (i / 100) * (maxX - minX);
+        return [val, density(val)] as [number, number];
+    });
+    const linePath = d3.line<[number, number]>().x((d) => xScale(d[0])).y((d) => yScale(d[1])).curve(d3.curveBasis)(points) ?? '';
+    const areaPath =
+        d3
             .area<[number, number]>()
             .x((d) => xScale(d[0]))
             .y0(innerHeight)
             .y1((d) => yScale(d[1]))
-            .curve(d3.curveBasis);
+            .curve(d3.curveBasis)(points) ?? '';
 
-        const calcY = (val: number) => {
-            const z = (val - median) / stdDev;
-            const yVal = Math.exp(-0.5 * z * z);
-            return yScale(yVal);
-        };
+    if (p50 <= 0) {
+        return <div className="breakdown-empty">Add drivers to see your points distribution.</div>;
+    }
 
-        return {
-            pathData: lineGenerator(points) || '',
-            areaData: areaGenerator(points) || '',
-            getXForVal: (v: number) => xScale(v),
-            getYForVal: calcY,
-        };
-    }, [p10, p90, median, innerWidth, innerHeight]);
-
-    const p10X = getXForVal(p10);
-    const p10Y = getYForVal(p10);
-
-    const p50X = getXForVal(median);
-    const p50Y = getYForVal(median);
-
-    const p90X = getXForVal(p90);
-    const p90Y = getYForVal(p90);
+    const markers: { key: Risk; label: string; value: number }[] = [
+        { key: 'floor', label: 'P10', value: p10 },
+        { key: 'expected', label: 'P50', value: p50 },
+        { key: 'ceiling', label: 'P90', value: p90 },
+    ];
 
     return (
-        <div className="ppm-curve-container">
-            <div className="ppm-curve-header">
-                <div className="ppm-legend">
-                    <span className="legend-item"><span className="legend-dot floor" />P10 (Floor): <strong>{p10}</strong></span>
-                    <span className="legend-item"><span className="legend-dot median" />P50 (Exp): <strong>{median}</strong></span>
-                    <span className="legend-item"><span className="legend-dot ceiling" />P90 (Ceiling): <strong>{p90}</strong></span>
-                </div>
+        <div className="dist-container">
+            <div className="dist-legend">
+                {markers.map((m) => (
+                    <span key={m.key} className={`legend-item ${risk === m.key ? 'active' : ''}`}>
+                        <span className={`legend-dot risk-${m.key}`} />
+                        {RISK_LABELS[m.key]} ({m.label}) <strong>{m.value}</strong>
+                    </span>
+                ))}
             </div>
 
-            <svg
-                viewBox={`0 0 ${width} ${height}`}
-                className="ppm-curve-svg"
-            >
+            <svg viewBox={`0 0 ${width} ${height}`} className="dist-svg" preserveAspectRatio="xMidYMid meet">
                 <defs>
-                    {/* Violet / Indigo gradient matching the provided SVG */}
-                    <linearGradient id="curveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#95f881" stopOpacity="0.45" />
-                        <stop offset="65%" stopColor="#6df163" stopOpacity="0.15" />
-                        <stop offset="100%" stopColor="#46e5b3" stopOpacity="0.0" />
+                    <linearGradient id="distGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.4" />
+                        <stop offset="100%" stopColor="#2dd4bf" stopOpacity="0" />
                     </linearGradient>
                 </defs>
 
                 <g transform={`translate(${margin.left}, ${margin.top})`}>
-                    {/* Base bottom baseline */}
-                    <line
-                        x1={0}
-                        y1={innerHeight}
-                        x2={innerWidth}
-                        y2={innerHeight}
-                        stroke="#1e3b21"
-                        strokeWidth={1.5}
+                    <rect
+                        x={xScale(p10)}
+                        y={0}
+                        width={xScale(p90) - xScale(p10)}
+                        height={innerHeight}
+                        fill="#2dd4bf"
+                        opacity={0.05}
                     />
+                    <line x1={0} y1={innerHeight} x2={innerWidth} y2={innerHeight} stroke="#253140" strokeWidth={1.5} />
+                    <path d={areaPath} fill="url(#distGradient)" />
+                    <path d={linePath} fill="none" stroke="#2dd4bf" strokeWidth={2.5} strokeLinecap="round" />
 
-                    {/* Shaded Area */}
-                    <path d={areaData} fill="url(#curveGradient)" />
-
-                    {/* Smooth Bell Curve Stroke */}
-                    <path
-                        d={pathData}
-                        fill="none"
-                        stroke="#63f1af"
-                        strokeWidth={2.5}
-                        strokeLinecap="round"
-                    />
-
-                    {/* P10 Marker (Dashed vertical line) */}
-                    <line
-                        x1={p10X}
-                        y1={p10Y}
-                        x2={p10X}
-                        y2={innerHeight}
-                        stroke="#a5b4fc"
-                        strokeWidth={1.2}
-                        strokeDasharray="3 3"
-                        opacity={0.65}
-                    />
-                    <text
-                        x={p10X}
-                        y={p10Y - 8}
-                        textAnchor="middle"
-                        fill="#a5b4fc"
-                        fontSize="10"
-                        fontWeight="600"
-                    >
-                        {p10} pts
-                    </text>
-                    <text
-                        x={p10X}
-                        y={innerHeight + 16}
-                        textAnchor="middle"
-                        fill="#64748b"
-                        fontSize="9"
-                        fontWeight="700"
-                    >
-                        P10
-                    </text>
-
-                    {/* P50 Median Marker (Peak) */}
-                    <line
-                        x1={p50X}
-                        y1={p50Y}
-                        x2={p50X}
-                        y2={innerHeight}
-                        stroke="#e0e7ff"
-                        strokeWidth={1.5}
-                        strokeDasharray="3 3"
-                        opacity={0.8}
-                    />
-                    <text
-                        x={p50X}
-                        y={p50Y - 10}
-                        textAnchor="middle"
-                        fill="#f1f5f9"
-                        fontSize="12"
-                        fontWeight="800"
-                    >
-                        {median} pts
-                    </text>
-                    <text
-                        x={p50X}
-                        y={innerHeight + 16}
-                        textAnchor="middle"
-                        fill="#818cf8"
-                        fontSize="9"
-                        fontWeight="700"
-                    >
-                        P50
-                    </text>
-
-                    {/* P90 Marker */}
-                    <line
-                        x1={p90X}
-                        y1={p90Y}
-                        x2={p90X}
-                        y2={innerHeight}
-                        stroke="#a5b4fc"
-                        strokeWidth={1.2}
-                        strokeDasharray="3 3"
-                        opacity={0.65}
-                    />
-                    <text
-                        x={p90X}
-                        y={p90Y - 8}
-                        textAnchor="middle"
-                        fill="#a5b4fc"
-                        fontSize="10"
-                        fontWeight="600"
-                    >
-                        {p90} pts
-                    </text>
-                    <text
-                        x={p90X}
-                        y={innerHeight + 16}
-                        textAnchor="middle"
-                        fill="#64748b"
-                        fontSize="9"
-                        fontWeight="700"
-                    >
-                        P90
-                    </text>
+                    {markers.map((m) => {
+                        const x = xScale(m.value);
+                        const y = yScale(density(m.value));
+                        const active = risk === m.key;
+                        return (
+                            <g key={m.key} className={`dist-marker risk-${m.key}`} opacity={active ? 1 : 0.6}>
+                                <line x1={x} y1={y} x2={x} y2={innerHeight} strokeWidth={active ? 2 : 1.2} strokeDasharray="3 3" />
+                                <circle cx={x} cy={y} r={active ? 4.5 : 3} />
+                                <text x={x} y={y - 9} textAnchor="middle" fontSize={active ? 13 : 10} fontWeight={800}>
+                                    {m.value}
+                                </text>
+                                <text x={x} y={innerHeight + 16} textAnchor="middle" fontSize="9" fontWeight={700}>
+                                    {m.label}
+                                </text>
+                            </g>
+                        );
+                    })}
                 </g>
             </svg>
         </div>

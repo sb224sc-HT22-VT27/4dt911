@@ -1,44 +1,105 @@
 /* src/App.css */
 
-/* Global dashboard grid */
-.dashboard-grid {
-  display: grid;
+.app {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
-  padding: 1rem;
-  gap: 1rem;
-  box-sizing: border-box;
-
-  /* 3 columns: Left sidebar (280px), Center main, Right sidebar (300px) */
-  grid-template-columns: 280px 1fr 300px;
-  /* 2 rows */
-  grid-template-rows: 1.6fr 1fr;
-
-  grid-template-areas:
-    "comparison team  statistics"
-    "comparison ppm   upcoming";
+  padding: 0.85rem 1rem 1rem;
+  gap: 0.85rem;
 }
 
-/* Base style for all dashboard cards/panels */
+/* Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 0.25rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-mark {
+  width: 6px;
+  height: 22px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--accent), #0ea5e9);
+}
+
+.brand h1 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.header-race {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.header-round {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.header-track {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+/* Dashboard grid */
+.dashboard-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 280px minmax(0, 1fr) 300px;
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    "comparison team statistics"
+    "comparison ppm  upcoming";
+}
+
 .panel {
-  background-color: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.6);
   min-width: 0;
   min-height: 0;
   overflow: auto;
 }
 
-/* Panel Area Assignments */
 .panel-comparison {
   grid-area: comparison;
 }
 
 .panel-team {
   grid-area: team;
-  display: flex;
-  flex-direction: column;
 }
 
 .panel-statistics {
@@ -51,25 +112,57 @@
 
 .panel-ppm {
   grid-area: ppm;
+  min-height: 230px;
 }
 
-/* Panel Typography */
-.panel h2,
-.panel h3 {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  color: #f8fafc;
+/* Loading / error screen */
+.app-status {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
 }
 
-.panel p {
-  color: #94a3b8;
-  font-size: 0.9rem;
+.status-loading {
+  color: var(--accent);
+  font-weight: 600;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 900px) {
-  .dashboard-grid {
+.status-error {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.status-hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.status-retry {
+  margin-top: 0.4rem;
+  padding: 6px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  background: var(--panel-3);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 1350px) {
+  .header-race {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .app {
     height: auto;
+  }
+
+  .dashboard-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas:
@@ -78,5 +171,9 @@
       "statistics"
       "upcoming"
       "comparison";
+  }
+
+  .app-header {
+    flex-wrap: wrap;
   }
 }
