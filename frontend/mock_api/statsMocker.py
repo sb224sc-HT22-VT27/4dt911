@@ -1,13 +1,14 @@
-"""Builds mock_stats.json (non-fantasy driver/constructor stats) from the Kaggle data.
-Run from the frontend folder: python3 statsMocker.py"""
+"""Builds mock_stats.json (non-fantasy driver/constructor stats keyed by fantasy player_id) from the Kaggle data.
+Run: python3 statsMocker.py"""
 import csv
 import json
 import re
-import unicodedata
 from collections import defaultdict
+from pathlib import Path
 
-KAGGLE = "../data/kaggle-base-data"
-FANTASY = "../data/f1-fantasy-data"
+HERE = Path(__file__).resolve().parent
+KAGGLE = HERE.parent.parent / "data" / "kaggle-base-data"
+FANTASY = HERE.parent.parent / "data" / "f1-fantasy-data"
 SEASON = "2026"
 HISTORY_FROM = "2023"
 
@@ -18,11 +19,6 @@ TRACK_TYPES = {
 }
 TRACK_TYPE_OF = {ref: t for t, refs in TRACK_TYPES.items() for ref in refs}
 TEAM_KEY_OF = {"rb": "racing_bulls", "alphatauri": "racing_bulls", "sauber": "audi", "alfa": "audi"}
-
-
-def slug(s):
-    s = "".join(c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c))
-    return re.sub(r"[^a-z]+", "_", s.lower()).strip("_")
 
 
 def read(name, folder=KAGGLE):
@@ -117,7 +113,7 @@ fantasy_teams = read("teams.csv", FANTASY)
 drivers_out = {}
 for d in fantasy_drivers:
     ids = {k for k, code in kaggle_drivers.items() if code == d["driver_code"]}
-    drivers_out[slug(d["driver_name"])] = {
+    drivers_out[d["player_id"]] = {
         "name": d["driver_name"],
         "code": d["driver_code"],
         "team": d["team_name"],
@@ -134,7 +130,7 @@ for t in fantasy_teams:
     ids = {k for k, ref in kaggle_teams.items() if TEAM_KEY_OF.get(ref, ref) == t["team_key"]}
     rows = [r for r in results if r["constructorId"] in ids]
     race_drivers = {(r["raceId"], r["driverId"]) for r in rows}
-    constructors_out[slug(t["team_name"])] = {
+    constructors_out[t["player_id"]] = {
         "name": t["team_name"],
         **summarise(
             rows,
@@ -156,7 +152,7 @@ for r in races.values():
             "type": TRACK_TYPE_OF.get(c["circuitRef"], "technical"),
         }
 
-with open("mock_stats.json", "w", encoding="utf-8") as f:
+with open(HERE / "mock_stats.json", "w", encoding="utf-8") as f:
     json.dump({SEASON: {"tracks": tracks_out, "drivers": drivers_out, "constructors": constructors_out}}, f, indent=2, ensure_ascii=False)
 
 print(f"Wrote mock_stats.json: {len(drivers_out)} drivers, {len(constructors_out)} constructors")

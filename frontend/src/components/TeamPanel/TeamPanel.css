@@ -19,117 +19,9 @@
     font-weight: 800;
 }
 
-/* Budget pill */
-.budget-pill-container {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background-color: var(--panel-2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 5px 12px;
-}
-
-.budget-pill-container.budget-warning {
-    border-color: var(--danger);
-    background-color: rgba(244, 63, 94, 0.08);
-}
-
-.budget-meta {
-    display: flex;
-    flex-direction: column;
-}
-
-.budget-label {
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+.team-hint {
+    font-size: 0.68rem;
     color: var(--dim);
-}
-
-.budget-warning .budget-label {
-    color: var(--danger);
-}
-
-.budget-values {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-}
-
-.budget-rem-val {
-    font-size: 1.05rem;
-    font-weight: 900;
-}
-
-.rem-positive {
-    color: var(--accent);
-}
-
-.rem-negative {
-    color: var(--danger);
-}
-
-.budget-slash {
-    color: var(--dim);
-    font-size: 0.85rem;
-}
-
-.budget-total-val {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    color: var(--muted);
-    font-size: 0.85rem;
-    cursor: pointer;
-    padding: 1px 4px;
-    border-radius: 4px;
-}
-
-.budget-total-val:hover {
-    background-color: var(--panel-3);
-    color: var(--text);
-}
-
-.budget-edit-icon {
-    background: none;
-    border: none;
-    color: var(--dim);
-    font-size: 0.75rem;
-    cursor: pointer;
-}
-
-.budget-total-val:hover .budget-edit-icon {
-    color: var(--accent);
-}
-
-.budget-edit-wrapper {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    font-size: 0.85rem;
-}
-
-.budget-input {
-    width: 60px;
-    background-color: var(--panel-3);
-    border: 1px solid var(--accent);
-    border-radius: 4px;
-    color: var(--text);
-    padding: 1px 4px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    outline: none;
-}
-
-.budget-alert-badge {
-    background-color: var(--danger);
-    color: #fff;
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 3px 6px;
-    border-radius: 6px;
-    text-transform: uppercase;
 }
 
 /* Grid */
@@ -198,6 +90,11 @@
 
 .optimize-btn:hover {
     filter: brightness(1.1);
+}
+
+.optimize-btn:disabled {
+    filter: grayscale(0.6);
+    cursor: wait;
 }
 
 .optimize-btn:active {

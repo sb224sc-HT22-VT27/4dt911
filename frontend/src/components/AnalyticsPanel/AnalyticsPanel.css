@@ -280,62 +280,6 @@
     color: var(--text);
 }
 
-/* Breakdown */
-.breakdown-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-    justify-content: center;
-}
-
-.breakdown-title {
-    font-size: 0.72rem;
-    color: var(--muted);
-}
-
-.breakdown-stacked-bar {
-    display: flex;
-    height: 18px;
-    border-radius: 999px;
-    overflow: hidden;
-    background-color: var(--panel-2);
-    border: 1px solid var(--border);
-}
-
-.stacked-bar-segment {
-    height: 100%;
-    border-right: 1px solid var(--panel);
-    transition: width 0.3s ease;
-}
-
-.breakdown-chips-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.breakdown-chip {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background-color: var(--panel-2);
-    border: 1px solid var(--border);
-    padding: 4px 9px;
-    border-radius: 6px;
-    font-size: 0.72rem;
-}
-
-.chip-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-}
-
-.chip-name {
-    color: var(--muted);
-}
-
 .breakdown-empty {
     color: var(--dim);
     font-size: 0.8rem;

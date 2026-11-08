@@ -141,7 +141,7 @@
       }
     },
     "drivers": {
-      "franco_colapinto": {
+      "11059": {
         "name": "Franco Colapinto",
         "code": "COL",
         "team": "Alpine",
@@ -196,7 +196,7 @@
           "sepang": 13.0
         }
       },
-      "pierre_gasly": {
+      "18": {
         "name": "Pierre Gasly",
         "code": "GAS",
         "team": "Alpine",
@@ -253,7 +253,7 @@
           "sepang": 16.0
         }
       },
-      "fernando_alonso": {
+      "12": {
         "name": "Fernando Alonso",
         "code": "ALO",
         "team": "Aston Martin",
@@ -310,7 +310,7 @@
           "sepang": 8.0
         }
       },
-      "lance_stroll": {
+      "129": {
         "name": "Lance Stroll",
         "code": "STR",
         "team": "Aston Martin",
@@ -367,7 +367,7 @@
           "sepang": 12.0
         }
       },
-      "gabriel_bortoleto": {
+      "11051": {
         "name": "Gabriel Bortoleto",
         "code": "BOR",
         "team": "Audi",
@@ -424,7 +424,7 @@
           "sepang": 18.0
         }
       },
-      "nico_hulkenberg": {
+      "111": {
         "name": "Nico Hulkenberg",
         "code": "HUL",
         "team": "Audi",
@@ -481,7 +481,7 @@
           "sepang": 11.0
         }
       },
-      "sergio_perez": {
+      "121": {
         "name": "Sergio Perez",
         "code": "PER",
         "team": "Cadillac",
@@ -538,7 +538,7 @@
           "sepang": 19.0
         }
       },
-      "valtteri_bottas": {
+      "13": {
         "name": "Valtteri Bottas",
         "code": "BOT",
         "team": "Cadillac",
@@ -595,7 +595,7 @@
           "sepang": 22.0
         }
       },
-      "charles_leclerc": {
+      "115": {
         "name": "Charles Leclerc",
         "code": "LEC",
         "team": "Ferrari",
@@ -652,7 +652,7 @@
           "sepang": 4.0
         }
       },
-      "lewis_hamilton": {
+      "110": {
         "name": "Lewis Hamilton",
         "code": "HAM",
         "team": "Ferrari",
@@ -709,7 +709,7 @@
           "sepang": 3.0
         }
       },
-      "esteban_ocon": {
+      "118": {
         "name": "Esteban Ocon",
         "code": "OCO",
         "team": "Haas F1 Team",
@@ -766,7 +766,7 @@
           "sepang": 15.0
         }
       },
-      "oliver_bearman": {
+      "11031": {
         "name": "Oliver Bearman",
         "code": "BEA",
         "team": "Haas F1 Team",
@@ -823,7 +823,7 @@
           "sepang": 14.0
         }
       },
-      "lando_norris": {
+      "117": {
         "name": "Lando Norris",
         "code": "NOR",
         "team": "McLaren",
@@ -880,7 +880,7 @@
           "sepang": 9.0
         }
       },
-      "oscar_piastri": {
+      "1982": {
         "name": "Oscar Piastri",
         "code": "PIA",
         "team": "McLaren",
@@ -937,7 +937,7 @@
           "sepang": 6.0
         }
       },
-      "george_russell": {
+      "124": {
         "name": "George Russell",
         "code": "RUS",
         "team": "Mercedes",
@@ -994,7 +994,7 @@
           "sepang": 20.0
         }
       },
-      "kimi_antonelli": {
+      "11161": {
         "name": "Kimi Antonelli",
         "code": "ANT",
         "team": "Mercedes",
@@ -1051,7 +1051,7 @@
           "sepang": 2.0
         }
       },
-      "arvid_lindblad": {
+      "11149": {
         "name": "Arvid Lindblad",
         "code": "LIN",
         "team": "Racing Bulls",
@@ -1099,7 +1099,7 @@
           "marina_bay": 15.0
         }
       },
-      "liam_lawson": {
+      "114": {
         "name": "Liam Lawson",
         "code": "LAW",
         "team": "Racing Bulls",
@@ -1156,7 +1156,7 @@
           "sepang": 7.0
         }
       },
-      "isack_hadjar": {
+      "11032": {
         "name": "Isack Hadjar",
         "code": "HAD",
         "team": "Red Bull Racing",
@@ -1212,7 +1212,7 @@
           "sepang": 5.0
         }
       },
-      "max_verstappen": {
+      "131": {
         "name": "Max Verstappen",
         "code": "VER",
         "team": "Red Bull Racing",
@@ -1269,7 +1269,7 @@
           "sepang": 1.0
         }
       },
-      "alexander_albon": {
+      "11": {
         "name": "Alexander Albon",
         "code": "ALB",
         "team": "Williams",
@@ -1326,7 +1326,7 @@
           "sepang": 21.0
         }
       },
-      "carlos_sainz": {
+      "125": {
         "name": "Carlos Sainz",
         "code": "SAI",
         "team": "Williams",
@@ -1385,7 +1385,7 @@
       }
     },
     "constructors": {
-      "alpine": {
+      "23": {
         "name": "Alpine",
         "ratings": {
           "quali": 50,
@@ -1440,7 +1440,7 @@
           "sepang": 14.5
         }
       },
-      "aston_martin": {
+      "24": {
         "name": "Aston Martin",
         "ratings": {
           "quali": 12,
@@ -1495,7 +1495,7 @@
           "sepang": 10.0
         }
       },
-      "audi": {
+      "2640": {
         "name": "Audi",
         "ratings": {
           "quali": 45,
@@ -1550,7 +1550,7 @@
           "sepang": 14.5
         }
       },
-      "cadillac": {
+      "2641": {
         "name": "Cadillac",
         "ratings": {
           "quali": 9,
@@ -1596,7 +1596,7 @@
           "marina_bay": 18.0
         }
       },
-      "ferrari": {
+      "25": {
         "name": "Ferrari",
         "ratings": {
           "quali": 85,
@@ -1651,7 +1651,7 @@
           "sepang": 3.5
         }
       },
-      "haas_f_team": {
+      "26": {
         "name": "Haas F1 Team",
         "ratings": {
           "quali": 34,
@@ -1706,7 +1706,7 @@
           "sepang": 14.5
         }
       },
-      "mclaren": {
+      "27": {
         "name": "McLaren",
         "ratings": {
           "quali": 80,
@@ -1761,7 +1761,7 @@
           "sepang": 7.5
         }
       },
-      "mercedes": {
+      "28": {
         "name": "Mercedes",
         "ratings": {
           "quali": 89,
@@ -1816,7 +1816,7 @@
           "sepang": 11.0
         }
       },
-      "racing_bulls": {
+      "2636": {
         "name": "Racing Bulls",
         "ratings": {
           "quali": 51,
@@ -1871,7 +1871,7 @@
           "sepang": 8.5
         }
       },
-      "red_bull_racing": {
+      "29": {
         "name": "Red Bull Racing",
         "ratings": {
           "quali": 72,
@@ -1926,7 +1926,7 @@
           "sepang": 3.0
         }
       },
-      "williams": {
+      "210": {
         "name": "Williams",
         "ratings": {
           "quali": 29,

@@ -1,6 +1,6 @@
 // src/types/f1.ts
 
-// Raw driver/constructor shapes returned by the FastAPI backend
+// Roster shapes returned by the FastAPI backend
 export interface Driver {
     id: string;
     name: string;
@@ -30,68 +30,40 @@ export interface Constructor {
 
 export type Risk = 'floor' | 'expected' | 'ceiling';
 export type ItemKind = 'driver' | 'constructor';
+export type TrackType = 'street' | 'high_speed' | 'technical';
 
+// User controlled settings, sliders go from 0 to 100
+export interface Params {
+    risk: Risk;
+    form: number;
+    track: number;
+    dnf: number;
+}
+
+export const DEFAULT_PARAMS: Params = { risk: 'expected', form: 0, track: 0, dnf: 0 };
+
+// Responses from the endpoints in API_ENDPOINTS.md
 export interface Race {
     round: string;
     name: string;
     date: string;
+    circuit: string;
+    location: string;
+    trackType: TrackType;
 }
 
-export interface FantasyPoints {
-    floor_p10: number;
-    expected_p50: number;
-    ceiling_p90: number;
-}
-
-export interface DriverPrediction {
-    race_name: string;
-    date: string;
-    driver: string;
-    predictions: {
-        qualifying_position: number;
-        race_position: number;
-        dnf_probability: number;
-    };
-    fantasy_points: FantasyPoints;
-}
-
-export interface ConstructorPrediction {
-    race_name: string;
-    date: string;
-    team_id: number;
-    drivers_included: string[];
-    fantasy_points: FantasyPoints;
-}
-
-export interface RoundPredictions {
-    drivers: Record<string, DriverPrediction>;
-    constructors: Record<string, ConstructorPrediction>;
-}
-
-// Everything the UI needs for one selectable driver or constructor
-export interface CardItem {
+export interface Prediction {
     id: string;
     kind: ItemKind;
-    name: string;
-    code: string;
-    number?: string | number;
-    team: string;
-    price: number;
-    ownership: number;
-    avatarColor: string;
     floor: number;
-    expectedPoints: number;
+    expected: number;
     ceiling: number;
+    ppm: number;
+    multiplier: number;
+    dnfChance?: number;
     qualiPos?: number;
     racePos?: number;
-    dnfChance?: number;
-    ratings?: Ratings;
-    season?: SeasonStats;
-    trackAvg?: number;
-    multiplier?: number;
 }
-
-export type TrackType = 'street' | 'high_speed' | 'technical';
 
 export interface Ratings {
     quali: number;
@@ -115,33 +87,50 @@ export interface SeasonStats {
     avgPitStop: number | null;
 }
 
-export interface StatsEntry {
-    name: string;
-    ratings: Omit<Ratings, 'trackFit'>;
-    trackFit: Record<TrackType, number>;
+export interface PlayerStats {
+    id: string;
+    code: string | null;
+    ratings: Ratings;
     season: SeasonStats;
-    trackHistory: Record<string, number>;
+    trackAvg: number | null;
 }
 
-export interface Track {
-    circuit: string;
-    circuitRef: string;
-    location: string;
-    type: TrackType;
+export interface TeamEvaluation {
+    cost: number;
+    floor: number;
+    expected: number;
+    ceiling: number;
+    players: { id: string; points: number; share: number }[];
 }
 
-export interface StatsFile {
-    tracks: Record<string, Track>;
-    drivers: Record<string, StatsEntry>;
-    constructors: Record<string, StatsEntry>;
+export interface OptimizeResult {
+    drivers: string[];
+    constructors: string[];
+    points: number;
 }
 
-// User controlled weights, all sliders go from 0 to 100
-export interface Params {
-    risk: Risk;
-    formWeight: number;
-    trackWeight: number;
-    dnfWeight: number;
+// Everything the UI needs for one selectable driver or constructor
+export interface CardItem {
+    id: string;
+    kind: ItemKind;
+    name: string;
+    code: string;
+    number?: string | number;
+    team: string;
+    price: number;
+    ownership: number;
+    avatarColor: string;
+    floor: number;
+    expectedPoints: number;
+    ceiling: number;
+    ppm: number;
+    multiplier: number;
+    qualiPos?: number;
+    racePos?: number;
+    dnfChance?: number;
+    ratings?: Ratings;
+    season?: SeasonStats;
+    trackAvg?: number | null;
 }
 
 export const RISK_LABELS: Record<Risk, string> = {

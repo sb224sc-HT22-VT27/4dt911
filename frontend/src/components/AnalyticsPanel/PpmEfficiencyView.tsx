@@ -12,8 +12,6 @@ interface PpmEfficiencyViewProps {
     onRemove: (id: string) => void;
 }
 
-const ppmOf = (item: CardItem, risk: Risk) => (item.price > 0 ? pointsFor(item, risk) / item.price : 0);
-
 export const PpmEfficiencyView: React.FC<PpmEfficiencyViewProps> = ({
     allDrivers,
     allConstructors,
@@ -27,7 +25,7 @@ export const PpmEfficiencyView: React.FC<PpmEfficiencyViewProps> = ({
     const [selectedId, setSelectedId] = useState<string | null>(null);
 
     const items = (kind === 'driver' ? allDrivers : allConstructors)
-        .map((item) => ({ item, ppm: ppmOf(item, risk) }))
+        .map((item) => ({ item, ppm: item.ppm }))
         .sort((a, b) => b.ppm - a.ppm);
     const maxPpm = Math.max(...items.map((i) => i.ppm), 0.1);
 

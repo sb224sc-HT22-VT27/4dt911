@@ -1,7 +1,6 @@
 // src/components/TeamPanel/TeamPanel.tsx
 import React, { useState } from 'react';
 import { F1Card } from '../F1Card/F1Card';
-import { TeamHeader } from './TeamHeader';
 import { PickerModal } from './PickerModal';
 import { RISK_LABELS, type CardItem, type ItemKind, type Params } from '../../types/f1';
 import './TeamPanel.css';
@@ -11,13 +10,11 @@ interface TeamPanelProps {
     constructors: (CardItem | null)[];
     allDrivers: CardItem[];
     allConstructors: CardItem[];
-    budget: number;
     remainingBudget: number;
     params: Params;
-    onBudgetChange: (budget: number) => void;
     onSelect: (kind: ItemKind, slot: number, item: CardItem) => void;
     onRemove: (id: string) => void;
-    onOptimize: () => string;
+    onOptimize: () => Promise<string>;
 }
 
 export const TeamPanel: React.FC<TeamPanelProps> = ({
@@ -25,23 +22,31 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
     constructors,
     allDrivers,
     allConstructors,
-    budget,
     remainingBudget,
     params,
-    onBudgetChange,
     onSelect,
     onRemove,
     onOptimize,
 }) => {
     const [picker, setPicker] = useState<{ kind: ItemKind; slot: number } | null>(null);
     const [message, setMessage] = useState('');
+    const [optimizing, setOptimizing] = useState(false);
     const risk = params.risk;
 
     const selectedIds = new Set([...drivers, ...constructors].filter(Boolean).map((i) => i!.id));
 
+    const handleOptimize = async () => {
+        setOptimizing(true);
+        setMessage(await onOptimize());
+        setOptimizing(false);
+    };
+
     return (
         <div className="team-workspace">
-            <TeamHeader totalBudget={budget} remainingBudget={remainingBudget} onBudgetChange={onBudgetChange} />
+            <div className="team-header-bar">
+                <h2 className="team-title">My Team</h2>
+                <span className="team-hint">Click + to add a player, i for details</span>
+            </div>
 
             <div className="team-grid-5">
                 {drivers.map((driver, index) => (
@@ -76,11 +81,11 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
                     <div className="optimize-summary">
                         <span className={`summary-risk risk-${risk}`}>{RISK_LABELS[risk]}</span>
                         <span>
-                            Form {params.formWeight}% · Track {params.trackWeight}% · DNF {params.dnfWeight}%
+                            Form {params.form}% · Track {params.track}% · DNF {params.dnf}%
                         </span>
                     </div>
-                    <button type="button" className="optimize-btn" onClick={() => setMessage(onOptimize())}>
-                        Optimize
+                    <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>
+                        {optimizing ? 'Optimizing…' : 'Optimize'}
                     </button>
                     <span className="optimize-msg">{message || 'Change settings in the top right'}</span>
                 </div>

@@ -43,44 +43,17 @@
   min-width: 0;
 }
 
-.header-race {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-
-.header-round {
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.header-track {
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent);
-  border: 1px solid rgba(45, 212, 191, 0.35);
-  padding: 1px 7px;
-  border-radius: 999px;
-}
-
 /* Dashboard grid */
 .dashboard-grid {
   flex: 1;
   min-height: 0;
   display: grid;
   gap: 0.85rem;
-  grid-template-columns: 280px minmax(0, 1fr) 300px;
+  grid-template-columns: 290px minmax(0, 1fr) 300px;
   grid-template-rows: auto minmax(0, 1fr);
   grid-template-areas:
-    "comparison team statistics"
-    "comparison ppm  upcoming";
+    "comparison team   summary"
+    "comparison helper summary";
 }
 
 .panel {
@@ -102,16 +75,12 @@
   grid-area: team;
 }
 
-.panel-statistics {
-  grid-area: statistics;
+.panel-summary {
+  grid-area: summary;
 }
 
-.panel-upcoming {
-  grid-area: upcoming;
-}
-
-.panel-ppm {
-  grid-area: ppm;
+.panel-helper {
+  grid-area: helper;
   min-height: 230px;
 }
 
@@ -140,6 +109,13 @@
   font-size: 0.85rem;
 }
 
+.status-hint code {
+  color: var(--text);
+  background: var(--panel-3);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
 .status-retry {
   margin-top: 0.4rem;
   padding: 6px 18px;
@@ -149,12 +125,6 @@
   color: var(--text);
   font-weight: 700;
   cursor: pointer;
-}
-
-@media (max-width: 1350px) {
-  .header-race {
-    display: none;
-  }
 }
 
 @media (max-width: 1100px) {
@@ -167,9 +137,8 @@
     grid-template-rows: auto;
     grid-template-areas:
       "team"
-      "ppm"
-      "statistics"
-      "upcoming"
+      "summary"
+      "helper"
       "comparison";
   }
 

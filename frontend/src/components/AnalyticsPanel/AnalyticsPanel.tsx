@@ -2,20 +2,19 @@
 import React, { useState } from 'react';
 import { DistGraph } from './DistGraph';
 import { PpmEfficiencyView } from './PpmEfficiencyView';
-import { TeamBreakdownView } from './TeamBreakdownView';
-import type { CardItem, Risk } from '../../types/f1';
+import type { CardItem, Risk, TeamEvaluation } from '../../types/f1';
 import './AnalyticsPanel.css';
 
-export type AnalyticsTab = 'distribution' | 'efficiency' | 'breakdown';
+export type AnalyticsTab = 'efficiency' | 'distribution';
 
 const TABS: { id: AnalyticsTab; label: string }[] = [
-    { id: 'distribution', label: 'Points Distribution' },
     { id: 'efficiency', label: 'PPM Graph' },
-    { id: 'breakdown', label: 'Breakdown' },
+    { id: 'distribution', label: 'Points Distribution' },
 ];
 
 interface AnalyticsPanelProps {
     team: CardItem[];
+    evaluation: TeamEvaluation | null;
     allDrivers: CardItem[];
     allConstructors: CardItem[];
     risk: Risk;
@@ -24,11 +23,9 @@ interface AnalyticsPanelProps {
     onRemove: (id: string) => void;
 }
 
-const sum = (items: CardItem[], pick: (i: CardItem) => number) =>
-    Number(items.reduce((acc, i) => acc + pick(i), 0).toFixed(1));
-
 export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
     team,
+    evaluation,
     allDrivers,
     allConstructors,
     risk,
@@ -36,7 +33,7 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
     onAdd,
     onRemove,
 }) => {
-    const [activeTab, setActiveTab] = useState<AnalyticsTab>('distribution');
+    const [activeTab, setActiveTab] = useState<AnalyticsTab>('efficiency');
 
     return (
         <div className="analytics-container">
@@ -58,9 +55,9 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
             <div className="analytics-content">
                 {activeTab === 'distribution' && (
                     <DistGraph
-                        p10={sum(team, (i) => i.floor)}
-                        p50={sum(team, (i) => i.expectedPoints)}
-                        p90={sum(team, (i) => i.ceiling)}
+                        p10={evaluation?.floor ?? 0}
+                        p50={evaluation?.expected ?? 0}
+                        p90={evaluation?.ceiling ?? 0}
                         risk={risk}
                     />
                 )}
@@ -77,7 +74,6 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
                     />
                 )}
 
-                {activeTab === 'breakdown' && <TeamBreakdownView team={team} risk={risk} />}
             </div>
         </div>
     );

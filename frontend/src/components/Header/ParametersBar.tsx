@@ -1,7 +1,6 @@
 // src/components/Header/ParametersBar.tsx
 import React from 'react';
-import { RISK_LABELS, TRACK_LABELS, type Params, type Risk, type TrackType } from '../../types/f1';
-import { DEFAULT_PARAMS } from '../../utils/scoring';
+import { DEFAULT_PARAMS, RISK_LABELS, TRACK_LABELS, type Params, type Risk, type TrackType } from '../../types/f1';
 import './ParametersBar.css';
 
 interface ParametersBarProps {
@@ -13,14 +12,14 @@ interface ParametersBarProps {
 const RISKS: Risk[] = ['floor', 'expected', 'ceiling'];
 
 export const ParametersBar: React.FC<ParametersBarProps> = ({ params, trackType, onChange }) => {
-    const sliders: { key: 'formWeight' | 'trackWeight' | 'dnfWeight'; label: string; hint: string }[] = [
-        { key: 'formWeight', label: 'Recent form', hint: 'Boost drivers with strong last 5 races' },
+    const sliders: { key: 'form' | 'track' | 'dnf'; label: string; hint: string }[] = [
+        { key: 'form', label: 'Recent form', hint: 'Boost drivers with strong last 5 races' },
         {
-            key: 'trackWeight',
+            key: 'track',
             label: `Track fit · ${TRACK_LABELS[trackType]}`,
             hint: `Boost drivers who over-perform on ${TRACK_LABELS[trackType].toLowerCase()} tracks`,
         },
-        { key: 'dnfWeight', label: 'DNF penalty', hint: 'Reduce points by the chance of not finishing' },
+        { key: 'dnf', label: 'DNF penalty', hint: 'Reduce points by the chance of not finishing' },
     ];
 
     return (

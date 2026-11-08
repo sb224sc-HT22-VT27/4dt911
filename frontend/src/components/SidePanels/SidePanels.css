@@ -134,76 +134,6 @@
     font-size: 1.05rem;
 }
 
-/* Races */
-.race-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.race-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    background: var(--panel-2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 6px 10px;
-    color: var(--text);
-    font-size: 0.78rem;
-    cursor: pointer;
-    text-align: left;
-    transition: border-color 0.15s ease;
-}
-
-.race-row:hover {
-    border-color: var(--border-strong);
-}
-
-.race-row.active {
-    border-color: var(--accent);
-    background: rgba(45, 212, 191, 0.07);
-}
-
-.race-round {
-    font-size: 0.62rem;
-    font-weight: 800;
-    color: var(--dim);
-    width: 24px;
-}
-
-.race-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.25;
-}
-
-.race-name {
-    font-weight: 600;
-}
-
-.race-circuit {
-    font-size: 0.62rem;
-    color: var(--dim);
-}
-
-.race-tag {
-    font-size: 0.55rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #041014;
-    background: var(--accent);
-    padding: 1px 6px;
-    border-radius: 999px;
-}
-
-.race-date {
-    font-size: 0.68rem;
-    color: var(--muted);
-}
-
 /* Comparison */
 .compare-selects {
     display: grid;
@@ -289,4 +219,189 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 8px 10px;
+}
+
+/* Team info */
+/* Budget pill */
+.budget-pill-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background-color: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 5px 12px;
+}
+
+.budget-pill-container.budget-warning {
+    border-color: var(--danger);
+    background-color: rgba(244, 63, 94, 0.08);
+}
+
+.budget-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.budget-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--dim);
+}
+
+.budget-warning .budget-label {
+    color: var(--danger);
+}
+
+.budget-values {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.budget-rem-val {
+    font-size: 1.05rem;
+    font-weight: 900;
+}
+
+.rem-positive {
+    color: var(--accent);
+}
+
+.rem-negative {
+    color: var(--danger);
+}
+
+.budget-slash {
+    color: var(--dim);
+    font-size: 0.85rem;
+}
+
+.budget-total-val {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 1px 4px;
+    border-radius: 4px;
+}
+
+.budget-total-val:hover {
+    background-color: var(--panel-3);
+    color: var(--text);
+}
+
+.budget-edit-icon {
+    background: none;
+    border: none;
+    color: var(--dim);
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.budget-total-val:hover .budget-edit-icon {
+    color: var(--accent);
+}
+
+.budget-edit-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.85rem;
+}
+
+.budget-input {
+    width: 60px;
+    background-color: var(--panel-3);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--text);
+    padding: 1px 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    outline: none;
+}
+
+.budget-alert-badge {
+    background-color: var(--danger);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 6px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.summary-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.summary-meta strong {
+    color: var(--text);
+}
+
+.share-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.share-title {
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 3px;
+}
+
+.share-row {
+    display: grid;
+    grid-template-columns: 8px minmax(0, 1fr) 38px 60px 30px;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+}
+
+.share-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.share-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.share-points {
+    text-align: right;
+    font-weight: 700;
+}
+
+.share-bar {
+    height: 5px;
+    background: var(--panel-3);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.share-bar span {
+    display: block;
+    height: 100%;
+}
+
+.share-pct {
+    text-align: right;
+    color: var(--muted);
+    font-size: 0.68rem;
 }

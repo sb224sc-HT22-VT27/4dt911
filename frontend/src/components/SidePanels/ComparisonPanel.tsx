@@ -1,7 +1,7 @@
 // src/components/SidePanels/ComparisonPanel.tsx
 import React, { useState } from 'react';
 import { HexChart } from '../Charts/HexChart';
-import type { CardItem, ItemKind, Track } from '../../types/f1';
+import type { CardItem, ItemKind, Race } from '../../types/f1';
 import './SidePanels.css';
 
 interface ComparisonPanelProps {
@@ -9,7 +9,7 @@ interface ComparisonPanelProps {
     constructors: CardItem[];
     teamDrivers: (CardItem | null)[];
     teamConstructors: (CardItem | null)[];
-    track: Track;
+    race: Race;
 }
 
 interface Metric {
@@ -22,14 +22,14 @@ interface Metric {
 const COLOR_A = '#2dd4bf';
 const COLOR_B = '#a78bfa';
 
-const metricGroups = (track: Track): { title: string; metrics: Metric[] }[] => [
+const metricGroups = (race: Race): { title: string; metrics: Metric[] }[] => [
     {
         title: 'Fantasy',
         metrics: [
             { label: 'Price', value: (d) => d.price, format: (v) => `€${v}M`, lowerIsBetter: true },
             { label: 'Expected pts', value: (d) => d.expectedPoints, format: (v) => `${v}` },
             { label: 'Ceiling pts', value: (d) => d.ceiling, format: (v) => `${v}` },
-            { label: 'Points per €M', value: (d) => d.expectedPoints / d.price, format: (v) => v.toFixed(2) },
+            { label: 'Points per €M', value: (d) => d.ppm, format: (v) => v.toFixed(2) },
             { label: 'DNF chance', value: (d) => d.dnfChance, format: (v) => `${v}%`, lowerIsBetter: true },
         ],
     },
@@ -52,7 +52,7 @@ const metricGroups = (track: Track): { title: string; metrics: Metric[] }[] => [
         ],
     },
     {
-        title: `At ${track.location} (since 2023)`,
+        title: `At ${race.location} (since 2023)`,
         metrics: [{ label: 'Avg finish', value: (d) => d.trackAvg, format: (v) => `P${v}`, lowerIsBetter: true }],
     },
 ];
@@ -70,7 +70,7 @@ export const ComparisonPanel: React.FC<ComparisonPanelProps> = ({
     constructors,
     teamDrivers,
     teamConstructors,
-    track,
+    race,
 }) => {
     const [kind, setKind] = useState<ItemKind>('driver');
     const [idA, setIdA] = useState('');
@@ -133,7 +133,7 @@ export const ComparisonPanel: React.FC<ComparisonPanelProps> = ({
                     : `${diff >= 0 ? a.name : b.name} is projected ${Math.abs(diff)} pts ahead of ${diff >= 0 ? b.name : a.name}.`}
             </p>
 
-            {metricGroups(track).map((group) => (
+            {metricGroups(race).map((group) => (
                 <div key={group.title} className="compare-group">
                     <span className="compare-group-title">{group.title}</span>
                     {group.metrics.map((m) => {
