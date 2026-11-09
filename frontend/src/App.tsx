@@ -4,7 +4,7 @@ import './App.css';
 import { TeamPanel } from './components/TeamPanel/TeamPanel';
 import { AnalyticsPanel } from './components/AnalyticsPanel/AnalyticsPanel';
 import { TeamSummary } from './components/SidePanels/TeamSummary';
-import { TransfersPanel } from './components/SidePanels/TransfersPanel';
+import { TransfersModal } from './components/TeamPanel/TransfersModal';
 import { ComparisonPanel } from './components/SidePanels/ComparisonPanel';
 import { ParametersBar } from './components/Header/ParametersBar';
 import { RaceSelect } from './components/Header/RaceSelect';
@@ -26,6 +26,7 @@ import {
   type Constructor,
   type Driver,
   type DriverInfo,
+  type Horizon,
   type ItemKind,
   type OptimizeResult,
   type OptimizerMode,
@@ -33,11 +34,26 @@ import {
   type PlayerStats,
   type Prediction,
   type Race,
+  type SavedTeam,
   type TeammateStats,
   type TeamEvaluation,
 } from './types/f1';
 
 const ids = (list: (string | null)[]) => list.filter(Boolean) as string[];
+const EMPTY_DRIVERS: (string | null)[] = [null, null, null, null, null];
+const EMPTY_CONSTRUCTORS: (string | null)[] = [null, null];
+
+// Saved teams live in the browser for now
+const SLOTS_KEY = 'f1-saved-teams';
+const loadSlots = (): (SavedTeam | null)[] => {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SLOTS_KEY) ?? 'null');
+    if (Array.isArray(saved) && saved.length === 3) return saved;
+  } catch {
+    // storage unavailable or corrupt, start empty
+  }
+  return [null, null, null];
+};
 
 function App() {
   const [races, setRaces] = useState<Race[]>([]);
@@ -51,18 +67,24 @@ function App() {
   const [evaluation, setEvaluation] = useState<TeamEvaluation | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const [driverIds, setDriverIds] = useState<(string | null)[]>([null, null, null, null, null]);
-  const [constructorIds, setConstructorIds] = useState<(string | null)[]>([null, null]);
+  const [driverIds, setDriverIds] = useState<(string | null)[]>(EMPTY_DRIVERS);
+  const [constructorIds, setConstructorIds] = useState<(string | null)[]>(EMPTY_CONSTRUCTORS);
   const [drsId, setDrsId] = useState<string | null>(null);
   const [budget, setBudget] = useState(100);
   const [params, setParams] = useState<Params>(DEFAULT_PARAMS);
+  const [horizon, setHorizon] = useState<Horizon>(1);
+  const [slots, setSlots] = useState<(SavedTeam | null)[]>(loadSlots);
+  const [slotEvaluations, setSlotEvaluations] = useState<(TeamEvaluation | null)[]>([null, null, null]);
   const [optimizerMode, setOptimizerMode] = useState<OptimizerMode>('best');
   const [freeTransfers, setFreeTransfers] = useState(2);
-  const [penalty, setPenalty] = useState(10);
-  const [suggestion, setSuggestion] = useState<{ result: OptimizeResult; key: string } | null>(null);
+  const [suggestion, setSuggestion] = useState<OptimizeResult | null>(null);
   const hasAutoPicked = useRef(false);
 
-  const rounds = useMemo(() => (round ? [round] : []), [round]);
+  // The selected race plus the next ones when planning 3 races ahead
+  const rounds = useMemo(() => {
+    const start = races.findIndex((r) => r.round === round);
+    return start < 0 ? [] : races.slice(start, start + horizon).map((r) => r.round);
+  }, [races, round, horizon]);
   const fail = (err: unknown) => setError(err instanceof Error ? err.message : 'Unknown error');
 
   useEffect(() => {
@@ -129,9 +151,46 @@ function App() {
     };
   }, [driverIds, constructorIds, drsId, rounds, params]);
 
-  // A transfer suggestion is only shown while the team and settings are the same as when it was made
-  const suggestionKey = JSON.stringify([driverIds, constructorIds, params, round, budget, freeTransfers, penalty]);
-  const activeSuggestion = suggestion?.key === suggestionKey ? suggestion.result : null;
+  // Points for the saved teams with the current settings
+  useEffect(() => {
+    if (!rounds.length) return;
+    let active = true;
+    Promise.all(
+      slots.map((s) => (s ? evaluateTeam(ids(s.drivers), ids(s.constructors), s.drs, rounds, params) : null))
+    )
+      .then((e) => active && setSlotEvaluations(e))
+      .catch(fail);
+    return () => {
+      active = false;
+    };
+  }, [slots, rounds, params]);
+
+  const currentTeamKey = JSON.stringify([driverIds, constructorIds, drsId]);
+  const activeSlot = slots.findIndex((s) => s && JSON.stringify([s.drivers, s.constructors, s.drs]) === currentTeamKey);
+
+  const saveSlot = (slot: number) => {
+    const next = slots.map((s, i) => (i === slot ? { drivers: driverIds, constructors: constructorIds, drs: drsId } : s));
+    setSlots(next);
+    try {
+      localStorage.setItem(SLOTS_KEY, JSON.stringify(next));
+    } catch {
+      // storage unavailable, the slot still works until reload
+    }
+  };
+
+  const loadSlot = (slot: number) => {
+    const saved = slots[slot];
+    if (!saved) return;
+    setDriverIds(saved.drivers);
+    setConstructorIds(saved.constructors);
+    setDrsId(saved.drs);
+  };
+
+  const clearTeam = () => {
+    setDriverIds(EMPTY_DRIVERS);
+    setConstructorIds(EMPTY_CONSTRUCTORS);
+    setDrsId(null);
+  };
 
   const optimize = async (): Promise<string> => {
     try {
@@ -139,9 +198,8 @@ function App() {
         const result = await optimizeTeam(budget, rounds, params, {
           currentTeam: { drivers: ids(driverIds), constructors: ids(constructorIds) },
           freeTransfers,
-          penalty,
         });
-        setSuggestion({ result, key: suggestionKey });
+        setSuggestion(result);
         const count = result.transfers?.length ?? 0;
         return count ? `${count} transfer${count > 1 ? 's' : ''} suggested` : 'No better transfers found';
       }
@@ -230,9 +288,15 @@ function App() {
             <span className="brand-mark" />
             <h1>F1 Fantasy Visualizer</h1>
           </div>
-          <RaceSelect races={races} selectedRound={round} onSelect={setRound} />
+          <RaceSelect races={races} selectedRound={round} rounds={rounds} onSelect={setRound} />
         </div>
-        <ParametersBar params={params} trackType={race.trackType} onChange={setParams} />
+        <ParametersBar
+          params={params}
+          trackType={race.trackType}
+          horizon={horizon}
+          onChange={setParams}
+          onHorizonChange={setHorizon}
+        />
       </header>
 
       <div className="dashboard-grid">
@@ -256,9 +320,18 @@ function App() {
             allConstructors={allConstructors}
             remainingBudget={remainingBudget}
             params={params}
+            horizon={horizon}
+            slots={slots}
+            slotEvaluations={slotEvaluations}
+            activeSlot={activeSlot >= 0 ? activeSlot : null}
+            onSaveSlot={saveSlot}
+            onLoadSlot={loadSlot}
+            onClearTeam={clearTeam}
             drsId={drsId}
             optimizerMode={optimizerMode}
+            freeTransfers={freeTransfers}
             onModeChange={setOptimizerMode}
+            onFreeTransfersChange={setFreeTransfers}
             onToggleDrs={(id) => setDrsId((prev) => (prev === id ? null : id))}
             onSelect={(kind, slot, item) => setSlot(kind, slot, item.id)}
             onRemove={removeFromTeam}
@@ -287,20 +360,19 @@ function App() {
             risk={params.risk}
             onBudgetChange={setBudget}
           />
-          {optimizerMode === 'transfers' && (
-            <TransfersPanel
-              freeTransfers={freeTransfers}
-              penalty={penalty}
-              suggestion={activeSuggestion}
-              players={new Map([...allDrivers, ...allConstructors].map((p) => [p.id, p]))}
-              onFreeTransfersChange={setFreeTransfers}
-              onPenaltyChange={setPenalty}
-              onApply={() => activeSuggestion && applyTransfers(activeSuggestion)}
-              onDismiss={() => setSuggestion(null)}
-            />
-          )}
         </aside>
       </div>
+
+      {suggestion && (
+        <TransfersModal
+          suggestion={suggestion}
+          freeTransfers={freeTransfers}
+          players={new Map([...allDrivers, ...allConstructors].map((p) => [p.id, p]))}
+          risk={params.risk}
+          onApply={() => applyTransfers(suggestion)}
+          onClose={() => setSuggestion(null)}
+        />
+      )}
     </div>
   );
 }

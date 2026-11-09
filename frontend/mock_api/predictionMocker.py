@@ -1,8 +1,13 @@
 import json
 import random
 
-# The official final 6 races of the 2026 calendar
+# The 2026 races from round 13 (the app is frozen before the Italian GP)
 REMAINING_RACES = [
+    {"round": "13", "name": "Italian Grand Prix", "date": "2026-09-06"},
+    {"round": "14", "name": "Spanish Grand Prix", "date": "2026-09-13"},
+    {"round": "15", "name": "Azerbaijan Grand Prix", "date": "2026-09-26"},
+    {"round": "16", "name": "Bahrain Grand Prix in Malaysia", "date": "2026-10-04"},
+    {"round": "17", "name": "Singapore Grand Prix", "date": "2026-10-11"},
     {"round": "18", "name": "United States Grand Prix", "date": "2026-10-25"},
     {"round": "19", "name": "Mexico City Grand Prix", "date": "2026-11-01"},
     {"round": "20", "name": "Sao Paulo Grand Prix", "date": "2026-11-08"},

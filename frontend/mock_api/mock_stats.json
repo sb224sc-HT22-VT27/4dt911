@@ -146,33 +146,33 @@
         "code": "COL",
         "team": "Alpine",
         "ratings": {
-          "quali": 43,
-          "race": 47,
-          "form": 41,
-          "reliability": 61,
-          "overtaking": 69
+          "quali": 40,
+          "race": 49,
+          "form": 45,
+          "reliability": 100,
+          "overtaking": 68
         },
         "trackFit": {
-          "street": 58,
-          "high_speed": 45,
-          "technical": 46
+          "street": 63,
+          "high_speed": 41,
+          "technical": 47
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 27.0,
-          "avgQuali": 13.0,
-          "avgFinish": 12.2,
+          "points": 19.0,
+          "avgQuali": 13.6,
+          "avgFinish": 11.7,
           "bestFinish": 6,
-          "dnfs": 2,
-          "avgGained": 1.9,
-          "avgPitStop": 23.68
+          "dnfs": 0,
+          "avgGained": 1.8,
+          "avgPitStop": 22.83
         },
         "trackHistory": {
-          "monza": 12.7,
-          "baku": 14.7,
-          "marina_bay": 16.0,
+          "monza": 14.5,
+          "baku": 13.5,
+          "marina_bay": 13.5,
           "americas": 13.5,
           "rodriguez": 14.0,
           "interlagos": 16.0,
@@ -191,35 +191,33 @@
           "albert_park": 14.0,
           "shanghai": 10.0,
           "suzuka": 16.0,
-          "miami": 7.0,
-          "madring": 7.0,
-          "sepang": 13.0
+          "miami": 7.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "British",
             "position": 9,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 7,
+            "race": "Belgian",
+            "position": 10,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 17,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 13,
+            "race": "Hungarian",
+            "position": 15,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 21,
-            "dnf": true
+            "race": "Dutch",
+            "position": 14,
+            "dnf": false
           }
         ]
       },
@@ -228,34 +226,34 @@
         "code": "GAS",
         "team": "Alpine",
         "ratings": {
-          "quali": 57,
-          "race": 53,
-          "form": 44,
-          "reliability": 61,
-          "overtaking": 55
+          "quali": 52,
+          "race": 56,
+          "form": 51,
+          "reliability": 72,
+          "overtaking": 71
         },
         "trackFit": {
           "street": 44,
           "high_speed": 57,
-          "technical": 50
+          "technical": 49
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 41.0,
-          "avgQuali": 10.1,
-          "avgFinish": 10.9,
+          "points": 35.0,
+          "avgQuali": 11.0,
+          "avgFinish": 10.2,
           "bestFinish": 6,
-          "dnfs": 2,
-          "avgGained": 0.5,
-          "avgPitStop": 23.99
+          "dnfs": 1,
+          "avgGained": 2.1,
+          "avgPitStop": 22.93
         },
         "trackHistory": {
           "bahrain": 11.3,
           "jeddah": 16.3,
           "albert_park": 11.8,
-          "baku": 15.5,
+          "baku": 14.7,
           "miami": 13.5,
           "monaco": 11.0,
           "catalunya": 8.5,
@@ -265,8 +263,8 @@
           "hungaroring": 17.8,
           "spa": 11.2,
           "zandvoort": 9.8,
-          "monza": 13.2,
-          "marina_bay": 13.2,
+          "monza": 15.3,
+          "marina_bay": 14.0,
           "suzuka": 11.5,
           "losail": 11.0,
           "americas": 12.3,
@@ -275,34 +273,32 @@
           "vegas": 14.7,
           "yas_marina": 13.0,
           "shanghai": 13.0,
-          "imola": 14.5,
-          "madring": 12.0,
-          "sepang": 16.0
+          "imola": 14.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 7,
+            "race": "Austrian",
+            "position": 13,
             "dnf": false
           },
           {
-            "race": "Spanish",
+            "race": "British",
+            "position": 10,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
             "position": 12,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 18,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 16,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
-            "position": 11,
+            "race": "Dutch",
+            "position": 10,
             "dnf": false
           }
         ]
@@ -312,34 +308,34 @@
         "code": "ALO",
         "team": "Aston Martin",
         "ratings": {
-          "quali": 15,
+          "quali": 12,
           "race": 27,
-          "form": 26,
+          "form": 30,
           "reliability": 0,
-          "overtaking": 90
+          "overtaking": 95
         },
         "trackFit": {
-          "street": 54,
-          "high_speed": 50,
-          "technical": 45
+          "street": 58,
+          "high_speed": 49,
+          "technical": 42
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 7.0,
-          "avgQuali": 18.9,
-          "avgFinish": 16.4,
-          "bestFinish": 8,
-          "dnfs": 6,
-          "avgGained": 4.0,
-          "avgPitStop": 25.75
+          "points": 3.0,
+          "avgQuali": 19.5,
+          "avgFinish": 16.2,
+          "bestFinish": 9,
+          "dnfs": 4,
+          "avgGained": 4.5,
+          "avgPitStop": 24.27
         },
         "trackHistory": {
           "bahrain": 9.0,
           "jeddah": 6.3,
           "albert_park": 11.5,
-          "baku": 11.5,
+          "baku": 8.3,
           "miami": 10.5,
           "monaco": 10.5,
           "catalunya": 11.8,
@@ -349,8 +345,8 @@
           "hungaroring": 9.8,
           "spa": 12.2,
           "zandvoort": 7.2,
-          "monza": 15.0,
-          "marina_bay": 11.5,
+          "monza": 13.0,
+          "marina_bay": 10.0,
           "suzuka": 10.8,
           "losail": 6.7,
           "americas": 13.0,
@@ -359,34 +355,32 @@
           "vegas": 10.3,
           "yas_marina": 7.3,
           "shanghai": 13.7,
-          "imola": 15.0,
-          "madring": 17.0,
-          "sepang": 8.0
+          "imola": 15.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 21,
-            "dnf": true
-          },
-          {
-            "race": "Spanish",
-            "position": 17,
+            "race": "Austrian",
+            "position": 18,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 21,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 8,
+            "race": "British",
+            "position": 18,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 16,
+            "race": "Belgian",
+            "position": 19,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 9,
             "dnf": false
           }
         ]
@@ -396,34 +390,34 @@
         "code": "STR",
         "team": "Aston Martin",
         "ratings": {
-          "quali": 8,
-          "race": 17,
-          "form": 14,
+          "quali": 6,
+          "race": 18,
+          "form": 18,
           "reliability": 0,
-          "overtaking": 92
+          "overtaking": 96
         },
         "trackFit": {
-          "street": 44,
-          "high_speed": 46,
-          "technical": 62
+          "street": 46,
+          "high_speed": 45,
+          "technical": 60
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
           "points": 0.0,
-          "avgQuali": 20.3,
-          "avgFinish": 18.5,
-          "bestFinish": 12,
-          "dnfs": 11,
-          "avgGained": 4.2,
-          "avgPitStop": 26.24
+          "avgQuali": 20.8,
+          "avgFinish": 18.2,
+          "bestFinish": 13,
+          "dnfs": 7,
+          "avgGained": 4.6,
+          "avgPitStop": 26.1
         },
         "trackHistory": {
           "bahrain": 11.0,
           "jeddah": 18.3,
           "albert_park": 8.2,
-          "baku": 16.2,
+          "baku": 14.3,
           "miami": 15.5,
           "monaco": 16.8,
           "catalunya": 14.0,
@@ -433,8 +427,8 @@
           "hungaroring": 10.0,
           "spa": 13.5,
           "zandvoort": 12.8,
-          "monza": 18.2,
-          "marina_bay": 16.8,
+          "monza": 17.7,
+          "marina_bay": 15.7,
           "suzuka": 17.8,
           "losail": 15.3,
           "americas": 11.3,
@@ -443,33 +437,31 @@
           "vegas": 12.7,
           "yas_marina": 11.3,
           "shanghai": 14.0,
-          "imola": 12.0,
-          "madring": 21.0,
-          "sepang": 12.0
+          "imola": 12.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
+            "position": 19,
+            "dnf": true
+          },
+          {
+            "race": "British",
+            "position": 19,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
             "position": 20,
             "dnf": true
           },
           {
-            "race": "Spanish",
-            "position": 21,
-            "dnf": true
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 22,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 12,
+            "race": "Hungarian",
+            "position": 13,
             "dnf": false
           },
           {
-            "race": "Singapore",
+            "race": "Dutch",
             "position": 20,
             "dnf": true
           }
@@ -481,27 +473,27 @@
         "team": "Audi",
         "ratings": {
           "quali": 44,
-          "race": 44,
-          "form": 31,
-          "reliability": 61,
-          "overtaking": 54
+          "race": 49,
+          "form": 56,
+          "reliability": 72,
+          "overtaking": 64
         },
         "trackFit": {
-          "street": 43,
+          "street": 44,
           "high_speed": 55,
-          "technical": 53
+          "technical": 51
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
           "points": 10.0,
-          "avgQuali": 12.8,
-          "avgFinish": 12.8,
+          "avgQuali": 12.7,
+          "avgFinish": 11.8,
           "bestFinish": 8,
-          "dnfs": 2,
-          "avgGained": 0.4,
-          "avgPitStop": 24.87
+          "dnfs": 1,
+          "avgGained": 1.4,
+          "avgPitStop": 23.28
         },
         "trackHistory": {
           "albert_park": 12.5,
@@ -519,43 +511,41 @@
           "spa": 8.5,
           "hungaroring": 8.5,
           "zandvoort": 14.0,
-          "monza": 9.5,
-          "baku": 12.0,
-          "marina_bay": 19.5,
+          "monza": 8.0,
+          "baku": 11.0,
+          "marina_bay": 17.0,
           "americas": 18.0,
           "rodriguez": 10.0,
           "interlagos": 20.0,
           "vegas": 17.0,
           "losail": 13.0,
-          "yas_marina": 11.0,
-          "madring": 13.0,
-          "sepang": 18.0
+          "yas_marina": 11.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
             "position": 11,
             "dnf": false
           },
           {
-            "race": "Spanish",
+            "race": "British",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
             "position": 13,
             "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 13,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 18,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
-            "position": 22,
-            "dnf": true
           }
         ]
       },
@@ -564,34 +554,34 @@
         "code": "HUL",
         "team": "Audi",
         "ratings": {
-          "quali": 45,
-          "race": 42,
-          "form": 55,
-          "reliability": 22,
-          "overtaking": 62
+          "quali": 48,
+          "race": 37,
+          "form": 44,
+          "reliability": 0,
+          "overtaking": 60
         },
         "trackFit": {
-          "street": 50,
-          "high_speed": 41,
-          "technical": 60
+          "street": 49,
+          "high_speed": 40,
+          "technical": 62
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 13.0,
-          "avgQuali": 12.5,
-          "avgFinish": 13.2,
+          "points": 6.0,
+          "avgQuali": 11.8,
+          "avgFinish": 14.3,
           "bestFinish": 8,
           "dnfs": 4,
-          "avgGained": 1.2,
-          "avgPitStop": 24.98
+          "avgGained": 1.0,
+          "avgPitStop": 25.01
         },
         "trackHistory": {
           "bahrain": 17.0,
           "jeddah": 12.3,
           "albert_park": 11.2,
-          "baku": 13.8,
+          "baku": 14.7,
           "miami": 14.8,
           "monaco": 16.2,
           "catalunya": 12.8,
@@ -601,8 +591,8 @@
           "hungaroring": 12.2,
           "spa": 15.2,
           "zandvoort": 11.2,
-          "monza": 16.5,
-          "marina_bay": 12.5,
+          "monza": 18.0,
+          "marina_bay": 14.0,
           "suzuka": 13.0,
           "losail": 17.3,
           "americas": 9.0,
@@ -611,33 +601,31 @@
           "vegas": 11.3,
           "yas_marina": 10.7,
           "shanghai": 12.0,
-          "imola": 11.5,
-          "madring": 10.0,
-          "sepang": 11.0
+          "imola": 11.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
             "position": 12,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 10,
+            "race": "British",
+            "position": 22,
+            "dnf": true
+          },
+          {
+            "race": "Belgian",
+            "position": 13,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 11,
+            "race": "Hungarian",
+            "position": 9,
             "dnf": false
           },
           {
-            "race": "Bahrain in Malaysia",
-            "position": 11,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
+            "race": "Dutch",
             "position": 8,
             "dnf": false
           }
@@ -649,33 +637,33 @@
         "team": "Cadillac",
         "ratings": {
           "quali": 10,
-          "race": 23,
-          "form": 20,
-          "reliability": 2,
-          "overtaking": 82
+          "race": 25,
+          "form": 17,
+          "reliability": 0,
+          "overtaking": 94
         },
         "trackFit": {
-          "street": 48,
-          "high_speed": 49,
-          "technical": 53
+          "street": 52,
+          "high_speed": 51,
+          "technical": 48
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
           "points": 0.0,
-          "avgQuali": 20.0,
-          "avgFinish": 17.1,
+          "avgQuali": 19.9,
+          "avgFinish": 16.8,
           "bestFinish": 14,
-          "dnfs": 5,
-          "avgGained": 3.2,
-          "avgPitStop": 26.0
+          "dnfs": 4,
+          "avgGained": 4.4,
+          "avgPitStop": 24.33
         },
         "trackHistory": {
           "bahrain": 2.0,
           "jeddah": 1.5,
           "albert_park": 8.7,
-          "baku": 11.0,
+          "baku": 9.0,
           "miami": 7.3,
           "monaco": 16.3,
           "catalunya": 8.7,
@@ -685,8 +673,8 @@
           "hungaroring": 10.3,
           "spa": 10.0,
           "zandvoort": 8.3,
-          "monza": 9.3,
-          "marina_bay": 11.7,
+          "monza": 5.0,
+          "marina_bay": 9.0,
           "suzuka": 12.7,
           "losail": 13.5,
           "americas": 5.5,
@@ -695,34 +683,32 @@
           "vegas": 6.5,
           "yas_marina": 12.0,
           "shanghai": 9.0,
-          "imola": 8.0,
-          "madring": 20.0,
-          "sepang": 19.0
+          "imola": 8.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 18,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 20,
+            "race": "Austrian",
+            "position": 21,
             "dnf": true
           },
           {
-            "race": "Azerbaijan",
+            "race": "British",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 21,
+            "dnf": true
+          },
+          {
+            "race": "Hungarian",
+            "position": 21,
+            "dnf": true
+          },
+          {
+            "race": "Dutch",
             "position": 15,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 19,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
-            "position": 17,
             "dnf": false
           }
         ]
@@ -732,34 +718,34 @@
         "code": "BOT",
         "team": "Cadillac",
         "ratings": {
-          "quali": 9,
+          "quali": 10,
           "race": 16,
-          "form": 15,
+          "form": 13,
           "reliability": 0,
-          "overtaking": 62
+          "overtaking": 73
         },
         "trackFit": {
           "street": 51,
-          "high_speed": 55,
-          "technical": 43
+          "high_speed": 58,
+          "technical": 41
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
           "points": 0.0,
-          "avgQuali": 20.1,
+          "avgQuali": 19.9,
           "avgFinish": 18.6,
           "bestFinish": 13,
-          "dnfs": 8,
-          "avgGained": 1.2,
-          "avgPitStop": 26.25
+          "dnfs": 6,
+          "avgGained": 2.3,
+          "avgPitStop": 25.77
         },
         "trackHistory": {
           "bahrain": 13.5,
           "jeddah": 17.5,
           "albert_park": 14.7,
-          "baku": 16.7,
+          "baku": 17.0,
           "miami": 15.7,
           "monaco": 15.0,
           "catalunya": 18.7,
@@ -769,8 +755,8 @@
           "hungaroring": 16.7,
           "spa": 15.0,
           "zandvoort": 17.0,
-          "monza": 15.0,
-          "marina_bay": 17.3,
+          "monza": 13.0,
+          "marina_bay": 16.5,
           "suzuka": 17.7,
           "losail": 9.5,
           "americas": 14.5,
@@ -779,35 +765,33 @@
           "vegas": 17.5,
           "yas_marina": 18.5,
           "shanghai": 16.5,
-          "imola": 18.0,
-          "madring": 18.0,
-          "sepang": 22.0
+          "imola": 18.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 19,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 18,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 16,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "Austrian",
             "position": 22,
             "dnf": true
           },
           {
-            "race": "Singapore",
-            "position": 19,
+            "race": "British",
+            "position": 16,
             "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 18,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 22,
+            "dnf": true
+          },
+          {
+            "race": "Dutch",
+            "position": 18,
+            "dnf": true
           }
         ]
       },
@@ -816,34 +800,34 @@
         "code": "LEC",
         "team": "Ferrari",
         "ratings": {
-          "quali": 84,
-          "race": 74,
-          "form": 70,
-          "reliability": 41,
-          "overtaking": 48
+          "quali": 83,
+          "race": 75,
+          "form": 86,
+          "reliability": 44,
+          "overtaking": 47
         },
         "trackFit": {
-          "street": 56,
-          "high_speed": 46,
-          "technical": 48
+          "street": 53,
+          "high_speed": 49,
+          "technical": 47
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 1,
-          "podiums": 5,
-          "points": 215.0,
-          "avgQuali": 4.3,
-          "avgFinish": 6.5,
+          "podiums": 4,
+          "points": 155.0,
+          "avgQuali": 4.6,
+          "avgFinish": 6.2,
           "bestFinish": 1,
-          "dnfs": 3,
-          "avgGained": -0.2,
-          "avgPitStop": 24.32
+          "dnfs": 2,
+          "avgGained": -0.3,
+          "avgPitStop": 23.33
         },
         "trackHistory": {
           "bahrain": 9.0,
           "jeddah": 4.3,
           "albert_park": 8.2,
-          "baku": 4.5,
+          "baku": 4.7,
           "miami": 6.2,
           "monaco": 6.5,
           "catalunya": 8.5,
@@ -853,8 +837,8 @@
           "hungaroring": 4.8,
           "spa": 2.8,
           "zandvoort": 11.5,
-          "monza": 7.8,
-          "marina_bay": 4.2,
+          "monza": 3.0,
+          "marina_bay": 5.0,
           "suzuka": 3.8,
           "losail": 5.0,
           "americas": 8.0,
@@ -863,34 +847,32 @@
           "vegas": 3.3,
           "yas_marina": 3.0,
           "shanghai": 8.7,
-          "imola": 4.5,
-          "madring": 4.0,
-          "sepang": 4.0
+          "imola": 4.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 22,
-            "dnf": true
-          },
-          {
-            "race": "Spanish",
-            "position": 4,
+            "race": "Austrian",
+            "position": 8,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 4,
+            "race": "British",
+            "position": 1,
             "dnf": false
           },
           {
-            "race": "Bahrain in Malaysia",
-            "position": 4,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
+            "race": "Belgian",
             "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 5,
             "dnf": false
           }
         ]
@@ -901,33 +883,33 @@
         "team": "Ferrari",
         "ratings": {
           "quali": 85,
-          "race": 80,
-          "form": 64,
-          "reliability": 80,
-          "overtaking": 51
+          "race": 87,
+          "form": 85,
+          "reliability": 100,
+          "overtaking": 57
         },
         "trackFit": {
-          "street": 52,
-          "high_speed": 52,
-          "technical": 45
+          "street": 55,
+          "high_speed": 50,
+          "technical": 44
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 1,
-          "podiums": 6,
-          "points": 229.0,
+          "podiums": 5,
+          "points": 183.0,
           "avgQuali": 4.2,
-          "avgFinish": 5.2,
+          "avgFinish": 3.8,
           "bestFinish": 1,
-          "dnfs": 1,
-          "avgGained": 0.1,
+          "dnfs": 0,
+          "avgGained": 0.7,
           "avgPitStop": 23.69
         },
         "trackHistory": {
           "bahrain": 5.7,
           "jeddah": 7.0,
           "albert_park": 8.5,
-          "baku": 7.2,
+          "baku": 7.7,
           "miami": 6.5,
           "monaco": 4.5,
           "catalunya": 3.0,
@@ -937,8 +919,8 @@
           "hungaroring": 6.0,
           "spa": 4.0,
           "zandvoort": 9.5,
-          "monza": 5.8,
-          "marina_bay": 5.8,
+          "monza": 5.7,
+          "marina_bay": 5.7,
           "suzuka": 6.8,
           "losail": 14.3,
           "americas": 14.3,
@@ -947,34 +929,32 @@
           "vegas": 5.7,
           "yas_marina": 7.0,
           "shanghai": 10.3,
-          "imola": 5.0,
-          "madring": 22.0,
-          "sepang": 3.0
+          "imola": 5.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 6,
+            "race": "Austrian",
+            "position": 5,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 22,
-            "dnf": true
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 6,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "British",
             "position": 3,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 6,
+            "race": "Belgian",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 5,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 4,
             "dnf": false
           }
         ]
@@ -985,33 +965,33 @@
         "team": "Haas F1 Team",
         "ratings": {
           "quali": 32,
-          "race": 41,
-          "form": 45,
-          "reliability": 80,
-          "overtaking": 64
+          "race": 39,
+          "form": 28,
+          "reliability": 72,
+          "overtaking": 68
         },
         "trackFit": {
-          "street": 59,
-          "high_speed": 45,
+          "street": 58,
+          "high_speed": 47,
           "technical": 45
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 7.0,
+          "points": 3.0,
           "avgQuali": 15.2,
-          "avgFinish": 13.4,
-          "bestFinish": 8,
+          "avgFinish": 13.8,
+          "bestFinish": 9,
           "dnfs": 1,
-          "avgGained": 1.4,
-          "avgPitStop": 26.11
+          "avgGained": 1.8,
+          "avgPitStop": 26.14
         },
         "trackHistory": {
           "bahrain": 14.3,
           "jeddah": 11.7,
           "albert_park": 13.5,
-          "baku": 13.0,
+          "baku": 14.7,
           "miami": 11.0,
           "monaco": 9.0,
           "catalunya": 11.8,
@@ -1022,7 +1002,7 @@
           "spa": 12.2,
           "zandvoort": 13.5,
           "monza": 16.0,
-          "marina_bay": 15.5,
+          "marina_bay": 16.3,
           "suzuka": 13.0,
           "losail": 14.0,
           "americas": 17.0,
@@ -1031,35 +1011,33 @@
           "vegas": 10.0,
           "yas_marina": 9.5,
           "shanghai": 10.0,
-          "imola": 17.0,
-          "madring": 11.0,
-          "sepang": 15.0
+          "imola": 17.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
             "position": 16,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 11,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 8,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 15,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
+            "race": "British",
             "position": 13,
             "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 16,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 19,
+            "dnf": true
           }
         ]
       },
@@ -1068,32 +1046,32 @@
         "code": "BEA",
         "team": "Haas F1 Team",
         "ratings": {
-          "quali": 35,
-          "race": 38,
-          "form": 42,
-          "reliability": 22,
-          "overtaking": 65
+          "quali": 33,
+          "race": 37,
+          "form": 29,
+          "reliability": 0,
+          "overtaking": 69
         },
         "trackFit": {
           "street": 55,
-          "high_speed": 47,
-          "technical": 47
+          "high_speed": 48,
+          "technical": 46
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 23.0,
-          "avgQuali": 14.7,
-          "avgFinish": 14.0,
+          "points": 18.0,
+          "avgQuali": 15.2,
+          "avgFinish": 14.3,
           "bestFinish": 5,
           "dnfs": 4,
-          "avgGained": 1.5,
-          "avgPitStop": 26.31
+          "avgGained": 1.9,
+          "avgPitStop": 26.17
         },
         "trackHistory": {
           "jeddah": 10.0,
-          "baku": 10.3,
+          "baku": 11.0,
           "interlagos": 9.0,
           "albert_park": 10.5,
           "shanghai": 6.5,
@@ -1109,41 +1087,39 @@
           "spa": 12.5,
           "hungaroring": 19.5,
           "zandvoort": 13.5,
-          "monza": 13.5,
-          "marina_bay": 10.5,
+          "monza": 12.0,
+          "marina_bay": 9.0,
           "americas": 9.0,
           "rodriguez": 4.0,
           "vegas": 10.0,
           "losail": 19.0,
-          "yas_marina": 12.0,
-          "madring": 16.0,
-          "sepang": 14.0
+          "yas_marina": 12.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 15,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 16,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 9,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "Austrian",
             "position": 14,
             "dnf": false
           },
           {
-            "race": "Singapore",
+            "race": "British",
             "position": 12,
             "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 19,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 21,
+            "dnf": true
           }
         ]
       },
@@ -1152,34 +1128,34 @@
         "code": "NOR",
         "team": "McLaren",
         "ratings": {
-          "quali": 83,
+          "quali": 84,
           "race": 68,
-          "form": 68,
-          "reliability": 22,
-          "overtaking": 58
+          "form": 86,
+          "reliability": 17,
+          "overtaking": 62
         },
         "trackFit": {
           "street": 33,
           "high_speed": 56,
-          "technical": 63
+          "technical": 62
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 2,
-          "podiums": 5,
-          "points": 201.0,
-          "avgQuali": 4.6,
+          "podiums": 4,
+          "points": 159.0,
+          "avgQuali": 4.4,
           "avgFinish": 7.7,
           "bestFinish": 1,
-          "dnfs": 4,
-          "avgGained": 0.8,
-          "avgPitStop": 24.21
+          "dnfs": 3,
+          "avgGained": 1.2,
+          "avgPitStop": 23.08
         },
         "trackHistory": {
           "bahrain": 8.7,
           "jeddah": 9.7,
           "albert_park": 3.8,
-          "baku": 9.8,
+          "baku": 6.7,
           "miami": 5.5,
           "monaco": 8.2,
           "catalunya": 6.0,
@@ -1189,8 +1165,8 @@
           "hungaroring": 1.5,
           "spa": 5.2,
           "zandvoort": 6.8,
-          "monza": 4.2,
-          "marina_bay": 2.5,
+          "monza": 4.3,
+          "marina_bay": 2.0,
           "suzuka": 3.5,
           "losail": 5.7,
           "americas": 2.7,
@@ -1199,34 +1175,32 @@
           "vegas": 15.0,
           "yas_marina": 3.0,
           "shanghai": 8.0,
-          "imola": 2.0,
-          "madring": 3.0,
-          "sepang": 9.0
+          "imola": 2.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "British",
             "position": 4,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 3,
+            "race": "Belgian",
+            "position": 7,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 19,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 9,
+            "race": "Hungarian",
+            "position": 1,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 4,
+            "race": "Dutch",
+            "position": 1,
             "dnf": false
           }
         ]
@@ -1236,34 +1210,34 @@
         "code": "PIA",
         "team": "McLaren",
         "ratings": {
-          "quali": 78,
-          "race": 63,
-          "form": 69,
-          "reliability": 41,
+          "quali": 77,
+          "race": 61,
+          "form": 61,
+          "reliability": 17,
           "overtaking": 52
         },
         "trackFit": {
           "street": 40,
           "high_speed": 58,
-          "technical": 53
+          "technical": 52
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 2,
-          "points": 138.0,
-          "avgQuali": 5.6,
-          "avgFinish": 8.8,
+          "points": 106.0,
+          "avgQuali": 5.8,
+          "avgFinish": 9.2,
           "bestFinish": 2,
           "dnfs": 3,
           "avgGained": 0.2,
-          "avgPitStop": 25.15
+          "avgPitStop": 25.11
         },
         "trackHistory": {
           "bahrain": 9.7,
           "jeddah": 6.7,
           "albert_park": 10.5,
-          "baku": 11.5,
+          "baku": 10.7,
           "miami": 9.0,
           "monaco": 4.8,
           "catalunya": 6.5,
@@ -1273,8 +1247,8 @@
           "hungaroring": 7.0,
           "spa": 7.0,
           "zandvoort": 5.0,
-          "monza": 5.5,
-          "marina_bay": 4.8,
+          "monza": 5.7,
+          "marina_bay": 4.7,
           "suzuka": 4.0,
           "losail": 2.3,
           "americas": 9.0,
@@ -1283,34 +1257,32 @@
           "vegas": 12.3,
           "yas_marina": 6.0,
           "shanghai": 9.3,
-          "imola": 3.5,
-          "madring": 8.0,
-          "sepang": 6.0
+          "imola": 3.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "British",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
             "position": 5,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 8,
-            "dnf": false
+            "race": "Hungarian",
+            "position": 20,
+            "dnf": true
           },
           {
-            "race": "Azerbaijan",
-            "position": 14,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "Dutch",
             "position": 6,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
-            "position": 5,
             "dnf": false
           }
         ]
@@ -1320,34 +1292,34 @@
         "code": "RUS",
         "team": "Mercedes",
         "ratings": {
-          "quali": 88,
-          "race": 72,
-          "form": 70,
-          "reliability": 41,
-          "overtaking": 52
+          "quali": 90,
+          "race": 73,
+          "form": 71,
+          "reliability": 44,
+          "overtaking": 42
         },
         "trackFit": {
-          "street": 48,
-          "high_speed": 44,
-          "technical": 59
+          "street": 46,
+          "high_speed": 46,
+          "technical": 58
         },
         "season": {
-          "starts": 17,
-          "wins": 3,
-          "podiums": 8,
-          "points": 238.0,
-          "avgQuali": 3.5,
-          "avgFinish": 6.8,
+          "starts": 12,
+          "wins": 2,
+          "podiums": 6,
+          "points": 183.0,
+          "avgQuali": 3.0,
+          "avgFinish": 6.6,
           "bestFinish": 1,
-          "dnfs": 3,
-          "avgGained": 0.2,
-          "avgPitStop": 23.68
+          "dnfs": 2,
+          "avgGained": -0.8,
+          "avgPitStop": 22.81
         },
         "trackHistory": {
           "bahrain": 4.7,
           "jeddah": 5.0,
           "albert_park": 9.8,
-          "baku": 3.5,
+          "baku": 4.3,
           "miami": 4.8,
           "monaco": 8.2,
           "catalunya": 3.2,
@@ -1357,8 +1329,8 @@
           "hungaroring": 6.0,
           "spa": 13.2,
           "zandvoort": 7.8,
-          "monza": 4.8,
-          "marina_bay": 7.5,
+          "monza": 5.7,
+          "marina_bay": 7.0,
           "suzuka": 5.8,
           "losail": 4.7,
           "americas": 5.7,
@@ -1367,34 +1339,32 @@
           "vegas": 3.7,
           "yas_marina": 4.3,
           "shanghai": 3.7,
-          "imola": 7.0,
-          "madring": 5.0,
-          "sepang": 20.0
+          "imola": 7.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 2,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 5,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
+            "race": "Austrian",
             "position": 1,
             "dnf": false
           },
           {
-            "race": "Bahrain in Malaysia",
-            "position": 20,
+            "race": "British",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 22,
             "dnf": true
           },
           {
-            "race": "Singapore",
-            "position": 9,
+            "race": "Hungarian",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 3,
             "dnf": false
           }
         ]
@@ -1404,28 +1374,28 @@
         "code": "ANT",
         "team": "Mercedes",
         "ratings": {
-          "quali": 89,
-          "race": 88,
-          "form": 93,
-          "reliability": 80,
-          "overtaking": 59
+          "quali": 95,
+          "race": 86,
+          "form": 82,
+          "reliability": 72,
+          "overtaking": 44
         },
         "trackFit": {
-          "street": 74,
-          "high_speed": 46,
-          "technical": 24
+          "street": 77,
+          "high_speed": 44,
+          "technical": 30
         },
         "season": {
-          "starts": 17,
-          "wins": 8,
-          "podiums": 14,
-          "points": 340.0,
-          "avgQuali": 3.4,
-          "avgFinish": 3.5,
+          "starts": 12,
+          "wins": 6,
+          "podiums": 10,
+          "points": 242.0,
+          "avgQuali": 2.0,
+          "avgFinish": 3.9,
           "bestFinish": 1,
           "dnfs": 1,
-          "avgGained": 0.9,
-          "avgPitStop": 24.1
+          "avgGained": -0.6,
+          "avgPitStop": 23.75
         },
         "trackHistory": {
           "albert_park": 3.0,
@@ -1443,42 +1413,40 @@
           "spa": 8.5,
           "hungaroring": 6.5,
           "zandvoort": 9.0,
-          "monza": 5.0,
-          "baku": 4.5,
-          "marina_bay": 4.0,
+          "monza": 9.0,
+          "baku": 4.0,
+          "marina_bay": 5.0,
           "americas": 13.0,
           "rodriguez": 6.0,
           "interlagos": 2.0,
           "vegas": 3.0,
           "losail": 5.0,
-          "yas_marina": 15.0,
-          "madring": 1.0,
-          "sepang": 2.0
+          "yas_marina": 15.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 1,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 1,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 5,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 2,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
+            "race": "Austrian",
             "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "British",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 2,
             "dnf": false
           }
         ]
@@ -1488,28 +1456,28 @@
         "code": "LIN",
         "team": "Racing Bulls",
         "ratings": {
-          "quali": 51,
-          "race": 54,
-          "form": 58,
-          "reliability": 80,
-          "overtaking": 62
+          "quali": 53,
+          "race": 52,
+          "form": 59,
+          "reliability": 72,
+          "overtaking": 59
         },
         "trackFit": {
-          "street": 43,
-          "high_speed": 58,
-          "technical": 50
+          "street": 39,
+          "high_speed": 59,
+          "technical": 53
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 38.0,
-          "avgQuali": 11.3,
-          "avgFinish": 10.7,
+          "points": 25.0,
+          "avgQuali": 10.9,
+          "avgFinish": 11.1,
           "bestFinish": 6,
           "dnfs": 1,
-          "avgGained": 1.2,
-          "avgPitStop": 23.56
+          "avgGained": 0.9,
+          "avgPitStop": 22.6
         },
         "trackHistory": {
           "albert_park": 8.0,
@@ -1523,37 +1491,32 @@
           "silverstone": 7.0,
           "spa": 9.0,
           "hungaroring": 10.0,
-          "zandvoort": 12.0,
-          "monza": 8.0,
-          "madring": 9.0,
-          "baku": 7.0,
-          "sepang": 10.0,
-          "marina_bay": 15.0
+          "zandvoort": 12.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 8,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 9,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 7,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "Austrian",
             "position": 10,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 15,
+            "race": "British",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 9,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 10,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 12,
             "dnf": false
           }
         ]
@@ -1563,33 +1526,33 @@
         "code": "LAW",
         "team": "Racing Bulls",
         "ratings": {
-          "quali": 54,
+          "quali": 55,
           "race": 61,
-          "form": 61,
-          "reliability": 80,
-          "overtaking": 75
+          "form": 65,
+          "reliability": 72,
+          "overtaking": 70
         },
         "trackFit": {
-          "street": 49,
-          "high_speed": 53,
-          "technical": 48
+          "street": 45,
+          "high_speed": 54,
+          "technical": 50
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 75.0,
-          "avgQuali": 10.6,
+          "points": 51.0,
+          "avgQuali": 10.5,
           "avgFinish": 9.2,
           "bestFinish": 5,
           "dnfs": 1,
-          "avgGained": 2.5,
-          "avgPitStop": 23.96
+          "avgGained": 2.0,
+          "avgPitStop": 22.55
         },
         "trackHistory": {
           "zandvoort": 10.7,
-          "monza": 13.0,
-          "marina_bay": 10.3,
+          "monza": 12.5,
+          "marina_bay": 12.0,
           "suzuka": 12.3,
           "losail": 13.3,
           "americas": 10.0,
@@ -1610,33 +1573,31 @@
           "silverstone": 12.5,
           "spa": 10.0,
           "hungaroring": 8.0,
-          "baku": 8.5,
-          "madring": 6.0,
-          "sepang": 7.0
+          "baku": 5.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 14,
+            "race": "Austrian",
+            "position": 9,
             "dnf": false
           },
           {
-            "race": "Spanish",
+            "race": "British",
             "position": 6,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
+            "race": "Belgian",
             "position": 12,
             "dnf": false
           },
           {
-            "race": "Bahrain in Malaysia",
-            "position": 7,
+            "race": "Hungarian",
+            "position": 8,
             "dnf": false
           },
           {
-            "race": "Singapore",
+            "race": "Dutch",
             "position": 7,
             "dnf": false
           }
@@ -1647,28 +1608,28 @@
         "code": "HAD",
         "team": "Red Bull Racing",
         "ratings": {
-          "quali": 64,
-          "race": 65,
-          "form": 76,
-          "reliability": 52,
-          "overtaking": 82
+          "quali": 65,
+          "race": 62,
+          "form": 77,
+          "reliability": 39,
+          "overtaking": 72
         },
         "trackFit": {
-          "street": 47,
-          "high_speed": 48,
-          "technical": 56
+          "street": 44,
+          "high_speed": 47,
+          "technical": 59
         },
         "season": {
-          "starts": 14,
+          "starts": 11,
           "wins": 0,
-          "podiums": 2,
-          "points": 97.0,
-          "avgQuali": 8.6,
-          "avgFinish": 8.4,
+          "podiums": 1,
+          "points": 71.0,
+          "avgQuali": 8.3,
+          "avgFinish": 9.0,
           "bestFinish": 3,
           "dnfs": 2,
-          "avgGained": 3.2,
-          "avgPitStop": 25.05
+          "avgGained": 2.2,
+          "avgPitStop": 25.26
         },
         "trackHistory": {
           "albert_park": 20.0,
@@ -1687,17 +1648,31 @@
           "hungaroring": 8.5,
           "zandvoort": 3.0,
           "monza": 10.0,
-          "baku": 6.5,
-          "marina_bay": 10.5,
+          "baku": 10.0,
+          "marina_bay": 11.0,
           "americas": 16.0,
           "rodriguez": 13.0,
           "interlagos": 8.0,
           "vegas": 6.0,
           "losail": 18.0,
-          "yas_marina": 17.0,
-          "sepang": 5.0
+          "yas_marina": 17.0
         },
         "recentFinishes": [
+          {
+            "race": "Barcelona-Catalunya",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Austrian",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "British",
+            "position": 5,
+            "dnf": false
+          },
           {
             "race": "Belgian",
             "position": 6,
@@ -1707,21 +1682,6 @@
             "race": "Hungarian",
             "position": 6,
             "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 3,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 5,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
-            "position": 10,
-            "dnf": false
           }
         ]
       },
@@ -1730,34 +1690,34 @@
         "code": "VER",
         "team": "Red Bull Racing",
         "ratings": {
-          "quali": 81,
-          "race": 71,
-          "form": 96,
-          "reliability": 22,
-          "overtaking": 71
+          "quali": 78,
+          "race": 60,
+          "form": 58,
+          "reliability": 0,
+          "overtaking": 78
         },
         "trackFit": {
           "street": 50,
           "high_speed": 52,
-          "technical": 47
+          "technical": 48
         },
         "season": {
-          "starts": 17,
-          "wins": 2,
-          "podiums": 9,
-          "points": 221.0,
-          "avgQuali": 5.0,
-          "avgFinish": 7.2,
-          "bestFinish": 1,
+          "starts": 12,
+          "wins": 0,
+          "podiums": 4,
+          "points": 112.0,
+          "avgQuali": 5.5,
+          "avgFinish": 9.4,
+          "bestFinish": 2,
           "dnfs": 4,
-          "avgGained": 2.1,
-          "avgPitStop": 23.67
+          "avgGained": 2.8,
+          "avgPitStop": 23.08
         },
         "trackHistory": {
           "bahrain": 2.7,
           "jeddah": 1.7,
           "albert_park": 7.0,
-          "baku": 2.5,
+          "baku": 2.7,
           "miami": 3.0,
           "monaco": 8.2,
           "catalunya": 4.0,
@@ -1767,8 +1727,8 @@
           "hungaroring": 4.2,
           "spa": 3.0,
           "zandvoort": 6.8,
-          "monza": 2.8,
-          "marina_bay": 2.5,
+          "monza": 2.7,
+          "marina_bay": 3.0,
           "suzuka": 2.8,
           "losail": 1.0,
           "americas": 1.7,
@@ -1777,35 +1737,33 @@
           "vegas": 2.3,
           "yas_marina": 2.7,
           "shanghai": 7.0,
-          "imola": 1.0,
-          "madring": 2.0,
-          "sepang": 1.0
+          "imola": 1.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "British",
+            "position": 20,
+            "dnf": true
+          },
+          {
+            "race": "Belgian",
             "position": 3,
             "dnf": false
           },
           {
-            "race": "Spanish",
+            "race": "Hungarian",
             "position": 2,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 2,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 1,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
-            "position": 1,
-            "dnf": false
+            "race": "Dutch",
+            "position": 22,
+            "dnf": true
           }
         ]
       },
@@ -1814,34 +1772,34 @@
         "code": "ALB",
         "team": "Williams",
         "ratings": {
-          "quali": 25,
-          "race": 24,
-          "form": 18,
+          "quali": 26,
+          "race": 26,
+          "form": 22,
           "reliability": 0,
-          "overtaking": 65
+          "overtaking": 64
         },
         "trackFit": {
-          "street": 51,
-          "high_speed": 51,
-          "technical": 48
+          "street": 52,
+          "high_speed": 52,
+          "technical": 46
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
           "points": 5.0,
-          "avgQuali": 16.6,
-          "avgFinish": 17.0,
+          "avgQuali": 16.5,
+          "avgFinish": 16.5,
           "bestFinish": 8,
-          "dnfs": 7,
-          "avgGained": 1.5,
-          "avgPitStop": 25.91
+          "dnfs": 4,
+          "avgGained": 1.4,
+          "avgPitStop": 25.39
         },
         "trackHistory": {
           "bahrain": 12.3,
           "jeddah": 13.0,
           "albert_park": 11.8,
-          "baku": 13.0,
+          "baku": 10.7,
           "miami": 11.8,
           "monaco": 10.0,
           "catalunya": 17.8,
@@ -1851,8 +1809,8 @@
           "hungaroring": 14.2,
           "spa": 11.8,
           "zandvoort": 11.0,
-          "monza": 10.0,
-          "marina_bay": 15.8,
+          "monza": 7.7,
+          "marina_bay": 15.0,
           "suzuka": 16.2,
           "losail": 13.0,
           "americas": 13.0,
@@ -1861,34 +1819,32 @@
           "vegas": 15.7,
           "yas_marina": 13.7,
           "shanghai": 13.7,
-          "imola": 12.5,
-          "madring": 15.0,
-          "sepang": 21.0
+          "imola": 12.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
             "position": 17,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 15,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 20,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "British",
             "position": 21,
             "dnf": true
           },
           {
-            "race": "Singapore",
-            "position": 18,
+            "race": "Belgian",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 17,
             "dnf": true
           }
         ]
@@ -1898,34 +1854,34 @@
         "code": "SAI",
         "team": "Williams",
         "ratings": {
-          "quali": 34,
-          "race": 36,
-          "form": 35,
-          "reliability": 41,
-          "overtaking": 69
+          "quali": 31,
+          "race": 37,
+          "form": 22,
+          "reliability": 44,
+          "overtaking": 80
         },
         "trackFit": {
-          "street": 57,
+          "street": 59,
           "high_speed": 40,
-          "technical": 54
+          "technical": 52
         },
         "season": {
-          "starts": 17,
+          "starts": 12,
           "wins": 0,
           "podiums": 0,
-          "points": 7.0,
-          "avgQuali": 14.9,
-          "avgFinish": 14.4,
+          "points": 6.0,
+          "avgQuali": 15.5,
+          "avgFinish": 14.3,
           "bestFinish": 9,
-          "dnfs": 3,
-          "avgGained": 1.9,
-          "avgPitStop": 25.61
+          "dnfs": 2,
+          "avgGained": 3.0,
+          "avgPitStop": 24.37
         },
         "trackHistory": {
           "bahrain": 8.7,
           "jeddah": 7.0,
           "albert_park": 11.5,
-          "baku": 9.0,
+          "baku": 8.7,
           "miami": 7.0,
           "monaco": 9.2,
           "catalunya": 9.2,
@@ -1935,8 +1891,8 @@
           "hungaroring": 11.5,
           "spa": 14.8,
           "zandvoort": 9.8,
-          "monza": 7.8,
-          "marina_bay": 8.0,
+          "monza": 6.0,
+          "marina_bay": 6.0,
           "suzuka": 9.5,
           "losail": 9.7,
           "americas": 8.3,
@@ -1945,34 +1901,32 @@
           "vegas": 4.7,
           "yas_marina": 11.0,
           "shanghai": 8.0,
-          "imola": 6.5,
-          "madring": 19.0,
-          "sepang": 17.0
+          "imola": 6.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 13,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 19,
+            "race": "Austrian",
+            "position": 20,
             "dnf": true
           },
           {
-            "race": "Azerbaijan",
-            "position": 10,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "British",
             "position": 17,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 14,
+            "race": "Belgian",
+            "position": 16,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 18,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 16,
             "dnf": false
           }
         ]
@@ -1982,34 +1936,34 @@
       "23": {
         "name": "Alpine",
         "ratings": {
-          "quali": 50,
-          "race": 50,
-          "form": 42,
-          "reliability": 61,
-          "overtaking": 62
+          "quali": 46,
+          "race": 53,
+          "form": 48,
+          "reliability": 86,
+          "overtaking": 69
         },
         "trackFit": {
-          "street": 49,
-          "high_speed": 53,
+          "street": 50,
+          "high_speed": 52,
           "technical": 48
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 0,
           "podiums": 0,
-          "points": 68.0,
-          "avgQuali": 11.5,
-          "avgFinish": 11.6,
+          "points": 54.0,
+          "avgQuali": 12.3,
+          "avgFinish": 10.9,
           "bestFinish": 6,
-          "dnfs": 4,
-          "avgGained": 1.2,
-          "avgPitStop": 23.83
+          "dnfs": 1,
+          "avgGained": 1.9,
+          "avgPitStop": 22.88
         },
         "trackHistory": {
           "bahrain": 13.8,
           "jeddah": 14.5,
           "albert_park": 13.8,
-          "baku": 16.0,
+          "baku": 15.5,
           "miami": 12.5,
           "monaco": 11.4,
           "catalunya": 9.6,
@@ -2019,8 +1973,8 @@
           "hungaroring": 17.6,
           "spa": 11.4,
           "zandvoort": 11.1,
-          "monza": 14.0,
-          "marina_bay": 15.1,
+          "monza": 16.0,
+          "marina_bay": 14.8,
           "suzuka": 12.6,
           "losail": 12.3,
           "americas": 15.0,
@@ -2029,34 +1983,32 @@
           "vegas": 13.3,
           "yas_marina": 14.3,
           "shanghai": 12.2,
-          "imola": 14.8,
-          "madring": 9.5,
-          "sepang": 14.5
+          "imola": 14.8
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 7,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 7,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 17,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "Austrian",
             "position": 13,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 11,
+            "race": "British",
+            "position": 9,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 10,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 12,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 10,
             "dnf": false
           }
         ]
@@ -2064,34 +2016,34 @@
       "24": {
         "name": "Aston Martin",
         "ratings": {
-          "quali": 12,
-          "race": 22,
-          "form": 20,
+          "quali": 9,
+          "race": 23,
+          "form": 24,
           "reliability": 0,
-          "overtaking": 91
+          "overtaking": 95
         },
         "trackFit": {
-          "street": 49,
-          "high_speed": 48,
-          "technical": 54
+          "street": 52,
+          "high_speed": 47,
+          "technical": 51
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 0,
           "podiums": 0,
-          "points": 7.0,
-          "avgQuali": 19.6,
-          "avgFinish": 17.4,
-          "bestFinish": 8,
-          "dnfs": 17,
-          "avgGained": 4.1,
-          "avgPitStop": 25.97
+          "points": 3.0,
+          "avgQuali": 20.1,
+          "avgFinish": 17.2,
+          "bestFinish": 9,
+          "dnfs": 11,
+          "avgGained": 4.5,
+          "avgPitStop": 25.14
         },
         "trackHistory": {
           "bahrain": 10.0,
           "jeddah": 12.3,
           "albert_park": 9.9,
-          "baku": 13.9,
+          "baku": 11.3,
           "miami": 13.0,
           "monaco": 13.6,
           "catalunya": 12.7,
@@ -2101,8 +2053,8 @@
           "hungaroring": 9.9,
           "spa": 12.9,
           "zandvoort": 10.0,
-          "monza": 16.6,
-          "marina_bay": 14.1,
+          "monza": 15.3,
+          "marina_bay": 12.8,
           "suzuka": 14.2,
           "losail": 11.0,
           "americas": 12.2,
@@ -2111,34 +2063,32 @@
           "vegas": 11.5,
           "yas_marina": 9.3,
           "shanghai": 13.8,
-          "imola": 13.5,
-          "madring": 19.0,
-          "sepang": 10.0
+          "imola": 13.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 20,
-            "dnf": true
-          },
-          {
-            "race": "Spanish",
-            "position": 17,
+            "race": "Austrian",
+            "position": 18,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 21,
-            "dnf": true
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 8,
+            "race": "British",
+            "position": 18,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 16,
+            "race": "Belgian",
+            "position": 19,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 13,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 9,
             "dnf": false
           }
         ]
@@ -2146,34 +2096,34 @@
       "2640": {
         "name": "Audi",
         "ratings": {
-          "quali": 45,
+          "quali": 46,
           "race": 43,
-          "form": 43,
-          "reliability": 41,
-          "overtaking": 58
+          "form": 50,
+          "reliability": 31,
+          "overtaking": 62
         },
         "trackFit": {
-          "street": 49,
+          "street": 48,
           "high_speed": 53,
-          "technical": 48
+          "technical": 49
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 0,
           "podiums": 0,
-          "points": 23.0,
-          "avgQuali": 12.6,
+          "points": 16.0,
+          "avgQuali": 12.2,
           "avgFinish": 13.0,
           "bestFinish": 8,
-          "dnfs": 6,
-          "avgGained": 0.8,
-          "avgPitStop": 24.92
+          "dnfs": 5,
+          "avgGained": 1.2,
+          "avgPitStop": 24.06
         },
         "trackHistory": {
           "bahrain": 15.3,
           "jeddah": 16.5,
           "albert_park": 12.9,
-          "baku": 14.8,
+          "baku": 15.7,
           "miami": 15.2,
           "monaco": 13.4,
           "catalunya": 13.1,
@@ -2183,8 +2133,8 @@
           "hungaroring": 12.8,
           "spa": 12.6,
           "zandvoort": 15.1,
-          "monza": 13.6,
-          "marina_bay": 15.9,
+          "monza": 14.3,
+          "marina_bay": 16.2,
           "suzuka": 15.5,
           "losail": 11.5,
           "americas": 14.5,
@@ -2193,33 +2143,31 @@
           "vegas": 14.5,
           "yas_marina": 14.5,
           "shanghai": 15.8,
-          "imola": 15.8,
-          "madring": 11.5,
-          "sepang": 14.5
+          "imola": 15.8
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
             "position": 11,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 10,
+            "race": "British",
+            "position": 8,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 11,
+            "race": "Belgian",
+            "position": 8,
             "dnf": false
           },
           {
-            "race": "Bahrain in Malaysia",
-            "position": 11,
+            "race": "Hungarian",
+            "position": 9,
             "dnf": false
           },
           {
-            "race": "Singapore",
+            "race": "Dutch",
             "position": 8,
             "dnf": false
           }
@@ -2228,28 +2176,28 @@
       "2641": {
         "name": "Cadillac",
         "ratings": {
-          "quali": 9,
+          "quali": 10,
           "race": 20,
-          "form": 18,
+          "form": 15,
           "reliability": 0,
-          "overtaking": 73
+          "overtaking": 85
         },
         "trackFit": {
           "street": 54,
-          "high_speed": 42,
-          "technical": 54
+          "high_speed": 44,
+          "technical": 53
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 0,
           "podiums": 0,
           "points": 0.0,
-          "avgQuali": 20.1,
-          "avgFinish": 17.9,
+          "avgQuali": 19.9,
+          "avgFinish": 17.7,
           "bestFinish": 13,
-          "dnfs": 13,
-          "avgGained": 2.3,
-          "avgPitStop": 26.1
+          "dnfs": 10,
+          "avgGained": 3.5,
+          "avgPitStop": 24.96
         },
         "trackHistory": {
           "albert_park": 17.5,
@@ -2263,37 +2211,32 @@
           "silverstone": 15.0,
           "spa": 19.5,
           "hungaroring": 21.5,
-          "zandvoort": 16.5,
-          "monza": 18.5,
-          "madring": 19.0,
-          "baku": 15.5,
-          "sepang": 20.5,
-          "marina_bay": 18.0
+          "zandvoort": 16.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
+            "position": 21,
+            "dnf": true
+          },
+          {
+            "race": "British",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
             "position": 18,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 18,
-            "dnf": false
+            "race": "Hungarian",
+            "position": 21,
+            "dnf": true
           },
           {
-            "race": "Azerbaijan",
+            "race": "Dutch",
             "position": 15,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 19,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
-            "position": 17,
             "dnf": false
           }
         ]
@@ -2301,34 +2244,34 @@
       "25": {
         "name": "Ferrari",
         "ratings": {
-          "quali": 85,
-          "race": 77,
-          "form": 67,
-          "reliability": 61,
-          "overtaking": 50
+          "quali": 84,
+          "race": 81,
+          "form": 85,
+          "reliability": 72,
+          "overtaking": 52
         },
         "trackFit": {
-          "street": 52,
-          "high_speed": 47,
+          "street": 53,
+          "high_speed": 48,
           "technical": 50
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 2,
-          "podiums": 11,
-          "points": 444.0,
-          "avgQuali": 4.2,
-          "avgFinish": 5.8,
+          "podiums": 9,
+          "points": 338.0,
+          "avgQuali": 4.4,
+          "avgFinish": 5.0,
           "bestFinish": 1,
-          "dnfs": 4,
-          "avgGained": 0.0,
-          "avgPitStop": 24.02
+          "dnfs": 2,
+          "avgGained": 0.2,
+          "avgPitStop": 23.52
         },
         "trackHistory": {
           "bahrain": 6.5,
           "jeddah": 5.5,
           "albert_park": 7.5,
-          "baku": 6.9,
+          "baku": 7.5,
           "miami": 6.1,
           "monaco": 5.5,
           "catalunya": 6.5,
@@ -2338,8 +2281,8 @@
           "hungaroring": 6.2,
           "spa": 5.9,
           "zandvoort": 10.0,
-          "monza": 6.2,
-          "marina_bay": 4.9,
+          "monza": 3.7,
+          "marina_bay": 5.2,
           "suzuka": 4.6,
           "losail": 8.8,
           "americas": 5.5,
@@ -2348,34 +2291,32 @@
           "vegas": 4.5,
           "yas_marina": 6.2,
           "shanghai": 8.8,
-          "imola": 4.5,
-          "madring": 13.0,
-          "sepang": 3.5
+          "imola": 4.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 6,
+            "race": "Austrian",
+            "position": 5,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 4,
+            "race": "British",
+            "position": 1,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 4,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 3,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
+            "race": "Belgian",
             "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 4,
             "dnf": false
           }
         ]
@@ -2383,34 +2324,34 @@
       "26": {
         "name": "Haas F1 Team",
         "ratings": {
-          "quali": 34,
-          "race": 39,
-          "form": 43,
-          "reliability": 51,
-          "overtaking": 64
+          "quali": 32,
+          "race": 38,
+          "form": 28,
+          "reliability": 31,
+          "overtaking": 68
         },
         "trackFit": {
-          "street": 55,
+          "street": 54,
           "high_speed": 46,
           "technical": 50
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 0,
           "podiums": 0,
-          "points": 30.0,
-          "avgQuali": 14.9,
-          "avgFinish": 13.7,
+          "points": 21.0,
+          "avgQuali": 15.2,
+          "avgFinish": 14.0,
           "bestFinish": 5,
           "dnfs": 5,
-          "avgGained": 1.4,
-          "avgPitStop": 26.2
+          "avgGained": 1.8,
+          "avgPitStop": 26.15
         },
         "trackHistory": {
           "bahrain": 12.3,
           "jeddah": 11.8,
           "albert_park": 11.0,
-          "baku": 11.8,
+          "baku": 12.8,
           "miami": 13.8,
           "monaco": 15.4,
           "catalunya": 15.5,
@@ -2420,8 +2361,8 @@
           "hungaroring": 16.2,
           "spa": 15.2,
           "zandvoort": 14.1,
-          "monza": 15.0,
-          "marina_bay": 12.9,
+          "monza": 14.8,
+          "marina_bay": 13.0,
           "suzuka": 14.1,
           "losail": 14.8,
           "americas": 11.3,
@@ -2430,69 +2371,67 @@
           "vegas": 11.8,
           "yas_marina": 13.0,
           "shanghai": 9.7,
-          "imola": 15.0,
-          "madring": 13.5,
-          "sepang": 14.5
+          "imola": 15.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 15,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 11,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 8,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "Austrian",
             "position": 14,
             "dnf": false
           },
           {
-            "race": "Singapore",
+            "race": "British",
             "position": 12,
             "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 16,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 19,
+            "dnf": true
           }
         ]
       },
       "27": {
         "name": "McLaren",
         "ratings": {
-          "quali": 80,
-          "race": 66,
-          "form": 68,
-          "reliability": 31,
-          "overtaking": 55
+          "quali": 81,
+          "race": 64,
+          "form": 73,
+          "reliability": 17,
+          "overtaking": 57
         },
         "trackFit": {
           "street": 37,
           "high_speed": 57,
-          "technical": 58
+          "technical": 57
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 2,
-          "podiums": 7,
-          "points": 339.0,
+          "podiums": 6,
+          "points": 265.0,
           "avgQuali": 5.1,
-          "avgFinish": 8.2,
+          "avgFinish": 8.5,
           "bestFinish": 1,
-          "dnfs": 7,
-          "avgGained": 0.5,
-          "avgPitStop": 24.72
+          "dnfs": 6,
+          "avgGained": 0.7,
+          "avgPitStop": 24.17
         },
         "trackHistory": {
           "bahrain": 9.2,
           "jeddah": 8.2,
           "albert_park": 7.1,
-          "baku": 10.6,
+          "baku": 8.7,
           "miami": 7.2,
           "monaco": 6.5,
           "catalunya": 6.2,
@@ -2502,8 +2441,8 @@
           "hungaroring": 4.2,
           "spa": 6.1,
           "zandvoort": 5.9,
-          "monza": 4.9,
-          "marina_bay": 3.6,
+          "monza": 5.0,
+          "marina_bay": 3.3,
           "suzuka": 3.8,
           "losail": 4.0,
           "americas": 5.8,
@@ -2512,34 +2451,32 @@
           "vegas": 13.7,
           "yas_marina": 4.5,
           "shanghai": 8.7,
-          "imola": 2.8,
-          "madring": 5.5,
-          "sepang": 7.5
+          "imola": 2.8
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
             "position": 4,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 3,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 14,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 6,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
+            "race": "British",
             "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 5,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 1,
             "dnf": false
           }
         ]
@@ -2547,34 +2484,34 @@
       "28": {
         "name": "Mercedes",
         "ratings": {
-          "quali": 89,
+          "quali": 93,
           "race": 80,
-          "form": 81,
-          "reliability": 61,
-          "overtaking": 56
+          "form": 77,
+          "reliability": 58,
+          "overtaking": 43
         },
         "trackFit": {
-          "street": 56,
+          "street": 55,
           "high_speed": 46,
-          "technical": 47
+          "technical": 48
         },
         "season": {
-          "starts": 34,
-          "wins": 11,
-          "podiums": 22,
-          "points": 578.0,
-          "avgQuali": 3.4,
-          "avgFinish": 5.1,
+          "starts": 24,
+          "wins": 8,
+          "podiums": 16,
+          "points": 425.0,
+          "avgQuali": 2.5,
+          "avgFinish": 5.2,
           "bestFinish": 1,
-          "dnfs": 4,
-          "avgGained": 0.6,
-          "avgPitStop": 23.91
+          "dnfs": 3,
+          "avgGained": -0.7,
+          "avgPitStop": 23.32
         },
         "trackHistory": {
           "bahrain": 6.2,
           "jeddah": 5.8,
           "albert_park": 8.1,
-          "baku": 4.8,
+          "baku": 5.3,
           "miami": 4.8,
           "monaco": 7.9,
           "catalunya": 6.5,
@@ -2584,8 +2521,8 @@
           "hungaroring": 5.5,
           "spa": 9.4,
           "zandvoort": 7.9,
-          "monza": 5.0,
-          "marina_bay": 5.9,
+          "monza": 6.2,
+          "marina_bay": 5.8,
           "suzuka": 5.5,
           "losail": 8.3,
           "americas": 11.5,
@@ -2594,34 +2531,32 @@
           "vegas": 3.8,
           "yas_marina": 6.8,
           "shanghai": 4.5,
-          "imola": 9.8,
-          "madring": 3.0,
-          "sepang": 11.0
+          "imola": 9.8
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
             "position": 1,
             "dnf": false
           },
           {
-            "race": "Spanish",
-            "position": 1,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 1,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "British",
             "position": 2,
             "dnf": false
           },
           {
-            "race": "Singapore",
+            "race": "Belgian",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
             "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 2,
             "dnf": false
           }
         ]
@@ -2629,34 +2564,34 @@
       "2636": {
         "name": "Racing Bulls",
         "ratings": {
-          "quali": 51,
+          "quali": 53,
           "race": 56,
-          "form": 58,
-          "reliability": 80,
-          "overtaking": 67
+          "form": 60,
+          "reliability": 72,
+          "overtaking": 65
         },
         "trackFit": {
           "street": 49,
-          "high_speed": 51,
-          "technical": 50
+          "high_speed": 50,
+          "technical": 51
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 0,
           "podiums": 0,
-          "points": 100.0,
-          "avgQuali": 11.4,
-          "avgFinish": 10.2,
+          "points": 70.0,
+          "avgQuali": 10.9,
+          "avgFinish": 10.3,
           "bestFinish": 5,
           "dnfs": 2,
-          "avgGained": 1.7,
-          "avgPitStop": 23.61
+          "avgGained": 1.5,
+          "avgPitStop": 22.54
         },
         "trackHistory": {
           "bahrain": 13.5,
           "jeddah": 13.0,
           "albert_park": 12.1,
-          "baku": 12.1,
+          "baku": 13.0,
           "miami": 14.1,
           "monaco": 9.0,
           "catalunya": 11.9,
@@ -2666,8 +2601,8 @@
           "hungaroring": 10.8,
           "spa": 12.6,
           "zandvoort": 11.9,
-          "monza": 13.2,
-          "marina_bay": 13.2,
+          "monza": 14.7,
+          "marina_bay": 14.0,
           "suzuka": 12.5,
           "losail": 14.3,
           "americas": 12.2,
@@ -2676,34 +2611,32 @@
           "vegas": 12.8,
           "yas_marina": 13.8,
           "shanghai": 13.8,
-          "imola": 11.5,
-          "madring": 11.5,
-          "sepang": 8.5
+          "imola": 11.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 8,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
+            "race": "Austrian",
             "position": 9,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 7,
+            "race": "British",
+            "position": 6,
             "dnf": false
           },
           {
-            "race": "Bahrain in Malaysia",
-            "position": 7,
+            "race": "Belgian",
+            "position": 9,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 7,
+            "race": "Hungarian",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 11,
             "dnf": false
           }
         ]
@@ -2712,33 +2645,33 @@
         "name": "Red Bull Racing",
         "ratings": {
           "quali": 72,
-          "race": 68,
-          "form": 82,
-          "reliability": 41,
-          "overtaking": 77
+          "race": 61,
+          "form": 67,
+          "reliability": 17,
+          "overtaking": 74
         },
         "trackFit": {
-          "street": 49,
+          "street": 47,
           "high_speed": 52,
-          "technical": 49
+          "technical": 50
         },
         "season": {
-          "starts": 34,
-          "wins": 2,
-          "podiums": 11,
-          "points": 332.0,
+          "starts": 24,
+          "wins": 0,
+          "podiums": 5,
+          "points": 189.0,
           "avgQuali": 7.0,
-          "avgFinish": 7.8,
-          "bestFinish": 1,
+          "avgFinish": 9.1,
+          "bestFinish": 2,
           "dnfs": 6,
-          "avgGained": 2.7,
-          "avgPitStop": 24.44
+          "avgGained": 2.4,
+          "avgPitStop": 24.05
         },
         "trackHistory": {
           "bahrain": 3.5,
           "jeddah": 4.5,
           "albert_park": 9.1,
-          "baku": 4.6,
+          "baku": 5.3,
           "miami": 6.2,
           "monaco": 10.9,
           "catalunya": 5.9,
@@ -2748,8 +2681,8 @@
           "hungaroring": 6.2,
           "spa": 5.0,
           "zandvoort": 6.6,
-          "monza": 6.0,
-          "marina_bay": 6.2,
+          "monza": 5.2,
+          "marina_bay": 6.5,
           "suzuka": 7.0,
           "losail": 6.7,
           "americas": 3.8,
@@ -2758,34 +2691,32 @@
           "vegas": 5.3,
           "yas_marina": 7.7,
           "shanghai": 7.3,
-          "imola": 5.0,
-          "madring": 4.0,
-          "sepang": 3.0
+          "imola": 5.0
         },
         "recentFinishes": [
           {
-            "race": "Italian",
+            "race": "Austrian",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "British",
+            "position": 5,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
             "position": 3,
             "dnf": false
           },
           {
-            "race": "Spanish",
+            "race": "Hungarian",
             "position": 2,
             "dnf": false
           },
           {
-            "race": "Azerbaijan",
-            "position": 2,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
-            "position": 1,
-            "dnf": false
-          },
-          {
-            "race": "Singapore",
-            "position": 1,
+            "race": "Dutch",
+            "position": 7,
             "dnf": false
           }
         ]
@@ -2793,34 +2724,34 @@
       "210": {
         "name": "Williams",
         "ratings": {
-          "quali": 29,
-          "race": 30,
-          "form": 27,
-          "reliability": 2,
-          "overtaking": 67
+          "quali": 28,
+          "race": 31,
+          "form": 22,
+          "reliability": 17,
+          "overtaking": 73
         },
         "trackFit": {
-          "street": 55,
+          "street": 56,
           "high_speed": 48,
-          "technical": 47
+          "technical": 45
         },
         "season": {
-          "starts": 34,
+          "starts": 24,
           "wins": 0,
           "podiums": 0,
-          "points": 12.0,
-          "avgQuali": 15.8,
-          "avgFinish": 15.7,
+          "points": 11.0,
+          "avgQuali": 16.0,
+          "avgFinish": 15.4,
           "bestFinish": 8,
-          "dnfs": 10,
-          "avgGained": 1.7,
-          "avgPitStop": 25.76
+          "dnfs": 6,
+          "avgGained": 2.3,
+          "avgPitStop": 24.92
         },
         "trackHistory": {
           "bahrain": 14.7,
           "jeddah": 12.8,
           "albert_park": 13.7,
-          "baku": 11.1,
+          "baku": 9.8,
           "miami": 13.1,
           "monaco": 12.4,
           "catalunya": 17.1,
@@ -2830,8 +2761,8 @@
           "hungaroring": 15.5,
           "spa": 14.4,
           "zandvoort": 13.6,
-          "monza": 11.1,
-          "marina_bay": 14.0,
+          "monza": 9.8,
+          "marina_bay": 13.3,
           "suzuka": 16.0,
           "losail": 13.2,
           "americas": 13.2,
@@ -2840,34 +2771,32 @@
           "vegas": 13.7,
           "yas_marina": 14.8,
           "shanghai": 12.8,
-          "imola": 12.5,
-          "madring": 17.0,
-          "sepang": 19.0
+          "imola": 12.5
         },
         "recentFinishes": [
           {
-            "race": "Italian",
-            "position": 13,
-            "dnf": false
-          },
-          {
-            "race": "Spanish",
-            "position": 15,
-            "dnf": false
-          },
-          {
-            "race": "Azerbaijan",
-            "position": 10,
-            "dnf": false
-          },
-          {
-            "race": "Bahrain in Malaysia",
+            "race": "Austrian",
             "position": 17,
             "dnf": false
           },
           {
-            "race": "Singapore",
-            "position": 14,
+            "race": "British",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Belgian",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Dutch",
+            "position": 16,
             "dnf": false
           }
         ]
@@ -2879,30 +2808,30 @@
           "11059",
           "18"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
-          4,
-          13
+          3,
+          9
         ],
         "race": [
-          7,
-          10
+          4,
+          8
         ],
         "points": [
-          27.0,
-          39.0
+          19.0,
+          33.0
         ],
         "avgQuali": [
-          13.0,
-          10.1
+          13.6,
+          11.0
         ],
         "avgFinish": [
-          12.2,
-          10.9
+          11.7,
+          10.2
         ],
         "dnfs": [
-          2,
-          2
+          0,
+          1
         ]
       },
       "24": {
@@ -2910,30 +2839,30 @@
           "12",
           "129"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
-          13,
+          9,
           2
         ],
         "race": [
-          13,
-          4
+          9,
+          3
         ],
         "points": [
-          7.0,
+          3.0,
           0.0
         ],
         "avgQuali": [
-          19.1,
-          20.3
+          19.7,
+          20.8
         ],
         "avgFinish": [
-          16.4,
-          18.5
+          16.2,
+          18.2
         ],
         "dnfs": [
-          6,
-          11
+          4,
+          7
         ]
       },
       "2640": {
@@ -2941,29 +2870,29 @@
           "11051",
           "111"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
-          9,
-          8
+          6,
+          6
         ],
         "race": [
-          8,
-          9
+          7,
+          5
         ],
         "points": [
           10.0,
-          11.0
+          6.0
         ],
         "avgQuali": [
-          12.8,
-          12.5
+          12.7,
+          11.8
         ],
         "avgFinish": [
-          12.8,
-          13.2
+          11.8,
+          14.3
         ],
         "dnfs": [
-          2,
+          1,
           4
         ]
       },
@@ -2972,30 +2901,30 @@
           "121",
           "13"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
-          9,
-          8
+          6,
+          6
         ],
         "race": [
-          13,
-          4
+          9,
+          3
         ],
         "points": [
           0.0,
           0.0
         ],
         "avgQuali": [
-          20.0,
-          20.1
+          19.9,
+          19.9
         ],
         "avgFinish": [
-          17.1,
+          16.8,
           18.6
         ],
         "dnfs": [
-          5,
-          8
+          4,
+          6
         ]
       },
       "25": {
@@ -3003,30 +2932,30 @@
           "115",
           "110"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
-          9,
-          8
+          6,
+          6
         ],
         "race": [
-          8,
-          9
+          5,
+          7
         ],
         "points": [
-          181.0,
-          202.0
+          127.0,
+          163.0
         ],
         "avgQuali": [
-          4.3,
+          4.6,
           4.2
         ],
         "avgFinish": [
-          6.5,
-          5.2
+          6.2,
+          3.8
         ],
         "dnfs": [
-          3,
-          1
+          2,
+          0
         ]
       },
       "26": {
@@ -3034,26 +2963,26 @@
           "118",
           "11031"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
           4,
-          12
+          8
         ],
         "race": [
-          7,
-          10
+          5,
+          7
         ],
         "points": [
-          7.0,
-          19.0
+          3.0,
+          17.0
         ],
         "avgQuali": [
-          15.3,
-          14.7
+          15.2,
+          15.2
         ],
         "avgFinish": [
-          13.4,
-          14.0
+          13.8,
+          14.3
         ],
         "dnfs": [
           1,
@@ -3065,29 +2994,29 @@
           "117",
           "1982"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
-          11,
-          6
+          8,
+          4
         ],
         "race": [
-          9,
-          8
+          6,
+          6
         ],
         "points": [
-          168.0,
-          117.0
+          127.0,
+          85.0
         ],
         "avgQuali": [
-          4.6,
-          5.6
+          4.4,
+          5.8
         ],
         "avgFinish": [
           7.7,
-          8.8
+          9.2
         ],
         "dnfs": [
-          4,
+          3,
           3
         ]
       },
@@ -3096,29 +3025,29 @@
           "124",
           "11161"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
-          7,
-          10
+          5,
+          7
         ],
         "race": [
-          5,
-          12
+          4,
+          8
         ],
         "points": [
-          204.0,
-          309.0
+          149.0,
+          216.0
         ],
         "avgQuali": [
-          3.5,
-          3.4
+          3.0,
+          2.0
         ],
         "avgFinish": [
-          6.8,
-          3.5
+          6.6,
+          3.9
         ],
         "dnfs": [
-          3,
+          2,
           1
         ]
       },
@@ -3127,26 +3056,26 @@
           "11149",
           "114"
         ],
-        "races": 14,
+        "races": 11,
         "quali": [
           5,
-          9
+          6
         ],
         "race": [
-          4,
-          10
+          3,
+          8
         ],
         "points": [
-          31.0,
-          54.0
+          24.0,
+          42.0
         ],
         "avgQuali": [
-          11.6,
+          11.0,
           10.7
         ],
         "avgFinish": [
-          10.9,
-          9.3
+          11.0,
+          9.5
         ],
         "dnfs": [
           1,
@@ -3158,26 +3087,26 @@
           "11032",
           "131"
         ],
-        "races": 14,
+        "races": 11,
         "quali": [
-          3,
-          10
+          2,
+          8
         ],
         "race": [
           3,
-          11
+          8
         ],
         "points": [
-          97.0,
-          168.0
+          71.0,
+          100.0
         ],
         "avgQuali": [
-          9.0,
-          4.9
+          8.8,
+          5.4
         ],
         "avgFinish": [
-          8.4,
-          6.8
+          9.0,
+          8.3
         ],
         "dnfs": [
           2,
@@ -3189,30 +3118,30 @@
           "11",
           "125"
         ],
-        "races": 17,
+        "races": 12,
         "quali": [
-          3,
-          13
+          2,
+          9
         ],
         "race": [
-          6,
-          11
+          5,
+          7
         ],
         "points": [
           5.0,
-          7.0
+          6.0
         ],
         "avgQuali": [
-          16.8,
-          14.9
+          16.6,
+          15.5
         ],
         "avgFinish": [
-          17.0,
-          14.4
+          16.5,
+          14.3
         ],
         "dnfs": [
-          7,
-          3
+          4,
+          2
         ]
       }
     }

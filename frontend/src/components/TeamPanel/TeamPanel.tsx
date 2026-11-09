@@ -2,7 +2,17 @@
 import React, { useState } from 'react';
 import { F1Card } from '../F1Card/F1Card';
 import { PickerModal } from './PickerModal';
-import { RISK_LABELS, type CardItem, type ItemKind, type OptimizerMode, type Params } from '../../types/f1';
+import { SavedSlots } from './SavedSlots';
+import {
+    RISK_LABELS,
+    type CardItem,
+    type Horizon,
+    type ItemKind,
+    type OptimizerMode,
+    type Params,
+    type SavedTeam,
+    type TeamEvaluation,
+} from '../../types/f1';
 import './TeamPanel.css';
 
 interface TeamPanelProps {
@@ -12,9 +22,18 @@ interface TeamPanelProps {
     allConstructors: CardItem[];
     remainingBudget: number;
     params: Params;
+    horizon: Horizon;
+    slots: (SavedTeam | null)[];
+    slotEvaluations: (TeamEvaluation | null)[];
+    activeSlot: number | null;
+    onSaveSlot: (slot: number) => void;
+    onLoadSlot: (slot: number) => void;
+    onClearTeam: () => void;
     drsId: string | null;
     optimizerMode: OptimizerMode;
+    freeTransfers: number;
     onModeChange: (mode: OptimizerMode) => void;
+    onFreeTransfersChange: (value: number) => void;
     onToggleDrs: (id: string) => void;
     onSelect: (kind: ItemKind, slot: number, item: CardItem) => void;
     onRemove: (id: string) => void;
@@ -28,9 +47,18 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
     allConstructors,
     remainingBudget,
     params,
+    horizon,
+    slots,
+    slotEvaluations,
+    activeSlot,
+    onSaveSlot,
+    onLoadSlot,
+    onClearTeam,
     drsId,
     optimizerMode,
+    freeTransfers,
     onModeChange,
+    onFreeTransfersChange,
     onToggleDrs,
     onSelect,
     onRemove,
@@ -53,7 +81,17 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
         <div className="team-workspace">
             <div className="team-header-bar">
                 <h2 className="team-title">My Team</h2>
-                <span className="team-hint">Click + to add a player, i for details, DRS for 2x points</span>
+                <SavedSlots
+                    slots={slots}
+                    evaluations={slotEvaluations}
+                    activeSlot={activeSlot}
+                    risk={risk}
+                    onSave={onSaveSlot}
+                    onLoad={onLoadSlot}
+                />
+                <button type="button" className="clear-team-btn" onClick={onClearTeam}>
+                    Clear team
+                </button>
             </div>
 
             <div className="team-grid-5">
@@ -102,16 +140,41 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
                             </button>
                         ))}
                     </div>
-                    <div className="optimize-summary">
-                        <span className={`summary-risk risk-${risk}`}>{RISK_LABELS[risk]}</span>
-                        <span>
-                            Form {params.form}% · Track {params.track}% · DNF {params.dnf}%
-                        </span>
-                    </div>
+                    {optimizerMode === 'best' ? (
+                        <div className="optimize-summary">
+                            <span className={`summary-risk risk-${risk}`}>{RISK_LABELS[risk]}</span>
+                            <span>
+                                {horizon === 1 ? '1 race' : '3 races'} · Form {params.form}% · Track {params.track}% · DNF{' '}
+                                {params.dnf}%
+                            </span>
+                        </div>
+                    ) : (
+                        <div className="free-transfers">
+                            <span>Free transfers</span>
+                            <div className="stepper">
+                                <button
+                                    type="button"
+                                    disabled={freeTransfers <= 0}
+                                    onClick={() => onFreeTransfersChange(freeTransfers - 1)}
+                                >
+                                    −
+                                </button>
+                                <strong>{freeTransfers}</strong>
+                                <button
+                                    type="button"
+                                    disabled={freeTransfers >= 7}
+                                    onClick={() => onFreeTransfersChange(freeTransfers + 1)}
+                                >
+                                    +
+                                </button>
+                            </div>
+                            <span className="free-hint">−10 pts per extra</span>
+                        </div>
+                    )}
                     <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>
                         {optimizing ? 'Working…' : optimizerMode === 'best' ? 'Optimize' : 'Suggest transfers'}
                     </button>
-                    <span className="optimize-msg">{message || 'Change settings in the top right'}</span>
+                    <span className="optimize-msg">{message || (optimizerMode === 'best' ? 'Change settings in the top right' : '')}</span>
                 </div>
             </div>
 

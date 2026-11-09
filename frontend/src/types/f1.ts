@@ -30,6 +30,13 @@ export interface Constructor {
 
 export type Risk = 'floor' | 'expected' | 'ceiling';
 export type OptimizerMode = 'best' | 'transfers';
+export type Horizon = 1 | 3;
+
+export interface SavedTeam {
+    drivers: (string | null)[];
+    constructors: (string | null)[];
+    drs: string | null;
+}
 export type ItemKind = 'driver' | 'constructor';
 export type TrackType = 'street' | 'high_speed' | 'technical';
 
@@ -132,7 +139,6 @@ export interface OptimizeResult {
 export interface TransferSettings {
     currentTeam: { drivers: string[]; constructors: string[] };
     freeTransfers: number;
-    penalty: number;
 }
 
 // Name and ratings for any driver, also those without a prediction

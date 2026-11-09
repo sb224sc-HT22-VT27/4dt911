@@ -41,7 +41,7 @@ export const CardModal: React.FC<CardModalProps> = ({ item, onClose }) => {
                 </div>
 
                 <section className="info-section">
-                    <span className="info-label">Predicted points this race</span>
+                    <span className="info-label">Predicted points</span>
                     <div className="range-bar">
                         <span className="range-fill" style={{ left: pos(item.floor), right: `calc(100% - ${pos(item.ceiling)})` }} />
                         <span className="range-marker" style={{ left: pos(item.expectedPoints) }} />

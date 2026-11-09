@@ -42,11 +42,13 @@ Mock data lives in `frontend/mock_api/` and is regenerated with the scripts ther
 
 All ids are the fantasy `player_id`, the same ids `/drivers/` and `/constructors/` return.
 
+Saved teams (the 3 slots) are kept in the browser's local storage, so they need no endpoint for now.
+
 Shared settings sent with predictions, evaluate and optimize:
 
 | Name | Type | Meaning |
 |---|---|---|
-| `rounds` | list of round numbers | Races to sum points over (one round now, up to three later) |
+| `rounds` | list of round numbers | Races to sum points over: the selected race, or it plus the next two with the 3-race horizon |
 | `risk` | `floor` \| `expected` \| `ceiling` | Which prediction PPM, shares and the optimizer use (P10 / P50 / P90) |
 | `form` | 0–100 | How much recent form boosts or lowers points |
 | `track` | 0–100 | How much track-type fit boosts or lowers points |
@@ -64,6 +66,10 @@ isn't listed twice. The frontend currently only shows players that `/predictions
 ### GET `/races/upcoming`
 
 Races that haven't happened yet, ordered by round.
+
+**Development freeze:** the app currently acts as if it's just before round 13 (Italian GP). `/races/upcoming`
+returns rounds 13–23, and every stats endpoint only uses results from races before round 13
+(`FREEZE_ROUND` in `mock_server.py` and `statsMocker.py`). The fantasy prices are still the latest snapshot.
 
 ```json
 [
@@ -211,15 +217,14 @@ Response:
 Returns status `422` with `{ "error": "No team fits the budget" }` if nothing fits.
 
 **Transfers mode:** also send the current team and transfer rules. Every player swapped out beyond
-`freeTransfers` costs `penalty` points, and `points` is the total after the penalty.
+`freeTransfers` costs 10 points (fixed F1 Fantasy rule, decided by the backend), and `points` is the total after the penalty.
 
 ```json
 {
   "budget": 100,
   "rounds": ["21"], "risk": "expected", "form": 0, "track": 0, "dnf": 0,
   "currentTeam": { "drivers": ["18", "12", "118", "114", "125"], "constructors": ["2641", "26"] },
-  "freeTransfers": 2,
-  "penalty": 10
+  "freeTransfers": 2
 }
 ```
 

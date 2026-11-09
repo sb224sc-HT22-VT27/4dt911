@@ -154,7 +154,7 @@ export const ComparisonPanel: React.FC<ComparisonPanelProps> = ({
                                 <p className="compare-verdict">
                                     {a.id === b.id
                                         ? 'Pick two different options to compare.'
-                                        : `${diff >= 0 ? a.name : b.name} is projected ${Math.abs(diff)} pts ahead of ${diff >= 0 ? b.name : a.name} this race.`}
+                                        : `${diff >= 0 ? a.name : b.name} is projected ${Math.abs(diff)} pts ahead of ${diff >= 0 ? b.name : a.name}.`}
                                 </p>
                             </>
                         )}

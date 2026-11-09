@@ -6,7 +6,6 @@ import json
 import re
 import unicodedata
 from collections import defaultdict
-from datetime import date
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from itertools import combinations, zip_longest
 from pathlib import Path
@@ -16,6 +15,10 @@ HERE = Path(__file__).resolve().parent
 FANTASY = HERE.parent.parent / "data" / "f1-fantasy-data"
 SEASON = "2026"
 PORT = 8001
+# The app is frozen before this round (Italian GP), races from here on are "upcoming"
+FREEZE_ROUND = 13
+# Points lost for every transfer beyond the free ones (F1 Fantasy rule)
+TRANSFER_PENALTY = 10
 
 DRIVER_PREDICTIONS = json.loads((HERE / "mock_predictions.json").read_text())[SEASON]
 CONSTRUCTOR_PREDICTIONS = json.loads((HERE / "mock_constructors.json").read_text())[SEASON]
@@ -59,7 +62,6 @@ for t in read_csv("teams.csv"):
 
 
 def upcoming_races():
-    today = date.today().isoformat()
     races = []
     for rnd, drivers in DRIVER_PREDICTIONS.items():
         first = next(iter(drivers.values()))
@@ -69,8 +71,7 @@ def upcoming_races():
             "location": track["location"], "trackType": track["type"],
         })
     races.sort(key=lambda r: int(r["round"]))
-    upcoming = [r for r in races if r["date"] >= today]
-    return upcoming or races[-1:]
+    return [r for r in races if int(r["round"]) >= FREEZE_ROUND]
 
 
 def predict_round(player, rnd, weights):
@@ -174,11 +175,11 @@ def evaluate(body):
 
 def optimize(body):
     """Best 5 drivers + 2 constructors within budget for the chosen risk, with the best driver as DRS Boost (2x).
-    With currentTeam it works as transfers mode: every player swapped out beyond freeTransfers costs penalty points."""
+    With currentTeam it works as transfers mode: every player swapped out beyond freeTransfers costs TRANSFER_PENALTY points."""
     risk, budget = body["risk"], body["budget"]
     preds = predictions(body["rounds"], risk, weights_of(body))
     current = body.get("currentTeam")
-    free, penalty = int(body.get("freeTransfers", 0)), float(body.get("penalty", 10))
+    free, penalty = int(body.get("freeTransfers", 0)), TRANSFER_PENALTY
     cur_drivers = set(current["drivers"]) if current else set()
     cur_constructors = set(current["constructors"]) if current else set()
     price = lambda pid: PLAYERS[pid]["price"]

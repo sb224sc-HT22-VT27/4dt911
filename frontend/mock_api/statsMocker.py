@@ -11,6 +11,8 @@ KAGGLE = HERE.parent.parent / "data" / "kaggle-base-data"
 FANTASY = HERE.parent.parent / "data" / "f1-fantasy-data"
 SEASON = "2026"
 HISTORY_FROM = "2023"
+# The app is frozen before this round: it and later races count as not raced yet
+FREEZE_ROUND = 13
 
 TRACK_TYPES = {
     "street": ["monaco", "baku", "marina_bay", "jeddah", "vegas", "miami", "madring", "albert_park", "villeneuve"],
@@ -42,7 +44,8 @@ def avg(values):
     return sum(values) / len(values) if values else None
 
 
-races = {r["raceId"]: r for r in read("races.csv") if r["year"] >= HISTORY_FROM}
+all_races = {r["raceId"]: r for r in read("races.csv") if r["year"] >= HISTORY_FROM}
+races = {k: r for k, r in all_races.items() if not (r["year"] == SEASON and int(r["round"]) >= FREEZE_ROUND)}
 circuits = {c["circuitId"]: c for c in read("circuits.csv")}
 status = {s["statusId"]: s["status"] for s in read("status.csv")}
 kaggle_drivers = {d["driverId"]: d["code"] for d in read("drivers.csv")}
@@ -155,7 +158,7 @@ for t in fantasy_teams:
         ),
     }
 
-# Teammate head-to-head: 2026 races where both current drivers raced for the team
+# Teammate head-to-head: 2026 races (before the freeze) where both current drivers raced for the team
 teammates_out = {}
 for t in fantasy_teams:
     pair = [d for d in fantasy_drivers if d["team_key"] == t["team_key"]]
@@ -183,7 +186,7 @@ for t in fantasy_teams:
     }
 
 tracks_out = {}
-for r in races.values():
+for r in all_races.values():
     if r["year"] == SEASON:
         c = circuits[r["circuitId"]]
         tracks_out[r["round"]] = {

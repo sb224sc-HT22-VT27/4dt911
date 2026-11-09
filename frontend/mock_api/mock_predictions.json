@@ -1,19 +1,1679 @@
 {
     "2026": {
+        "13": {
+            "max_verstappen": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 16,
+                    "dnf_probability": 14.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.4,
+                    "expected_p50": 10.2,
+                    "ceiling_p90": 22.2
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 2,
+                    "dnf_probability": 1.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.1,
+                    "expected_p50": 25.4,
+                    "ceiling_p90": 38.5
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 7,
+                    "dnf_probability": 9.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.5,
+                    "expected_p50": 20.0,
+                    "ceiling_p90": 39.8
+                }
+            },
+            "george_russell": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 20,
+                    "dnf_probability": 9.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 7.3,
+                    "ceiling_p90": 23.3
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 3,
+                    "dnf_probability": 2.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.9,
+                    "expected_p50": 22.4,
+                    "ceiling_p90": 33.0
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 8,
+                    "dnf_probability": 6.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 7.9,
+                    "expected_p50": 19.6,
+                    "ceiling_p90": 28.4
+                }
+            },
+            "lando_norris": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 17,
+                    "dnf_probability": 13.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 9.8,
+                    "ceiling_p90": 19.3
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 1,
+                    "dnf_probability": 1.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 20.1,
+                    "expected_p50": 28.5,
+                    "ceiling_p90": 45.3
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 12,
+                    "dnf_probability": 4.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 4.0,
+                    "expected_p50": 14.3,
+                    "ceiling_p90": 25.3
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 19,
+                    "dnf_probability": 10.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.5,
+                    "expected_p50": 10.7,
+                    "ceiling_p90": 19.8
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 5,
+                    "dnf_probability": 8.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.0,
+                    "expected_p50": 20.9,
+                    "ceiling_p90": 33.8
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 13,
+                    "dnf_probability": 1.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 8.1,
+                    "expected_p50": 16.3,
+                    "ceiling_p90": 24.7
+                }
+            },
+            "alex_albon": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 6,
+                    "dnf_probability": 13.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.4,
+                    "expected_p50": 23.6,
+                    "ceiling_p90": 36.2
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 11,
+                    "dnf_probability": 5.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.7,
+                    "expected_p50": 18.5,
+                    "ceiling_p90": 36.5
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 21,
+                    "dnf_probability": 4.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 4.8,
+                    "ceiling_p90": 15.5
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 9,
+                    "dnf_probability": 7.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 7.9,
+                    "expected_p50": 19.4,
+                    "ceiling_p90": 31.1
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 15,
+                    "dnf_probability": 11.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.6,
+                    "expected_p50": 10.8,
+                    "ceiling_p90": 24.7
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 18,
+                    "dnf_probability": 4.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 8.0,
+                    "ceiling_p90": 25.2
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 4,
+                    "dnf_probability": 4.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.2,
+                    "expected_p50": 24.6,
+                    "ceiling_p90": 37.7
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 14,
+                    "dnf_probability": 3.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 8.5,
+                    "expected_p50": 15.6,
+                    "ceiling_p90": 30.5
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 22,
+                    "dnf_probability": 10.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 6.2,
+                    "ceiling_p90": 24.9
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Italian Grand Prix",
+                "date": "2026-09-06",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 10,
+                    "dnf_probability": 5.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.4,
+                    "expected_p50": 16.6,
+                    "ceiling_p90": 26.9
+                }
+            }
+        },
+        "14": {
+            "max_verstappen": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 1,
+                    "dnf_probability": 3.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.1,
+                    "expected_p50": 26.1,
+                    "ceiling_p90": 38.2
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 18,
+                    "dnf_probability": 9.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.6,
+                    "expected_p50": 9.4,
+                    "ceiling_p90": 26.1
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 7,
+                    "dnf_probability": 13.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 10.3,
+                    "expected_p50": 19.1,
+                    "ceiling_p90": 27.6
+                }
+            },
+            "george_russell": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 4,
+                    "dnf_probability": 11.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 18.6,
+                    "expected_p50": 25.4,
+                    "ceiling_p90": 40.2
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 8,
+                    "dnf_probability": 3.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 16.1,
+                    "expected_p50": 21.2,
+                    "ceiling_p90": 38.3
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 16,
+                    "dnf_probability": 2.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 10.4,
+                    "ceiling_p90": 22.3
+                }
+            },
+            "lando_norris": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 11,
+                    "dnf_probability": 9.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.7,
+                    "expected_p50": 17.9,
+                    "ceiling_p90": 29.6
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 9,
+                    "dnf_probability": 14.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.1,
+                    "expected_p50": 18.5,
+                    "ceiling_p90": 34.5
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 21,
+                    "dnf_probability": 7.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 7.6,
+                    "ceiling_p90": 15.8
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 3,
+                    "dnf_probability": 14.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.5,
+                    "expected_p50": 24.1,
+                    "ceiling_p90": 36.0
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 12,
+                    "dnf_probability": 11.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.5,
+                    "expected_p50": 16.8,
+                    "ceiling_p90": 34.7
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 6,
+                    "dnf_probability": 6.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.8,
+                    "expected_p50": 21.0,
+                    "ceiling_p90": 37.3
+                }
+            },
+            "alex_albon": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 22,
+                    "dnf_probability": 10.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 3.1,
+                    "ceiling_p90": 16.3
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 15,
+                    "dnf_probability": 4.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.0,
+                    "expected_p50": 14.3,
+                    "ceiling_p90": 31.4
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 19,
+                    "dnf_probability": 12.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.7,
+                    "expected_p50": 10.3,
+                    "ceiling_p90": 27.4
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 5,
+                    "dnf_probability": 8.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.0,
+                    "expected_p50": 23.1,
+                    "ceiling_p90": 34.9
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 17,
+                    "dnf_probability": 12.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.2,
+                    "expected_p50": 8.7,
+                    "ceiling_p90": 26.6
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 14,
+                    "dnf_probability": 10.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.5,
+                    "expected_p50": 13.1,
+                    "ceiling_p90": 21.2
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 20,
+                    "dnf_probability": 2.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 6.6,
+                    "ceiling_p90": 18.8
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 13,
+                    "dnf_probability": 5.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.5,
+                    "expected_p50": 13.9,
+                    "ceiling_p90": 31.5
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 10,
+                    "dnf_probability": 8.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 10.1,
+                    "expected_p50": 17.9,
+                    "ceiling_p90": 27.6
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Spanish Grand Prix",
+                "date": "2026-09-13",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 2,
+                    "dnf_probability": 10.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.2,
+                    "expected_p50": 25.7,
+                    "ceiling_p90": 37.8
+                }
+            }
+        },
+        "15": {
+            "max_verstappen": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 13,
+                    "dnf_probability": 5.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.3,
+                    "expected_p50": 13.6,
+                    "ceiling_p90": 32.8
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 14,
+                    "dnf_probability": 12.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.7,
+                    "expected_p50": 11.7,
+                    "ceiling_p90": 25.1
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 20,
+                    "dnf_probability": 12.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.5,
+                    "expected_p50": 6.6,
+                    "ceiling_p90": 20.5
+                }
+            },
+            "george_russell": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 15,
+                    "dnf_probability": 12.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.6,
+                    "expected_p50": 12.3,
+                    "ceiling_p90": 29.4
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 7,
+                    "dnf_probability": 12.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 8.3,
+                    "expected_p50": 18.0,
+                    "ceiling_p90": 31.8
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 16,
+                    "dnf_probability": 14.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.5,
+                    "expected_p50": 11.3,
+                    "ceiling_p90": 21.9
+                }
+            },
+            "lando_norris": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 4,
+                    "dnf_probability": 2.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.7,
+                    "expected_p50": 23.4,
+                    "ceiling_p90": 41.6
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 5,
+                    "dnf_probability": 9.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 15.4,
+                    "expected_p50": 20.7,
+                    "ceiling_p90": 38.0
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 22,
+                    "dnf_probability": 1.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 3.4,
+                    "ceiling_p90": 14.3
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 19,
+                    "dnf_probability": 13.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 7.1,
+                    "ceiling_p90": 22.0
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 17,
+                    "dnf_probability": 11.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.5,
+                    "expected_p50": 12.0,
+                    "ceiling_p90": 28.0
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 3,
+                    "dnf_probability": 10.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.3,
+                    "expected_p50": 22.6,
+                    "ceiling_p90": 31.7
+                }
+            },
+            "alex_albon": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 11,
+                    "dnf_probability": 6.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.9,
+                    "expected_p50": 15.2,
+                    "ceiling_p90": 31.8
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 21,
+                    "dnf_probability": 1.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.6,
+                    "expected_p50": 7.3,
+                    "ceiling_p90": 22.2
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 12,
+                    "dnf_probability": 11.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 8.3,
+                    "expected_p50": 16.4,
+                    "ceiling_p90": 32.4
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 1,
+                    "dnf_probability": 14.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.6,
+                    "expected_p50": 25.3,
+                    "ceiling_p90": 41.6
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 10,
+                    "dnf_probability": 8.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.2,
+                    "expected_p50": 16.6,
+                    "ceiling_p90": 24.8
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 8,
+                    "dnf_probability": 6.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.1,
+                    "expected_p50": 19.8,
+                    "ceiling_p90": 30.2
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 9,
+                    "dnf_probability": 12.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.8,
+                    "expected_p50": 16.1,
+                    "ceiling_p90": 33.7
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 6,
+                    "dnf_probability": 14.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.1,
+                    "expected_p50": 20.6,
+                    "ceiling_p90": 37.1
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 18,
+                    "dnf_probability": 3.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.1,
+                    "expected_p50": 7.4,
+                    "ceiling_p90": 26.5
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Azerbaijan Grand Prix",
+                "date": "2026-09-26",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 2,
+                    "dnf_probability": 10.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 19.8,
+                    "expected_p50": 24.9,
+                    "ceiling_p90": 38.9
+                }
+            }
+        },
+        "16": {
+            "max_verstappen": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 8,
+                    "dnf_probability": 12.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 7.0,
+                    "expected_p50": 17.1,
+                    "ceiling_p90": 34.5
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 2,
+                    "dnf_probability": 10.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 11.6,
+                    "expected_p50": 23.0,
+                    "ceiling_p90": 42.0
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 11,
+                    "dnf_probability": 5.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.4,
+                    "expected_p50": 18.4,
+                    "ceiling_p90": 27.1
+                }
+            },
+            "george_russell": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 6,
+                    "dnf_probability": 3.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.3,
+                    "expected_p50": 23.3,
+                    "ceiling_p90": 31.5
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 13,
+                    "dnf_probability": 3.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 5.1,
+                    "expected_p50": 14.7,
+                    "ceiling_p90": 25.4
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 17,
+                    "dnf_probability": 14.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.0,
+                    "expected_p50": 10.2,
+                    "ceiling_p90": 30.1
+                }
+            },
+            "lando_norris": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 1,
+                    "dnf_probability": 13.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 23.4,
+                    "expected_p50": 28.9,
+                    "ceiling_p90": 48.7
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 20,
+                    "dnf_probability": 11.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.7,
+                    "expected_p50": 9.2,
+                    "ceiling_p90": 28.9
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 18,
+                    "dnf_probability": 11.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 3.7,
+                    "expected_p50": 11.1,
+                    "ceiling_p90": 25.6
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 14,
+                    "dnf_probability": 11.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 4.4,
+                    "expected_p50": 15.6,
+                    "ceiling_p90": 25.7
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 7,
+                    "dnf_probability": 11.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.1,
+                    "expected_p50": 20.3,
+                    "ceiling_p90": 35.7
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 16,
+                    "dnf_probability": 5.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.6,
+                    "expected_p50": 11.6,
+                    "ceiling_p90": 30.5
+                }
+            },
+            "alex_albon": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 5,
+                    "dnf_probability": 2.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.3,
+                    "expected_p50": 24.3,
+                    "ceiling_p90": 42.3
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 19,
+                    "dnf_probability": 12.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 4.5,
+                    "expected_p50": 10.2,
+                    "ceiling_p90": 24.2
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 9,
+                    "dnf_probability": 14.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 4.5,
+                    "expected_p50": 16.5,
+                    "ceiling_p90": 28.2
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 10,
+                    "dnf_probability": 14.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 8.4,
+                    "expected_p50": 18.2,
+                    "ceiling_p90": 33.8
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 21,
+                    "dnf_probability": 3.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 5.6,
+                    "ceiling_p90": 14.6
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 4,
+                    "dnf_probability": 5.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.8,
+                    "expected_p50": 21.7,
+                    "ceiling_p90": 35.8
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 15,
+                    "dnf_probability": 9.4
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.6,
+                    "expected_p50": 12.0,
+                    "ceiling_p90": 22.2
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 3,
+                    "dnf_probability": 9.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.3,
+                    "expected_p50": 26.6,
+                    "ceiling_p90": 40.2
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 22,
+                    "dnf_probability": 14.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 4.9,
+                    "ceiling_p90": 21.8
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Bahrain Grand Prix in Malaysia",
+                "date": "2026-10-04",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 12,
+                    "dnf_probability": 14.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.9,
+                    "expected_p50": 15.4,
+                    "ceiling_p90": 34.4
+                }
+            }
+        },
+        "17": {
+            "max_verstappen": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "max_verstappen",
+                "predictions": {
+                    "qualifying_position": 9,
+                    "race_position": 17,
+                    "dnf_probability": 3.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.5,
+                    "expected_p50": 9.5,
+                    "ceiling_p90": 25.1
+                }
+            },
+            "sergio_perez": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "sergio_perez",
+                "predictions": {
+                    "qualifying_position": 6,
+                    "race_position": 22,
+                    "dnf_probability": 5.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 3.2,
+                    "ceiling_p90": 11.7
+                }
+            },
+            "lewis_hamilton": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "lewis_hamilton",
+                "predictions": {
+                    "qualifying_position": 2,
+                    "race_position": 14,
+                    "dnf_probability": 7.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.5,
+                    "expected_p50": 14.1,
+                    "ceiling_p90": 25.2
+                }
+            },
+            "george_russell": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "george_russell",
+                "predictions": {
+                    "qualifying_position": 7,
+                    "race_position": 1,
+                    "dnf_probability": 14.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 23.5,
+                    "expected_p50": 28.7,
+                    "ceiling_p90": 44.9
+                }
+            },
+            "charles_leclerc": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "charles_leclerc",
+                "predictions": {
+                    "qualifying_position": 3,
+                    "race_position": 19,
+                    "dnf_probability": 8.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 0.6,
+                    "expected_p50": 9.0,
+                    "ceiling_p90": 24.2
+                }
+            },
+            "carlos_sainz": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "carlos_sainz",
+                "predictions": {
+                    "qualifying_position": 14,
+                    "race_position": 9,
+                    "dnf_probability": 11.9
+                },
+                "fantasy_points": {
+                    "floor_p10": 9.9,
+                    "expected_p50": 17.4,
+                    "ceiling_p90": 28.5
+                }
+            },
+            "lando_norris": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "lando_norris",
+                "predictions": {
+                    "qualifying_position": 11,
+                    "race_position": 3,
+                    "dnf_probability": 2.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.0,
+                    "expected_p50": 26.7,
+                    "ceiling_p90": 37.2
+                }
+            },
+            "oscar_piastri": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "oscar_piastri",
+                "predictions": {
+                    "qualifying_position": 20,
+                    "race_position": 10,
+                    "dnf_probability": 1.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.3,
+                    "expected_p50": 17.0,
+                    "ceiling_p90": 32.1
+                }
+            },
+            "fernando_alonso": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "fernando_alonso",
+                "predictions": {
+                    "qualifying_position": 15,
+                    "race_position": 21,
+                    "dnf_probability": 13.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.4,
+                    "expected_p50": 7.4,
+                    "ceiling_p90": 17.3
+                }
+            },
+            "lance_stroll": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "lance_stroll",
+                "predictions": {
+                    "qualifying_position": 13,
+                    "race_position": 11,
+                    "dnf_probability": 1.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.9,
+                    "expected_p50": 15.8,
+                    "ceiling_p90": 35.8
+                }
+            },
+            "esteban_ocon": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "esteban_ocon",
+                "predictions": {
+                    "qualifying_position": 5,
+                    "race_position": 4,
+                    "dnf_probability": 3.8
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.6,
+                    "expected_p50": 21.2,
+                    "ceiling_p90": 35.1
+                }
+            },
+            "pierre_gasly": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "pierre_gasly",
+                "predictions": {
+                    "qualifying_position": 8,
+                    "race_position": 18,
+                    "dnf_probability": 13.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 0,
+                    "expected_p50": 7.6,
+                    "ceiling_p90": 24.2
+                }
+            },
+            "alex_albon": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "alex_albon",
+                "predictions": {
+                    "qualifying_position": 4,
+                    "race_position": 15,
+                    "dnf_probability": 12.2
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.3,
+                    "expected_p50": 13.4,
+                    "ceiling_p90": 24.9
+                }
+            },
+            "franco_colapinto": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "franco_colapinto",
+                "predictions": {
+                    "qualifying_position": 1,
+                    "race_position": 2,
+                    "dnf_probability": 14.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 14.1,
+                    "expected_p50": 25.9,
+                    "ceiling_p90": 37.1
+                }
+            },
+            "yuki_tsunoda": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "yuki_tsunoda",
+                "predictions": {
+                    "qualifying_position": 10,
+                    "race_position": 16,
+                    "dnf_probability": 5.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 1.6,
+                    "expected_p50": 12.4,
+                    "ceiling_p90": 29.8
+                }
+            },
+            "liam_lawson": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "liam_lawson",
+                "predictions": {
+                    "qualifying_position": 17,
+                    "race_position": 7,
+                    "dnf_probability": 5.6
+                },
+                "fantasy_points": {
+                    "floor_p10": 17.6,
+                    "expected_p50": 22.7,
+                    "ceiling_p90": 34.0
+                }
+            },
+            "valtteri_bottas": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "valtteri_bottas",
+                "predictions": {
+                    "qualifying_position": 18,
+                    "race_position": 20,
+                    "dnf_probability": 4.7
+                },
+                "fantasy_points": {
+                    "floor_p10": 2.9,
+                    "expected_p50": 10.0,
+                    "ceiling_p90": 26.6
+                }
+            },
+            "gabriel_bortoleto": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "gabriel_bortoleto",
+                "predictions": {
+                    "qualifying_position": 12,
+                    "race_position": 5,
+                    "dnf_probability": 2.3
+                },
+                "fantasy_points": {
+                    "floor_p10": 18.7,
+                    "expected_p50": 24.0,
+                    "ceiling_p90": 33.2
+                }
+            },
+            "nico_hulkenberg": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "nico_hulkenberg",
+                "predictions": {
+                    "qualifying_position": 19,
+                    "race_position": 13,
+                    "dnf_probability": 15.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.4,
+                    "expected_p50": 13.4,
+                    "ceiling_p90": 29.5
+                }
+            },
+            "oliver_bearman": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "oliver_bearman",
+                "predictions": {
+                    "qualifying_position": 22,
+                    "race_position": 12,
+                    "dnf_probability": 1.1
+                },
+                "fantasy_points": {
+                    "floor_p10": 6.2,
+                    "expected_p50": 13.2,
+                    "ceiling_p90": 32.4
+                }
+            },
+            "andrea_kimi_antonelli": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "andrea_kimi_antonelli",
+                "predictions": {
+                    "qualifying_position": 16,
+                    "race_position": 8,
+                    "dnf_probability": 9.5
+                },
+                "fantasy_points": {
+                    "floor_p10": 12.3,
+                    "expected_p50": 19.2,
+                    "ceiling_p90": 30.0
+                }
+            },
+            "isack_hadjar": {
+                "race_name": "Singapore Grand Prix",
+                "date": "2026-10-11",
+                "driver": "isack_hadjar",
+                "predictions": {
+                    "qualifying_position": 21,
+                    "race_position": 6,
+                    "dnf_probability": 3.0
+                },
+                "fantasy_points": {
+                    "floor_p10": 13.4,
+                    "expected_p50": 19.7,
+                    "ceiling_p90": 36.4
+                }
+            }
+        },
         "18": {
             "max_verstappen": {
                 "race_name": "United States Grand Prix",
                 "date": "2026-10-25",
                 "driver": "max_verstappen",
                 "predictions": {
-                    "qualifying_position": 5,
-                    "race_position": 17,
-                    "dnf_probability": 10.7
+                    "qualifying_position": 10,
+                    "race_position": 15,
+                    "dnf_probability": 5.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 0.8,
-                    "expected_p50": 11.2,
-                    "ceiling_p90": 25.3
+                    "floor_p10": 1.2,
+                    "expected_p50": 13.0,
+                    "ceiling_p90": 31.7
                 }
             },
             "sergio_perez": {
@@ -21,14 +1681,14 @@
                 "date": "2026-10-25",
                 "driver": "sergio_perez",
                 "predictions": {
-                    "qualifying_position": 13,
-                    "race_position": 6,
-                    "dnf_probability": 6.7
+                    "qualifying_position": 14,
+                    "race_position": 19,
+                    "dnf_probability": 8.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 11.7,
-                    "expected_p50": 22.9,
-                    "ceiling_p90": 31.8
+                    "floor_p10": 0,
+                    "expected_p50": 8.6,
+                    "ceiling_p90": 21.4
                 }
             },
             "lewis_hamilton": {
@@ -36,14 +1696,14 @@
                 "date": "2026-10-25",
                 "driver": "lewis_hamilton",
                 "predictions": {
-                    "qualifying_position": 17,
-                    "race_position": 3,
-                    "dnf_probability": 10.8
+                    "qualifying_position": 11,
+                    "race_position": 6,
+                    "dnf_probability": 9.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 17.3,
-                    "expected_p50": 26.5,
-                    "ceiling_p90": 37.6
+                    "floor_p10": 8.7,
+                    "expected_p50": 20.0,
+                    "ceiling_p90": 30.7
                 }
             },
             "george_russell": {
@@ -52,13 +1712,13 @@
                 "driver": "george_russell",
                 "predictions": {
                     "qualifying_position": 12,
-                    "race_position": 21,
-                    "dnf_probability": 14.5
+                    "race_position": 5,
+                    "dnf_probability": 2.7
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 6.4,
-                    "ceiling_p90": 19.9
+                    "floor_p10": 12.9,
+                    "expected_p50": 20.2,
+                    "ceiling_p90": 39.3
                 }
             },
             "charles_leclerc": {
@@ -66,14 +1726,14 @@
                 "date": "2026-10-25",
                 "driver": "charles_leclerc",
                 "predictions": {
-                    "qualifying_position": 18,
-                    "race_position": 11,
-                    "dnf_probability": 8.8
+                    "qualifying_position": 13,
+                    "race_position": 17,
+                    "dnf_probability": 11.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 10.1,
-                    "expected_p50": 16.2,
-                    "ceiling_p90": 28.7
+                    "floor_p10": 0.9,
+                    "expected_p50": 8.3,
+                    "ceiling_p90": 26.4
                 }
             },
             "carlos_sainz": {
@@ -81,14 +1741,14 @@
                 "date": "2026-10-25",
                 "driver": "carlos_sainz",
                 "predictions": {
-                    "qualifying_position": 15,
+                    "qualifying_position": 17,
                     "race_position": 13,
-                    "dnf_probability": 5.6
+                    "dnf_probability": 13.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 0.7,
-                    "expected_p50": 12.6,
-                    "ceiling_p90": 25.3
+                    "floor_p10": 2.1,
+                    "expected_p50": 13.9,
+                    "ceiling_p90": 22.6
                 }
             },
             "lando_norris": {
@@ -96,14 +1756,14 @@
                 "date": "2026-10-25",
                 "driver": "lando_norris",
                 "predictions": {
-                    "qualifying_position": 6,
-                    "race_position": 10,
-                    "dnf_probability": 5.2
+                    "qualifying_position": 19,
+                    "race_position": 20,
+                    "dnf_probability": 11.7
                 },
                 "fantasy_points": {
-                    "floor_p10": 8.1,
-                    "expected_p50": 18.1,
-                    "ceiling_p90": 26.2
+                    "floor_p10": 3.7,
+                    "expected_p50": 9.2,
+                    "ceiling_p90": 17.5
                 }
             },
             "oscar_piastri": {
@@ -111,14 +1771,14 @@
                 "date": "2026-10-25",
                 "driver": "oscar_piastri",
                 "predictions": {
-                    "qualifying_position": 19,
-                    "race_position": 14,
-                    "dnf_probability": 2.0
+                    "qualifying_position": 22,
+                    "race_position": 8,
+                    "dnf_probability": 14.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 5.1,
-                    "expected_p50": 14.5,
-                    "ceiling_p90": 32.7
+                    "floor_p10": 12.1,
+                    "expected_p50": 21.9,
+                    "ceiling_p90": 33.3
                 }
             },
             "fernando_alonso": {
@@ -126,14 +1786,14 @@
                 "date": "2026-10-25",
                 "driver": "fernando_alonso",
                 "predictions": {
-                    "qualifying_position": 7,
-                    "race_position": 22,
-                    "dnf_probability": 1.7
+                    "qualifying_position": 2,
+                    "race_position": 12,
+                    "dnf_probability": 5.7
                 },
                 "fantasy_points": {
-                    "floor_p10": 0.3,
-                    "expected_p50": 7.2,
-                    "ceiling_p90": 17.4
+                    "floor_p10": 7.2,
+                    "expected_p50": 15.9,
+                    "ceiling_p90": 32.0
                 }
             },
             "lance_stroll": {
@@ -141,14 +1801,14 @@
                 "date": "2026-10-25",
                 "driver": "lance_stroll",
                 "predictions": {
-                    "qualifying_position": 21,
-                    "race_position": 8,
-                    "dnf_probability": 9.1
+                    "qualifying_position": 6,
+                    "race_position": 11,
+                    "dnf_probability": 12.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 12.6,
-                    "expected_p50": 20.9,
-                    "ceiling_p90": 38.4
+                    "floor_p10": 9.1,
+                    "expected_p50": 14.5,
+                    "ceiling_p90": 33.6
                 }
             },
             "esteban_ocon": {
@@ -157,13 +1817,13 @@
                 "driver": "esteban_ocon",
                 "predictions": {
                     "qualifying_position": 1,
-                    "race_position": 4,
-                    "dnf_probability": 5.1
+                    "race_position": 22,
+                    "dnf_probability": 7.4
                 },
                 "fantasy_points": {
-                    "floor_p10": 12.0,
-                    "expected_p50": 22.2,
-                    "ceiling_p90": 30.9
+                    "floor_p10": 0,
+                    "expected_p50": 5.3,
+                    "ceiling_p90": 21.9
                 }
             },
             "pierre_gasly": {
@@ -171,14 +1831,14 @@
                 "date": "2026-10-25",
                 "driver": "pierre_gasly",
                 "predictions": {
-                    "qualifying_position": 20,
+                    "qualifying_position": 18,
                     "race_position": 7,
-                    "dnf_probability": 3.6
+                    "dnf_probability": 10.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 13.0,
-                    "expected_p50": 21.3,
-                    "ceiling_p90": 29.4
+                    "floor_p10": 9.2,
+                    "expected_p50": 18.6,
+                    "ceiling_p90": 37.9
                 }
             },
             "alex_albon": {
@@ -186,14 +1846,14 @@
                 "date": "2026-10-25",
                 "driver": "alex_albon",
                 "predictions": {
-                    "qualifying_position": 11,
-                    "race_position": 5,
-                    "dnf_probability": 14.6
+                    "qualifying_position": 8,
+                    "race_position": 21,
+                    "dnf_probability": 3.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 18.4,
-                    "expected_p50": 23.8,
-                    "ceiling_p90": 32.4
+                    "floor_p10": 0,
+                    "expected_p50": 6.2,
+                    "ceiling_p90": 23.5
                 }
             },
             "franco_colapinto": {
@@ -201,14 +1861,14 @@
                 "date": "2026-10-25",
                 "driver": "franco_colapinto",
                 "predictions": {
-                    "qualifying_position": 8,
-                    "race_position": 16,
-                    "dnf_probability": 3.0
+                    "qualifying_position": 21,
+                    "race_position": 3,
+                    "dnf_probability": 9.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 11.0,
-                    "ceiling_p90": 27.0
+                    "floor_p10": 16.6,
+                    "expected_p50": 26.4,
+                    "ceiling_p90": 46.3
                 }
             },
             "yuki_tsunoda": {
@@ -216,14 +1876,14 @@
                 "date": "2026-10-25",
                 "driver": "yuki_tsunoda",
                 "predictions": {
-                    "qualifying_position": 16,
-                    "race_position": 15,
-                    "dnf_probability": 5.7
+                    "qualifying_position": 3,
+                    "race_position": 18,
+                    "dnf_probability": 8.7
                 },
                 "fantasy_points": {
-                    "floor_p10": 2.5,
-                    "expected_p50": 13.5,
-                    "ceiling_p90": 33.2
+                    "floor_p10": 0.7,
+                    "expected_p50": 10.7,
+                    "ceiling_p90": 24.3
                 }
             },
             "liam_lawson": {
@@ -231,14 +1891,14 @@
                 "date": "2026-10-25",
                 "driver": "liam_lawson",
                 "predictions": {
-                    "qualifying_position": 4,
-                    "race_position": 18,
-                    "dnf_probability": 12.0
+                    "qualifying_position": 15,
+                    "race_position": 4,
+                    "dnf_probability": 3.4
                 },
                 "fantasy_points": {
-                    "floor_p10": 1.6,
-                    "expected_p50": 9.3,
-                    "ceiling_p90": 17.9
+                    "floor_p10": 13.4,
+                    "expected_p50": 21.1,
+                    "ceiling_p90": 31.4
                 }
             },
             "valtteri_bottas": {
@@ -246,14 +1906,14 @@
                 "date": "2026-10-25",
                 "driver": "valtteri_bottas",
                 "predictions": {
-                    "qualifying_position": 10,
-                    "race_position": 12,
-                    "dnf_probability": 3.1
+                    "qualifying_position": 20,
+                    "race_position": 14,
+                    "dnf_probability": 14.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 2.6,
-                    "expected_p50": 14.4,
-                    "ceiling_p90": 29.1
+                    "floor_p10": 4.7,
+                    "expected_p50": 11.8,
+                    "ceiling_p90": 25.9
                 }
             },
             "gabriel_bortoleto": {
@@ -261,14 +1921,14 @@
                 "date": "2026-10-25",
                 "driver": "gabriel_bortoleto",
                 "predictions": {
-                    "qualifying_position": 14,
-                    "race_position": 20,
-                    "dnf_probability": 7.2
+                    "qualifying_position": 4,
+                    "race_position": 2,
+                    "dnf_probability": 13.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 8.2,
-                    "ceiling_p90": 24.9
+                    "floor_p10": 20.5,
+                    "expected_p50": 26.6,
+                    "ceiling_p90": 42.0
                 }
             },
             "nico_hulkenberg": {
@@ -276,14 +1936,14 @@
                 "date": "2026-10-25",
                 "driver": "nico_hulkenberg",
                 "predictions": {
-                    "qualifying_position": 2,
-                    "race_position": 19,
-                    "dnf_probability": 8.4
+                    "qualifying_position": 5,
+                    "race_position": 9,
+                    "dnf_probability": 12.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 6.2,
-                    "ceiling_p90": 22.9
+                    "floor_p10": 10.8,
+                    "expected_p50": 18.9,
+                    "ceiling_p90": 35.3
                 }
             },
             "oliver_bearman": {
@@ -291,14 +1951,14 @@
                 "date": "2026-10-25",
                 "driver": "oliver_bearman",
                 "predictions": {
-                    "qualifying_position": 3,
-                    "race_position": 1,
-                    "dnf_probability": 12.0
+                    "qualifying_position": 9,
+                    "race_position": 16,
+                    "dnf_probability": 5.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 15.9,
-                    "expected_p50": 25.4,
-                    "ceiling_p90": 39.8
+                    "floor_p10": 2.3,
+                    "expected_p50": 12.3,
+                    "ceiling_p90": 26.7
                 }
             },
             "andrea_kimi_antonelli": {
@@ -306,14 +1966,14 @@
                 "date": "2026-10-25",
                 "driver": "andrea_kimi_antonelli",
                 "predictions": {
-                    "qualifying_position": 22,
-                    "race_position": 9,
-                    "dnf_probability": 1.8
+                    "qualifying_position": 7,
+                    "race_position": 1,
+                    "dnf_probability": 9.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 10.4,
-                    "expected_p50": 17.2,
-                    "ceiling_p90": 26.9
+                    "floor_p10": 19.0,
+                    "expected_p50": 24.6,
+                    "ceiling_p90": 42.8
                 }
             },
             "isack_hadjar": {
@@ -321,14 +1981,14 @@
                 "date": "2026-10-25",
                 "driver": "isack_hadjar",
                 "predictions": {
-                    "qualifying_position": 9,
-                    "race_position": 2,
-                    "dnf_probability": 8.8
+                    "qualifying_position": 16,
+                    "race_position": 10,
+                    "dnf_probability": 10.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 15.7,
-                    "expected_p50": 23.3,
-                    "ceiling_p90": 38.6
+                    "floor_p10": 8.5,
+                    "expected_p50": 15.5,
+                    "ceiling_p90": 32.7
                 }
             }
         },
@@ -338,14 +1998,14 @@
                 "date": "2026-11-01",
                 "driver": "max_verstappen",
                 "predictions": {
-                    "qualifying_position": 12,
-                    "race_position": 18,
-                    "dnf_probability": 6.4
+                    "qualifying_position": 3,
+                    "race_position": 7,
+                    "dnf_probability": 1.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 0.2,
-                    "expected_p50": 10.7,
-                    "ceiling_p90": 26.6
+                    "floor_p10": 9.9,
+                    "expected_p50": 21.1,
+                    "ceiling_p90": 36.7
                 }
             },
             "sergio_perez": {
@@ -353,14 +2013,14 @@
                 "date": "2026-11-01",
                 "driver": "sergio_perez",
                 "predictions": {
-                    "qualifying_position": 11,
-                    "race_position": 10,
-                    "dnf_probability": 8.0
+                    "qualifying_position": 20,
+                    "race_position": 12,
+                    "dnf_probability": 11.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 11.2,
-                    "expected_p50": 16.5,
-                    "ceiling_p90": 31.9
+                    "floor_p10": 7.3,
+                    "expected_p50": 13.7,
+                    "ceiling_p90": 23.9
                 }
             },
             "lewis_hamilton": {
@@ -368,14 +2028,14 @@
                 "date": "2026-11-01",
                 "driver": "lewis_hamilton",
                 "predictions": {
-                    "qualifying_position": 22,
-                    "race_position": 13,
-                    "dnf_probability": 10.7
+                    "qualifying_position": 15,
+                    "race_position": 22,
+                    "dnf_probability": 1.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 9.3,
-                    "expected_p50": 16.0,
-                    "ceiling_p90": 27.4
+                    "floor_p10": 1.0,
+                    "expected_p50": 6.7,
+                    "ceiling_p90": 20.8
                 }
             },
             "george_russell": {
@@ -383,14 +2043,14 @@
                 "date": "2026-11-01",
                 "driver": "george_russell",
                 "predictions": {
-                    "qualifying_position": 20,
-                    "race_position": 8,
-                    "dnf_probability": 8.9
+                    "qualifying_position": 21,
+                    "race_position": 19,
+                    "dnf_probability": 9.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 11.5,
-                    "expected_p50": 20.4,
-                    "ceiling_p90": 29.6
+                    "floor_p10": 1.0,
+                    "expected_p50": 8.6,
+                    "ceiling_p90": 18.4
                 }
             },
             "charles_leclerc": {
@@ -398,14 +2058,14 @@
                 "date": "2026-11-01",
                 "driver": "charles_leclerc",
                 "predictions": {
-                    "qualifying_position": 7,
-                    "race_position": 16,
-                    "dnf_probability": 6.8
+                    "qualifying_position": 6,
+                    "race_position": 2,
+                    "dnf_probability": 13.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 4.2,
-                    "expected_p50": 10.8,
-                    "ceiling_p90": 24.4
+                    "floor_p10": 12.4,
+                    "expected_p50": 23.2,
+                    "ceiling_p90": 37.6
                 }
             },
             "carlos_sainz": {
@@ -413,14 +2073,14 @@
                 "date": "2026-11-01",
                 "driver": "carlos_sainz",
                 "predictions": {
-                    "qualifying_position": 16,
-                    "race_position": 15,
-                    "dnf_probability": 13.2
+                    "qualifying_position": 11,
+                    "race_position": 20,
+                    "dnf_probability": 11.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 7.3,
-                    "expected_p50": 13.9,
-                    "ceiling_p90": 32.0
+                    "floor_p10": 0.7,
+                    "expected_p50": 9.7,
+                    "ceiling_p90": 19.9
                 }
             },
             "lando_norris": {
@@ -428,14 +2088,14 @@
                 "date": "2026-11-01",
                 "driver": "lando_norris",
                 "predictions": {
-                    "qualifying_position": 14,
-                    "race_position": 9,
-                    "dnf_probability": 5.8
+                    "qualifying_position": 9,
+                    "race_position": 1,
+                    "dnf_probability": 5.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 13.8,
-                    "expected_p50": 20.3,
-                    "ceiling_p90": 38.0
+                    "floor_p10": 16.9,
+                    "expected_p50": 25.5,
+                    "ceiling_p90": 37.9
                 }
             },
             "oscar_piastri": {
@@ -443,14 +2103,14 @@
                 "date": "2026-11-01",
                 "driver": "oscar_piastri",
                 "predictions": {
-                    "qualifying_position": 13,
-                    "race_position": 19,
-                    "dnf_probability": 2.6
+                    "qualifying_position": 19,
+                    "race_position": 13,
+                    "dnf_probability": 12.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 3.6,
-                    "expected_p50": 9.9,
-                    "ceiling_p90": 23.3
+                    "floor_p10": 8.2,
+                    "expected_p50": 13.7,
+                    "ceiling_p90": 29.6
                 }
             },
             "fernando_alonso": {
@@ -458,14 +2118,14 @@
                 "date": "2026-11-01",
                 "driver": "fernando_alonso",
                 "predictions": {
-                    "qualifying_position": 19,
-                    "race_position": 3,
-                    "dnf_probability": 9.7
+                    "qualifying_position": 22,
+                    "race_position": 5,
+                    "dnf_probability": 12.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 17.8,
-                    "expected_p50": 22.8,
-                    "ceiling_p90": 37.6
+                    "floor_p10": 10.5,
+                    "expected_p50": 22.2,
+                    "ceiling_p90": 31.2
                 }
             },
             "lance_stroll": {
@@ -473,14 +2133,14 @@
                 "date": "2026-11-01",
                 "driver": "lance_stroll",
                 "predictions": {
-                    "qualifying_position": 15,
-                    "race_position": 14,
-                    "dnf_probability": 7.9
+                    "qualifying_position": 13,
+                    "race_position": 3,
+                    "dnf_probability": 6.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 9.5,
-                    "expected_p50": 15.3,
-                    "ceiling_p90": 32.6
+                    "floor_p10": 20.0,
+                    "expected_p50": 26.9,
+                    "ceiling_p90": 40.4
                 }
             },
             "esteban_ocon": {
@@ -488,14 +2148,14 @@
                 "date": "2026-11-01",
                 "driver": "esteban_ocon",
                 "predictions": {
-                    "qualifying_position": 10,
-                    "race_position": 4,
-                    "dnf_probability": 5.4
+                    "qualifying_position": 14,
+                    "race_position": 11,
+                    "dnf_probability": 8.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 16.9,
-                    "expected_p50": 22.0,
-                    "ceiling_p90": 40.5
+                    "floor_p10": 12.8,
+                    "expected_p50": 18.4,
+                    "ceiling_p90": 31.9
                 }
             },
             "pierre_gasly": {
@@ -503,14 +2163,14 @@
                 "date": "2026-11-01",
                 "driver": "pierre_gasly",
                 "predictions": {
-                    "qualifying_position": 5,
-                    "race_position": 17,
-                    "dnf_probability": 8.4
+                    "qualifying_position": 7,
+                    "race_position": 15,
+                    "dnf_probability": 12.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 1.6,
-                    "expected_p50": 8.6,
-                    "ceiling_p90": 27.8
+                    "floor_p10": 1.4,
+                    "expected_p50": 12.9,
+                    "ceiling_p90": 31.8
                 }
             },
             "alex_albon": {
@@ -518,14 +2178,14 @@
                 "date": "2026-11-01",
                 "driver": "alex_albon",
                 "predictions": {
-                    "qualifying_position": 9,
-                    "race_position": 1,
-                    "dnf_probability": 11.4
+                    "qualifying_position": 4,
+                    "race_position": 6,
+                    "dnf_probability": 1.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 15.4,
-                    "expected_p50": 25.5,
-                    "ceiling_p90": 40.2
+                    "floor_p10": 15.2,
+                    "expected_p50": 20.4,
+                    "ceiling_p90": 35.3
                 }
             },
             "franco_colapinto": {
@@ -533,14 +2193,14 @@
                 "date": "2026-11-01",
                 "driver": "franco_colapinto",
                 "predictions": {
-                    "qualifying_position": 6,
-                    "race_position": 7,
+                    "qualifying_position": 5,
+                    "race_position": 21,
                     "dnf_probability": 3.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 16.4,
-                    "expected_p50": 22.5,
-                    "ceiling_p90": 38.7
+                    "floor_p10": 0,
+                    "expected_p50": 4.7,
+                    "ceiling_p90": 17.9
                 }
             },
             "yuki_tsunoda": {
@@ -548,14 +2208,14 @@
                 "date": "2026-11-01",
                 "driver": "yuki_tsunoda",
                 "predictions": {
-                    "qualifying_position": 4,
-                    "race_position": 5,
-                    "dnf_probability": 7.3
+                    "qualifying_position": 10,
+                    "race_position": 10,
+                    "dnf_probability": 12.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 15.3,
-                    "expected_p50": 21.7,
-                    "ceiling_p90": 39.8
+                    "floor_p10": 9.0,
+                    "expected_p50": 19.9,
+                    "ceiling_p90": 30.2
                 }
             },
             "liam_lawson": {
@@ -563,14 +2223,14 @@
                 "date": "2026-11-01",
                 "driver": "liam_lawson",
                 "predictions": {
-                    "qualifying_position": 3,
-                    "race_position": 20,
-                    "dnf_probability": 6.7
+                    "qualifying_position": 12,
+                    "race_position": 16,
+                    "dnf_probability": 4.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 8.7,
-                    "ceiling_p90": 18.2
+                    "floor_p10": 2.7,
+                    "expected_p50": 9.3,
+                    "ceiling_p90": 22.5
                 }
             },
             "valtteri_bottas": {
@@ -578,14 +2238,14 @@
                 "date": "2026-11-01",
                 "driver": "valtteri_bottas",
                 "predictions": {
-                    "qualifying_position": 8,
-                    "race_position": 11,
-                    "dnf_probability": 6.8
+                    "qualifying_position": 16,
+                    "race_position": 4,
+                    "dnf_probability": 2.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 9.7,
-                    "expected_p50": 17.2,
-                    "ceiling_p90": 26.4
+                    "floor_p10": 18.7,
+                    "expected_p50": 25.6,
+                    "ceiling_p90": 45.3
                 }
             },
             "gabriel_bortoleto": {
@@ -593,14 +2253,14 @@
                 "date": "2026-11-01",
                 "driver": "gabriel_bortoleto",
                 "predictions": {
-                    "qualifying_position": 21,
-                    "race_position": 12,
-                    "dnf_probability": 14.2
+                    "qualifying_position": 18,
+                    "race_position": 8,
+                    "dnf_probability": 10.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 2.4,
-                    "expected_p50": 14.2,
-                    "ceiling_p90": 23.6
+                    "floor_p10": 11.3,
+                    "expected_p50": 20.9,
+                    "ceiling_p90": 37.9
                 }
             },
             "nico_hulkenberg": {
@@ -608,14 +2268,14 @@
                 "date": "2026-11-01",
                 "driver": "nico_hulkenberg",
                 "predictions": {
-                    "qualifying_position": 18,
-                    "race_position": 2,
-                    "dnf_probability": 1.4
+                    "qualifying_position": 17,
+                    "race_position": 9,
+                    "dnf_probability": 12.4
                 },
                 "fantasy_points": {
-                    "floor_p10": 19.8,
-                    "expected_p50": 26.4,
-                    "ceiling_p90": 45.2
+                    "floor_p10": 5.2,
+                    "expected_p50": 16.8,
+                    "ceiling_p90": 34.6
                 }
             },
             "oliver_bearman": {
@@ -623,14 +2283,14 @@
                 "date": "2026-11-01",
                 "driver": "oliver_bearman",
                 "predictions": {
-                    "qualifying_position": 2,
-                    "race_position": 21,
-                    "dnf_probability": 9.2
+                    "qualifying_position": 8,
+                    "race_position": 17,
+                    "dnf_probability": 11.5
                 },
                 "fantasy_points": {
                     "floor_p10": 0,
-                    "expected_p50": 8.7,
-                    "ceiling_p90": 18.8
+                    "expected_p50": 10.5,
+                    "ceiling_p90": 27.6
                 }
             },
             "andrea_kimi_antonelli": {
@@ -638,14 +2298,14 @@
                 "date": "2026-11-01",
                 "driver": "andrea_kimi_antonelli",
                 "predictions": {
-                    "qualifying_position": 1,
-                    "race_position": 22,
-                    "dnf_probability": 3.3
+                    "qualifying_position": 2,
+                    "race_position": 14,
+                    "dnf_probability": 10.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 4.1,
-                    "ceiling_p90": 15.2
+                    "floor_p10": 6.9,
+                    "expected_p50": 13.2,
+                    "ceiling_p90": 22.1
                 }
             },
             "isack_hadjar": {
@@ -653,14 +2313,14 @@
                 "date": "2026-11-01",
                 "driver": "isack_hadjar",
                 "predictions": {
-                    "qualifying_position": 17,
-                    "race_position": 6,
-                    "dnf_probability": 5.4
+                    "qualifying_position": 1,
+                    "race_position": 18,
+                    "dnf_probability": 9.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 13.4,
-                    "expected_p50": 23.5,
-                    "ceiling_p90": 36.3
+                    "floor_p10": 0,
+                    "expected_p50": 10.3,
+                    "ceiling_p90": 25.5
                 }
             }
         },
@@ -670,14 +2330,14 @@
                 "date": "2026-11-08",
                 "driver": "max_verstappen",
                 "predictions": {
-                    "qualifying_position": 7,
-                    "race_position": 11,
-                    "dnf_probability": 13.2
+                    "qualifying_position": 11,
+                    "race_position": 8,
+                    "dnf_probability": 4.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 8.3,
-                    "expected_p50": 15.6,
-                    "ceiling_p90": 32.0
+                    "floor_p10": 9.3,
+                    "expected_p50": 19.7,
+                    "ceiling_p90": 38.1
                 }
             },
             "sergio_perez": {
@@ -685,14 +2345,14 @@
                 "date": "2026-11-08",
                 "driver": "sergio_perez",
                 "predictions": {
-                    "qualifying_position": 21,
-                    "race_position": 12,
-                    "dnf_probability": 3.1
+                    "qualifying_position": 20,
+                    "race_position": 5,
+                    "dnf_probability": 12.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 7.2,
-                    "expected_p50": 13.5,
-                    "ceiling_p90": 25.9
+                    "floor_p10": 10.6,
+                    "expected_p50": 20.6,
+                    "ceiling_p90": 31.9
                 }
             },
             "lewis_hamilton": {
@@ -700,14 +2360,14 @@
                 "date": "2026-11-08",
                 "driver": "lewis_hamilton",
                 "predictions": {
-                    "qualifying_position": 19,
+                    "qualifying_position": 15,
                     "race_position": 16,
-                    "dnf_probability": 14.4
+                    "dnf_probability": 5.3
                 },
                 "fantasy_points": {
                     "floor_p10": 0.6,
-                    "expected_p50": 11.6,
-                    "ceiling_p90": 29.9
+                    "expected_p50": 11.5,
+                    "ceiling_p90": 21.2
                 }
             },
             "george_russell": {
@@ -716,13 +2376,13 @@
                 "driver": "george_russell",
                 "predictions": {
                     "qualifying_position": 3,
-                    "race_position": 10,
-                    "dnf_probability": 13.6
+                    "race_position": 21,
+                    "dnf_probability": 8.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 6.8,
-                    "expected_p50": 18.6,
-                    "ceiling_p90": 37.9
+                    "floor_p10": 0,
+                    "expected_p50": 7.0,
+                    "ceiling_p90": 19.3
                 }
             },
             "charles_leclerc": {
@@ -730,14 +2390,14 @@
                 "date": "2026-11-08",
                 "driver": "charles_leclerc",
                 "predictions": {
-                    "qualifying_position": 14,
-                    "race_position": 13,
-                    "dnf_probability": 11.3
+                    "qualifying_position": 6,
+                    "race_position": 17,
+                    "dnf_probability": 7.7
                 },
                 "fantasy_points": {
-                    "floor_p10": 4.0,
-                    "expected_p50": 13.6,
-                    "ceiling_p90": 27.9
+                    "floor_p10": 2.5,
+                    "expected_p50": 12.6,
+                    "ceiling_p90": 22.9
                 }
             },
             "carlos_sainz": {
@@ -745,14 +2405,14 @@
                 "date": "2026-11-08",
                 "driver": "carlos_sainz",
                 "predictions": {
-                    "qualifying_position": 8,
-                    "race_position": 2,
-                    "dnf_probability": 3.2
+                    "qualifying_position": 17,
+                    "race_position": 15,
+                    "dnf_probability": 7.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 18.4,
-                    "expected_p50": 25.1,
-                    "ceiling_p90": 39.3
+                    "floor_p10": 7.9,
+                    "expected_p50": 13.0,
+                    "ceiling_p90": 28.2
                 }
             },
             "lando_norris": {
@@ -760,14 +2420,14 @@
                 "date": "2026-11-08",
                 "driver": "lando_norris",
                 "predictions": {
-                    "qualifying_position": 11,
-                    "race_position": 17,
-                    "dnf_probability": 6.2
+                    "qualifying_position": 2,
+                    "race_position": 19,
+                    "dnf_probability": 2.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 5.6,
-                    "expected_p50": 11.3,
-                    "ceiling_p90": 22.2
+                    "floor_p10": 4.0,
+                    "expected_p50": 10.1,
+                    "ceiling_p90": 22.7
                 }
             },
             "oscar_piastri": {
@@ -775,14 +2435,14 @@
                 "date": "2026-11-08",
                 "driver": "oscar_piastri",
                 "predictions": {
-                    "qualifying_position": 17,
-                    "race_position": 20,
-                    "dnf_probability": 1.7
+                    "qualifying_position": 4,
+                    "race_position": 10,
+                    "dnf_probability": 1.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 1.4,
-                    "expected_p50": 9.2,
-                    "ceiling_p90": 22.7
+                    "floor_p10": 9.3,
+                    "expected_p50": 19.2,
+                    "ceiling_p90": 33.5
                 }
             },
             "fernando_alonso": {
@@ -790,14 +2450,14 @@
                 "date": "2026-11-08",
                 "driver": "fernando_alonso",
                 "predictions": {
-                    "qualifying_position": 16,
-                    "race_position": 4,
-                    "dnf_probability": 11.3
+                    "qualifying_position": 10,
+                    "race_position": 14,
+                    "dnf_probability": 14.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 14.6,
-                    "expected_p50": 23.4,
-                    "ceiling_p90": 42.6
+                    "floor_p10": 2.6,
+                    "expected_p50": 12.8,
+                    "ceiling_p90": 27.4
                 }
             },
             "lance_stroll": {
@@ -805,14 +2465,14 @@
                 "date": "2026-11-08",
                 "driver": "lance_stroll",
                 "predictions": {
-                    "qualifying_position": 2,
-                    "race_position": 21,
-                    "dnf_probability": 12.7
+                    "qualifying_position": 18,
+                    "race_position": 20,
+                    "dnf_probability": 11.3
                 },
                 "fantasy_points": {
                     "floor_p10": 0,
-                    "expected_p50": 4.7,
-                    "ceiling_p90": 14.4
+                    "expected_p50": 5.4,
+                    "ceiling_p90": 25.1
                 }
             },
             "esteban_ocon": {
@@ -820,13 +2480,13 @@
                 "date": "2026-11-08",
                 "driver": "esteban_ocon",
                 "predictions": {
-                    "qualifying_position": 15,
-                    "race_position": 3,
-                    "dnf_probability": 6.6
+                    "qualifying_position": 7,
+                    "race_position": 7,
+                    "dnf_probability": 9.4
                 },
                 "fantasy_points": {
-                    "floor_p10": 19.3,
-                    "expected_p50": 26.1,
+                    "floor_p10": 10.8,
+                    "expected_p50": 20.7,
                     "ceiling_p90": 40.7
                 }
             },
@@ -835,14 +2495,14 @@
                 "date": "2026-11-08",
                 "driver": "pierre_gasly",
                 "predictions": {
-                    "qualifying_position": 6,
-                    "race_position": 6,
-                    "dnf_probability": 6.5
+                    "qualifying_position": 22,
+                    "race_position": 1,
+                    "dnf_probability": 8.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 17.2,
-                    "expected_p50": 23.5,
-                    "ceiling_p90": 35.6
+                    "floor_p10": 14.8,
+                    "expected_p50": 24.4,
+                    "ceiling_p90": 35.7
                 }
             },
             "alex_albon": {
@@ -850,14 +2510,14 @@
                 "date": "2026-11-08",
                 "driver": "alex_albon",
                 "predictions": {
-                    "qualifying_position": 12,
-                    "race_position": 7,
-                    "dnf_probability": 11.5
+                    "qualifying_position": 1,
+                    "race_position": 9,
+                    "dnf_probability": 14.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 15.9,
-                    "expected_p50": 22.9,
-                    "ceiling_p90": 36.4
+                    "floor_p10": 8.6,
+                    "expected_p50": 16.9,
+                    "ceiling_p90": 33.6
                 }
             },
             "franco_colapinto": {
@@ -865,14 +2525,14 @@
                 "date": "2026-11-08",
                 "driver": "franco_colapinto",
                 "predictions": {
-                    "qualifying_position": 5,
-                    "race_position": 15,
-                    "dnf_probability": 11.3
+                    "qualifying_position": 12,
+                    "race_position": 3,
+                    "dnf_probability": 14.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 1.2,
-                    "expected_p50": 10.2,
-                    "ceiling_p90": 28.7
+                    "floor_p10": 21.1,
+                    "expected_p50": 26.5,
+                    "ceiling_p90": 39.0
                 }
             },
             "yuki_tsunoda": {
@@ -880,14 +2540,14 @@
                 "date": "2026-11-08",
                 "driver": "yuki_tsunoda",
                 "predictions": {
-                    "qualifying_position": 22,
-                    "race_position": 18,
-                    "dnf_probability": 6.2
+                    "qualifying_position": 13,
+                    "race_position": 13,
+                    "dnf_probability": 11.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 2.8,
-                    "expected_p50": 11.5,
-                    "ceiling_p90": 25.8
+                    "floor_p10": 3.2,
+                    "expected_p50": 12.4,
+                    "ceiling_p90": 22.8
                 }
             },
             "liam_lawson": {
@@ -895,14 +2555,14 @@
                 "date": "2026-11-08",
                 "driver": "liam_lawson",
                 "predictions": {
-                    "qualifying_position": 18,
-                    "race_position": 1,
-                    "dnf_probability": 4.1
+                    "qualifying_position": 16,
+                    "race_position": 22,
+                    "dnf_probability": 5.7
                 },
                 "fantasy_points": {
-                    "floor_p10": 13.5,
-                    "expected_p50": 25.3,
-                    "ceiling_p90": 38.5
+                    "floor_p10": 0.1,
+                    "expected_p50": 5.4,
+                    "ceiling_p90": 18.9
                 }
             },
             "valtteri_bottas": {
@@ -910,14 +2570,14 @@
                 "date": "2026-11-08",
                 "driver": "valtteri_bottas",
                 "predictions": {
-                    "qualifying_position": 13,
-                    "race_position": 5,
-                    "dnf_probability": 11.4
+                    "qualifying_position": 9,
+                    "race_position": 18,
+                    "dnf_probability": 4.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 10.3,
-                    "expected_p50": 22.2,
-                    "ceiling_p90": 30.7
+                    "floor_p10": 0,
+                    "expected_p50": 9.4,
+                    "ceiling_p90": 28.1
                 }
             },
             "gabriel_bortoleto": {
@@ -925,14 +2585,14 @@
                 "date": "2026-11-08",
                 "driver": "gabriel_bortoleto",
                 "predictions": {
-                    "qualifying_position": 9,
-                    "race_position": 9,
-                    "dnf_probability": 14.6
+                    "qualifying_position": 8,
+                    "race_position": 4,
+                    "dnf_probability": 3.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 8.4,
-                    "expected_p50": 17.6,
-                    "ceiling_p90": 26.5
+                    "floor_p10": 13.7,
+                    "expected_p50": 22.0,
+                    "ceiling_p90": 32.6
                 }
             },
             "nico_hulkenberg": {
@@ -940,14 +2600,14 @@
                 "date": "2026-11-08",
                 "driver": "nico_hulkenberg",
                 "predictions": {
-                    "qualifying_position": 1,
-                    "race_position": 14,
-                    "dnf_probability": 3.0
+                    "qualifying_position": 21,
+                    "race_position": 2,
+                    "dnf_probability": 3.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 6.6,
-                    "expected_p50": 14.8,
-                    "ceiling_p90": 26.0
+                    "floor_p10": 19.0,
+                    "expected_p50": 26.2,
+                    "ceiling_p90": 36.5
                 }
             },
             "oliver_bearman": {
@@ -955,14 +2615,14 @@
                 "date": "2026-11-08",
                 "driver": "oliver_bearman",
                 "predictions": {
-                    "qualifying_position": 10,
-                    "race_position": 8,
-                    "dnf_probability": 14.0
+                    "qualifying_position": 5,
+                    "race_position": 11,
+                    "dnf_probability": 13.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 13.3,
-                    "expected_p50": 20.4,
-                    "ceiling_p90": 32.0
+                    "floor_p10": 7.9,
+                    "expected_p50": 18.7,
+                    "ceiling_p90": 29.7
                 }
             },
             "andrea_kimi_antonelli": {
@@ -970,14 +2630,14 @@
                 "date": "2026-11-08",
                 "driver": "andrea_kimi_antonelli",
                 "predictions": {
-                    "qualifying_position": 4,
-                    "race_position": 19,
-                    "dnf_probability": 2.0
+                    "qualifying_position": 19,
+                    "race_position": 12,
+                    "dnf_probability": 6.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 8.5,
-                    "ceiling_p90": 17.1
+                    "floor_p10": 7.8,
+                    "expected_p50": 15.8,
+                    "ceiling_p90": 32.9
                 }
             },
             "isack_hadjar": {
@@ -985,14 +2645,14 @@
                 "date": "2026-11-08",
                 "driver": "isack_hadjar",
                 "predictions": {
-                    "qualifying_position": 20,
-                    "race_position": 22,
-                    "dnf_probability": 11.3
+                    "qualifying_position": 14,
+                    "race_position": 6,
+                    "dnf_probability": 9.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 5.8,
-                    "ceiling_p90": 14.2
+                    "floor_p10": 10.6,
+                    "expected_p50": 20.9,
+                    "ceiling_p90": 32.7
                 }
             }
         },
@@ -1002,14 +2662,14 @@
                 "date": "2026-11-21",
                 "driver": "max_verstappen",
                 "predictions": {
-                    "qualifying_position": 4,
-                    "race_position": 12,
-                    "dnf_probability": 11.6
+                    "qualifying_position": 7,
+                    "race_position": 18,
+                    "dnf_probability": 5.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 5.2,
-                    "expected_p50": 15.7,
-                    "ceiling_p90": 30.2
+                    "floor_p10": 0,
+                    "expected_p50": 11.4,
+                    "ceiling_p90": 25.7
                 }
             },
             "sergio_perez": {
@@ -1017,14 +2677,14 @@
                 "date": "2026-11-21",
                 "driver": "sergio_perez",
                 "predictions": {
-                    "qualifying_position": 11,
-                    "race_position": 20,
-                    "dnf_probability": 9.5
+                    "qualifying_position": 13,
+                    "race_position": 22,
+                    "dnf_probability": 3.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 8.1,
-                    "ceiling_p90": 22.4
+                    "floor_p10": 1.7,
+                    "expected_p50": 7.5,
+                    "ceiling_p90": 21.7
                 }
             },
             "lewis_hamilton": {
@@ -1032,14 +2692,14 @@
                 "date": "2026-11-21",
                 "driver": "lewis_hamilton",
                 "predictions": {
-                    "qualifying_position": 1,
-                    "race_position": 10,
-                    "dnf_probability": 10.9
+                    "qualifying_position": 17,
+                    "race_position": 9,
+                    "dnf_probability": 1.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 7.9,
-                    "expected_p50": 17.5,
-                    "ceiling_p90": 36.4
+                    "floor_p10": 11.1,
+                    "expected_p50": 17.1,
+                    "ceiling_p90": 32.0
                 }
             },
             "george_russell": {
@@ -1047,14 +2707,14 @@
                 "date": "2026-11-21",
                 "driver": "george_russell",
                 "predictions": {
-                    "qualifying_position": 8,
-                    "race_position": 2,
-                    "dnf_probability": 12.8
+                    "qualifying_position": 9,
+                    "race_position": 3,
+                    "dnf_probability": 12.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 17.7,
-                    "expected_p50": 27.1,
-                    "ceiling_p90": 39.0
+                    "floor_p10": 18.7,
+                    "expected_p50": 26.1,
+                    "ceiling_p90": 42.8
                 }
             },
             "charles_leclerc": {
@@ -1062,14 +2722,14 @@
                 "date": "2026-11-21",
                 "driver": "charles_leclerc",
                 "predictions": {
-                    "qualifying_position": 16,
-                    "race_position": 21,
-                    "dnf_probability": 7.2
+                    "qualifying_position": 5,
+                    "race_position": 6,
+                    "dnf_probability": 13.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 6.1,
-                    "ceiling_p90": 16.5
+                    "floor_p10": 9.8,
+                    "expected_p50": 21.5,
+                    "ceiling_p90": 31.1
                 }
             },
             "carlos_sainz": {
@@ -1077,14 +2737,14 @@
                 "date": "2026-11-21",
                 "driver": "carlos_sainz",
                 "predictions": {
-                    "qualifying_position": 13,
-                    "race_position": 13,
-                    "dnf_probability": 13.2
+                    "qualifying_position": 20,
+                    "race_position": 2,
+                    "dnf_probability": 10.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 6.1,
-                    "expected_p50": 15.3,
-                    "ceiling_p90": 35.0
+                    "floor_p10": 16.2,
+                    "expected_p50": 26.6,
+                    "ceiling_p90": 44.9
                 }
             },
             "lando_norris": {
@@ -1092,14 +2752,14 @@
                 "date": "2026-11-21",
                 "driver": "lando_norris",
                 "predictions": {
-                    "qualifying_position": 10,
-                    "race_position": 18,
-                    "dnf_probability": 14.9
+                    "qualifying_position": 4,
+                    "race_position": 20,
+                    "dnf_probability": 3.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 5.2,
-                    "expected_p50": 11.7,
-                    "ceiling_p90": 25.7
+                    "floor_p10": 0,
+                    "expected_p50": 8.2,
+                    "ceiling_p90": 18.6
                 }
             },
             "oscar_piastri": {
@@ -1107,14 +2767,14 @@
                 "date": "2026-11-21",
                 "driver": "oscar_piastri",
                 "predictions": {
-                    "qualifying_position": 17,
-                    "race_position": 22,
-                    "dnf_probability": 4.9
+                    "qualifying_position": 18,
+                    "race_position": 14,
+                    "dnf_probability": 14.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 6.5,
-                    "ceiling_p90": 25.4
+                    "floor_p10": 7.2,
+                    "expected_p50": 13.6,
+                    "ceiling_p90": 29.2
                 }
             },
             "fernando_alonso": {
@@ -1122,14 +2782,14 @@
                 "date": "2026-11-21",
                 "driver": "fernando_alonso",
                 "predictions": {
-                    "qualifying_position": 20,
-                    "race_position": 16,
-                    "dnf_probability": 8.8
+                    "qualifying_position": 2,
+                    "race_position": 15,
+                    "dnf_probability": 7.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 0.9,
-                    "expected_p50": 11.7,
-                    "ceiling_p90": 29.3
+                    "floor_p10": 4.2,
+                    "expected_p50": 13.6,
+                    "ceiling_p90": 26.2
                 }
             },
             "lance_stroll": {
@@ -1137,14 +2797,14 @@
                 "date": "2026-11-21",
                 "driver": "lance_stroll",
                 "predictions": {
-                    "qualifying_position": 12,
-                    "race_position": 6,
-                    "dnf_probability": 2.9
+                    "qualifying_position": 6,
+                    "race_position": 5,
+                    "dnf_probability": 6.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 11.7,
-                    "expected_p50": 21.5,
-                    "ceiling_p90": 34.8
+                    "floor_p10": 13.7,
+                    "expected_p50": 22.0,
+                    "ceiling_p90": 41.1
                 }
             },
             "esteban_ocon": {
@@ -1153,13 +2813,13 @@
                 "driver": "esteban_ocon",
                 "predictions": {
                     "qualifying_position": 14,
-                    "race_position": 1,
-                    "dnf_probability": 13.4
+                    "race_position": 12,
+                    "dnf_probability": 3.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 18.8,
-                    "expected_p50": 27.1,
-                    "ceiling_p90": 41.1
+                    "floor_p10": 3.6,
+                    "expected_p50": 13.4,
+                    "ceiling_p90": 26.0
                 }
             },
             "pierre_gasly": {
@@ -1167,14 +2827,14 @@
                 "date": "2026-11-21",
                 "driver": "pierre_gasly",
                 "predictions": {
-                    "qualifying_position": 3,
-                    "race_position": 8,
-                    "dnf_probability": 13.4
+                    "qualifying_position": 12,
+                    "race_position": 11,
+                    "dnf_probability": 5.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 10.7,
-                    "expected_p50": 18.7,
-                    "ceiling_p90": 35.1
+                    "floor_p10": 11.9,
+                    "expected_p50": 18.2,
+                    "ceiling_p90": 35.7
                 }
             },
             "alex_albon": {
@@ -1182,14 +2842,14 @@
                 "date": "2026-11-21",
                 "driver": "alex_albon",
                 "predictions": {
-                    "qualifying_position": 5,
-                    "race_position": 11,
-                    "dnf_probability": 13.8
+                    "qualifying_position": 19,
+                    "race_position": 17,
+                    "dnf_probability": 3.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 5.6,
-                    "expected_p50": 16.0,
-                    "ceiling_p90": 31.0
+                    "floor_p10": 5.7,
+                    "expected_p50": 10.8,
+                    "ceiling_p90": 20.1
                 }
             },
             "franco_colapinto": {
@@ -1197,14 +2857,14 @@
                 "date": "2026-11-21",
                 "driver": "franco_colapinto",
                 "predictions": {
-                    "qualifying_position": 21,
-                    "race_position": 5,
-                    "dnf_probability": 6.1
+                    "qualifying_position": 10,
+                    "race_position": 10,
+                    "dnf_probability": 9.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 12.6,
-                    "expected_p50": 21.1,
-                    "ceiling_p90": 32.5
+                    "floor_p10": 12.0,
+                    "expected_p50": 18.2,
+                    "ceiling_p90": 27.2
                 }
             },
             "yuki_tsunoda": {
@@ -1212,14 +2872,14 @@
                 "date": "2026-11-21",
                 "driver": "yuki_tsunoda",
                 "predictions": {
-                    "qualifying_position": 2,
-                    "race_position": 15,
-                    "dnf_probability": 12.7
+                    "qualifying_position": 8,
+                    "race_position": 19,
+                    "dnf_probability": 12.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 5.1,
-                    "expected_p50": 11.5,
-                    "ceiling_p90": 22.7
+                    "floor_p10": 2.0,
+                    "expected_p50": 10.4,
+                    "ceiling_p90": 27.7
                 }
             },
             "liam_lawson": {
@@ -1227,14 +2887,14 @@
                 "date": "2026-11-21",
                 "driver": "liam_lawson",
                 "predictions": {
-                    "qualifying_position": 19,
-                    "race_position": 4,
-                    "dnf_probability": 12.2
+                    "qualifying_position": 21,
+                    "race_position": 21,
+                    "dnf_probability": 10.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 11.3,
-                    "expected_p50": 22.9,
-                    "ceiling_p90": 37.8
+                    "floor_p10": 0,
+                    "expected_p50": 5.0,
+                    "ceiling_p90": 14.1
                 }
             },
             "valtteri_bottas": {
@@ -1242,14 +2902,14 @@
                 "date": "2026-11-21",
                 "driver": "valtteri_bottas",
                 "predictions": {
-                    "qualifying_position": 9,
-                    "race_position": 14,
-                    "dnf_probability": 11.3
+                    "qualifying_position": 15,
+                    "race_position": 13,
+                    "dnf_probability": 10.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 3.8,
-                    "expected_p50": 14.5,
-                    "ceiling_p90": 26.2
+                    "floor_p10": 7.5,
+                    "expected_p50": 16.4,
+                    "ceiling_p90": 29.7
                 }
             },
             "gabriel_bortoleto": {
@@ -1257,14 +2917,14 @@
                 "date": "2026-11-21",
                 "driver": "gabriel_bortoleto",
                 "predictions": {
-                    "qualifying_position": 22,
-                    "race_position": 9,
-                    "dnf_probability": 14.3
+                    "qualifying_position": 1,
+                    "race_position": 1,
+                    "dnf_probability": 14.4
                 },
                 "fantasy_points": {
-                    "floor_p10": 13.2,
-                    "expected_p50": 19.5,
-                    "ceiling_p90": 32.8
+                    "floor_p10": 18.2,
+                    "expected_p50": 28.3,
+                    "ceiling_p90": 45.1
                 }
             },
             "nico_hulkenberg": {
@@ -1272,14 +2932,14 @@
                 "date": "2026-11-21",
                 "driver": "nico_hulkenberg",
                 "predictions": {
-                    "qualifying_position": 6,
-                    "race_position": 3,
-                    "dnf_probability": 7.5
+                    "qualifying_position": 11,
+                    "race_position": 8,
+                    "dnf_probability": 9.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 15.0,
-                    "expected_p50": 22.3,
-                    "ceiling_p90": 31.3
+                    "floor_p10": 11.9,
+                    "expected_p50": 18.5,
+                    "ceiling_p90": 36.9
                 }
             },
             "oliver_bearman": {
@@ -1287,14 +2947,14 @@
                 "date": "2026-11-21",
                 "driver": "oliver_bearman",
                 "predictions": {
-                    "qualifying_position": 18,
-                    "race_position": 17,
-                    "dnf_probability": 10.1
+                    "qualifying_position": 16,
+                    "race_position": 16,
+                    "dnf_probability": 12.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 1.3,
-                    "expected_p50": 8.1,
-                    "ceiling_p90": 19.7
+                    "floor_p10": 7.8,
+                    "expected_p50": 12.8,
+                    "ceiling_p90": 32.3
                 }
             },
             "andrea_kimi_antonelli": {
@@ -1302,14 +2962,14 @@
                 "date": "2026-11-21",
                 "driver": "andrea_kimi_antonelli",
                 "predictions": {
-                    "qualifying_position": 15,
+                    "qualifying_position": 3,
                     "race_position": 7,
-                    "dnf_probability": 3.0
+                    "dnf_probability": 4.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 11.4,
-                    "expected_p50": 20.0,
-                    "ceiling_p90": 28.2
+                    "floor_p10": 11.8,
+                    "expected_p50": 22.8,
+                    "ceiling_p90": 30.8
                 }
             },
             "isack_hadjar": {
@@ -1317,14 +2977,14 @@
                 "date": "2026-11-21",
                 "driver": "isack_hadjar",
                 "predictions": {
-                    "qualifying_position": 7,
-                    "race_position": 19,
-                    "dnf_probability": 14.1
+                    "qualifying_position": 22,
+                    "race_position": 4,
+                    "dnf_probability": 5.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 0.6,
-                    "expected_p50": 6.9,
-                    "ceiling_p90": 18.4
+                    "floor_p10": 17.6,
+                    "expected_p50": 24.1,
+                    "ceiling_p90": 37.2
                 }
             }
         },
@@ -1334,14 +2994,14 @@
                 "date": "2026-11-29",
                 "driver": "max_verstappen",
                 "predictions": {
-                    "qualifying_position": 19,
-                    "race_position": 5,
-                    "dnf_probability": 11.3
+                    "qualifying_position": 1,
+                    "race_position": 20,
+                    "dnf_probability": 14.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 10.3,
-                    "expected_p50": 22.0,
-                    "ceiling_p90": 40.5
+                    "floor_p10": 0,
+                    "expected_p50": 7.0,
+                    "ceiling_p90": 22.2
                 }
             },
             "sergio_perez": {
@@ -1349,14 +3009,14 @@
                 "date": "2026-11-29",
                 "driver": "sergio_perez",
                 "predictions": {
-                    "qualifying_position": 16,
-                    "race_position": 21,
-                    "dnf_probability": 6.8
+                    "qualifying_position": 19,
+                    "race_position": 13,
+                    "dnf_probability": 1.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 7.1,
-                    "ceiling_p90": 23.4
+                    "floor_p10": 2.0,
+                    "expected_p50": 14.0,
+                    "ceiling_p90": 27.0
                 }
             },
             "lewis_hamilton": {
@@ -1364,14 +3024,14 @@
                 "date": "2026-11-29",
                 "driver": "lewis_hamilton",
                 "predictions": {
-                    "qualifying_position": 18,
-                    "race_position": 20,
-                    "dnf_probability": 12.7
+                    "qualifying_position": 6,
+                    "race_position": 14,
+                    "dnf_probability": 13.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 0.0,
-                    "expected_p50": 9.0,
-                    "ceiling_p90": 28.2
+                    "floor_p10": 8.7,
+                    "expected_p50": 14.6,
+                    "ceiling_p90": 32.7
                 }
             },
             "george_russell": {
@@ -1379,14 +3039,14 @@
                 "date": "2026-11-29",
                 "driver": "george_russell",
                 "predictions": {
-                    "qualifying_position": 2,
-                    "race_position": 7,
-                    "dnf_probability": 1.9
+                    "qualifying_position": 20,
+                    "race_position": 8,
+                    "dnf_probability": 2.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 12.0,
-                    "expected_p50": 19.5,
-                    "ceiling_p90": 34.6
+                    "floor_p10": 14.3,
+                    "expected_p50": 19.4,
+                    "ceiling_p90": 30.5
                 }
             },
             "charles_leclerc": {
@@ -1394,14 +3054,14 @@
                 "date": "2026-11-29",
                 "driver": "charles_leclerc",
                 "predictions": {
-                    "qualifying_position": 13,
-                    "race_position": 8,
-                    "dnf_probability": 14.2
+                    "qualifying_position": 5,
+                    "race_position": 3,
+                    "dnf_probability": 3.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 14.6,
-                    "expected_p50": 19.9,
-                    "ceiling_p90": 34.9
+                    "floor_p10": 19.7,
+                    "expected_p50": 26.7,
+                    "ceiling_p90": 45.2
                 }
             },
             "carlos_sainz": {
@@ -1409,14 +3069,14 @@
                 "date": "2026-11-29",
                 "driver": "carlos_sainz",
                 "predictions": {
-                    "qualifying_position": 7,
-                    "race_position": 10,
-                    "dnf_probability": 14.8
+                    "qualifying_position": 21,
+                    "race_position": 22,
+                    "dnf_probability": 1.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 3.2,
-                    "expected_p50": 15.2,
-                    "ceiling_p90": 23.3
+                    "floor_p10": 0,
+                    "expected_p50": 5.9,
+                    "ceiling_p90": 24.4
                 }
             },
             "lando_norris": {
@@ -1424,14 +3084,14 @@
                 "date": "2026-11-29",
                 "driver": "lando_norris",
                 "predictions": {
-                    "qualifying_position": 1,
-                    "race_position": 6,
-                    "dnf_probability": 8.6
+                    "qualifying_position": 4,
+                    "race_position": 5,
+                    "dnf_probability": 9.7
                 },
                 "fantasy_points": {
-                    "floor_p10": 9.3,
-                    "expected_p50": 20.7,
-                    "ceiling_p90": 29.5
+                    "floor_p10": 16.1,
+                    "expected_p50": 24.8,
+                    "ceiling_p90": 33.4
                 }
             },
             "oscar_piastri": {
@@ -1439,14 +3099,14 @@
                 "date": "2026-11-29",
                 "driver": "oscar_piastri",
                 "predictions": {
-                    "qualifying_position": 17,
-                    "race_position": 11,
-                    "dnf_probability": 13.2
+                    "qualifying_position": 16,
+                    "race_position": 12,
+                    "dnf_probability": 12.4
                 },
                 "fantasy_points": {
-                    "floor_p10": 9.6,
-                    "expected_p50": 15.5,
-                    "ceiling_p90": 25.9
+                    "floor_p10": 5.7,
+                    "expected_p50": 14.9,
+                    "ceiling_p90": 29.0
                 }
             },
             "fernando_alonso": {
@@ -1454,14 +3114,14 @@
                 "date": "2026-11-29",
                 "driver": "fernando_alonso",
                 "predictions": {
-                    "qualifying_position": 11,
-                    "race_position": 15,
-                    "dnf_probability": 3.9
+                    "qualifying_position": 2,
+                    "race_position": 11,
+                    "dnf_probability": 12.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 3.4,
-                    "expected_p50": 13.7,
-                    "ceiling_p90": 24.1
+                    "floor_p10": 12.3,
+                    "expected_p50": 18.6,
+                    "ceiling_p90": 32.6
                 }
             },
             "lance_stroll": {
@@ -1469,14 +3129,14 @@
                 "date": "2026-11-29",
                 "driver": "lance_stroll",
                 "predictions": {
-                    "qualifying_position": 3,
-                    "race_position": 3,
-                    "dnf_probability": 3.8
+                    "qualifying_position": 22,
+                    "race_position": 2,
+                    "dnf_probability": 12.4
                 },
                 "fantasy_points": {
-                    "floor_p10": 16.0,
-                    "expected_p50": 26.2,
-                    "ceiling_p90": 38.5
+                    "floor_p10": 19.0,
+                    "expected_p50": 25.7,
+                    "ceiling_p90": 44.3
                 }
             },
             "esteban_ocon": {
@@ -1484,14 +3144,14 @@
                 "date": "2026-11-29",
                 "driver": "esteban_ocon",
                 "predictions": {
-                    "qualifying_position": 20,
-                    "race_position": 16,
-                    "dnf_probability": 9.1
+                    "qualifying_position": 17,
+                    "race_position": 15,
+                    "dnf_probability": 2.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 1.9,
-                    "expected_p50": 11.5,
-                    "ceiling_p90": 20.3
+                    "floor_p10": 6.3,
+                    "expected_p50": 12.0,
+                    "ceiling_p90": 20.5
                 }
             },
             "pierre_gasly": {
@@ -1499,14 +3159,14 @@
                 "date": "2026-11-29",
                 "driver": "pierre_gasly",
                 "predictions": {
-                    "qualifying_position": 4,
-                    "race_position": 14,
-                    "dnf_probability": 13.0
+                    "qualifying_position": 3,
+                    "race_position": 18,
+                    "dnf_probability": 7.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 6.8,
-                    "expected_p50": 15.6,
-                    "ceiling_p90": 35.0
+                    "floor_p10": 5.4,
+                    "expected_p50": 10.5,
+                    "ceiling_p90": 29.2
                 }
             },
             "alex_albon": {
@@ -1514,14 +3174,14 @@
                 "date": "2026-11-29",
                 "driver": "alex_albon",
                 "predictions": {
-                    "qualifying_position": 6,
-                    "race_position": 1,
-                    "dnf_probability": 15.0
+                    "qualifying_position": 14,
+                    "race_position": 4,
+                    "dnf_probability": 8.7
                 },
                 "fantasy_points": {
                     "floor_p10": 18.4,
-                    "expected_p50": 27.8,
-                    "ceiling_p90": 38.5
+                    "expected_p50": 24.3,
+                    "ceiling_p90": 34.4
                 }
             },
             "franco_colapinto": {
@@ -1529,14 +3189,14 @@
                 "date": "2026-11-29",
                 "driver": "franco_colapinto",
                 "predictions": {
-                    "qualifying_position": 12,
-                    "race_position": 22,
-                    "dnf_probability": 7.5
+                    "qualifying_position": 13,
+                    "race_position": 1,
+                    "dnf_probability": 9.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 5.6,
-                    "ceiling_p90": 15.4
+                    "floor_p10": 19.4,
+                    "expected_p50": 26.6,
+                    "ceiling_p90": 36.5
                 }
             },
             "yuki_tsunoda": {
@@ -1544,14 +3204,14 @@
                 "date": "2026-11-29",
                 "driver": "yuki_tsunoda",
                 "predictions": {
-                    "qualifying_position": 5,
-                    "race_position": 2,
-                    "dnf_probability": 7.1
+                    "qualifying_position": 10,
+                    "race_position": 21,
+                    "dnf_probability": 11.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 18.4,
-                    "expected_p50": 26.4,
-                    "ceiling_p90": 40.3
+                    "floor_p10": 0,
+                    "expected_p50": 7.5,
+                    "ceiling_p90": 19.5
                 }
             },
             "liam_lawson": {
@@ -1560,13 +3220,13 @@
                 "driver": "liam_lawson",
                 "predictions": {
                     "qualifying_position": 9,
-                    "race_position": 13,
-                    "dnf_probability": 4.5
+                    "race_position": 9,
+                    "dnf_probability": 14.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 4.1,
-                    "expected_p50": 15.5,
-                    "ceiling_p90": 24.6
+                    "floor_p10": 9.4,
+                    "expected_p50": 16.7,
+                    "ceiling_p90": 34.6
                 }
             },
             "valtteri_bottas": {
@@ -1574,14 +3234,14 @@
                 "date": "2026-11-29",
                 "driver": "valtteri_bottas",
                 "predictions": {
-                    "qualifying_position": 21,
-                    "race_position": 9,
-                    "dnf_probability": 7.6
+                    "qualifying_position": 15,
+                    "race_position": 16,
+                    "dnf_probability": 2.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 13.5,
-                    "expected_p50": 19.4,
-                    "ceiling_p90": 36.0
+                    "floor_p10": 3.3,
+                    "expected_p50": 12.7,
+                    "ceiling_p90": 26.5
                 }
             },
             "gabriel_bortoleto": {
@@ -1589,14 +3249,14 @@
                 "date": "2026-11-29",
                 "driver": "gabriel_bortoleto",
                 "predictions": {
-                    "qualifying_position": 15,
-                    "race_position": 12,
-                    "dnf_probability": 9.1
+                    "qualifying_position": 12,
+                    "race_position": 6,
+                    "dnf_probability": 5.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 7.9,
-                    "expected_p50": 17.3,
-                    "ceiling_p90": 29.7
+                    "floor_p10": 13.4,
+                    "expected_p50": 23.2,
+                    "ceiling_p90": 33.7
                 }
             },
             "nico_hulkenberg": {
@@ -1604,14 +3264,14 @@
                 "date": "2026-11-29",
                 "driver": "nico_hulkenberg",
                 "predictions": {
-                    "qualifying_position": 10,
-                    "race_position": 19,
-                    "dnf_probability": 6.5
+                    "qualifying_position": 7,
+                    "race_position": 17,
+                    "dnf_probability": 10.0
                 },
                 "fantasy_points": {
                     "floor_p10": 0,
-                    "expected_p50": 10.4,
-                    "ceiling_p90": 22.0
+                    "expected_p50": 8.0,
+                    "ceiling_p90": 26.8
                 }
             },
             "oliver_bearman": {
@@ -1619,14 +3279,14 @@
                 "date": "2026-11-29",
                 "driver": "oliver_bearman",
                 "predictions": {
-                    "qualifying_position": 8,
-                    "race_position": 17,
-                    "dnf_probability": 9.2
+                    "qualifying_position": 11,
+                    "race_position": 7,
+                    "dnf_probability": 3.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 2.5,
-                    "expected_p50": 12.4,
-                    "ceiling_p90": 31.0
+                    "floor_p10": 14.1,
+                    "expected_p50": 22.7,
+                    "ceiling_p90": 38.0
                 }
             },
             "andrea_kimi_antonelli": {
@@ -1634,14 +3294,14 @@
                 "date": "2026-11-29",
                 "driver": "andrea_kimi_antonelli",
                 "predictions": {
-                    "qualifying_position": 22,
-                    "race_position": 4,
-                    "dnf_probability": 8.8
+                    "qualifying_position": 8,
+                    "race_position": 19,
+                    "dnf_probability": 6.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 12.7,
-                    "expected_p50": 21.1,
-                    "ceiling_p90": 33.7
+                    "floor_p10": 0,
+                    "expected_p50": 7.1,
+                    "ceiling_p90": 19.1
                 }
             },
             "isack_hadjar": {
@@ -1649,14 +3309,14 @@
                 "date": "2026-11-29",
                 "driver": "isack_hadjar",
                 "predictions": {
-                    "qualifying_position": 14,
-                    "race_position": 18,
-                    "dnf_probability": 5.8
+                    "qualifying_position": 18,
+                    "race_position": 10,
+                    "dnf_probability": 8.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 2.0,
-                    "expected_p50": 8.1,
-                    "ceiling_p90": 27.2
+                    "floor_p10": 6.8,
+                    "expected_p50": 17.1,
+                    "ceiling_p90": 36.2
                 }
             }
         },
@@ -1666,14 +3326,14 @@
                 "date": "2026-12-06",
                 "driver": "max_verstappen",
                 "predictions": {
-                    "qualifying_position": 3,
-                    "race_position": 3,
-                    "dnf_probability": 10.7
+                    "qualifying_position": 10,
+                    "race_position": 10,
+                    "dnf_probability": 5.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 12.8,
-                    "expected_p50": 24.3,
-                    "ceiling_p90": 39.3
+                    "floor_p10": 10.9,
+                    "expected_p50": 18.8,
+                    "ceiling_p90": 31.6
                 }
             },
             "sergio_perez": {
@@ -1682,13 +3342,13 @@
                 "driver": "sergio_perez",
                 "predictions": {
                     "qualifying_position": 18,
-                    "race_position": 4,
-                    "dnf_probability": 6.9
+                    "race_position": 18,
+                    "dnf_probability": 11.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 15.5,
-                    "expected_p50": 25.5,
-                    "ceiling_p90": 37.1
+                    "floor_p10": 3.1,
+                    "expected_p50": 11.6,
+                    "ceiling_p90": 25.6
                 }
             },
             "lewis_hamilton": {
@@ -1696,14 +3356,14 @@
                 "date": "2026-12-06",
                 "driver": "lewis_hamilton",
                 "predictions": {
-                    "qualifying_position": 15,
-                    "race_position": 11,
-                    "dnf_probability": 1.2
+                    "qualifying_position": 8,
+                    "race_position": 7,
+                    "dnf_probability": 6.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 9.2,
-                    "expected_p50": 17.5,
-                    "ceiling_p90": 36.0
+                    "floor_p10": 10.8,
+                    "expected_p50": 18.9,
+                    "ceiling_p90": 38.0
                 }
             },
             "george_russell": {
@@ -1711,14 +3371,14 @@
                 "date": "2026-12-06",
                 "driver": "george_russell",
                 "predictions": {
-                    "qualifying_position": 2,
-                    "race_position": 12,
-                    "dnf_probability": 12.9
+                    "qualifying_position": 3,
+                    "race_position": 19,
+                    "dnf_probability": 9.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 9.5,
-                    "expected_p50": 17.6,
-                    "ceiling_p90": 31.0
+                    "floor_p10": 0,
+                    "expected_p50": 7.5,
+                    "ceiling_p90": 18.4
                 }
             },
             "charles_leclerc": {
@@ -1726,14 +3386,14 @@
                 "date": "2026-12-06",
                 "driver": "charles_leclerc",
                 "predictions": {
-                    "qualifying_position": 12,
-                    "race_position": 6,
-                    "dnf_probability": 10.2
+                    "qualifying_position": 22,
+                    "race_position": 11,
+                    "dnf_probability": 11.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 9.6,
-                    "expected_p50": 20.0,
-                    "ceiling_p90": 33.1
+                    "floor_p10": 8.5,
+                    "expected_p50": 14.0,
+                    "ceiling_p90": 25.5
                 }
             },
             "carlos_sainz": {
@@ -1741,14 +3401,14 @@
                 "date": "2026-12-06",
                 "driver": "carlos_sainz",
                 "predictions": {
-                    "qualifying_position": 1,
-                    "race_position": 9,
-                    "dnf_probability": 9.2
+                    "qualifying_position": 2,
+                    "race_position": 16,
+                    "dnf_probability": 2.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 12.3,
-                    "expected_p50": 18.5,
-                    "ceiling_p90": 33.7
+                    "floor_p10": 7.5,
+                    "expected_p50": 13.0,
+                    "ceiling_p90": 29.9
                 }
             },
             "lando_norris": {
@@ -1756,14 +3416,14 @@
                 "date": "2026-12-06",
                 "driver": "lando_norris",
                 "predictions": {
-                    "qualifying_position": 17,
-                    "race_position": 5,
-                    "dnf_probability": 4.4
+                    "qualifying_position": 5,
+                    "race_position": 12,
+                    "dnf_probability": 12.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 17.3,
-                    "expected_p50": 23.9,
-                    "ceiling_p90": 34.5
+                    "floor_p10": 3.0,
+                    "expected_p50": 14.8,
+                    "ceiling_p90": 33.9
                 }
             },
             "oscar_piastri": {
@@ -1771,14 +3431,14 @@
                 "date": "2026-12-06",
                 "driver": "oscar_piastri",
                 "predictions": {
-                    "qualifying_position": 19,
-                    "race_position": 20,
-                    "dnf_probability": 12.1
+                    "qualifying_position": 15,
+                    "race_position": 22,
+                    "dnf_probability": 14.9
                 },
                 "fantasy_points": {
                     "floor_p10": 0,
-                    "expected_p50": 5.3,
-                    "ceiling_p90": 15.3
+                    "expected_p50": 5.2,
+                    "ceiling_p90": 25.1
                 }
             },
             "fernando_alonso": {
@@ -1786,14 +3446,14 @@
                 "date": "2026-12-06",
                 "driver": "fernando_alonso",
                 "predictions": {
-                    "qualifying_position": 21,
-                    "race_position": 19,
-                    "dnf_probability": 7.1
+                    "qualifying_position": 17,
+                    "race_position": 3,
+                    "dnf_probability": 14.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 3.3,
-                    "expected_p50": 10.6,
-                    "ceiling_p90": 24.3
+                    "floor_p10": 18.0,
+                    "expected_p50": 25.7,
+                    "ceiling_p90": 40.6
                 }
             },
             "lance_stroll": {
@@ -1801,14 +3461,14 @@
                 "date": "2026-12-06",
                 "driver": "lance_stroll",
                 "predictions": {
-                    "qualifying_position": 14,
-                    "race_position": 22,
-                    "dnf_probability": 2.1
+                    "qualifying_position": 1,
+                    "race_position": 20,
+                    "dnf_probability": 10.6
                 },
                 "fantasy_points": {
                     "floor_p10": 0,
-                    "expected_p50": 3.6,
-                    "ceiling_p90": 15.7
+                    "expected_p50": 6.2,
+                    "ceiling_p90": 25.4
                 }
             },
             "esteban_ocon": {
@@ -1816,14 +3476,14 @@
                 "date": "2026-12-06",
                 "driver": "esteban_ocon",
                 "predictions": {
-                    "qualifying_position": 22,
-                    "race_position": 16,
-                    "dnf_probability": 14.0
+                    "qualifying_position": 16,
+                    "race_position": 2,
+                    "dnf_probability": 14.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 1.2,
-                    "expected_p50": 11.8,
-                    "ceiling_p90": 30.3
+                    "floor_p10": 17.9,
+                    "expected_p50": 24.8,
+                    "ceiling_p90": 43.3
                 }
             },
             "pierre_gasly": {
@@ -1831,14 +3491,14 @@
                 "date": "2026-12-06",
                 "driver": "pierre_gasly",
                 "predictions": {
-                    "qualifying_position": 20,
-                    "race_position": 21,
-                    "dnf_probability": 1.3
+                    "qualifying_position": 6,
+                    "race_position": 9,
+                    "dnf_probability": 5.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 7.4,
-                    "ceiling_p90": 23.1
+                    "floor_p10": 10.9,
+                    "expected_p50": 18.4,
+                    "ceiling_p90": 30.8
                 }
             },
             "alex_albon": {
@@ -1846,14 +3506,14 @@
                 "date": "2026-12-06",
                 "driver": "alex_albon",
                 "predictions": {
-                    "qualifying_position": 4,
-                    "race_position": 1,
-                    "dnf_probability": 6.7
+                    "qualifying_position": 12,
+                    "race_position": 13,
+                    "dnf_probability": 4.9
                 },
                 "fantasy_points": {
-                    "floor_p10": 17.9,
-                    "expected_p50": 28.7,
-                    "ceiling_p90": 44.5
+                    "floor_p10": 4.6,
+                    "expected_p50": 12.5,
+                    "ceiling_p90": 28.3
                 }
             },
             "franco_colapinto": {
@@ -1861,14 +3521,14 @@
                 "date": "2026-12-06",
                 "driver": "franco_colapinto",
                 "predictions": {
-                    "qualifying_position": 13,
-                    "race_position": 14,
-                    "dnf_probability": 2.9
+                    "qualifying_position": 7,
+                    "race_position": 17,
+                    "dnf_probability": 3.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 7.0,
-                    "expected_p50": 12.6,
-                    "ceiling_p90": 32.3
+                    "floor_p10": 0.9,
+                    "expected_p50": 12.4,
+                    "ceiling_p90": 26.6
                 }
             },
             "yuki_tsunoda": {
@@ -1876,14 +3536,14 @@
                 "date": "2026-12-06",
                 "driver": "yuki_tsunoda",
                 "predictions": {
-                    "qualifying_position": 9,
-                    "race_position": 17,
-                    "dnf_probability": 6.7
+                    "qualifying_position": 13,
+                    "race_position": 1,
+                    "dnf_probability": 3.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 3.0,
-                    "expected_p50": 9.8,
-                    "ceiling_p90": 19.6
+                    "floor_p10": 15.5,
+                    "expected_p50": 26.3,
+                    "ceiling_p90": 43.0
                 }
             },
             "liam_lawson": {
@@ -1891,14 +3551,14 @@
                 "date": "2026-12-06",
                 "driver": "liam_lawson",
                 "predictions": {
-                    "qualifying_position": 6,
-                    "race_position": 18,
-                    "dnf_probability": 14.3
+                    "qualifying_position": 19,
+                    "race_position": 8,
+                    "dnf_probability": 12.0
                 },
                 "fantasy_points": {
-                    "floor_p10": 0,
-                    "expected_p50": 9.3,
-                    "ceiling_p90": 26.0
+                    "floor_p10": 8.7,
+                    "expected_p50": 19.9,
+                    "ceiling_p90": 30.7
                 }
             },
             "valtteri_bottas": {
@@ -1906,14 +3566,14 @@
                 "date": "2026-12-06",
                 "driver": "valtteri_bottas",
                 "predictions": {
-                    "qualifying_position": 11,
-                    "race_position": 10,
-                    "dnf_probability": 4.8
+                    "qualifying_position": 21,
+                    "race_position": 4,
+                    "dnf_probability": 13.6
                 },
                 "fantasy_points": {
-                    "floor_p10": 6.3,
-                    "expected_p50": 15.4,
-                    "ceiling_p90": 28.6
+                    "floor_p10": 16.6,
+                    "expected_p50": 24.7,
+                    "ceiling_p90": 44.1
                 }
             },
             "gabriel_bortoleto": {
@@ -1921,14 +3581,14 @@
                 "date": "2026-12-06",
                 "driver": "gabriel_bortoleto",
                 "predictions": {
-                    "qualifying_position": 8,
-                    "race_position": 15,
-                    "dnf_probability": 1.9
+                    "qualifying_position": 11,
+                    "race_position": 21,
+                    "dnf_probability": 3.1
                 },
                 "fantasy_points": {
-                    "floor_p10": 6.6,
-                    "expected_p50": 12.3,
-                    "ceiling_p90": 22.8
+                    "floor_p10": 0,
+                    "expected_p50": 4.4,
+                    "ceiling_p90": 14.9
                 }
             },
             "nico_hulkenberg": {
@@ -1936,14 +3596,14 @@
                 "date": "2026-12-06",
                 "driver": "nico_hulkenberg",
                 "predictions": {
-                    "qualifying_position": 16,
-                    "race_position": 7,
-                    "dnf_probability": 12.5
+                    "qualifying_position": 14,
+                    "race_position": 14,
+                    "dnf_probability": 6.5
                 },
                 "fantasy_points": {
-                    "floor_p10": 13.9,
-                    "expected_p50": 22.0,
-                    "ceiling_p90": 37.8
+                    "floor_p10": 5.8,
+                    "expected_p50": 12.6,
+                    "ceiling_p90": 23.5
                 }
             },
             "oliver_bearman": {
@@ -1951,14 +3611,14 @@
                 "date": "2026-12-06",
                 "driver": "oliver_bearman",
                 "predictions": {
-                    "qualifying_position": 10,
-                    "race_position": 8,
-                    "dnf_probability": 7.0
+                    "qualifying_position": 20,
+                    "race_position": 15,
+                    "dnf_probability": 9.8
                 },
                 "fantasy_points": {
-                    "floor_p10": 12.0,
-                    "expected_p50": 19.8,
-                    "ceiling_p90": 33.7
+                    "floor_p10": 3.3,
+                    "expected_p50": 11.7,
+                    "ceiling_p90": 22.5
                 }
             },
             "andrea_kimi_antonelli": {
@@ -1966,14 +3626,14 @@
                 "date": "2026-12-06",
                 "driver": "andrea_kimi_antonelli",
                 "predictions": {
-                    "qualifying_position": 5,
-                    "race_position": 2,
-                    "dnf_probability": 1.0
+                    "qualifying_position": 4,
+                    "race_position": 6,
+                    "dnf_probability": 9.3
                 },
                 "fantasy_points": {
-                    "floor_p10": 18.2,
-                    "expected_p50": 26.8,
-                    "ceiling_p90": 41.7
+                    "floor_p10": 12.2,
+                    "expected_p50": 23.7,
+                    "ceiling_p90": 42.8
                 }
             },
             "isack_hadjar": {
@@ -1981,14 +3641,14 @@
                 "date": "2026-12-06",
                 "driver": "isack_hadjar",
                 "predictions": {
-                    "qualifying_position": 7,
-                    "race_position": 13,
-                    "dnf_probability": 10.2
+                    "qualifying_position": 9,
+                    "race_position": 5,
+                    "dnf_probability": 9.2
                 },
                 "fantasy_points": {
-                    "floor_p10": 2.2,
-                    "expected_p50": 13.2,
-                    "ceiling_p90": 32.3
+                    "floor_p10": 15.1,
+                    "expected_p50": 21.0,
+                    "ceiling_p90": 33.4
                 }
             }
         }
