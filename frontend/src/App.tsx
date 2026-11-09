@@ -7,13 +7,14 @@ import { TeamSummary } from './components/SidePanels/TeamSummary';
 import { TransfersModal } from './components/TeamPanel/TransfersModal';
 import { SavedSlots } from './components/SidePanels/SavedSlots';
 import { ComparisonPanel } from './components/SidePanels/ComparisonPanel';
-import { ParametersBar } from './components/Header/ParametersBar';
+import { SettingsPanel } from './components/SidePanels/SettingsPanel';
 import { RaceSelect } from './components/Header/RaceSelect';
 import {
   evaluateTeam,
   fetchConstructors,
   fetchDrivers,
   fetchPredictions,
+  fetchPredictionsByRound,
   fetchStats,
   fetchTeammates,
   fetchUpcomingRaces,
@@ -35,6 +36,7 @@ import {
   type PlayerStats,
   type Prediction,
   type Race,
+  type RoundPoints,
   type SavedTeam,
   type TeammateStats,
   type TeamEvaluation,
@@ -66,6 +68,8 @@ function App() {
   const [constructorStats, setConstructorStats] = useState<PlayerStats[]>([]);
   const [teammates, setTeammates] = useState<TeammateStats[]>([]);
   const [evaluation, setEvaluation] = useState<TeamEvaluation | null>(null);
+  const [plannerData, setPlannerData] = useState<RoundPoints[]>([]);
+  const [plannerCount, setPlannerCount] = useState(5);
   const [error, setError] = useState<string | null>(null);
 
   const [driverIds, setDriverIds] = useState<(string | null)[]>(EMPTY_DRIVERS);
@@ -120,6 +124,28 @@ function App() {
       active = false;
     };
   }, [rounds, params]);
+
+  // The race planner looks 1-10 races ahead from the selected race
+  const plannerStart = races.findIndex((r) => r.round === round);
+  const plannerMax = plannerStart < 0 ? 0 : races.length - plannerStart;
+  const plannerRaces = useMemo(
+    () => (plannerStart < 0 ? [] : races.slice(plannerStart, plannerStart + plannerCount)),
+    [races, plannerStart, plannerCount]
+  );
+
+  useEffect(() => {
+    if (!plannerRaces.length) return;
+    let active = true;
+    fetchPredictionsByRound(
+      plannerRaces.map((r) => r.round),
+      params
+    )
+      .then((d) => active && setPlannerData(d))
+      .catch(fail);
+    return () => {
+      active = false;
+    };
+  }, [plannerRaces, params]);
 
   const allDrivers = useMemo(
     () => toCards(rosterDrivers, 'driver', predictions ?? [], driverStats),
@@ -284,20 +310,12 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <div className="header-left">
-          <div className="brand">
-            <span className="brand-mark" />
-            <h1>F1 Fantasy Visualizer</h1>
-          </div>
-          <RaceSelect races={races} selectedRound={round} rounds={rounds} onSelect={setRound} />
+        <div className="brand">
+          <span className="brand-mark" />
+          <h1>OptiGrid</h1>
         </div>
-        <ParametersBar
-          params={params}
-          trackType={race.trackType}
-          horizon={horizon}
-          onChange={setParams}
-          onHorizonChange={setHorizon}
-        />
+        <RaceSelect races={races} selectedRound={round} rounds={rounds} onSelect={setRound} />
+        <span />
       </header>
 
       <div className="dashboard-grid">
@@ -323,14 +341,9 @@ function App() {
             params={params}
             onClearTeam={clearTeam}
             drsId={drsId}
-            optimizerMode={optimizerMode}
-            freeTransfers={freeTransfers}
-            onModeChange={setOptimizerMode}
-            onFreeTransfersChange={setFreeTransfers}
             onToggleDrs={(id) => setDrsId((prev) => (prev === id ? null : id))}
             onSelect={(kind, slot, item) => setSlot(kind, slot, item.id)}
             onRemove={removeFromTeam}
-            onOptimize={optimize}
           />
         </main>
 
@@ -339,6 +352,11 @@ function App() {
             team={team}
             allDrivers={allDrivers}
             allConstructors={allConstructors}
+            plannerRaces={plannerRaces}
+            plannerCount={plannerCount}
+            plannerMax={plannerMax}
+            onPlannerCountChange={setPlannerCount}
+            plannerData={plannerData}
             risk={params.risk}
             addBlocker={addBlocker}
             onAdd={addToTeam}
@@ -347,6 +365,20 @@ function App() {
         </section>
 
         <div className="side-column">
+          <section className="panel panel-settings">
+            <SettingsPanel
+              params={params}
+              trackType={race.trackType}
+              horizon={horizon}
+              optimizerMode={optimizerMode}
+              freeTransfers={freeTransfers}
+              onChange={setParams}
+              onHorizonChange={setHorizon}
+              onModeChange={setOptimizerMode}
+              onFreeTransfersChange={setFreeTransfers}
+              onOptimize={optimize}
+            />
+          </section>
           <section className="panel panel-saved">
             <SavedSlots
               slots={slots}

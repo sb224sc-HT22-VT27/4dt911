@@ -51,14 +51,6 @@ export const TeamSummary: React.FC<TeamSummaryProps> = ({
                 <span>{drsDriver ? drsDriver.name : 'No DRS Boost picked, press DRS on a driver card'}</span>
             </div>
 
-            <div className="summary-meta">
-                <span>
-                    Team value <strong>€{evaluation?.cost ?? 0}M</strong>
-                </span>
-                <span>
-                    Players <strong>{team.length} / 7</strong>
-                </span>
-            </div>
         </div>
     );
 };

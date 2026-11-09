@@ -129,6 +129,23 @@ def predictions(rounds, risk, weights):
     return out
 
 
+def predictions_by_round(rounds, risk, weights):
+    """Points for the chosen risk in each round separately, for the race planner"""
+    out = []
+    for pid, player in PLAYERS.items():
+        per_round = {r: predict_round(player, r, weights) for r in rounds}
+        if not any(per_round.values()):
+            continue
+        points = {r: round(p[risk], 1) if p else None for r, p in per_round.items()}
+        out.append({
+            "id": pid,
+            "kind": player["kind"],
+            "points": points,
+            "total": round(sum(v for v in points.values() if v is not None), 1),
+        })
+    return sorted(out, key=lambda p: -p["total"])
+
+
 def stats(kind, rnd):
     track = STATS["tracks"][rnd]
     out = []
@@ -266,6 +283,9 @@ class Handler(BaseHTTPRequestHandler):
         q = {k: v[0] for k, v in parse_qs(url.query).items()}
         if url.path == "/races/upcoming":
             return self.send_json(upcoming_races())
+        if url.path == "/predictions/by-round":
+            rounds = q.get("rounds", "").split(",")
+            return self.send_json(predictions_by_round(rounds, q.get("risk", "expected"), weights_of(q)))
         if url.path == "/predictions":
             rounds = q.get("rounds", "").split(",")
             return self.send_json(list(predictions(rounds, q.get("risk", "expected"), weights_of(q)).values()))

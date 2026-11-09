@@ -1,7 +1,7 @@
 // src/components/Header/RaceSelect.tsx
 import React from 'react';
 import { TRACK_LABELS, type Race } from '../../types/f1';
-import './ParametersBar.css';
+import './Header.css';
 
 interface RaceSelectProps {
     races: Race[];

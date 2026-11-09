@@ -9,6 +9,7 @@ import type {
     PlayerStats,
     Prediction,
     Race,
+    RoundPoints,
     TeammateStats,
     TeamEvaluation,
     TransferSettings,
@@ -34,16 +35,21 @@ export const fetchDrivers = () => getJson<Driver[]>(ENDPOINTS.drivers);
 export const fetchConstructors = () => getJson<Constructor[]>(ENDPOINTS.constructors);
 export const fetchUpcomingRaces = () => getJson<Race[]>(ENDPOINTS.upcomingRaces);
 
-export const fetchPredictions = (rounds: string[], params: Params) => {
-    const query = new URLSearchParams({
+const settingsQuery = (rounds: string[], params: Params) =>
+    new URLSearchParams({
         rounds: rounds.join(','),
         risk: params.risk,
         form: String(params.form),
         track: String(params.track),
         dnf: String(params.dnf),
     });
-    return getJson<Prediction[]>(`${ENDPOINTS.predictions}?${query}`);
-};
+
+export const fetchPredictions = (rounds: string[], params: Params) =>
+    getJson<Prediction[]>(`${ENDPOINTS.predictions}?${settingsQuery(rounds, params)}`);
+
+// Points per race (for the chosen risk) for the race planner
+export const fetchPredictionsByRound = (rounds: string[], params: Params) =>
+    getJson<RoundPoints[]>(`${ENDPOINTS.predictionsByRound}?${settingsQuery(rounds, params)}`);
 
 export const fetchStats = (kind: 'driver' | 'constructor', round: string) =>
     getJson<PlayerStats[]>(`${kind === 'driver' ? ENDPOINTS.driverStats : ENDPOINTS.constructorStats}?round=${round}`);

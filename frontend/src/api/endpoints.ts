@@ -8,6 +8,7 @@ export const ENDPOINTS = {
     constructors: `${REAL_API}/constructors/`,
     upcomingRaces: `${MOCK_API}/races/upcoming`,
     predictions: `${MOCK_API}/predictions`,
+    predictionsByRound: `${MOCK_API}/predictions/by-round`,
     driverStats: `${MOCK_API}/stats/drivers`,
     constructorStats: `${MOCK_API}/stats/constructors`,
     teammates: `${MOCK_API}/stats/teammates`,

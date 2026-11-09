@@ -309,17 +309,6 @@
     text-transform: uppercase;
 }
 
-.summary-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.75rem;
-    color: var(--muted);
-}
-
-.summary-meta strong {
-    color: var(--text);
-}
-
 /* Distribution */
 .dist-container {
     display: flex;
@@ -537,6 +526,10 @@
     text-align: left;
 }
 
+.saved-slots .slot-load {
+    padding: 3px 8px;
+}
+
 .slot-load:hover:not(:disabled) {
     background: var(--panel-3);
 }
@@ -583,5 +576,200 @@
 
 .slot-save:hover {
     background: rgba(45, 212, 191, 0.1);
+}
+
+
+/* Settings */
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.settings-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-reset {
+    border: 1px solid var(--border-strong);
+    background: none;
+    color: var(--muted);
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.settings-reset:hover {
+    color: var(--text);
+}
+
+.setting-row {
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.setting-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--dim);
+    white-space: nowrap;
+}
+
+.setting-label strong {
+    color: var(--text);
+}
+
+.toggle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    background: var(--panel-3);
+    border-radius: 7px;
+    padding: 3px;
+}
+
+.toggle.horizon {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.toggle button {
+    border: none;
+    background: none;
+    color: var(--muted);
+    font-size: 0.66rem;
+    font-weight: 700;
+    padding: 3px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.toggle button:hover {
+    color: var(--text);
+}
+
+.toggle button.active {
+    background: var(--risk, var(--accent));
+    color: #071116;
+}
+
+.setting-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.setting-slider input[type='range'] {
+    width: 100%;
+    accent-color: var(--accent);
+    height: 14px;
+    cursor: pointer;
+}
+
+/* Optimizer (in the settings box) */
+.settings-optimizer {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+}
+
+.optimize-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.optimize-row .optimize-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.optimize-btn {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), #0ea5e9);
+    color: #041014;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: filter 0.15s ease, transform 0.1s ease;
+}
+
+.optimize-btn:hover {
+    filter: brightness(1.1);
+}
+
+.optimize-btn:disabled {
+    filter: grayscale(0.6);
+    cursor: wait;
+}
+
+.optimize-btn:active {
+    transform: scale(0.98);
+}
+
+.optimize-msg {
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+
+/* Free transfers stepper */
+.free-transfers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.65rem;
+    color: var(--dim);
+}
+
+.stepper {
+    display: grid;
+    grid-template-columns: 24px 26px 24px;
+    align-items: center;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.stepper button {
+    height: 26px;
+    border: none;
+    background: var(--panel-3);
+    color: var(--text);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.stepper button:disabled {
+    color: var(--dim);
+    cursor: not-allowed;
+}
+
+.stepper strong {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text);
 }
 

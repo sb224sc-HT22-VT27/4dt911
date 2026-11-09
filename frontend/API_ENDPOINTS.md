@@ -33,7 +33,8 @@ Mock data lives in `frontend/mock_api/` and is regenerated with the scripts ther
 | GET | `/drivers/` | Backend | Driver roster, prices, colours |
 | GET | `/constructors/` | Backend | Constructor roster, prices, colours |
 | GET | `/races/upcoming` | Mock | Race dropdown |
-| GET | `/predictions` | Mock | Points on every card, PPM graph, picker |
+| GET | `/predictions` | Mock | Points on every card, value finder, picker |
+| GET | `/predictions/by-round` | Mock | Race planner (points per race) |
 | GET | `/stats/drivers` | Mock | Comparison panel and card info popup (hexagon, season stats, last 5) |
 | GET | `/stats/constructors` | Mock | Comparison panel for teams |
 | GET | `/stats/teammates` | Mock | Teammates tab in the comparison panel |
@@ -110,6 +111,24 @@ One entry per selectable player with the settings already applied. Points are su
 - `ppm` = points for the chosen `risk` per €1M.
 - `multiplier` = combined effect of the settings (1.08 = +8%).
 - `qualiPos` / `racePos` are only for drivers.
+
+### GET `/predictions/by-round?rounds=13,14,15,16,17&risk=expected&form=0&track=0&dnf=0`
+
+Same settings as `/predictions`, but points for the chosen `risk` per race instead of summed.
+The frontend asks for the selected race and the 4 after it. Sorted by `total`, highest first.
+
+```json
+[
+  {
+    "id": "210",
+    "kind": "constructor",
+    "points": { "13": 39.5, "14": 29.1, "15": 27.4, "16": 19.8, "17": 32.8 },
+    "total": 148.6
+  }
+]
+```
+
+A round without a prediction for the player is `null`.
 
 ### GET `/stats/drivers?round=20` and GET `/stats/constructors?round=20`
 

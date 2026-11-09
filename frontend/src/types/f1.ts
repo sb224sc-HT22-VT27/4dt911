@@ -73,6 +73,13 @@ export interface Prediction {
     racePos?: number;
 }
 
+export interface RoundPoints {
+    id: string;
+    kind: ItemKind;
+    points: Record<string, number | null>;
+    total: number;
+}
+
 export interface Ratings {
     quali: number;
     race: number;
