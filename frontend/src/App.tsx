@@ -5,6 +5,7 @@ import { TeamPanel } from './components/TeamPanel/TeamPanel';
 import { AnalyticsPanel } from './components/AnalyticsPanel/AnalyticsPanel';
 import { TeamSummary } from './components/SidePanels/TeamSummary';
 import { TransfersModal } from './components/TeamPanel/TransfersModal';
+import { SavedSlots } from './components/SidePanels/SavedSlots';
 import { ComparisonPanel } from './components/SidePanels/ComparisonPanel';
 import { ParametersBar } from './components/Header/ParametersBar';
 import { RaceSelect } from './components/Header/RaceSelect';
@@ -320,12 +321,6 @@ function App() {
             allConstructors={allConstructors}
             remainingBudget={remainingBudget}
             params={params}
-            horizon={horizon}
-            slots={slots}
-            slotEvaluations={slotEvaluations}
-            activeSlot={activeSlot >= 0 ? activeSlot : null}
-            onSaveSlot={saveSlot}
-            onLoadSlot={loadSlot}
             onClearTeam={clearTeam}
             drsId={drsId}
             optimizerMode={optimizerMode}
@@ -351,16 +346,28 @@ function App() {
           />
         </section>
 
-        <aside className="panel panel-summary">
-          <TeamSummary
-            team={team}
-            evaluation={evaluation}
-            budget={budget}
-            remainingBudget={remainingBudget}
-            risk={params.risk}
-            onBudgetChange={setBudget}
-          />
-        </aside>
+        <div className="side-column">
+          <section className="panel panel-saved">
+            <SavedSlots
+              slots={slots}
+              evaluations={slotEvaluations}
+              activeSlot={activeSlot >= 0 ? activeSlot : null}
+              risk={params.risk}
+              onSave={saveSlot}
+              onLoad={loadSlot}
+            />
+          </section>
+          <aside className="panel panel-summary">
+            <TeamSummary
+              team={team}
+              evaluation={evaluation}
+              budget={budget}
+              remainingBudget={remainingBudget}
+              risk={params.risk}
+              onBudgetChange={setBudget}
+            />
+          </aside>
+        </div>
       </div>
 
       {suggestion && (

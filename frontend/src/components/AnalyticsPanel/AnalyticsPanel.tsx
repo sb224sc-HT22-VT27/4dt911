@@ -1,6 +1,6 @@
 // src/components/AnalyticsPanel/AnalyticsPanel.tsx
 import React from 'react';
-import { PpmEfficiencyView } from './PpmEfficiencyView';
+import { ValueBubbleChart } from './ValueBubbleChart';
 import type { CardItem, Risk } from '../../types/f1';
 import './AnalyticsPanel.css';
 
@@ -24,9 +24,9 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
     onRemove,
 }) => (
     <div className="analytics-container">
-        <h3 className="analytics-title">Value finder · points per €1M</h3>
+        <h3 className="analytics-title">Value finder · points vs price</h3>
         <div className="analytics-content">
-            <PpmEfficiencyView
+            <ValueBubbleChart
                 allDrivers={allDrivers}
                 allConstructors={allConstructors}
                 teamIds={new Set(team.map((i) => i.id))}

@@ -134,75 +134,114 @@
     color: var(--danger);
 }
 
-.ppm-bars {
-    flex: 1;
-    min-height: 90px;
-    display: flex;
-    align-items: stretch;
-    gap: 4px;
-}
-
-.ppm-col {
-    flex: 1;
-    min-width: 0;
+.bubble-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    background: none;
-    border: none;
-    border-radius: 5px;
-    padding: 2px 0;
-    cursor: pointer;
-    color: var(--dim);
-}
-
-.ppm-col:hover {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.ppm-col.selected {
-    background: rgba(45, 212, 191, 0.08);
-    outline: 1px solid rgba(45, 212, 191, 0.4);
-}
-
-.ppm-track {
-    flex: 1;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 2px;
-}
-
-.ppm-fill {
     width: 100%;
-    border-radius: 3px 3px 0 0;
-    opacity: 0.35;
-    transition: height 0.3s ease, opacity 0.15s ease;
+    gap: 8px;
+    min-height: 0;
 }
 
-.ppm-col.in-team .ppm-fill,
-.ppm-col.selected .ppm-fill,
-.ppm-col:hover .ppm-fill {
-    opacity: 1;
+.bubble-plot {
+    flex: 1;
+    min-height: 140px;
+    overflow: hidden;
+    user-select: none;
 }
 
-.ppm-code {
-    font-size: 0.55rem;
+.bubble-plot svg {
+    display: block;
+}
+
+.bubble-grid {
+    stroke: var(--border);
+    stroke-width: 1;
+}
+
+.bubble-tick {
+    fill: var(--dim);
+    font-size: 10px;
+}
+
+.bubble-axis-title {
+    fill: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.bubble-guide line {
+    stroke: var(--muted);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+    opacity: 0.45;
+}
+
+.bubble-guide text {
+    fill: var(--dim);
+    font-size: 9px;
+}
+
+.bubble {
+    cursor: pointer;
+}
+
+.bubble circle {
+    fill-opacity: 0.55;
+    stroke: rgba(0, 0, 0, 0.5);
+    stroke-width: 1;
+    transition: fill-opacity 0.15s ease;
+}
+
+.bubble:hover circle {
+    fill-opacity: 0.9;
+}
+
+.bubble.in-team circle {
+    fill-opacity: 0.9;
+    stroke: #fff;
+    stroke-width: 2.5;
+}
+
+.bubble.selected circle {
+    fill-opacity: 0.95;
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    stroke-dasharray: 4 2;
+}
+
+.bubble text {
+    fill: var(--muted);
+    font-size: 10px;
     font-weight: 800;
+    pointer-events: none;
 }
 
-.ppm-val {
-    font-size: 0.55rem;
+.bubble.in-team text,
+.bubble.selected text {
+    fill: var(--text);
 }
 
-.ppm-col.in-team .ppm-code {
-    color: var(--accent);
+.legend-ring {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    vertical-align: -1px;
 }
 
-.ppm-col.in-team .ppm-val,
-.ppm-col.selected .ppm-val {
-    color: var(--text);
+.legend-stripes {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    vertical-align: -1px;
+    background: repeating-linear-gradient(45deg, var(--muted) 0 2px, transparent 2px 4px);
+    border: 1px solid var(--muted);
+}
+
+.bubble.constructor circle {
+    fill-opacity: 0.85;
 }

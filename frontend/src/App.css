@@ -75,8 +75,20 @@
   grid-area: team;
 }
 
-.panel-summary {
+.side-column {
   grid-area: summary;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 0;
+}
+
+.panel-summary {
+  flex: 1;
+}
+
+.panel-saved {
+  flex-shrink: 0;
 }
 
 .panel-helper {

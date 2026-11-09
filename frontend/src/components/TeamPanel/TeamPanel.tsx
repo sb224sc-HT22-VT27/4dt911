@@ -2,17 +2,7 @@
 import React, { useState } from 'react';
 import { F1Card } from '../F1Card/F1Card';
 import { PickerModal } from './PickerModal';
-import { SavedSlots } from './SavedSlots';
-import {
-    RISK_LABELS,
-    type CardItem,
-    type Horizon,
-    type ItemKind,
-    type OptimizerMode,
-    type Params,
-    type SavedTeam,
-    type TeamEvaluation,
-} from '../../types/f1';
+import type { CardItem, ItemKind, OptimizerMode, Params } from '../../types/f1';
 import './TeamPanel.css';
 
 interface TeamPanelProps {
@@ -22,12 +12,6 @@ interface TeamPanelProps {
     allConstructors: CardItem[];
     remainingBudget: number;
     params: Params;
-    horizon: Horizon;
-    slots: (SavedTeam | null)[];
-    slotEvaluations: (TeamEvaluation | null)[];
-    activeSlot: number | null;
-    onSaveSlot: (slot: number) => void;
-    onLoadSlot: (slot: number) => void;
     onClearTeam: () => void;
     drsId: string | null;
     optimizerMode: OptimizerMode;
@@ -47,12 +31,6 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
     allConstructors,
     remainingBudget,
     params,
-    horizon,
-    slots,
-    slotEvaluations,
-    activeSlot,
-    onSaveSlot,
-    onLoadSlot,
     onClearTeam,
     drsId,
     optimizerMode,
@@ -81,14 +59,53 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
         <div className="team-workspace">
             <div className="team-header-bar">
                 <h2 className="team-title">My Team</h2>
-                <SavedSlots
-                    slots={slots}
-                    evaluations={slotEvaluations}
-                    activeSlot={activeSlot}
-                    risk={risk}
-                    onSave={onSaveSlot}
-                    onLoad={onLoadSlot}
-                />
+
+                <div className="optimizer-bar">
+                    <div className="mode-toggle">
+                        {(['best', 'transfers'] as OptimizerMode[]).map((m) => (
+                            <button
+                                key={m}
+                                type="button"
+                                className={optimizerMode === m ? 'active' : ''}
+                                onClick={() => {
+                                    onModeChange(m);
+                                    setMessage('');
+                                }}
+                            >
+                                {m === 'best' ? 'Best team' : 'Transfers'}
+                            </button>
+                        ))}
+                    </div>
+
+                    {optimizerMode === 'transfers' && (
+                        <div className="free-transfers" title="Each transfer beyond the free ones costs 10 pts">
+                            <span>Free</span>
+                            <div className="stepper">
+                                <button
+                                    type="button"
+                                    disabled={freeTransfers <= 0}
+                                    onClick={() => onFreeTransfersChange(freeTransfers - 1)}
+                                >
+                                    −
+                                </button>
+                                <strong>{freeTransfers}</strong>
+                                <button
+                                    type="button"
+                                    disabled={freeTransfers >= 7}
+                                    onClick={() => onFreeTransfersChange(freeTransfers + 1)}
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>
+                        {optimizing ? 'Working…' : optimizerMode === 'best' ? 'Optimize team' : 'Suggest transfers'}
+                    </button>
+                    <span className="optimize-msg">{message}</span>
+                </div>
+
                 <button type="button" className="clear-team-btn" onClick={onClearTeam}>
                     Clear team
                 </button>
@@ -110,72 +127,18 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
                 ))}
             </div>
 
-            <div className="team-grid-5">
+            <div className="team-grid-2">
                 {constructors.map((c, index) => (
-                    <div key={c ? c.id : `constructor-slot-${index}`} className="constructor-span-2">
-                        <F1Card
-                            item={c ?? undefined}
-                            type="constructor"
-                            slotIndex={index}
-                            risk={risk}
-                            onRemove={onRemove}
-                            onAdd={(slot, kind) => setPicker({ slot, kind })}
-                        />
-                    </div>
+                    <F1Card
+                        key={c ? c.id : `constructor-slot-${index}`}
+                        item={c ?? undefined}
+                        type="constructor"
+                        slotIndex={index}
+                        risk={risk}
+                        onRemove={onRemove}
+                        onAdd={(slot, kind) => setPicker({ slot, kind })}
+                    />
                 ))}
-
-                <div className="team-actions-col">
-                    <div className="mode-toggle">
-                        {(['best', 'transfers'] as OptimizerMode[]).map((m) => (
-                            <button
-                                key={m}
-                                type="button"
-                                className={optimizerMode === m ? 'active' : ''}
-                                onClick={() => {
-                                    onModeChange(m);
-                                    setMessage('');
-                                }}
-                            >
-                                {m === 'best' ? 'Best team' : 'Transfers'}
-                            </button>
-                        ))}
-                    </div>
-                    {optimizerMode === 'best' ? (
-                        <div className="optimize-summary">
-                            <span className={`summary-risk risk-${risk}`}>{RISK_LABELS[risk]}</span>
-                            <span>
-                                {horizon === 1 ? '1 race' : '3 races'} · Form {params.form}% · Track {params.track}% · DNF{' '}
-                                {params.dnf}%
-                            </span>
-                        </div>
-                    ) : (
-                        <div className="free-transfers">
-                            <span>Free transfers</span>
-                            <div className="stepper">
-                                <button
-                                    type="button"
-                                    disabled={freeTransfers <= 0}
-                                    onClick={() => onFreeTransfersChange(freeTransfers - 1)}
-                                >
-                                    −
-                                </button>
-                                <strong>{freeTransfers}</strong>
-                                <button
-                                    type="button"
-                                    disabled={freeTransfers >= 7}
-                                    onClick={() => onFreeTransfersChange(freeTransfers + 1)}
-                                >
-                                    +
-                                </button>
-                            </div>
-                            <span className="free-hint">−10 pts per extra</span>
-                        </div>
-                    )}
-                    <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>
-                        {optimizing ? 'Working…' : optimizerMode === 'best' ? 'Optimize' : 'Suggest transfers'}
-                    </button>
-                    <span className="optimize-msg">{message || (optimizerMode === 'best' ? 'Change settings in the top right' : '')}</span>
-                </div>
             </div>
 
             {picker && (

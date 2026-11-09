@@ -1,6 +1,7 @@
-// src/components/TeamPanel/SavedSlots.tsx
+// src/components/SidePanels/SavedSlots.tsx
 import React from 'react';
 import { RISK_LABELS, type Risk, type SavedTeam, type TeamEvaluation } from '../../types/f1';
+import './SidePanels.css';
 
 interface SavedSlotsProps {
     slots: (SavedTeam | null)[];
@@ -13,6 +14,7 @@ interface SavedSlotsProps {
 
 export const SavedSlots: React.FC<SavedSlotsProps> = ({ slots, evaluations, activeSlot, risk, onSave, onLoad }) => (
     <div className="saved-slots">
+        <h3 className="side-title">Saved teams</h3>
         {slots.map((slot, i) => {
             const evaluation = evaluations[i];
             return (
