@@ -209,9 +209,9 @@
 }
 
 .bubble circle {
-    fill-opacity: 0.55;
-    stroke: rgba(0, 0, 0, 0.5);
-    stroke-width: 1;
+    fill-opacity: 0.6;
+    stroke: var(--panel);
+    stroke-width: 2;
     transition: fill-opacity 0.15s ease;
 }
 
@@ -220,15 +220,13 @@
 }
 
 .bubble.in-team circle {
-    fill-opacity: 0.9;
-    stroke: #fff;
-    stroke-width: 2.5;
+    fill-opacity: 0.95;
 }
 
 .bubble.selected circle {
     fill-opacity: 0.95;
-    stroke: var(--accent);
-    stroke-width: 2.5;
+    stroke: var(--text);
+    stroke-width: 2;
     stroke-dasharray: 4 2;
 }
 
@@ -244,13 +242,19 @@
     fill: var(--text);
 }
 
-.legend-ring {
+.legend-dot {
     display: inline-block;
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    border: 2px solid #fff;
     vertical-align: -1px;
+    margin-left: 6px;
+    background: #56677a;
+}
+
+.legend-dot.team {
+    margin-left: 0;
+    background: #3987e5;
 }
 
 .legend-stripes {
@@ -259,12 +263,13 @@
     height: 10px;
     border-radius: 50%;
     vertical-align: -1px;
+    margin-left: 6px;
     background: repeating-linear-gradient(45deg, var(--muted) 0 2px, transparent 2px 4px);
     border: 1px solid var(--muted);
 }
 
 .bubble.constructor circle {
-    fill-opacity: 0.85;
+    fill-opacity: 0.9;
 }
 
 /* Race planner */

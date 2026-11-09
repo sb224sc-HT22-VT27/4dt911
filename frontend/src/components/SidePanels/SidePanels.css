@@ -95,12 +95,16 @@
     background: color-mix(in srgb, var(--risk) 10%, var(--panel-2));
 }
 
+.stat-tile {
+    border-top: 3px solid var(--risk);
+}
+
 .stat-tile-label {
     font-size: 0.58rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--risk);
+    color: var(--muted);
 }
 
 .stat-tile strong {
@@ -194,121 +198,6 @@
     padding: 8px 10px;
 }
 
-/* Team info */
-/* Budget pill */
-.budget-pill-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    background-color: var(--panel-2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 5px 12px;
-}
-
-.budget-pill-container.budget-warning {
-    border-color: var(--danger);
-    background-color: rgba(244, 63, 94, 0.08);
-}
-
-.budget-meta {
-    display: flex;
-    flex-direction: column;
-}
-
-.budget-label {
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--dim);
-}
-
-.budget-warning .budget-label {
-    color: var(--danger);
-}
-
-.budget-values {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-}
-
-.budget-rem-val {
-    font-size: 1.05rem;
-    font-weight: 900;
-}
-
-.rem-positive {
-    color: var(--accent);
-}
-
-.rem-negative {
-    color: var(--danger);
-}
-
-.budget-slash {
-    color: var(--dim);
-    font-size: 0.85rem;
-}
-
-.budget-total-val {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    color: var(--muted);
-    font-size: 0.85rem;
-    cursor: pointer;
-    padding: 1px 4px;
-    border-radius: 4px;
-}
-
-.budget-total-val:hover {
-    background-color: var(--panel-3);
-    color: var(--text);
-}
-
-.budget-edit-icon {
-    background: none;
-    border: none;
-    color: var(--dim);
-    font-size: 0.75rem;
-    cursor: pointer;
-}
-
-.budget-total-val:hover .budget-edit-icon {
-    color: var(--accent);
-}
-
-.budget-edit-wrapper {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    font-size: 0.85rem;
-}
-
-.budget-input {
-    width: 60px;
-    background-color: var(--panel-3);
-    border: 1px solid var(--accent);
-    border-radius: 4px;
-    color: var(--text);
-    padding: 1px 4px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    outline: none;
-}
-
-.budget-alert-badge {
-    background-color: var(--danger);
-    color: #fff;
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 3px 6px;
-    border-radius: 6px;
-    text-transform: uppercase;
-}
-
 /* Distribution */
 .dist-container {
     display: flex;
@@ -327,9 +216,12 @@
     stroke: var(--risk);
 }
 
-.dist-marker circle,
-.dist-marker text {
+.dist-marker circle {
     fill: var(--risk);
+}
+
+.dist-marker text {
+    fill: var(--muted);
 }
 
 
@@ -658,7 +550,7 @@
 }
 
 .toggle button.active {
-    background: var(--risk, var(--accent));
+    background: var(--accent);
     color: #071116;
 }
 
@@ -686,16 +578,16 @@
 
 .optimize-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 8px;
 }
 
 .optimize-row .optimize-btn {
-    flex: 1;
-    min-width: 0;
+    flex: 1 1 140px;
     padding: 8px 6px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
 }
 
 .optimize-btn {
@@ -773,3 +665,20 @@
     color: var(--text);
 }
 
+
+.dist-marker text.dist-value {
+    fill: var(--text);
+}
+
+.h2h-score strong.lead {
+    color: var(--text);
+}
+
+.name-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 0 6px;
+    vertical-align: 1px;
+}

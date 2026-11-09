@@ -88,7 +88,7 @@ export const CardModal: React.FC<CardModalProps> = ({ item, onClose }) => {
                     {item.ratings && (
                         <div className="info-hex">
                             <span className="info-label">Ratings vs the grid</span>
-                            <HexChart series={[{ label: item.name, color: item.avatarColor, values: item.ratings }]} />
+                            <HexChart series={[{ label: item.name, color: '#3987e5', values: item.ratings }]} />
                         </div>
                     )}
 

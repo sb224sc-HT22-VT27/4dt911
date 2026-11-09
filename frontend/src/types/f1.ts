@@ -100,6 +100,8 @@ export interface SeasonStats {
     dnfs: number;
     avgGained: number;
     avgPitStop: number | null;
+    fantasyPoints?: number;
+    fantasyPpm?: number;
 }
 
 export interface RecentFinish {

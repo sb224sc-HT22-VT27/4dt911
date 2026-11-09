@@ -143,7 +143,8 @@ Non-fantasy stats. `trackFit` and `trackAvg` depend on the circuit of `round`.
     "season": {
       "starts": 17, "wins": 2, "podiums": 9, "points": 221.0,
       "avgQuali": 5.0, "avgFinish": 7.2, "bestFinish": 1, "dnfs": 4,
-      "avgGained": 2.1, "avgPitStop": 23.67
+      "avgGained": 2.1, "avgPitStop": 23.67,
+      "fantasyPoints": 343, "fantasyPpm": 12.16
     },
     "trackAvg": 4.5,
     "recentFinishes": [
@@ -158,6 +159,9 @@ Non-fantasy stats. `trackFit` and `trackAvg` depend on the circuit of `round`.
 - `trackFit` = how much better than their own average they finish on this track type (50 = no difference).
 - `trackAvg` = average finish at this circuit since 2023 (`null` if never raced there).
 - `avgPitStop` = average pit lane time in seconds.
+- `fantasyPoints` = fantasy points scored this season (up to the freeze), `fantasyPpm` = those points per €1M.
+  Used by "Season so far" in the value finder. The mock estimates them as average points per race × races raced,
+  since the fantasy data has no per-race history.
 - `recentFinishes` = the last 5 races, oldest first. For constructors `position` is the best car and `dnf` is true only if no car finished.
 
 ### GET `/stats/teammates`

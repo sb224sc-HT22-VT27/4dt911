@@ -1,8 +1,8 @@
 // src/components/SidePanels/CompareRow.tsx
 import React from 'react';
 
-export const COLOR_A = '#2dd4bf';
-export const COLOR_B = '#a78bfa';
+export const COLOR_A = '#3987e5';
+export const COLOR_B = '#d95926';
 
 interface CompareRowProps {
     label: string;

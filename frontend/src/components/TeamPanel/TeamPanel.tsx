@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { F1Card } from '../F1Card/F1Card';
 import { PickerModal } from './PickerModal';
+import { BudgetPill } from './BudgetPill';
 import type { CardItem, ItemKind, Params } from '../../types/f1';
 import './TeamPanel.css';
 
@@ -10,7 +11,9 @@ interface TeamPanelProps {
     constructors: (CardItem | null)[];
     allDrivers: CardItem[];
     allConstructors: CardItem[];
+    budget: number;
     remainingBudget: number;
+    onBudgetChange: (budget: number) => void;
     params: Params;
     onClearTeam: () => void;
     drsId: string | null;
@@ -24,7 +27,9 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
     constructors,
     allDrivers,
     allConstructors,
+    budget,
     remainingBudget,
+    onBudgetChange,
     params,
     onClearTeam,
     drsId,
@@ -42,9 +47,12 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
             <div className="team-header-bar">
                 <h2 className="team-title">My Team</h2>
 
-                <button type="button" className="clear-team-btn" onClick={onClearTeam}>
-                    Clear team
-                </button>
+                <div className="team-header-actions">
+                    <BudgetPill totalBudget={budget} remainingBudget={remainingBudget} onBudgetChange={onBudgetChange} />
+                    <button type="button" className="clear-team-btn" onClick={onClearTeam}>
+                        Clear team
+                    </button>
+                </div>
             </div>
 
             <div className="team-grid-5">

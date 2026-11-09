@@ -1,4 +1,4 @@
-// src/components/SidePanels/BudgetPill.tsx
+// src/components/TeamPanel/BudgetPill.tsx
 import React, { useState } from 'react';
 
 interface BudgetPillProps {

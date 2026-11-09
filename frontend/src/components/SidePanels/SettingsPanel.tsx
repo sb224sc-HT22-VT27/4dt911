@@ -141,6 +141,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 <div className="optimize-row">
                     {optimizerMode === 'transfers' && (
                         <div className="free-transfers" title="Free transfers. Each extra one costs 10 pts">
+                            <span>Free</span>
                             <div className="stepper">
                                 <button
                                     type="button"
@@ -158,7 +159,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                                     +
                                 </button>
                             </div>
-                            <span>free</span>
                         </div>
                     )}
                     <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>

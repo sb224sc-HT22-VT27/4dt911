@@ -28,12 +28,12 @@ export const TeammatesView: React.FC<TeammatesViewProps> = ({ teammates, driverI
         <div className="h2h-row">
             <span className="h2h-label">{label}</span>
             <div className="h2h-score">
-                <strong style={{ color: winsA >= winsB ? COLOR_A : undefined }}>{winsA}</strong>
+                <strong className={winsA >= winsB ? 'lead' : ''}>{winsA}</strong>
                 <div className="h2h-bar">
                     <span style={{ flex: winsA || 0.001, backgroundColor: COLOR_A }} />
                     <span style={{ flex: winsB || 0.001, backgroundColor: COLOR_B }} />
                 </div>
-                <strong style={{ color: winsB >= winsA ? COLOR_B : undefined }}>{winsB}</strong>
+                <strong className={winsB >= winsA ? 'lead' : ''}>{winsB}</strong>
             </div>
         </div>
     );
@@ -49,9 +49,15 @@ export const TeammatesView: React.FC<TeammatesViewProps> = ({ teammates, driverI
             </select>
 
             <div className="h2h-names">
-                <span style={{ color: COLOR_A }}>{nameA}</span>
+                <span>
+                    <i className="name-dot" style={{ backgroundColor: COLOR_A }} />
+                    {nameA}
+                </span>
                 <span className="compare-vs">{pair.races} races together</span>
-                <span style={{ color: COLOR_B }}>{nameB}</span>
+                <span>
+                    <i className="name-dot" style={{ backgroundColor: COLOR_B }} />
+                    {nameB}
+                </span>
             </div>
 
             {h2h('Qualifying head-to-head', pair.quali)}

@@ -337,7 +337,9 @@ function App() {
             constructors={constructors}
             allDrivers={allDrivers}
             allConstructors={allConstructors}
+            budget={budget}
             remainingBudget={remainingBudget}
+            onBudgetChange={setBudget}
             params={params}
             onClearTeam={clearTeam}
             drsId={drsId}
@@ -393,10 +395,7 @@ function App() {
             <TeamSummary
               team={team}
               evaluation={evaluation}
-              budget={budget}
-              remainingBudget={remainingBudget}
               risk={params.risk}
-              onBudgetChange={setBudget}
             />
           </aside>
         </div>

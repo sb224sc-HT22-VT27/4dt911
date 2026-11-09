@@ -167,7 +167,9 @@
           "bestFinish": 6,
           "dnfs": 0,
           "avgGained": 1.8,
-          "avgPitStop": 22.83
+          "avgPitStop": 22.83,
+          "fantasyPoints": 87,
+          "fantasyPpm": 9.89
         },
         "trackHistory": {
           "monza": 14.5,
@@ -247,7 +249,9 @@
           "bestFinish": 6,
           "dnfs": 1,
           "avgGained": 2.1,
-          "avgPitStop": 22.93
+          "avgPitStop": 22.93,
+          "fantasyPoints": 96,
+          "fantasyPpm": 9.41
         },
         "trackHistory": {
           "bahrain": 11.3,
@@ -329,7 +333,9 @@
           "bestFinish": 9,
           "dnfs": 4,
           "avgGained": 4.5,
-          "avgPitStop": 24.27
+          "avgPitStop": 24.27,
+          "fantasyPoints": 26,
+          "fantasyPpm": 4.81
         },
         "trackHistory": {
           "bahrain": 9.0,
@@ -411,7 +417,9 @@
           "bestFinish": 13,
           "dnfs": 7,
           "avgGained": 4.6,
-          "avgPitStop": 26.1
+          "avgPitStop": 26.1,
+          "fantasyPoints": -112,
+          "fantasyPpm": -37.33
         },
         "trackHistory": {
           "bahrain": 11.0,
@@ -493,7 +501,9 @@
           "bestFinish": 8,
           "dnfs": 1,
           "avgGained": 1.4,
-          "avgPitStop": 23.28
+          "avgPitStop": 23.28,
+          "fantasyPoints": 47,
+          "fantasyPpm": 6.71
         },
         "trackHistory": {
           "albert_park": 12.5,
@@ -575,7 +585,9 @@
           "bestFinish": 8,
           "dnfs": 4,
           "avgGained": 1.0,
-          "avgPitStop": 25.01
+          "avgPitStop": 25.01,
+          "fantasyPoints": 28,
+          "fantasyPpm": 4.24
         },
         "trackHistory": {
           "bahrain": 17.0,
@@ -657,7 +669,9 @@
           "bestFinish": 14,
           "dnfs": 4,
           "avgGained": 4.4,
-          "avgPitStop": 24.33
+          "avgPitStop": 24.33,
+          "fantasyPoints": 13,
+          "fantasyPpm": 3.61
         },
         "trackHistory": {
           "bahrain": 2.0,
@@ -739,7 +753,9 @@
           "bestFinish": 13,
           "dnfs": 6,
           "avgGained": 2.3,
-          "avgPitStop": 25.77
+          "avgPitStop": 25.77,
+          "fantasyPoints": -69,
+          "fantasyPpm": -23.0
         },
         "trackHistory": {
           "bahrain": 13.5,
@@ -821,7 +837,9 @@
           "bestFinish": 1,
           "dnfs": 2,
           "avgGained": -0.3,
-          "avgPitStop": 23.33
+          "avgPitStop": 23.33,
+          "fantasyPoints": 301,
+          "fantasyPpm": 12.49
         },
         "trackHistory": {
           "bahrain": 9.0,
@@ -903,7 +921,9 @@
           "bestFinish": 1,
           "dnfs": 0,
           "avgGained": 0.7,
-          "avgPitStop": 23.69
+          "avgPitStop": 23.69,
+          "fantasyPoints": 325,
+          "fantasyPpm": 13.32
         },
         "trackHistory": {
           "bahrain": 5.7,
@@ -985,7 +1005,9 @@
           "bestFinish": 9,
           "dnfs": 1,
           "avgGained": 1.8,
-          "avgPitStop": 26.14
+          "avgPitStop": 26.14,
+          "fantasyPoints": 114,
+          "fantasyPpm": 11.52
         },
         "trackHistory": {
           "bahrain": 14.3,
@@ -1067,7 +1089,9 @@
           "bestFinish": 5,
           "dnfs": 4,
           "avgGained": 1.9,
-          "avgPitStop": 26.17
+          "avgPitStop": 26.17,
+          "fantasyPoints": 66,
+          "fantasyPpm": 10.31
         },
         "trackHistory": {
           "jeddah": 10.0,
@@ -1149,7 +1173,9 @@
           "bestFinish": 1,
           "dnfs": 3,
           "avgGained": 1.2,
-          "avgPitStop": 23.08
+          "avgPitStop": 23.08,
+          "fantasyPoints": 255,
+          "fantasyPpm": 9.77
         },
         "trackHistory": {
           "bahrain": 8.7,
@@ -1231,7 +1257,9 @@
           "bestFinish": 2,
           "dnfs": 3,
           "avgGained": 0.2,
-          "avgPitStop": 25.11
+          "avgPitStop": 25.11,
+          "fantasyPoints": 186,
+          "fantasyPpm": 7.95
         },
         "trackHistory": {
           "bahrain": 9.7,
@@ -1313,7 +1341,9 @@
           "bestFinish": 1,
           "dnfs": 2,
           "avgGained": -0.8,
-          "avgPitStop": 22.81
+          "avgPitStop": 22.81,
+          "fantasyPoints": 300,
+          "fantasyPpm": 10.75
         },
         "trackHistory": {
           "bahrain": 4.7,
@@ -1395,7 +1425,9 @@
           "bestFinish": 1,
           "dnfs": 1,
           "avgGained": -0.6,
-          "avgPitStop": 23.75
+          "avgPitStop": 23.75,
+          "fantasyPoints": 483,
+          "fantasyPpm": 17.82
         },
         "trackHistory": {
           "albert_park": 3.0,
@@ -1477,7 +1509,9 @@
           "bestFinish": 6,
           "dnfs": 1,
           "avgGained": 0.9,
-          "avgPitStop": 22.6
+          "avgPitStop": 22.6,
+          "fantasyPoints": 96,
+          "fantasyPpm": 9.6
         },
         "trackHistory": {
           "albert_park": 8.0,
@@ -1547,7 +1581,9 @@
           "bestFinish": 5,
           "dnfs": 1,
           "avgGained": 2.0,
-          "avgPitStop": 22.55
+          "avgPitStop": 22.55,
+          "fantasyPoints": 145,
+          "fantasyPpm": 14.65
         },
         "trackHistory": {
           "zandvoort": 10.7,
@@ -1629,7 +1665,9 @@
           "bestFinish": 3,
           "dnfs": 2,
           "avgGained": 2.2,
-          "avgPitStop": 25.26
+          "avgPitStop": 25.26,
+          "fantasyPoints": 158,
+          "fantasyPpm": 9.69
         },
         "trackHistory": {
           "albert_park": 20.0,
@@ -1711,7 +1749,9 @@
           "bestFinish": 2,
           "dnfs": 4,
           "avgGained": 2.8,
-          "avgPitStop": 23.08
+          "avgPitStop": 23.08,
+          "fantasyPoints": 343,
+          "fantasyPpm": 12.16
         },
         "trackHistory": {
           "bahrain": 2.7,
@@ -1793,7 +1833,9 @@
           "bestFinish": 8,
           "dnfs": 4,
           "avgGained": 1.4,
-          "avgPitStop": 25.39
+          "avgPitStop": 25.39,
+          "fantasyPoints": -5,
+          "fantasyPpm": -1.09
         },
         "trackHistory": {
           "bahrain": 12.3,
@@ -1875,7 +1917,9 @@
           "bestFinish": 9,
           "dnfs": 2,
           "avgGained": 3.0,
-          "avgPitStop": 24.37
+          "avgPitStop": 24.37,
+          "fantasyPoints": 83,
+          "fantasyPpm": 9.88
         },
         "trackHistory": {
           "bahrain": 8.7,
@@ -1957,7 +2001,9 @@
           "bestFinish": 6,
           "dnfs": 1,
           "avgGained": 1.9,
-          "avgPitStop": 22.88
+          "avgPitStop": 22.88,
+          "fantasyPoints": 271,
+          "fantasyPpm": 14.41
         },
         "trackHistory": {
           "bahrain": 13.8,
@@ -2037,7 +2083,9 @@
           "bestFinish": 9,
           "dnfs": 11,
           "avgGained": 4.5,
-          "avgPitStop": 25.14
+          "avgPitStop": 25.14,
+          "fantasyPoints": -63,
+          "fantasyPpm": -14.0
         },
         "trackHistory": {
           "bahrain": 10.0,
@@ -2117,7 +2165,9 @@
           "bestFinish": 8,
           "dnfs": 5,
           "avgGained": 1.2,
-          "avgPitStop": 24.06
+          "avgPitStop": 24.06,
+          "fantasyPoints": 168,
+          "fantasyPpm": 16.15
         },
         "trackHistory": {
           "bahrain": 15.3,
@@ -2197,7 +2247,9 @@
           "bestFinish": 13,
           "dnfs": 10,
           "avgGained": 3.5,
-          "avgPitStop": 24.96
+          "avgPitStop": 24.96,
+          "fantasyPoints": -59,
+          "fantasyPpm": -19.67
         },
         "trackHistory": {
           "albert_park": 17.5,
@@ -2265,7 +2317,9 @@
           "bestFinish": 1,
           "dnfs": 2,
           "avgGained": 0.2,
-          "avgPitStop": 23.52
+          "avgPitStop": 23.52,
+          "fantasyPoints": 775,
+          "fantasyPpm": 27.48
         },
         "trackHistory": {
           "bahrain": 6.5,
@@ -2345,7 +2399,9 @@
           "bestFinish": 5,
           "dnfs": 5,
           "avgGained": 1.8,
-          "avgPitStop": 26.15
+          "avgPitStop": 26.15,
+          "fantasyPoints": 212,
+          "fantasyPpm": 17.67
         },
         "trackHistory": {
           "bahrain": 12.3,
@@ -2425,7 +2481,9 @@
           "bestFinish": 1,
           "dnfs": 6,
           "avgGained": 0.7,
-          "avgPitStop": 24.17
+          "avgPitStop": 24.17,
+          "fantasyPoints": 590,
+          "fantasyPpm": 18.21
         },
         "trackHistory": {
           "bahrain": 9.2,
@@ -2505,7 +2563,9 @@
           "bestFinish": 1,
           "dnfs": 3,
           "avgGained": -0.7,
-          "avgPitStop": 23.32
+          "avgPitStop": 23.32,
+          "fantasyPoints": 969,
+          "fantasyPpm": 28.5
         },
         "trackHistory": {
           "bahrain": 6.2,
@@ -2585,7 +2645,9 @@
           "bestFinish": 5,
           "dnfs": 2,
           "avgGained": 1.5,
-          "avgPitStop": 22.54
+          "avgPitStop": 22.54,
+          "fantasyPoints": 373,
+          "fantasyPpm": 22.61
         },
         "trackHistory": {
           "bahrain": 13.5,
@@ -2665,7 +2727,9 @@
           "bestFinish": 2,
           "dnfs": 6,
           "avgGained": 2.4,
-          "avgPitStop": 24.05
+          "avgPitStop": 24.05,
+          "fantasyPoints": 621,
+          "fantasyPpm": 18.99
         },
         "trackHistory": {
           "bahrain": 3.5,
@@ -2745,7 +2809,9 @@
           "bestFinish": 8,
           "dnfs": 6,
           "avgGained": 2.3,
-          "avgPitStop": 24.92
+          "avgPitStop": 24.92,
+          "fantasyPoints": 132,
+          "fantasyPpm": 10.48
         },
         "trackHistory": {
           "bahrain": 14.7,

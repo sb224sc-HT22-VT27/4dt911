@@ -59,8 +59,8 @@ export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => 
             <svg viewBox={`0 0 ${width} ${height}`} className="dist-svg" preserveAspectRatio="xMidYMid meet">
                 <defs>
                     <linearGradient id="distGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.4" />
-                        <stop offset="100%" stopColor="#2dd4bf" stopOpacity="0" />
+                        <stop offset="0%" stopColor="#3987e5" stopOpacity="0.4" />
+                        <stop offset="100%" stopColor="#3987e5" stopOpacity="0" />
                     </linearGradient>
                 </defs>
 
@@ -70,12 +70,12 @@ export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => 
                         y={0}
                         width={xScale(p90) - xScale(p10)}
                         height={innerHeight}
-                        fill="#2dd4bf"
-                        opacity={0.05}
+                        fill="#3987e5"
+                        opacity={0.06}
                     />
                     <line x1={0} y1={innerHeight} x2={innerWidth} y2={innerHeight} stroke="#253140" strokeWidth={1.5} />
                     <path d={areaPath} fill="url(#distGradient)" />
-                    <path d={linePath} fill="none" stroke="#2dd4bf" strokeWidth={2.5} strokeLinecap="round" />
+                    <path d={linePath} fill="none" stroke="#3987e5" strokeWidth={2} strokeLinecap="round" />
 
                     {markers.map((m) => {
                         const x = xScale(m.value);
@@ -86,7 +86,7 @@ export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => 
                                 <line x1={x} y1={y} x2={x} y2={innerHeight} strokeWidth={active ? 2 : 1.2} strokeDasharray="3 3" />
                                 <circle cx={x} cy={y} r={active ? 4.5 : 3} />
                                 {active && (
-                                    <text x={x} y={y - 9} textAnchor="middle" fontSize={12} fontWeight={800}>
+                                    <text x={x} y={y - 9} textAnchor="middle" fontSize={12} fontWeight={800} className="dist-value">
                                         {m.value}
                                     </text>
                                 )}

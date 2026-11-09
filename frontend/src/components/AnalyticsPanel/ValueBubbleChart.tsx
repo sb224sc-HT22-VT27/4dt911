@@ -4,6 +4,12 @@ import * as d3 from 'd3';
 import { pointsFor, RISK_LABELS, type CardItem, type Risk } from '../../types/f1';
 
 type Filter = 'driver' | 'constructor' | 'all';
+type Mode = 'predicted' | 'season';
+
+// Two colours only: your players vs the rest. Team colours can't be told apart in a scatter
+// (Ferrari and Haas red are almost identical), names come from the labels and tooltips instead.
+const TEAM_FILL = '#3987e5';
+const OTHER_FILL = '#56677a';
 
 interface ValueBubbleChartProps {
     allDrivers: CardItem[];
@@ -32,6 +38,7 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
     onRemove,
 }) => {
     const [filter, setFilter] = useState<Filter>('driver');
+    const [mode, setMode] = useState<Mode>('predicted');
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const plotRef = useRef<HTMLDivElement>(null);
     const [size, setSize] = useState({ width: 700, height: 260 });
@@ -47,9 +54,14 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
         return () => observer.disconnect();
     }, []);
 
+    // Predicted points for the chosen risk, or fantasy points scored so far this season
+    const yOf = (i: CardItem) => (mode === 'predicted' ? pointsFor(i, risk) : i.season?.fantasyPoints ?? 0);
+    const ppmOf = (i: CardItem) => (mode === 'predicted' ? i.ppm : i.season?.fantasyPpm ?? 0);
+    const yLabel = mode === 'predicted' ? `${RISK_LABELS[risk]} pts` : 'Season pts';
+
     const items =
         filter === 'driver' ? allDrivers : filter === 'constructor' ? allConstructors : [...allDrivers, ...allConstructors];
-    const byValue = [...items].sort((a, b) => b.ppm - a.ppm);
+    const byValue = [...items].sort((a, b) => ppmOf(b) - ppmOf(a));
     const selected = items.find((i) => i.id === selectedId) ?? byValue.find((i) => !teamIds.has(i.id)) ?? byValue[0];
     const inTeam = selected ? teamIds.has(selected.id) : false;
     const blocker = selected && !inTeam ? addBlocker(selected) : null;
@@ -61,7 +73,7 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
 
     // Scales use every player so the axes stay the same when switching filter
     const everyone = [...allDrivers, ...allConstructors];
-    const points = everyone.map((i) => pointsFor(i, risk));
+    const points = everyone.map(yOf);
     const x = d3
         .scaleLinear()
         .domain([0, (d3.max(everyone, (i) => i.price) ?? 30) * 1.08])
@@ -78,7 +90,7 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
         .range([4, 18]);
 
     // Guide lines for half, equal and double the median points per €M
-    const median = d3.median(everyone, (i) => i.ppm) ?? 1;
+    const median = Math.max(d3.median(everyone, ppmOf) ?? 1, 0.01);
     const guides = [median / 2, median, median * 2].map((k) => {
         const [xMax, yMax] = [x.domain()[1], y.domain()[1]];
         const endX = Math.min(xMax, yMax / k);
@@ -87,12 +99,24 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
 
     // Label your team, the selection and the standout picks so the chart stays readable
     const topValue = new Set(byValue.slice(0, 4).map((i) => i.id));
-    const topPoints = new Set([...items].sort((a, b) => pointsFor(b, risk) - pointsFor(a, risk)).slice(0, 4).map((i) => i.id));
+    const topPoints = new Set([...items].sort((a, b) => yOf(b) - yOf(a)).slice(0, 4).map((i) => i.id));
     const showLabel = (i: CardItem) => teamIds.has(i.id) || i.id === selected?.id || topValue.has(i.id) || topPoints.has(i.id);
 
     return (
         <div className="bubble-wrapper">
             <div className="ppm-toolbar">
+                <div className="ppm-kind-toggle">
+                    {(['predicted', 'season'] as Mode[]).map((m) => (
+                        <button
+                            key={m}
+                            type="button"
+                            className={mode === m ? 'active' : ''}
+                            onClick={() => setMode(m)}
+                        >
+                            {m === 'predicted' ? 'Predicted' : 'Season so far'}
+                        </button>
+                    ))}
+                </div>
                 <div className="ppm-kind-toggle">
                     {FILTERS.map((f) => (
                         <button
@@ -109,8 +133,8 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                     ))}
                 </div>
                 <span className="ppm-axis-hint">
-                    <span className="legend-ring" /> your team · <span className="legend-stripes" /> constructor · size =
-                    ownership · double-click to add
+                    <span className="legend-dot team" /> your team <span className="legend-dot" /> others{' '}
+                    <span className="legend-stripes" /> constructor · size = ownership · double-click to add
                 </span>
             </div>
 
@@ -126,11 +150,11 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                         <span>Price</span>
                     </div>
                     <div className="ppm-detail-stat">
-                        <strong>{pointsFor(selected, risk)}</strong>
-                        <span>{RISK_LABELS[risk]} pts</span>
+                        <strong>{yOf(selected)}</strong>
+                        <span>{yLabel}</span>
                     </div>
                     <div className="ppm-detail-stat">
-                        <strong>{selected.ppm.toFixed(2)}</strong>
+                        <strong>{ppmOf(selected).toFixed(2)}</strong>
                         <span>Pts / €M</span>
                     </div>
                     <div className="ppm-detail-stat">
@@ -158,17 +182,20 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
             <div className="bubble-plot" ref={plotRef}>
                 <svg width={width} height={height}>
                     <defs>
-                        {allConstructors.map((c) => (
+                        {[
+                            ['team', TEAM_FILL],
+                            ['other', OTHER_FILL],
+                        ].map(([id, color]) => (
                             <pattern
-                                key={c.id}
-                                id={`stripes-${c.id}`}
+                                key={id}
+                                id={`stripes-${id}`}
                                 patternUnits="userSpaceOnUse"
                                 width="6"
                                 height="6"
                                 patternTransform="rotate(45)"
                             >
-                                <rect width="6" height="6" fill={c.avatarColor} fillOpacity="0.3" />
-                                <line x1="0" y1="0" x2="0" y2="6" stroke={c.avatarColor} strokeWidth="3.5" />
+                                <rect width="6" height="6" fill={color} fillOpacity="0.3" />
+                                <line x1="0" y1="0" x2="0" y2="6" stroke={color} strokeWidth="3.5" />
                             </pattern>
                         ))}
                     </defs>
@@ -193,7 +220,7 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                             Price →
                         </text>
                         <text x={6} y={4} className="bubble-axis-title" dominantBaseline="hanging">
-                            ↑ {RISK_LABELS[risk]} points
+                            ↑ {mode === 'predicted' ? `${RISK_LABELS[risk]} points` : 'Season fantasy points'}
                         </text>
 
                         {guides.map((g) => (
@@ -211,7 +238,13 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                                 const isTeam = teamIds.has(item.id);
                                 const isSelected = item.id === selected?.id;
                                 const cx = x(item.price);
-                                const cy = y(pointsFor(item, risk));
+                                const cy = y(yOf(item));
+                                const fill =
+                                    item.kind === 'constructor'
+                                        ? `url(#stripes-${isTeam ? 'team' : 'other'})`
+                                        : isTeam
+                                          ? TEAM_FILL
+                                          : OTHER_FILL;
                                 return (
                                     <g
                                         key={item.id}
@@ -219,12 +252,12 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                                         onClick={() => setSelectedId(item.id)}
                                         onDoubleClick={() => !addBlocker(item) && onAdd(item)}
                                     >
-                                        <title>{`${item.name} · €${item.price}M · ${pointsFor(item, risk)} pts · ${item.ownership}% owned`}</title>
+                                        <title>{`${item.name} · €${item.price}M · ${yOf(item)} ${yLabel.toLowerCase()} · ${item.ownership}% owned`}</title>
                                         <circle
                                             cx={cx}
                                             cy={cy}
                                             r={r(item.ownership)}
-                                            fill={item.kind === 'constructor' ? `url(#stripes-${item.id})` : item.avatarColor}
+                                            fill={fill}
                                         />
                                         {showLabel(item) && (
                                             <text x={cx + r(item.ownership) + 3} y={cy} dominantBaseline="middle">

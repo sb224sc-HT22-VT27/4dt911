@@ -18,9 +18,13 @@
   --dim: #56677a;
   --accent: #2dd4bf;
   --danger: #f43f5e;
-  --floor: #60a5fa;
-  --expected: #2dd4bf;
-  --ceiling: #f59e0b;
+  /* Floor -> ceiling is an ordered scale, so one hue from dark to light */
+  --floor: #256abf;
+  --expected: #3987e5;
+  --ceiling: #86b6ef;
+  /* Two compared series (validated for colour-blind separation) */
+  --series-a: #3987e5;
+  --series-b: #d95926;
 }
 
 html,

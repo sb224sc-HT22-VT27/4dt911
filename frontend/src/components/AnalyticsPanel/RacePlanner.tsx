@@ -26,6 +26,13 @@ const FILTERS: { id: Filter; label: string }[] = [
 const shortName = (name: string) => name.replace(' Grand Prix', '').replace(' in Malaysia', '');
 const TRACK_SHORT: Record<TrackType, string> = { street: 'Street', high_speed: 'Fast', technical: 'Tech' };
 
+// One-hue sequential ramp, darkest = fewest points. Light cells get dark text for contrast.
+const RAMP = ['#0d366b', '#104281', '#184f95', '#1c5cab', '#256abf', '#2a78d6', '#3987e5', '#5598e7', '#6da7ec', '#86b6ef'];
+const cellStyle = (value: number, max: number): React.CSSProperties => {
+    const step = Math.min(RAMP.length - 1, Math.max(0, Math.floor((value / max) * RAMP.length)));
+    return { backgroundColor: RAMP[step], color: step >= 5 ? '#071116' : 'var(--text)' };
+};
+
 export const RacePlanner: React.FC<RacePlannerProps> = ({
     races,
     raceCount,
@@ -119,14 +126,7 @@ export const RacePlanner: React.FC<RacePlannerProps> = ({
                                         const value = row.points[r.round];
                                         return (
                                             <td key={r.round} className="planner-cell">
-                                                <span
-                                                    style={{
-                                                        backgroundColor:
-                                                            value == null
-                                                                ? 'transparent'
-                                                                : `rgba(45, 212, 191, ${0.08 + 0.62 * Math.max(0, value / maxCell)})`,
-                                                    }}
-                                                >
+                                                <span style={value == null ? undefined : cellStyle(value, maxCell)}>
                                                     {value ?? '–'}
                                                 </span>
                                             </td>

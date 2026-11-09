@@ -158,6 +158,22 @@ for t in fantasy_teams:
         ),
     }
 
+# Season fantasy points up to the freeze. The fantasy data has no per-race history,
+# so this mocks it as average points per race x races raced (constructors have 2 starts per race)
+def add_fantasy_points(out, rows, starts_per_race):
+    for row in rows:
+        entry = out.get(row["player_id"])
+        if not entry:
+            continue
+        races_raced = entry["season"]["starts"] / starts_per_race
+        points = round(float(row["avg_fantasy_points"]) * races_raced)
+        entry["season"]["fantasyPoints"] = points
+        entry["season"]["fantasyPpm"] = round(points / float(row["price_m"]), 2)
+
+
+add_fantasy_points(drivers_out, fantasy_drivers, 1)
+add_fantasy_points(constructors_out, fantasy_teams, 2)
+
 # Teammate head-to-head: 2026 races (before the freeze) where both current drivers raced for the team
 teammates_out = {}
 for t in fantasy_teams:

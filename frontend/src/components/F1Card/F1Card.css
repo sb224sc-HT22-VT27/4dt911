@@ -179,7 +179,7 @@
 }
 
 .f1-stat-col.active .f1-stat-value {
-    color: var(--risk);
+    color: var(--text);
 }
 
 .f1-stat-label {
