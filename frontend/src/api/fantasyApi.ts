@@ -98,7 +98,6 @@ export function toCards(
                 expectedPoints: pred.expected,
                 ceiling: pred.ceiling,
                 ppm: pred.ppm,
-                multiplier: pred.multiplier,
                 dnfChance: pred.dnfChance,
                 qualiPos: pred.qualiPos,
                 racePos: pred.racePos,

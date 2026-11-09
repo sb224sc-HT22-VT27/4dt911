@@ -17,11 +17,9 @@ interface SettingsPanelProps {
     trackType: TrackType;
     horizon: Horizon;
     optimizerMode: OptimizerMode;
-    freeTransfers: number;
     onChange: (params: Params) => void;
     onHorizonChange: (horizon: Horizon) => void;
     onModeChange: (mode: OptimizerMode) => void;
-    onFreeTransfersChange: (value: number) => void;
     onOptimize: () => Promise<string>;
 }
 
@@ -32,11 +30,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     trackType,
     horizon,
     optimizerMode,
-    freeTransfers,
     onChange,
     onHorizonChange,
     onModeChange,
-    onFreeTransfersChange,
     onOptimize,
 }) => {
     const [message, setMessage] = useState('');
@@ -138,33 +134,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                     </div>
                 </div>
 
-                <div className="optimize-row">
-                    {optimizerMode === 'transfers' && (
-                        <div className="free-transfers" title="Free transfers. Each extra one costs 10 pts">
-                            <span>Free</span>
-                            <div className="stepper">
-                                <button
-                                    type="button"
-                                    disabled={freeTransfers <= 0}
-                                    onClick={() => onFreeTransfersChange(freeTransfers - 1)}
-                                >
-                                    −
-                                </button>
-                                <strong>{freeTransfers}</strong>
-                                <button
-                                    type="button"
-                                    disabled={freeTransfers >= 7}
-                                    onClick={() => onFreeTransfersChange(freeTransfers + 1)}
-                                >
-                                    +
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                    <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>
-                        {optimizing ? 'Working…' : optimizerMode === 'best' ? 'Optimize team' : 'Suggest transfers'}
-                    </button>
-                </div>
+                <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>
+                    {optimizing ? 'Working…' : optimizerMode === 'best' ? 'Optimize team' : 'Suggest transfers'}
+                </button>
                 {message && <span className="optimize-msg">{message}</span>}
             </div>
         </div>

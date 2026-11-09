@@ -39,3 +39,14 @@ This view should have different tabs i can switch between. How do i add that?
 
 {'race_name': 'United States Grand Prix', 'date': '2026-10-25', 'driver': 'lando_norris', 'predictions': {'qualifying_position': 3, 'race_position': 4, 'dnf_probability': np.float64(4.7)}, 'fantasy_points': {'floor_p10': np.float64(9.5), 'expected_p50': np.float64(23.1), 'ceiling_p90': np.float64(45.0)}}
 This is the output our api endpoint should send, create mockdata i can use to test the frontend for all drivers from round 18 and forwards.
+
+I want to create an interactive tutorial for this tool. What should i showcase and in what order. Assume the users has some knowledge about f1 fantasy already.
+
+How should i implement that interactive tutorial to make it easy to follow along?
+
+Import the f1 fantasy rules and create a button nect to guide which explains how it works. 
+
+Make another button next to guide and rules that should showcase to the user roughlyy how our model predicts the points. It should not showcase anything yet.
+
+Look at this ml-training and create a rough draft of how it sohuld be explained on the webpage.
+

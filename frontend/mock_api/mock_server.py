@@ -31,6 +31,8 @@ TEAM_IDS = {
     "red_bull": "1", "mercedes": "2", "ferrari": "3", "mclaren": "4", "aston_martin": "5", "alpine": "6",
     "williams": "7", "racing_bulls": "8", "audi": "9", "haas": "10", "cadillac": "11",
 }
+SEASON_FIELDS = ("points", "wins", "podiums", "avgQuali", "avgFinish", "avgGained", "dnfs", "avgPitStop",
+                 "fantasyPoints", "fantasyPpm")
 # At 100% weight a perfect rating gives up to +30% points and a rating of 0 gives -30%
 MAX_SWING = 0.3
 
@@ -67,7 +69,7 @@ def upcoming_races():
         first = next(iter(drivers.values()))
         track = STATS["tracks"][rnd]
         races.append({
-            "round": rnd, "name": first["race_name"], "date": first["date"], "circuit": track["circuit"],
+            "round": rnd, "name": first["race_name"], "date": first["date"],
             "location": track["location"], "trackType": track["type"],
         })
     races.sort(key=lambda r: int(r["round"]))
@@ -119,7 +121,6 @@ def predictions(rounds, risk, weights):
             "floor": round(sum(p["floor"] for p in per_round), 1),
             "expected": round(sum(p["expected"] for p in per_round), 1),
             "ceiling": round(sum(p["ceiling"] for p in per_round), 1),
-            "multiplier": round(first["multiplier"], 3),
             "dnfChance": first["dnfChance"],
             "qualiPos": first["qualiPos"],
             "racePos": first["racePos"],
@@ -157,7 +158,7 @@ def stats(kind, rnd):
             "id": pid,
             "code": s.get("code"),
             "ratings": {**s["ratings"], "trackFit": s["trackFit"][track["type"]]},
-            "season": s["season"],
+            "season": {k: s["season"].get(k) for k in SEASON_FIELDS},
             "trackAvg": s["trackHistory"].get(track["circuitRef"]),
             "recentFinishes": s["recentFinishes"],
         })
@@ -166,37 +167,26 @@ def stats(kind, rnd):
 
 def evaluate(body):
     """Team totals, the DRS Boost driver's points count double"""
-    risk = body["risk"]
-    preds = predictions(body["rounds"], risk, weights_of(body))
+    preds = predictions(body["rounds"], body["risk"], weights_of(body))
     drs = body.get("drs") if body.get("drs") in body["drivers"] else None
     team = [preds[i] for i in body["drivers"] + body["constructors"] if i in preds]
     factor = lambda p: 2 if p["id"] == drs else 1
-    totals = {k: round(sum(p[k] * factor(p) for p in team), 1) for k in ("floor", "expected", "ceiling")}
-    risk_total = sum(max(p[risk] * factor(p), 0) for p in team) or 1
-    players = [
-        {
-            "id": p["id"],
-            "points": round(p[risk] * factor(p), 1),
-            "share": round(100 * max(p[risk] * factor(p), 0) / risk_total),
-            "drs": p["id"] == drs,
-        }
-        for p in team
-    ]
     return {
         "cost": round(sum(PLAYERS[p["id"]]["price"] for p in team), 1),
-        **totals,
+        **{k: round(sum(p[k] * factor(p) for p in team), 1) for k in ("floor", "expected", "ceiling")},
         "drs": drs,
-        "players": sorted(players, key=lambda p: -p["points"]),
     }
 
 
 def optimize(body):
     """Best 5 drivers + 2 constructors within budget for the chosen risk, with the best driver as DRS Boost (2x).
-    With currentTeam it works as transfers mode: every player swapped out beyond freeTransfers costs TRANSFER_PENALTY points."""
+    With currentTeam it works as transfers mode: every player swapped out beyond freeTransfers costs TRANSFER_PENALTY points.
+    maxTransfers (optional) limits how many players may be swapped out."""
     risk, budget = body["risk"], body["budget"]
     preds = predictions(body["rounds"], risk, weights_of(body))
     current = body.get("currentTeam")
-    free, penalty = int(body.get("freeTransfers", 0)), TRANSFER_PENALTY
+    free, penalty = min(int(body.get("freeTransfers", 0)), 3), TRANSFER_PENALTY
+    max_transfers = body.get("maxTransfers")
     cur_drivers = set(current["drivers"]) if current else set()
     cur_constructors = set(current["constructors"]) if current else set()
     price = lambda pid: PLAYERS[pid]["price"]
@@ -220,6 +210,8 @@ def optimize(body):
         pair_points = sum(preds[p][risk] for p in pair)
         pair_outs = len(cur_constructors - set(pair))
         for outs, groups in buckets.items():
+            if max_transfers is not None and outs + pair_outs > int(max_transfers):
+                continue
             # sorted by points, so the first group that fits is the best one for this pair and swap count
             fit = next((g for g in groups if g[1] <= left + 1e-6), None)
             if not fit:

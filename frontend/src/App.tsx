@@ -6,6 +6,9 @@ import { AnalyticsPanel } from './components/AnalyticsPanel/AnalyticsPanel';
 import { TeamSummary } from './components/SidePanels/TeamSummary';
 import { TransfersModal } from './components/TeamPanel/TransfersModal';
 import { SavedSlots } from './components/SidePanels/SavedSlots';
+import { GuideTour } from './components/Guide/GuideTour';
+import { RulesModal } from './components/Info/RulesModal';
+import { PredictorModal } from './components/Info/PredictorModal';
 import { ComparisonPanel } from './components/SidePanels/ComparisonPanel';
 import { SettingsPanel } from './components/SidePanels/SettingsPanel';
 import { RaceSelect } from './components/Header/RaceSelect';
@@ -38,6 +41,7 @@ import {
   type Race,
   type RoundPoints,
   type SavedTeam,
+  type TransferPlans,
   type TeammateStats,
   type TeamEvaluation,
 } from './types/f1';
@@ -45,6 +49,16 @@ import {
 const ids = (list: (string | null)[]) => list.filter(Boolean) as string[];
 const EMPTY_DRIVERS: (string | null)[] = [null, null, null, null, null];
 const EMPTY_CONSTRUCTORS: (string | null)[] = [null, null];
+
+// The guide opens by itself the first time someone visits
+const GUIDE_KEY = 'optigrid-guide-seen';
+const guideSeen = () => {
+  try {
+    return localStorage.getItem(GUIDE_KEY) === 'yes';
+  } catch {
+    return true;
+  }
+};
 
 // Saved teams live in the browser for now
 const SLOTS_KEY = 'f1-saved-teams';
@@ -82,8 +96,20 @@ function App() {
   const [slotEvaluations, setSlotEvaluations] = useState<(TeamEvaluation | null)[]>([null, null, null]);
   const [optimizerMode, setOptimizerMode] = useState<OptimizerMode>('best');
   const [freeTransfers, setFreeTransfers] = useState(2);
-  const [suggestion, setSuggestion] = useState<OptimizeResult | null>(null);
+  const [transfersOpen, setTransfersOpen] = useState(false);
+  const [transferPlans, setTransferPlans] = useState<TransferPlans | null>(null);
   const hasAutoPicked = useRef(false);
+  const [guideOpen, setGuideOpen] = useState(() => !guideSeen());
+  const [infoOpen, setInfoOpen] = useState<'rules' | 'predictor' | null>(null);
+
+  const closeGuide = () => {
+    setGuideOpen(false);
+    try {
+      localStorage.setItem(GUIDE_KEY, 'yes');
+    } catch {
+      // storage unavailable, the guide just shows again next visit
+    }
+  };
 
   // The selected race plus the next ones when planning 3 races ahead
   const rounds = useMemo(() => {
@@ -222,13 +248,8 @@ function App() {
   const optimize = async (): Promise<string> => {
     try {
       if (optimizerMode === 'transfers') {
-        const result = await optimizeTeam(budget, rounds, params, {
-          currentTeam: { drivers: ids(driverIds), constructors: ids(constructorIds) },
-          freeTransfers,
-        });
-        setSuggestion(result);
-        const count = result.transfers?.length ?? 0;
-        return count ? `${count} transfer${count > 1 ? 's' : ''} suggested` : 'No better transfers found';
+        setTransfersOpen(true);
+        return '';
       }
       const result = await optimizeTeam(budget, rounds, params);
       setDriverIds(result.drivers);
@@ -258,8 +279,26 @@ function App() {
     setDriverIds(swap(driverIds, 'driver'));
     setConstructorIds(swap(constructorIds, 'constructor'));
     setDrsId(result.drs);
-    setSuggestion(null);
+    setTransfersOpen(false);
   };
+
+  // While the transfers popup is open: the best plan with extra transfers (−10 each)
+  // and the best plan using only the free transfers, so the popup can compare them
+  useEffect(() => {
+    if (!transfersOpen || !rounds.length) return;
+    let active = true;
+    const settings = {
+      currentTeam: { drivers: ids(driverIds), constructors: ids(constructorIds) },
+      freeTransfers,
+    };
+    Promise.all([
+      optimizeTeam(budget, rounds, params, settings).catch(() => null),
+      optimizeTeam(budget, rounds, params, { ...settings, maxTransfers: freeTransfers }).catch(() => null),
+    ]).then(([best, freeOnly]) => active && setTransferPlans({ free: freeTransfers, best, freeOnly }));
+    return () => {
+      active = false;
+    };
+  }, [transfersOpen, freeTransfers, driverIds, constructorIds, rounds, params, budget]);
 
   const setSlot = (kind: CardItem['kind'], slot: number, id: string | null) => {
     const setter = kind === 'driver' ? setDriverIds : setConstructorIds;
@@ -315,7 +354,17 @@ function App() {
           <h1>OptiGrid</h1>
         </div>
         <RaceSelect races={races} selectedRound={round} rounds={rounds} onSelect={setRound} />
-        <span />
+        <div className="header-actions">
+          <button type="button" className="header-link" onClick={() => setInfoOpen('rules')}>
+            F1 Fantasy rules
+          </button>
+          <button type="button" className="header-link" onClick={() => setInfoOpen('predictor')}>
+            How predictions work
+          </button>
+          <button type="button" className="guide-btn" onClick={() => setGuideOpen(true)}>
+            <span>?</span> Guide
+          </button>
+        </div>
       </header>
 
       <div className="dashboard-grid">
@@ -373,11 +422,9 @@ function App() {
               trackType={race.trackType}
               horizon={horizon}
               optimizerMode={optimizerMode}
-              freeTransfers={freeTransfers}
               onChange={setParams}
               onHorizonChange={setHorizon}
               onModeChange={setOptimizerMode}
-              onFreeTransfersChange={setFreeTransfers}
               onOptimize={optimize}
             />
           </section>
@@ -401,14 +448,19 @@ function App() {
         </div>
       </div>
 
-      {suggestion && (
+      {guideOpen && <GuideTour onClose={closeGuide} />}
+      {infoOpen === 'rules' && <RulesModal onClose={() => setInfoOpen(null)} />}
+      {infoOpen === 'predictor' && <PredictorModal onClose={() => setInfoOpen(null)} />}
+
+      {transfersOpen && (
         <TransfersModal
-          suggestion={suggestion}
           freeTransfers={freeTransfers}
+          plans={transferPlans}
           players={new Map([...allDrivers, ...allConstructors].map((p) => [p.id, p]))}
           risk={params.risk}
-          onApply={() => applyTransfers(suggestion)}
-          onClose={() => setSuggestion(null)}
+          onFreeTransfersChange={setFreeTransfers}
+          onApply={applyTransfers}
+          onClose={() => setTransfersOpen(false)}
         />
       )}
     </div>

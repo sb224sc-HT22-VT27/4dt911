@@ -55,7 +55,6 @@ export interface Race {
     round: string;
     name: string;
     date: string;
-    circuit: string;
     location: string;
     trackType: TrackType;
 }
@@ -67,7 +66,6 @@ export interface Prediction {
     expected: number;
     ceiling: number;
     ppm: number;
-    multiplier: number;
     dnfChance?: number;
     qualiPos?: number;
     racePos?: number;
@@ -90,13 +88,11 @@ export interface Ratings {
 }
 
 export interface SeasonStats {
-    starts: number;
     wins: number;
     podiums: number;
     points: number;
     avgQuali: number | null;
     avgFinish: number | null;
-    bestFinish: number | null;
     dnfs: number;
     avgGained: number;
     avgPitStop: number | null;
@@ -125,7 +121,6 @@ export interface TeamEvaluation {
     expected: number;
     ceiling: number;
     drs: string | null;
-    players: { id: string; points: number; share: number; drs: boolean }[];
 }
 
 export interface Transfer {
@@ -148,6 +143,14 @@ export interface OptimizeResult {
 export interface TransferSettings {
     currentTeam: { drivers: string[]; constructors: string[] };
     freeTransfers: number;
+    maxTransfers?: number;
+}
+
+// The two plans shown in the transfers popup for a given number of free transfers
+export interface TransferPlans {
+    free: number;
+    best: OptimizeResult | null; // best plan, extra transfers allowed at −10 each
+    freeOnly: OptimizeResult | null; // best plan using only the free transfers
 }
 
 // Name and ratings for any driver, also those without a prediction
@@ -183,7 +186,6 @@ export interface CardItem {
     expectedPoints: number;
     ceiling: number;
     ppm: number;
-    multiplier: number;
     qualiPos?: number;
     racePos?: number;
     dnfChance?: number;

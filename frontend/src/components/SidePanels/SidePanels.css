@@ -576,20 +576,6 @@
     padding-top: 8px;
 }
 
-.optimize-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-}
-
-.optimize-row .optimize-btn {
-    flex: 1 1 140px;
-    padding: 8px 6px;
-    font-size: 0.68rem;
-    letter-spacing: 0.03em;
-}
-
 .optimize-btn {
     width: 100%;
     border: none;
@@ -627,14 +613,6 @@
 
 
 /* Free transfers stepper */
-.free-transfers {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.65rem;
-    color: var(--dim);
-}
-
 .stepper {
     display: grid;
     grid-template-columns: 24px 26px 24px;

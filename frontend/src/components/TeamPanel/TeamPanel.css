@@ -318,6 +318,101 @@
 }
 
 /* Transfers popup */
+.free-picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0.85rem 1rem 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.free-options {
+    display: grid;
+    grid-template-columns: repeat(4, 38px);
+    gap: 4px;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.free-options button {
+    border: none;
+    background: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 4px 0;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.free-options button.active {
+    background: var(--accent);
+    color: #041014;
+}
+
+.transfer-advice {
+    margin: 0.75rem 1rem 0;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.transfer-advice.extra {
+    border-left-color: #d95926;
+}
+
+.plan-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin: 0.6rem 1rem 0;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.plan-toggle button {
+    border: none;
+    background: none;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 5px 0;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.plan-toggle button.active {
+    background: var(--panel-3);
+    color: var(--text);
+}
+
+.move-cost {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-align: right;
+    color: var(--dim);
+}
+
+.transfer-move.paid .move-cost {
+    color: #fb7185;
+}
+
+.transfer-note {
+    margin: 0 1rem;
+    font-size: 0.68rem;
+    color: var(--dim);
+}
+
 .transfers-dialog {
     max-width: 560px;
 }
@@ -337,7 +432,7 @@
 
 .transfer-move {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto auto minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr) auto auto minmax(0, 1fr) 40px;
     align-items: center;
     gap: 8px;
     background: var(--panel-2);
