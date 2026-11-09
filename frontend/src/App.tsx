@@ -4,6 +4,7 @@ import './App.css';
 import { TeamPanel } from './components/TeamPanel/TeamPanel';
 import { AnalyticsPanel } from './components/AnalyticsPanel/AnalyticsPanel';
 import { TeamSummary } from './components/SidePanels/TeamSummary';
+import { TransfersPanel } from './components/SidePanels/TransfersPanel';
 import { ComparisonPanel } from './components/SidePanels/ComparisonPanel';
 import { ParametersBar } from './components/Header/ParametersBar';
 import { RaceSelect } from './components/Header/RaceSelect';
@@ -13,6 +14,7 @@ import {
   fetchDrivers,
   fetchPredictions,
   fetchStats,
+  fetchTeammates,
   fetchUpcomingRaces,
   optimizeTeam,
   toCards,
@@ -23,12 +25,19 @@ import {
   type CardItem,
   type Constructor,
   type Driver,
+  type DriverInfo,
+  type ItemKind,
+  type OptimizeResult,
+  type OptimizerMode,
   type Params,
   type PlayerStats,
   type Prediction,
   type Race,
+  type TeammateStats,
   type TeamEvaluation,
 } from './types/f1';
+
+const ids = (list: (string | null)[]) => list.filter(Boolean) as string[];
 
 function App() {
   const [races, setRaces] = useState<Race[]>([]);
@@ -38,6 +47,7 @@ function App() {
   const [predictions, setPredictions] = useState<Prediction[] | null>(null);
   const [driverStats, setDriverStats] = useState<PlayerStats[]>([]);
   const [constructorStats, setConstructorStats] = useState<PlayerStats[]>([]);
+  const [teammates, setTeammates] = useState<TeammateStats[]>([]);
   const [evaluation, setEvaluation] = useState<TeamEvaluation | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,17 +56,22 @@ function App() {
   const [drsId, setDrsId] = useState<string | null>(null);
   const [budget, setBudget] = useState(100);
   const [params, setParams] = useState<Params>(DEFAULT_PARAMS);
+  const [optimizerMode, setOptimizerMode] = useState<OptimizerMode>('best');
+  const [freeTransfers, setFreeTransfers] = useState(2);
+  const [penalty, setPenalty] = useState(10);
+  const [suggestion, setSuggestion] = useState<{ result: OptimizeResult; key: string } | null>(null);
   const hasAutoPicked = useRef(false);
 
   const rounds = useMemo(() => (round ? [round] : []), [round]);
   const fail = (err: unknown) => setError(err instanceof Error ? err.message : 'Unknown error');
 
   useEffect(() => {
-    Promise.all([fetchDrivers(), fetchConstructors(), fetchUpcomingRaces()])
-      .then(([d, c, r]) => {
+    Promise.all([fetchDrivers(), fetchConstructors(), fetchUpcomingRaces(), fetchTeammates()])
+      .then(([d, c, r, t]) => {
         setRosterDrivers(d);
         setRosterConstructors(c);
         setRaces(r);
+        setTeammates(t);
         setRound(r[0].round);
       })
       .catch(fail);
@@ -92,6 +107,11 @@ function App() {
     [rosterConstructors, predictions, constructorStats]
   );
 
+  const driverInfo = useMemo(() => {
+    const ratings = new Map(driverStats.map((s) => [s.id, s.ratings]));
+    return new Map<string, DriverInfo>(rosterDrivers.map((d) => [d.id, { name: d.name, ratings: ratings.get(d.id) }]));
+  }, [rosterDrivers, driverStats]);
+
   const drivers = driverIds.map((id) => allDrivers.find((d) => d.id === id) ?? null);
   const constructors = constructorIds.map((id) => allConstructors.find((c) => c.id === id) ?? null);
   const team = [...drivers, ...constructors].filter(Boolean) as CardItem[];
@@ -101,7 +121,6 @@ function App() {
   useEffect(() => {
     if (!rounds.length) return;
     let active = true;
-    const ids = (list: (string | null)[]) => list.filter(Boolean) as string[];
     evaluateTeam(ids(driverIds), ids(constructorIds), drsId, rounds, params)
       .then((e) => active && setEvaluation(e))
       .catch(fail);
@@ -110,8 +129,22 @@ function App() {
     };
   }, [driverIds, constructorIds, drsId, rounds, params]);
 
+  // A transfer suggestion is only shown while the team and settings are the same as when it was made
+  const suggestionKey = JSON.stringify([driverIds, constructorIds, params, round, budget, freeTransfers, penalty]);
+  const activeSuggestion = suggestion?.key === suggestionKey ? suggestion.result : null;
+
   const optimize = async (): Promise<string> => {
     try {
+      if (optimizerMode === 'transfers') {
+        const result = await optimizeTeam(budget, rounds, params, {
+          currentTeam: { drivers: ids(driverIds), constructors: ids(constructorIds) },
+          freeTransfers,
+          penalty,
+        });
+        setSuggestion({ result, key: suggestionKey });
+        const count = result.transfers?.length ?? 0;
+        return count ? `${count} transfer${count > 1 ? 's' : ''} suggested` : 'No better transfers found';
+      }
       const result = await optimizeTeam(budget, rounds, params);
       setDriverIds(result.drivers);
       setConstructorIds(result.constructors);
@@ -129,6 +162,19 @@ function App() {
       optimize();
     }
   });
+
+  // Swap the suggested players into the same slots, new players fill empty slots
+  const applyTransfers = (result: OptimizeResult) => {
+    const swap = (slots: (string | null)[], kind: ItemKind) => {
+      const moves = (result.transfers ?? []).filter((t) => t.kind === kind);
+      const fills = moves.filter((t) => !t.out).map((t) => t.in);
+      return slots.map((id) => (id === null ? fills.shift() ?? null : moves.find((t) => t.out === id)?.in ?? id));
+    };
+    setDriverIds(swap(driverIds, 'driver'));
+    setConstructorIds(swap(constructorIds, 'constructor'));
+    setDrsId(result.drs);
+    setSuggestion(null);
+  };
 
   const setSlot = (kind: CardItem['kind'], slot: number, id: string | null) => {
     const setter = kind === 'driver' ? setDriverIds : setConstructorIds;
@@ -196,6 +242,8 @@ function App() {
             constructors={allConstructors}
             teamDrivers={drivers}
             teamConstructors={constructors}
+            teammates={teammates}
+            driverInfo={driverInfo}
             race={race}
           />
         </aside>
@@ -209,6 +257,8 @@ function App() {
             remainingBudget={remainingBudget}
             params={params}
             drsId={drsId}
+            optimizerMode={optimizerMode}
+            onModeChange={setOptimizerMode}
             onToggleDrs={(id) => setDrsId((prev) => (prev === id ? null : id))}
             onSelect={(kind, slot, item) => setSlot(kind, slot, item.id)}
             onRemove={removeFromTeam}
@@ -237,6 +287,18 @@ function App() {
             risk={params.risk}
             onBudgetChange={setBudget}
           />
+          {optimizerMode === 'transfers' && (
+            <TransfersPanel
+              freeTransfers={freeTransfers}
+              penalty={penalty}
+              suggestion={activeSuggestion}
+              players={new Map([...allDrivers, ...allConstructors].map((p) => [p.id, p]))}
+              onFreeTransfersChange={setFreeTransfers}
+              onPenaltyChange={setPenalty}
+              onApply={() => activeSuggestion && applyTransfers(activeSuggestion)}
+              onDismiss={() => setSuggestion(null)}
+            />
+          )}
         </aside>
       </div>
     </div>

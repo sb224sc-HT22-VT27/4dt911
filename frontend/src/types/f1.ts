@@ -29,6 +29,7 @@ export interface Constructor {
 }
 
 export type Risk = 'floor' | 'expected' | 'ceiling';
+export type OptimizerMode = 'best' | 'transfers';
 export type ItemKind = 'driver' | 'constructor';
 export type TrackType = 'street' | 'high_speed' | 'technical';
 
@@ -111,11 +112,45 @@ export interface TeamEvaluation {
     players: { id: string; points: number; share: number; drs: boolean }[];
 }
 
+export interface Transfer {
+    kind: ItemKind;
+    out: string | null;
+    in: string;
+}
+
 export interface OptimizeResult {
     drivers: string[];
     constructors: string[];
     drs: string;
     points: number;
+    // only in transfers mode
+    transfers?: Transfer[];
+    penaltyPoints?: number;
+    currentPoints?: number;
+}
+
+export interface TransferSettings {
+    currentTeam: { drivers: string[]; constructors: string[] };
+    freeTransfers: number;
+    penalty: number;
+}
+
+// Name and ratings for any driver, also those without a prediction
+export interface DriverInfo {
+    name: string;
+    ratings?: Ratings;
+}
+
+export interface TeammateStats {
+    constructorId: string;
+    drivers: [string, string];
+    races: number;
+    quali: [number, number];
+    race: [number, number];
+    points: [number, number];
+    avgQuali: [number | null, number | null];
+    avgFinish: [number | null, number | null];
+    dnfs: [number, number];
 }
 
 // Everything the UI needs for one selectable driver or constructor

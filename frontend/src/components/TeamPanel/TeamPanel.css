@@ -47,12 +47,29 @@
     padding: 8px;
 }
 
-.risk-label {
-    font-size: 0.55rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--dim);
+.mode-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    background: var(--panel-3);
+    border-radius: 7px;
+    padding: 3px;
+}
+
+.mode-toggle button {
+    border: none;
+    background: none;
+    color: var(--muted);
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 4px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mode-toggle button.active {
+    background: var(--accent);
+    color: #041014;
 }
 
 .optimize-summary {
@@ -80,7 +97,7 @@
     border-radius: 8px;
     background: linear-gradient(135deg, var(--accent), #0ea5e9);
     color: #041014;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.06em;

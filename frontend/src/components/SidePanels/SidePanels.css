@@ -13,38 +13,11 @@
     color: var(--muted);
 }
 
-.side-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .side-empty {
     font-size: 0.78rem;
     color: var(--dim);
     text-align: center;
     margin: auto 0;
-}
-
-.mini-toggle {
-    display: inline-flex;
-    gap: 3px;
-}
-
-.mini-toggle button {
-    border: 1px solid var(--border);
-    background: none;
-    color: var(--muted);
-    font-size: 0.62rem;
-    font-weight: 700;
-    padding: 2px 9px;
-    border-radius: 999px;
-    cursor: pointer;
-}
-
-.mini-toggle button.active {
-    border-color: var(--accent);
-    color: var(--accent);
 }
 
 /* Hexagon chart */
@@ -350,7 +323,7 @@
 .share-list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .share-title {
@@ -474,4 +447,252 @@
     margin-left: 5px;
     font-size: 0.5rem;
     padding: 0 4px;
+}
+
+/* Comparison tabs */
+.side-panel.comparison {
+    gap: 0.65rem;
+}
+
+.segmented,
+.compare-tabs {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 3px;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.segmented button,
+.compare-tabs button {
+    border: none;
+    background: none;
+    color: var(--dim);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 0;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.segmented button:hover,
+.compare-tabs button:hover {
+    color: var(--text);
+}
+
+.segmented button.active {
+    background: var(--panel-3);
+    color: var(--accent);
+}
+
+.compare-tabs {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    padding: 0;
+}
+
+.compare-tabs button {
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.compare-tabs button.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+}
+
+/* Teammates */
+.teammates-view {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.team-select {
+    width: 100%;
+    background: var(--panel-2);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 5px 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.h2h-names {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.h2h-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.h2h-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dim);
+    text-align: center;
+}
+
+.h2h-score {
+    display: grid;
+    grid-template-columns: 24px 1fr 24px;
+    align-items: center;
+    gap: 8px;
+}
+
+.h2h-score strong {
+    font-size: 1.15rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+.h2h-bar {
+    display: flex;
+    gap: 3px;
+    height: 10px;
+}
+
+.h2h-bar span {
+    border-radius: 3px;
+    transition: flex 0.3s ease;
+}
+
+/* Transfers */
+.transfers {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 0.6rem;
+}
+
+.transfer-settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.transfer-settings label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--dim);
+}
+
+.stepper {
+    display: grid;
+    grid-template-columns: 26px 1fr 26px;
+    align-items: center;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.stepper button {
+    height: 26px;
+    border: none;
+    background: var(--panel-3);
+    color: var(--text);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.stepper button:disabled {
+    color: var(--dim);
+    cursor: not-allowed;
+}
+
+.stepper strong {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text);
+}
+
+.transfer-suggestion {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.transfer-move {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 3px 8px;
+}
+
+.move-out {
+    color: #fb7185;
+    text-decoration: line-through;
+    text-decoration-color: rgba(251, 113, 133, 0.5);
+}
+
+.move-in {
+    color: #4ade80;
+    font-weight: 700;
+    text-align: right;
+}
+
+.move-arrow {
+    color: var(--dim);
+}
+
+.transfer-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.7rem;
+    color: var(--muted);
+}
+
+.transfer-result strong {
+    color: var(--text);
+    font-size: 0.8rem;
+}
+
+.transfer-actions {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 6px;
+}
+
+.transfer-actions button {
+    border: 1px solid var(--border-strong);
+    background: none;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 6px 0;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.transfer-actions button.apply {
+    border: none;
+    background: var(--accent);
+    color: #041014;
 }

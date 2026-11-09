@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { F1Card } from '../F1Card/F1Card';
 import { PickerModal } from './PickerModal';
-import { RISK_LABELS, type CardItem, type ItemKind, type Params } from '../../types/f1';
+import { RISK_LABELS, type CardItem, type ItemKind, type OptimizerMode, type Params } from '../../types/f1';
 import './TeamPanel.css';
 
 interface TeamPanelProps {
@@ -13,6 +13,8 @@ interface TeamPanelProps {
     remainingBudget: number;
     params: Params;
     drsId: string | null;
+    optimizerMode: OptimizerMode;
+    onModeChange: (mode: OptimizerMode) => void;
     onToggleDrs: (id: string) => void;
     onSelect: (kind: ItemKind, slot: number, item: CardItem) => void;
     onRemove: (id: string) => void;
@@ -27,6 +29,8 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
     remainingBudget,
     params,
     drsId,
+    optimizerMode,
+    onModeChange,
     onToggleDrs,
     onSelect,
     onRemove,
@@ -83,7 +87,21 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
                 ))}
 
                 <div className="team-actions-col">
-                    <span className="risk-label">Optimizer</span>
+                    <div className="mode-toggle">
+                        {(['best', 'transfers'] as OptimizerMode[]).map((m) => (
+                            <button
+                                key={m}
+                                type="button"
+                                className={optimizerMode === m ? 'active' : ''}
+                                onClick={() => {
+                                    onModeChange(m);
+                                    setMessage('');
+                                }}
+                            >
+                                {m === 'best' ? 'Best team' : 'Transfers'}
+                            </button>
+                        ))}
+                    </div>
                     <div className="optimize-summary">
                         <span className={`summary-risk risk-${risk}`}>{RISK_LABELS[risk]}</span>
                         <span>
@@ -91,7 +109,7 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
                         </span>
                     </div>
                     <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>
-                        {optimizing ? 'Optimizing…' : 'Optimize'}
+                        {optimizing ? 'Working…' : optimizerMode === 'best' ? 'Optimize' : 'Suggest transfers'}
                     </button>
                     <span className="optimize-msg">{message || 'Change settings in the top right'}</span>
                 </div>

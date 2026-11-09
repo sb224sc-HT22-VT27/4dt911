@@ -36,8 +36,9 @@ Mock data lives in `frontend/mock_api/` and is regenerated with the scripts ther
 | GET | `/predictions` | Mock | Points on every card, PPM graph, picker |
 | GET | `/stats/drivers` | Mock | Comparison panel and card info popup (hexagon, season stats, last 5) |
 | GET | `/stats/constructors` | Mock | Comparison panel for teams |
+| GET | `/stats/teammates` | Mock | Teammates tab in the comparison panel |
 | POST | `/teams/evaluate` | Mock | Team info totals, DRS Boost, points share, distribution graph |
-| POST | `/optimize` | Mock | Optimize button |
+| POST | `/optimize` | Mock | Optimize button (best team or transfers mode) |
 
 All ids are the fantasy `player_id`, the same ids `/drivers/` and `/constructors/` return.
 
@@ -134,6 +135,30 @@ Non-fantasy stats. `trackFit` and `trackAvg` depend on the circuit of `round`.
 - `avgPitStop` = average pit lane time in seconds.
 - `recentFinishes` = the last 5 races, oldest first. For constructors `position` is the best car and `dnf` is true only if no car finished.
 
+### GET `/stats/teammates`
+
+Head-to-head between the two current drivers of each team, over 2026 races where both raced for it.
+Arrays are `[first driver, second driver]` in the same order as `drivers`.
+
+```json
+[
+  {
+    "constructorId": "28",
+    "drivers": ["124", "11161"],
+    "races": 17,
+    "quali": [7, 10],
+    "race": [5, 12],
+    "points": [204.0, 309.0],
+    "avgQuali": [3.5, 3.4],
+    "avgFinish": [6.8, 3.5],
+    "dnfs": [3, 1]
+  }
+]
+```
+
+- `quali` / `race` = how many times each driver finished ahead of the other.
+- `points` = race points scored in those races.
+
 ### POST `/teams/evaluate`
 
 Totals for a team.
@@ -185,9 +210,35 @@ Response:
 
 Returns status `422` with `{ "error": "No team fits the budget" }` if nothing fits.
 
-## Planned (next steps)
+**Transfers mode:** also send the current team and transfer rules. Every player swapped out beyond
+`freeTransfers` costs `penalty` points, and `points` is the total after the penalty.
 
-These will be added as we build them:
+```json
+{
+  "budget": 100,
+  "rounds": ["21"], "risk": "expected", "form": 0, "track": 0, "dnf": 0,
+  "currentTeam": { "drivers": ["18", "12", "118", "114", "125"], "constructors": ["2641", "26"] },
+  "freeTransfers": 2,
+  "penalty": 10
+}
+```
 
-- `GET /stats/teammates` for teammate head-to-head.
-- Transfers in `/optimize` (`currentTeam`, `freeTransfers`, `penalty`).
+Response:
+
+```json
+{
+  "drivers": ["18", "118", "124", "114", "125"],
+  "constructors": ["26", "2636"],
+  "drs": "118",
+  "points": 203.8,
+  "transfers": [
+    { "kind": "driver", "out": "12", "in": "124" },
+    { "kind": "constructor", "out": "2641", "in": "2636" }
+  ],
+  "penaltyPoints": 0.0,
+  "currentPoints": 163.7
+}
+```
+
+- `transfers` is empty if keeping the current team is best. `out` is `null` when a player fills an empty slot.
+- `currentPoints` = the current team's points (with its best driver as DRS Boost), to compare against `points`.

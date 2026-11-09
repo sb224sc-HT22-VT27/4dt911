@@ -5,9 +5,10 @@ import csv
 import json
 import re
 import unicodedata
+from collections import defaultdict
 from datetime import date
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from itertools import combinations
+from itertools import combinations, zip_longest
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
@@ -172,36 +173,71 @@ def evaluate(body):
 
 
 def optimize(body):
-    """Best 5 drivers + 2 constructors within budget for the chosen risk, with the best driver as DRS Boost (2x)"""
+    """Best 5 drivers + 2 constructors within budget for the chosen risk, with the best driver as DRS Boost (2x).
+    With currentTeam it works as transfers mode: every player swapped out beyond freeTransfers costs penalty points."""
     risk, budget = body["risk"], body["budget"]
     preds = predictions(body["rounds"], risk, weights_of(body))
+    current = body.get("currentTeam")
+    free, penalty = int(body.get("freeTransfers", 0)), float(body.get("penalty", 10))
+    cur_drivers = set(current["drivers"]) if current else set()
+    cur_constructors = set(current["constructors"]) if current else set()
     price = lambda pid: PLAYERS[pid]["price"]
     drivers = [pid for pid in preds if preds[pid]["kind"] == "driver"]
     constructors = [pid for pid in preds if preds[pid]["kind"] == "constructor"]
 
-    groups = []
+    # Driver groups bucketed by how many current drivers they swap out, best points first
+    buckets = defaultdict(list)
     for group in combinations(drivers, 5):
         cost = sum(price(p) for p in group)
         if cost <= budget:
             # the DRS Boost doubles the best driver, so add their points once more
             points = sum(preds[p][risk] for p in group) + max(preds[p][risk] for p in group)
-            groups.append((points, cost, group))
-    groups.sort(reverse=True)
+            buckets[len(cur_drivers - set(group))].append((points, cost, group))
+    for groups in buckets.values():
+        groups.sort(reverse=True)
 
     best = None
     for pair in combinations(constructors, 2):
         left = budget - sum(price(p) for p in pair)
         pair_points = sum(preds[p][risk] for p in pair)
-        # groups are sorted by points, so the first one that fits is the best for this pair
-        for points, cost, group in groups:
-            if cost <= left + 1e-6:
-                if not best or points + pair_points > best[0]:
-                    best = (points + pair_points, group, pair)
-                break
+        pair_outs = len(cur_constructors - set(pair))
+        for outs, groups in buckets.items():
+            # sorted by points, so the first group that fits is the best one for this pair and swap count
+            fit = next((g for g in groups if g[1] <= left + 1e-6), None)
+            if not fit:
+                continue
+            extra = max(0, outs + pair_outs - free) if current else 0
+            net = fit[0] + pair_points - extra * penalty
+            if not best or net > best["net"]:
+                best = {"net": net, "drivers": fit[2], "constructors": pair, "extra": extra}
     if not best:
         return None
-    drs = max(best[1], key=lambda p: preds[p][risk])
-    return {"drivers": list(best[1]), "constructors": list(best[2]), "drs": drs, "points": round(best[0], 1)}
+
+    result = {
+        "drivers": list(best["drivers"]),
+        "constructors": list(best["constructors"]),
+        "drs": max(best["drivers"], key=lambda p: preds[p][risk]),
+        "points": round(best["net"], 1),
+    }
+    if current:
+        transfers = []
+        for kind, old, new in (("driver", current["drivers"], best["drivers"]),
+                               ("constructor", current["constructors"], best["constructors"])):
+            outs = [p for p in old if p not in new]
+            ins = [p for p in new if p not in old]
+            transfers += [{"kind": kind, "out": o, "in": i} for o, i in zip_longest(outs, ins)]
+        cur_points = [preds[p][risk] for p in current["drivers"] + current["constructors"] if p in preds]
+        cur_drs = max((preds[p][risk] for p in current["drivers"] if p in preds), default=0)
+        result.update({
+            "transfers": transfers,
+            "penaltyPoints": round(best["extra"] * penalty, 1),
+            "currentPoints": round(sum(cur_points) + cur_drs, 1),
+        })
+    return result
+
+
+def teammates():
+    return [{"constructorId": cid, **pair} for cid, pair in STATS["teammates"].items()]
 
 
 def weights_of(source):
@@ -232,6 +268,8 @@ class Handler(BaseHTTPRequestHandler):
         if url.path == "/predictions":
             rounds = q.get("rounds", "").split(",")
             return self.send_json(list(predictions(rounds, q.get("risk", "expected"), weights_of(q)).values()))
+        if url.path == "/stats/teammates":
+            return self.send_json(teammates())
         if url.path in ("/stats/drivers", "/stats/constructors"):
             kind = "driver" if url.path.endswith("drivers") else "constructor"
             return self.send_json(stats(kind, q["round"]))

@@ -9,7 +9,9 @@ import type {
     PlayerStats,
     Prediction,
     Race,
+    TeammateStats,
     TeamEvaluation,
+    TransferSettings,
 } from '../types/f1';
 
 async function getJson<T>(url: string, init?: RequestInit): Promise<T> {
@@ -54,8 +56,11 @@ export const evaluateTeam = (
     params: Params
 ) => postJson<TeamEvaluation>(ENDPOINTS.evaluateTeam, { drivers, constructors, drs, ...paramsBody(rounds, params) });
 
-export const optimizeTeam = (budget: number, rounds: string[], params: Params) =>
-    postJson<OptimizeResult>(ENDPOINTS.optimize, { budget, ...paramsBody(rounds, params) });
+export const fetchTeammates = () => getJson<TeammateStats[]>(ENDPOINTS.teammates);
+
+// Pass transfer settings to get the best transfers from the current team instead of a whole new team
+export const optimizeTeam = (budget: number, rounds: string[], params: Params, transfers?: TransferSettings) =>
+    postJson<OptimizeResult>(ENDPOINTS.optimize, { budget, ...paramsBody(rounds, params), ...transfers });
 
 // Joins roster, predictions and stats by player id. Players without a prediction aren't selectable.
 export function toCards(

@@ -155,6 +155,33 @@ for t in fantasy_teams:
         ),
     }
 
+# Teammate head-to-head: 2026 races where both current drivers raced for the team
+teammates_out = {}
+for t in fantasy_teams:
+    pair = [d for d in fantasy_drivers if d["team_key"] == t["team_key"]]
+    if len(pair) != 2:
+        continue
+    team_ids = {k for k, ref in kaggle_teams.items() if TEAM_KEY_OF.get(ref, ref) == t["team_key"]}
+    ids = [{k for k, code in kaggle_drivers.items() if code == d["driver_code"]} for d in pair]
+    season_results = [r for r in results if season_race(r["raceId"]) and r["constructorId"] in team_ids]
+    season_quali = [q for q in quali if season_race(q["raceId"]) and q["constructorId"] in team_ids]
+    res = [{r["raceId"]: r for r in season_results if r["driverId"] in i} for i in ids]
+    qua = [{q["raceId"]: num(q["position"]) for q in season_quali if q["driverId"] in i and num(q["position"])} for i in ids]
+    common = sorted(set(res[0]) & set(res[1]))
+    common_q = sorted(set(qua[0]) & set(qua[1]))
+    race_wins = sum(int(res[0][r]["positionOrder"]) < int(res[1][r]["positionOrder"]) for r in common)
+    quali_wins = sum(qua[0][r] < qua[1][r] for r in common_q)
+    teammates_out[t["player_id"]] = {
+        "drivers": [d["player_id"] for d in pair],
+        "races": len(common),
+        "quali": [quali_wins, len(common_q) - quali_wins],
+        "race": [race_wins, len(common) - race_wins],
+        "points": [round(sum(float(res[i][r]["points"]) for r in common), 1) for i in (0, 1)],
+        "avgQuali": [round(avg([qua[i][r] for r in common_q]), 1) if common_q else None for i in (0, 1)],
+        "avgFinish": [round(avg([int(res[i][r]["positionOrder"]) for r in common]), 1) if common else None for i in (0, 1)],
+        "dnfs": [sum(is_dnf(res[i][r]) for r in common) for i in (0, 1)],
+    }
+
 tracks_out = {}
 for r in races.values():
     if r["year"] == SEASON:
@@ -167,6 +194,6 @@ for r in races.values():
         }
 
 with open(HERE / "mock_stats.json", "w", encoding="utf-8") as f:
-    json.dump({SEASON: {"tracks": tracks_out, "drivers": drivers_out, "constructors": constructors_out}}, f, indent=2, ensure_ascii=False)
+    json.dump({SEASON: {"tracks": tracks_out, "drivers": drivers_out, "constructors": constructors_out, "teammates": teammates_out}}, f, indent=2, ensure_ascii=False)
 
-print(f"Wrote mock_stats.json: {len(drivers_out)} drivers, {len(constructors_out)} constructors")
+print(f"Wrote mock_stats.json: {len(drivers_out)} drivers, {len(constructors_out)} constructors, {len(teammates_out)} teammate pairs")

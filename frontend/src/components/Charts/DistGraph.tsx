@@ -14,7 +14,7 @@ const Z90 = 1.2816; // z-score of the 90th percentile
 
 export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => {
     const width = 280;
-    const height = 150;
+    const height = 128;
     const margin = { top: 24, right: 14, bottom: 22, left: 14 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;

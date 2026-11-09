@@ -10,6 +10,7 @@ export const ENDPOINTS = {
     predictions: `${MOCK_API}/predictions`,
     driverStats: `${MOCK_API}/stats/drivers`,
     constructorStats: `${MOCK_API}/stats/constructors`,
+    teammates: `${MOCK_API}/stats/teammates`,
     evaluateTeam: `${MOCK_API}/teams/evaluate`,
     optimize: `${MOCK_API}/optimize`,
 };
