@@ -9,11 +9,22 @@ interface F1CardProps {
     type: ItemKind;
     slotIndex: number;
     risk: Risk;
+    isDrs?: boolean;
+    onToggleDrs?: (id: string) => void;
     onRemove: (id: string) => void;
     onAdd: (slotIndex: number, type: ItemKind) => void;
 }
 
-export const F1Card: React.FC<F1CardProps> = ({ item, type, slotIndex, risk, onRemove, onAdd }) => {
+export const F1Card: React.FC<F1CardProps> = ({
+    item,
+    type,
+    slotIndex,
+    risk,
+    isDrs = false,
+    onToggleDrs,
+    onRemove,
+    onAdd,
+}) => {
     const [showInfo, setShowInfo] = useState(false);
 
     if (!item) {
@@ -35,10 +46,23 @@ export const F1Card: React.FC<F1CardProps> = ({ item, type, slotIndex, risk, onR
 
     return (
         <>
-            <div className="f1-card" style={{ '--team-color': item.avatarColor } as React.CSSProperties}>
+            <div
+                className={`f1-card ${isDrs ? 'is-drs' : ''}`}
+                style={{ '--team-color': item.avatarColor } as React.CSSProperties}
+            >
                 <div className="f1-card-header">
                     <div className="f1-price-pill">€{item.price}M</div>
                     <div className="f1-actions">
+                        {onToggleDrs && (
+                            <button
+                                type="button"
+                                className={`f1-drs-btn ${isDrs ? 'active' : ''}`}
+                                onClick={() => onToggleDrs(item.id)}
+                                title={isDrs ? 'Remove DRS Boost' : 'Give DRS Boost (2x points)'}
+                            >
+                                {isDrs ? 'DRS 2x' : 'DRS'}
+                            </button>
+                        )}
                         <button type="button" className="f1-circle-btn" onClick={() => setShowInfo(true)} aria-label="Info">
                             i
                         </button>

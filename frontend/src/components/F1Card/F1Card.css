@@ -21,6 +21,36 @@
     border-color: var(--border-strong);
 }
 
+.f1-card.is-drs {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 1px #a855f7, 0 0 18px -4px rgba(168, 85, 247, 0.6);
+}
+
+.f1-drs-btn {
+    white-space: nowrap;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    border: 1px solid rgba(168, 85, 247, 0.5);
+    background-color: rgba(0, 0, 0, 0.35);
+    color: #c4b5fd;
+    font-size: 0.55rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+}
+
+.f1-drs-btn:hover {
+    border-color: #a855f7;
+    color: #fff;
+}
+
+.f1-drs-btn.active {
+    background: #a855f7;
+    border-color: #a855f7;
+    color: #fff;
+}
+
 .f1-card-header {
     display: flex;
     justify-content: space-between;
@@ -207,41 +237,291 @@
 }
 
 .f1-info-dialog {
+    position: relative;
     background-color: var(--panel);
     border: 1px solid var(--border-strong);
-    padding: 1.1rem 1.25rem;
-    border-radius: 12px;
-    width: 280px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-top: 4px solid var(--team-color);
+    border-radius: 14px;
+    width: 460px;
+    max-width: 94vw;
+    max-height: 92vh;
+    overflow: auto;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
 }
 
-.f1-info-dialog h4 {
-    font-size: 1.05rem;
-    padding-left: 8px;
-    border-left: 4px solid;
-    margin-bottom: 0.6rem;
-}
-
-.f1-info-dialog p {
+.info-hero {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    font-size: 0.8rem;
-    padding: 3px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 14px 18px 12px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--team-color) 30%, transparent), transparent 70%);
+    overflow: hidden;
 }
 
-.f1-info-dialog p span {
+.info-team {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     color: var(--muted);
 }
 
-.f1-info-close {
-    margin-top: 0.8rem;
-    width: 100%;
-    padding: 0.45rem;
-    background-color: var(--accent);
+.info-hero h4 {
+    font-size: 1.35rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.info-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.info-chips span {
+    font-size: 0.68rem;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.info-number {
+    position: absolute;
+    right: 36px;
+    bottom: -14px;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--team-color);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.info-close-x {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
     border: none;
-    border-radius: 6px;
-    color: #041014;
-    font-weight: 800;
+    color: var(--muted);
+    font-size: 1rem;
     cursor: pointer;
+}
+
+.info-close-x:hover {
+    color: var(--text);
+}
+
+.info-section {
+    padding: 12px 18px;
+    border-top: 1px solid var(--border);
+}
+
+.info-label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--dim);
+    margin-bottom: 6px;
+}
+
+/* P10-P90 range bar */
+.range-bar {
+    position: relative;
+    height: 10px;
+    background: var(--panel-3);
+    border-radius: 999px;
+    margin-top: 4px;
+}
+
+.range-fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--floor), var(--expected), var(--ceiling));
+    opacity: 0.85;
+}
+
+.range-marker {
+    position: absolute;
+    top: -4px;
+    width: 4px;
+    height: 18px;
+    margin-left: -2px;
+    border-radius: 2px;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.range-labels {
+    position: relative;
+    height: 30px;
+    margin-top: 4px;
+}
+
+.range-labels span {
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--dim);
+    line-height: 1.2;
+}
+
+.range-labels b {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.range-labels span.mid b {
+    color: var(--text);
+}
+
+.info-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+.info-fact strong {
+    font-size: 0.9rem;
+}
+
+.grid-to-finish {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.grid-to-finish strong {
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.grid-to-finish .arrow {
+    color: var(--accent);
+}
+
+.dnf-meter {
+    height: 6px;
+    background: var(--panel-3);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+.dnf-meter span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+}
+
+.dnf-meter span.high {
+    background: var(--danger);
+}
+
+.dnf-high {
+    color: var(--danger);
+}
+
+.info-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 12px 18px 16px;
+    border-top: 1px solid var(--border);
+}
+
+.info-hex .hex-chart svg {
+    max-width: 200px;
+}
+
+.info-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.recent-finishes {
+    display: flex;
+    gap: 4px;
+}
+
+.recent-finish {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.finish-box {
+    width: 100%;
+    text-align: center;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 5px 0;
+    border-radius: 5px;
+    background: var(--panel-3);
+    color: var(--muted);
+}
+
+.finish-box.podium {
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+}
+
+.finish-box.points {
+    background: rgba(45, 212, 191, 0.14);
+    color: var(--accent);
+}
+
+.finish-box.dnf {
+    background: rgba(244, 63, 94, 0.18);
+    color: var(--danger);
+}
+
+.finish-race {
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: var(--dim);
+}
+
+.season-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.season-grid div {
+    display: flex;
+    flex-direction: column;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 8px;
+}
+
+.season-grid strong {
+    font-size: 0.95rem;
+}
+
+.season-grid span {
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dim);
 }

@@ -194,7 +194,34 @@
           "miami": 7.0,
           "madring": 7.0,
           "sepang": 13.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 9,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 17,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 13,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 21,
+            "dnf": true
+          }
+        ]
       },
       "18": {
         "name": "Pierre Gasly",
@@ -251,7 +278,34 @@
           "imola": 14.5,
           "madring": 12.0,
           "sepang": 16.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 12,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 18,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 16,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 11,
+            "dnf": false
+          }
+        ]
       },
       "12": {
         "name": "Fernando Alonso",
@@ -308,7 +362,34 @@
           "imola": 15.0,
           "madring": 17.0,
           "sepang": 8.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 21,
+            "dnf": true
+          },
+          {
+            "race": "Spanish",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 21,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 16,
+            "dnf": false
+          }
+        ]
       },
       "129": {
         "name": "Lance Stroll",
@@ -365,7 +446,34 @@
           "imola": 12.0,
           "madring": 21.0,
           "sepang": 12.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 20,
+            "dnf": true
+          },
+          {
+            "race": "Spanish",
+            "position": 21,
+            "dnf": true
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 22,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 12,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 20,
+            "dnf": true
+          }
+        ]
       },
       "11051": {
         "name": "Gabriel Bortoleto",
@@ -422,7 +530,34 @@
           "yas_marina": 11.0,
           "madring": 13.0,
           "sepang": 18.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 13,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 13,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 18,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 22,
+            "dnf": true
+          }
+        ]
       },
       "111": {
         "name": "Nico Hulkenberg",
@@ -479,7 +614,34 @@
           "imola": 11.5,
           "madring": 10.0,
           "sepang": 11.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 12,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 10,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 8,
+            "dnf": false
+          }
+        ]
       },
       "121": {
         "name": "Sergio Perez",
@@ -536,7 +698,34 @@
           "imola": 8.0,
           "madring": 20.0,
           "sepang": 19.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 18,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 20,
+            "dnf": true
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 19,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 17,
+            "dnf": false
+          }
+        ]
       },
       "13": {
         "name": "Valtteri Bottas",
@@ -593,7 +782,34 @@
           "imola": 18.0,
           "madring": 18.0,
           "sepang": 22.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 19,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 18,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 16,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 22,
+            "dnf": true
+          },
+          {
+            "race": "Singapore",
+            "position": 19,
+            "dnf": false
+          }
+        ]
       },
       "115": {
         "name": "Charles Leclerc",
@@ -650,7 +866,34 @@
           "imola": 4.5,
           "madring": 4.0,
           "sepang": 4.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 22,
+            "dnf": true
+          },
+          {
+            "race": "Spanish",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 2,
+            "dnf": false
+          }
+        ]
       },
       "110": {
         "name": "Lewis Hamilton",
@@ -707,7 +950,34 @@
           "imola": 5.0,
           "madring": 22.0,
           "sepang": 3.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 22,
+            "dnf": true
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 6,
+            "dnf": false
+          }
+        ]
       },
       "118": {
         "name": "Esteban Ocon",
@@ -764,7 +1034,34 @@
           "imola": 17.0,
           "madring": 11.0,
           "sepang": 15.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 16,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 13,
+            "dnf": false
+          }
+        ]
       },
       "11031": {
         "name": "Oliver Bearman",
@@ -821,7 +1118,34 @@
           "yas_marina": 12.0,
           "madring": 16.0,
           "sepang": 14.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 16,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 9,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 12,
+            "dnf": false
+          }
+        ]
       },
       "117": {
         "name": "Lando Norris",
@@ -878,7 +1202,34 @@
           "imola": 2.0,
           "madring": 3.0,
           "sepang": 9.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 19,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 9,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 4,
+            "dnf": false
+          }
+        ]
       },
       "1982": {
         "name": "Oscar Piastri",
@@ -935,7 +1286,34 @@
           "imola": 3.5,
           "madring": 8.0,
           "sepang": 6.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 5,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 5,
+            "dnf": false
+          }
+        ]
       },
       "124": {
         "name": "George Russell",
@@ -992,7 +1370,34 @@
           "imola": 7.0,
           "madring": 5.0,
           "sepang": 20.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 5,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 20,
+            "dnf": true
+          },
+          {
+            "race": "Singapore",
+            "position": 9,
+            "dnf": false
+          }
+        ]
       },
       "11161": {
         "name": "Kimi Antonelli",
@@ -1049,7 +1454,34 @@
           "yas_marina": 15.0,
           "madring": 1.0,
           "sepang": 2.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 5,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 3,
+            "dnf": false
+          }
+        ]
       },
       "11149": {
         "name": "Arvid Lindblad",
@@ -1097,7 +1529,34 @@
           "baku": 7.0,
           "sepang": 10.0,
           "marina_bay": 15.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 9,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 10,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 15,
+            "dnf": false
+          }
+        ]
       },
       "114": {
         "name": "Liam Lawson",
@@ -1154,7 +1613,34 @@
           "baku": 8.5,
           "madring": 6.0,
           "sepang": 7.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 12,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 7,
+            "dnf": false
+          }
+        ]
       },
       "11032": {
         "name": "Isack Hadjar",
@@ -1210,7 +1696,34 @@
           "losail": 18.0,
           "yas_marina": 17.0,
           "sepang": 5.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Belgian",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Hungarian",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 5,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 10,
+            "dnf": false
+          }
+        ]
       },
       "131": {
         "name": "Max Verstappen",
@@ -1267,7 +1780,34 @@
           "imola": 1.0,
           "madring": 2.0,
           "sepang": 1.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 1,
+            "dnf": false
+          }
+        ]
       },
       "11": {
         "name": "Alexander Albon",
@@ -1324,7 +1864,34 @@
           "imola": 12.5,
           "madring": 15.0,
           "sepang": 21.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 20,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 21,
+            "dnf": true
+          },
+          {
+            "race": "Singapore",
+            "position": 18,
+            "dnf": true
+          }
+        ]
       },
       "125": {
         "name": "Carlos Sainz",
@@ -1381,7 +1948,34 @@
           "imola": 6.5,
           "madring": 19.0,
           "sepang": 17.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 13,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 19,
+            "dnf": true
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 10,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 14,
+            "dnf": false
+          }
+        ]
       }
     },
     "constructors": {
@@ -1438,7 +2032,34 @@
           "imola": 14.8,
           "madring": 9.5,
           "sepang": 14.5
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 17,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 13,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 11,
+            "dnf": false
+          }
+        ]
       },
       "24": {
         "name": "Aston Martin",
@@ -1493,7 +2114,34 @@
           "imola": 13.5,
           "madring": 19.0,
           "sepang": 10.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 20,
+            "dnf": true
+          },
+          {
+            "race": "Spanish",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 21,
+            "dnf": true
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 16,
+            "dnf": false
+          }
+        ]
       },
       "2640": {
         "name": "Audi",
@@ -1548,7 +2196,34 @@
           "imola": 15.8,
           "madring": 11.5,
           "sepang": 14.5
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 10,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 8,
+            "dnf": false
+          }
+        ]
       },
       "2641": {
         "name": "Cadillac",
@@ -1594,7 +2269,34 @@
           "baku": 15.5,
           "sepang": 20.5,
           "marina_bay": 18.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 18,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 18,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 19,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 17,
+            "dnf": false
+          }
+        ]
       },
       "25": {
         "name": "Ferrari",
@@ -1649,7 +2351,34 @@
           "imola": 4.5,
           "madring": 13.0,
           "sepang": 3.5
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 2,
+            "dnf": false
+          }
+        ]
       },
       "26": {
         "name": "Haas F1 Team",
@@ -1704,7 +2433,34 @@
           "imola": 15.0,
           "madring": 13.5,
           "sepang": 14.5
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 11,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 12,
+            "dnf": false
+          }
+        ]
       },
       "27": {
         "name": "McLaren",
@@ -1759,7 +2515,34 @@
           "imola": 2.8,
           "madring": 5.5,
           "sepang": 7.5
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 4,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 14,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 6,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 4,
+            "dnf": false
+          }
+        ]
       },
       "28": {
         "name": "Mercedes",
@@ -1814,7 +2597,34 @@
           "imola": 9.8,
           "madring": 3.0,
           "sepang": 11.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 3,
+            "dnf": false
+          }
+        ]
       },
       "2636": {
         "name": "Racing Bulls",
@@ -1869,7 +2679,34 @@
           "imola": 11.5,
           "madring": 11.5,
           "sepang": 8.5
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 8,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 9,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 7,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 7,
+            "dnf": false
+          }
+        ]
       },
       "29": {
         "name": "Red Bull Racing",
@@ -1924,7 +2761,34 @@
           "imola": 5.0,
           "madring": 4.0,
           "sepang": 3.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 3,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 2,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 1,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 1,
+            "dnf": false
+          }
+        ]
       },
       "210": {
         "name": "Williams",
@@ -1979,7 +2843,34 @@
           "imola": 12.5,
           "madring": 17.0,
           "sepang": 19.0
-        }
+        },
+        "recentFinishes": [
+          {
+            "race": "Italian",
+            "position": 13,
+            "dnf": false
+          },
+          {
+            "race": "Spanish",
+            "position": 15,
+            "dnf": false
+          },
+          {
+            "race": "Azerbaijan",
+            "position": 10,
+            "dnf": false
+          },
+          {
+            "race": "Bahrain in Malaysia",
+            "position": 17,
+            "dnf": false
+          },
+          {
+            "race": "Singapore",
+            "position": 14,
+            "dnf": false
+          }
+        ]
       }
     }
   }

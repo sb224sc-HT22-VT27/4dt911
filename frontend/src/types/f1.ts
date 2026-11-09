@@ -87,12 +87,19 @@ export interface SeasonStats {
     avgPitStop: number | null;
 }
 
+export interface RecentFinish {
+    race: string;
+    position: number;
+    dnf: boolean;
+}
+
 export interface PlayerStats {
     id: string;
     code: string | null;
     ratings: Ratings;
     season: SeasonStats;
     trackAvg: number | null;
+    recentFinishes: RecentFinish[];
 }
 
 export interface TeamEvaluation {
@@ -100,12 +107,14 @@ export interface TeamEvaluation {
     floor: number;
     expected: number;
     ceiling: number;
-    players: { id: string; points: number; share: number }[];
+    drs: string | null;
+    players: { id: string; points: number; share: number; drs: boolean }[];
 }
 
 export interface OptimizeResult {
     drivers: string[];
     constructors: string[];
+    drs: string;
     points: number;
 }
 
@@ -131,6 +140,7 @@ export interface CardItem {
     ratings?: Ratings;
     season?: SeasonStats;
     trackAvg?: number | null;
+    recentFinishes?: RecentFinish[];
 }
 
 export const RISK_LABELS: Record<Risk, string> = {

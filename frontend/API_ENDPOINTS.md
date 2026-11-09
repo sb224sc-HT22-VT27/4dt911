@@ -34,9 +34,9 @@ Mock data lives in `frontend/mock_api/` and is regenerated with the scripts ther
 | GET | `/constructors/` | Backend | Constructor roster, prices, colours |
 | GET | `/races/upcoming` | Mock | Race dropdown |
 | GET | `/predictions` | Mock | Points on every card, PPM graph, picker |
-| GET | `/stats/drivers` | Mock | Comparison panel (hexagon + season stats) |
+| GET | `/stats/drivers` | Mock | Comparison panel and card info popup (hexagon, season stats, last 5) |
 | GET | `/stats/constructors` | Mock | Comparison panel for teams |
-| POST | `/teams/evaluate` | Mock | Team info totals, points share, distribution graph |
+| POST | `/teams/evaluate` | Mock | Team info totals, DRS Boost, points share, distribution graph |
 | POST | `/optimize` | Mock | Optimize button |
 
 All ids are the fantasy `player_id`, the same ids `/drivers/` and `/constructors/` return.
@@ -119,7 +119,10 @@ Non-fantasy stats. `trackFit` and `trackAvg` depend on the circuit of `round`.
       "avgQuali": 5.0, "avgFinish": 7.2, "bestFinish": 1, "dnfs": 4,
       "avgGained": 2.1, "avgPitStop": 23.67
     },
-    "trackAvg": 4.5
+    "trackAvg": 4.5,
+    "recentFinishes": [
+      { "race": "Singapore", "position": 1, "dnf": false }
+    ]
   }
 ]
 ```
@@ -129,6 +132,7 @@ Non-fantasy stats. `trackFit` and `trackAvg` depend on the circuit of `round`.
 - `trackFit` = how much better than their own average they finish on this track type (50 = no difference).
 - `trackAvg` = average finish at this circuit since 2023 (`null` if never raced there).
 - `avgPitStop` = average pit lane time in seconds.
+- `recentFinishes` = the last 5 races, oldest first. For constructors `position` is the best car and `dnf` is true only if no car finished.
 
 ### POST `/teams/evaluate`
 
@@ -140,6 +144,7 @@ Request:
 {
   "drivers": ["131", "12", "118", "114", "125"],
   "constructors": ["2641", "26"],
+  "drs": "118",
   "rounds": ["20"],
   "risk": "expected",
   "form": 0,
@@ -156,24 +161,26 @@ Response:
   "floor": 106.2,
   "expected": 181.5,
   "ceiling": 289.6,
+  "drs": "118",
   "players": [
-    { "id": "26", "points": 30.2, "share": 17 }
+    { "id": "118", "points": 54.2, "share": 25, "drs": true }
   ]
 }
 ```
 
-`players` is sorted by points for the chosen `risk`; `share` is the % of the team's points.
+- `drs` = the DRS Boost driver (or `null`). Their points count double in all totals and in `players`. Ignored if the driver isn't in the team.
+- `players` is sorted by points for the chosen `risk`; `share` is the % of the team's points.
 
 ### POST `/optimize`
 
-Best 5 drivers + 2 constructors within budget, maximising the points for `risk`.
+Best 5 drivers + 2 constructors within budget, maximising the points for `risk` with the DRS Boost (2x) on the best driver.
 
 Request: same settings as evaluate plus `"budget": 100`.
 
 Response:
 
 ```json
-{ "drivers": ["18", "12", "118", "114", "125"], "constructors": ["2641", "26"], "points": 181.5 }
+{ "drivers": ["129", "111", "118", "124", "114"], "constructors": ["2636", "210"], "drs": "118", "points": 219.8 }
 ```
 
 Returns status `422` with `{ "error": "No team fits the budget" }` if nothing fits.
@@ -182,9 +189,5 @@ Returns status `422` with `{ "error": "No team fits the budget" }` if nothing fi
 
 These will be added as we build them:
 
-- `rain` setting (0–100) on predictions, evaluate and optimize.
-- Explanation factors per player in `/predictions`.
-- Last 5 finishes in `/stats/drivers`.
-- `drs` (DRS Boost driver id) in evaluate, best DRS pick in optimize.
 - `GET /stats/teammates` for teammate head-to-head.
 - Transfers in `/optimize` (`currentTeam`, `freeTransfers`, `penalty`).

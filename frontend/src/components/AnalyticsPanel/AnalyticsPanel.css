@@ -6,91 +6,18 @@
     gap: 0.6rem;
 }
 
-.analytics-tabs {
-    display: inline-flex;
-    background-color: var(--panel-2);
-    padding: 3px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    gap: 3px;
-}
-
-.analytics-tab-btn {
-    background: none;
-    border: none;
-    color: var(--dim);
-    font-size: 0.78rem;
-    font-weight: 700;
-    padding: 5px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.analytics-tab-btn:hover {
-    color: var(--text);
-}
-
-.analytics-tab-btn.active {
-    background-color: var(--panel-3);
-    color: var(--accent);
+.analytics-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
 }
 
 .analytics-content {
     flex: 1;
     min-height: 0;
     display: flex;
-}
-
-/* Distribution */
-.dist-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 0;
-}
-
-.dist-legend {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    font-size: 0.72rem;
-    color: var(--muted);
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.legend-item strong {
-    color: var(--text);
-}
-
-.legend-item.active {
-    color: var(--text);
-}
-
-.legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--risk);
-}
-
-.dist-svg {
-    flex: 1;
-    min-height: 0;
-    width: 100%;
-}
-
-.dist-marker line {
-    stroke: var(--risk);
-}
-
-.dist-marker circle,
-.dist-marker text {
-    fill: var(--risk);
 }
 
 /* PPM graph */
@@ -278,10 +205,4 @@
 .ppm-col.in-team .ppm-val,
 .ppm-col.selected .ppm-val {
     color: var(--text);
-}
-
-.breakdown-empty {
-    color: var(--dim);
-    font-size: 0.8rem;
-    margin: auto;
 }

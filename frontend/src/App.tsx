@@ -43,6 +43,7 @@ function App() {
 
   const [driverIds, setDriverIds] = useState<(string | null)[]>([null, null, null, null, null]);
   const [constructorIds, setConstructorIds] = useState<(string | null)[]>([null, null]);
+  const [drsId, setDrsId] = useState<string | null>(null);
   const [budget, setBudget] = useState(100);
   const [params, setParams] = useState<Params>(DEFAULT_PARAMS);
   const hasAutoPicked = useRef(false);
@@ -101,19 +102,20 @@ function App() {
     if (!rounds.length) return;
     let active = true;
     const ids = (list: (string | null)[]) => list.filter(Boolean) as string[];
-    evaluateTeam(ids(driverIds), ids(constructorIds), rounds, params)
+    evaluateTeam(ids(driverIds), ids(constructorIds), drsId, rounds, params)
       .then((e) => active && setEvaluation(e))
       .catch(fail);
     return () => {
       active = false;
     };
-  }, [driverIds, constructorIds, rounds, params]);
+  }, [driverIds, constructorIds, drsId, rounds, params]);
 
   const optimize = async (): Promise<string> => {
     try {
       const result = await optimizeTeam(budget, rounds, params);
       setDriverIds(result.drivers);
       setConstructorIds(result.constructors);
+      setDrsId(result.drs);
       return `Optimized for ${RISK_LABELS[params.risk].toLowerCase()}: ${result.points} pts`;
     } catch {
       return `No team fits under €${budget}M`;
@@ -136,6 +138,7 @@ function App() {
   const removeFromTeam = (id: string) => {
     setDriverIds((prev) => prev.map((d) => (d === id ? null : d)));
     setConstructorIds((prev) => prev.map((c) => (c === id ? null : c)));
+    setDrsId((prev) => (prev === id ? null : prev));
   };
 
   // Returns why an item can't be added, or null if it can
@@ -205,6 +208,8 @@ function App() {
             allConstructors={allConstructors}
             remainingBudget={remainingBudget}
             params={params}
+            drsId={drsId}
+            onToggleDrs={(id) => setDrsId((prev) => (prev === id ? null : id))}
             onSelect={(kind, slot, item) => setSlot(kind, slot, item.id)}
             onRemove={removeFromTeam}
             onOptimize={optimize}
@@ -214,7 +219,6 @@ function App() {
         <section className="panel panel-helper">
           <AnalyticsPanel
             team={team}
-            evaluation={evaluation}
             allDrivers={allDrivers}
             allConstructors={allConstructors}
             risk={params.risk}

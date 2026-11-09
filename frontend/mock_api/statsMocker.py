@@ -74,6 +74,19 @@ def summarise(rows, quali_rows, sprint_rows, pit_rows, form_results=5):
     points = sum(float(r["points"]) for r in season) + sum(float(r["points"]) for r in sprint_rows if season_race(r["raceId"]))
     pit_times = [float(p["duration"]) for p in pit_rows if season_race(p["raceId"]) and re.fullmatch(r"\d+(\.\d+)?", p["duration"]) and float(p["duration"]) < 60]
 
+    # Last 5 races, best car for constructors (DNF only if no car finished)
+    by_race = defaultdict(list)
+    for r in season:
+        by_race[r["raceId"]].append(r)
+    recent_finishes = [
+        {
+            "race": races[race_id]["name"].replace(" Grand Prix", ""),
+            "position": min(int(r["positionOrder"]) for r in by_race[race_id]),
+            "dnf": all(is_dnf(r) for r in by_race[race_id]),
+        }
+        for race_id in sorted(by_race, key=lambda i: races[i]["date"])[-5:]
+    ]
+
     overall = avg([int(r["positionOrder"]) for r in rows])
     track_fit, history = {}, defaultdict(list)
     for r in rows:
@@ -104,6 +117,7 @@ def summarise(rows, quali_rows, sprint_rows, pit_rows, form_results=5):
             "avgPitStop": round(avg(pit_times), 2) if pit_times else None,
         },
         "trackHistory": {ref: round(avg(p), 1) for ref, p in history.items()},
+        "recentFinishes": recent_finishes,
     }
 
 

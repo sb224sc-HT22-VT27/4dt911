@@ -12,6 +12,8 @@ interface TeamPanelProps {
     allConstructors: CardItem[];
     remainingBudget: number;
     params: Params;
+    drsId: string | null;
+    onToggleDrs: (id: string) => void;
     onSelect: (kind: ItemKind, slot: number, item: CardItem) => void;
     onRemove: (id: string) => void;
     onOptimize: () => Promise<string>;
@@ -24,6 +26,8 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
     allConstructors,
     remainingBudget,
     params,
+    drsId,
+    onToggleDrs,
     onSelect,
     onRemove,
     onOptimize,
@@ -45,7 +49,7 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
         <div className="team-workspace">
             <div className="team-header-bar">
                 <h2 className="team-title">My Team</h2>
-                <span className="team-hint">Click + to add a player, i for details</span>
+                <span className="team-hint">Click + to add a player, i for details, DRS for 2x points</span>
             </div>
 
             <div className="team-grid-5">
@@ -56,6 +60,8 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
                         type="driver"
                         slotIndex={index}
                         risk={risk}
+                        isDrs={!!driver && driver.id === drsId}
+                        onToggleDrs={onToggleDrs}
                         onRemove={onRemove}
                         onAdd={(slot, kind) => setPicker({ slot, kind })}
                     />

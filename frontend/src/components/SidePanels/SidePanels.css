@@ -378,6 +378,12 @@
 }
 
 .share-name {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.share-name > span:first-child {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -404,4 +410,68 @@
     text-align: right;
     color: var(--muted);
     font-size: 0.68rem;
+}
+
+/* Distribution */
+.dist-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 0;
+}
+
+.dist-svg {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+}
+
+.dist-marker line {
+    stroke: var(--risk);
+}
+
+.dist-marker circle,
+.dist-marker text {
+    fill: var(--risk);
+}
+
+
+/* DRS Boost */
+.drs-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+.drs-row.empty {
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: var(--dim);
+    background: none;
+    border-style: dashed;
+    border-color: var(--border-strong);
+}
+
+.drs-badge,
+.share-drs {
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: #fff;
+    background: #a855f7;
+    padding: 1px 6px;
+    border-radius: 999px;
+    flex-shrink: 0;
+}
+
+.share-drs {
+    margin-left: 5px;
+    font-size: 0.5rem;
+    padding: 0 4px;
 }

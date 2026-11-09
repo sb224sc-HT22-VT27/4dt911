@@ -140,27 +140,39 @@ def stats(kind, rnd):
             "ratings": {**s["ratings"], "trackFit": s["trackFit"][track["type"]]},
             "season": s["season"],
             "trackAvg": s["trackHistory"].get(track["circuitRef"]),
+            "recentFinishes": s["recentFinishes"],
         })
     return out
 
 
 def evaluate(body):
-    preds = predictions(body["rounds"], body["risk"], weights_of(body))
+    """Team totals, the DRS Boost driver's points count double"""
+    risk = body["risk"]
+    preds = predictions(body["rounds"], risk, weights_of(body))
+    drs = body.get("drs") if body.get("drs") in body["drivers"] else None
     team = [preds[i] for i in body["drivers"] + body["constructors"] if i in preds]
-    totals = {k: round(sum(p[k] for p in team), 1) for k in ("floor", "expected", "ceiling")}
-    risk_total = sum(max(p[body["risk"]], 0) for p in team) or 1
+    factor = lambda p: 2 if p["id"] == drs else 1
+    totals = {k: round(sum(p[k] * factor(p) for p in team), 1) for k in ("floor", "expected", "ceiling")}
+    risk_total = sum(max(p[risk] * factor(p), 0) for p in team) or 1
+    players = [
+        {
+            "id": p["id"],
+            "points": round(p[risk] * factor(p), 1),
+            "share": round(100 * max(p[risk] * factor(p), 0) / risk_total),
+            "drs": p["id"] == drs,
+        }
+        for p in team
+    ]
     return {
         "cost": round(sum(PLAYERS[p["id"]]["price"] for p in team), 1),
         **totals,
-        "players": [
-            {"id": p["id"], "points": p[body["risk"]], "share": round(100 * max(p[body["risk"]], 0) / risk_total)}
-            for p in sorted(team, key=lambda p: -p[body["risk"]])
-        ],
+        "drs": drs,
+        "players": sorted(players, key=lambda p: -p["points"]),
     }
 
 
 def optimize(body):
-    """Best 5 drivers + 2 constructors within budget for the chosen risk"""
+    """Best 5 drivers + 2 constructors within budget for the chosen risk, with the best driver as DRS Boost (2x)"""
     risk, budget = body["risk"], body["budget"]
     preds = predictions(body["rounds"], risk, weights_of(body))
     price = lambda pid: PLAYERS[pid]["price"]
@@ -171,7 +183,9 @@ def optimize(body):
     for group in combinations(drivers, 5):
         cost = sum(price(p) for p in group)
         if cost <= budget:
-            groups.append((sum(preds[p][risk] for p in group), cost, group))
+            # the DRS Boost doubles the best driver, so add their points once more
+            points = sum(preds[p][risk] for p in group) + max(preds[p][risk] for p in group)
+            groups.append((points, cost, group))
     groups.sort(reverse=True)
 
     best = None
@@ -186,7 +200,8 @@ def optimize(body):
                 break
     if not best:
         return None
-    return {"drivers": list(best[1]), "constructors": list(best[2]), "points": round(best[0], 1)}
+    drs = max(best[1], key=lambda p: preds[p][risk])
+    return {"drivers": list(best[1]), "constructors": list(best[2]), "drs": drs, "points": round(best[0], 1)}
 
 
 def weights_of(source):

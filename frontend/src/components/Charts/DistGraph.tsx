@@ -1,7 +1,7 @@
-// src/components/AnalyticsPanel/DistGraph.tsx
+// src/components/Charts/DistGraph.tsx
 import React from 'react';
 import * as d3 from 'd3';
-import { RISK_LABELS, type Risk } from '../../types/f1';
+import type { Risk } from '../../types/f1';
 
 interface DistGraphProps {
     p10: number;
@@ -13,9 +13,9 @@ interface DistGraphProps {
 const Z90 = 1.2816; // z-score of the 90th percentile
 
 export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => {
-    const width = 520;
-    const height = 170;
-    const margin = { top: 28, right: 24, bottom: 26, left: 24 };
+    const width = 280;
+    const height = 150;
+    const margin = { top: 24, right: 14, bottom: 22, left: 14 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -45,7 +45,7 @@ export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => 
             .curve(d3.curveBasis)(points) ?? '';
 
     if (p50 <= 0) {
-        return <div className="breakdown-empty">Add drivers to see your points distribution.</div>;
+        return <p className="side-empty">Add players to see your points distribution.</p>;
     }
 
     const markers: { key: Risk; label: string; value: number }[] = [
@@ -56,15 +56,6 @@ export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => 
 
     return (
         <div className="dist-container">
-            <div className="dist-legend">
-                {markers.map((m) => (
-                    <span key={m.key} className={`legend-item ${risk === m.key ? 'active' : ''}`}>
-                        <span className={`legend-dot risk-${m.key}`} />
-                        {RISK_LABELS[m.key]} ({m.label}) <strong>{m.value}</strong>
-                    </span>
-                ))}
-            </div>
-
             <svg viewBox={`0 0 ${width} ${height}`} className="dist-svg" preserveAspectRatio="xMidYMid meet">
                 <defs>
                     <linearGradient id="distGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -94,9 +85,11 @@ export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => 
                             <g key={m.key} className={`dist-marker risk-${m.key}`} opacity={active ? 1 : 0.6}>
                                 <line x1={x} y1={y} x2={x} y2={innerHeight} strokeWidth={active ? 2 : 1.2} strokeDasharray="3 3" />
                                 <circle cx={x} cy={y} r={active ? 4.5 : 3} />
-                                <text x={x} y={y - 9} textAnchor="middle" fontSize={active ? 13 : 10} fontWeight={800}>
-                                    {m.value}
-                                </text>
+                                {active && (
+                                    <text x={x} y={y - 9} textAnchor="middle" fontSize={12} fontWeight={800}>
+                                        {m.value}
+                                    </text>
+                                )}
                                 <text x={x} y={innerHeight + 16} textAnchor="middle" fontSize="9" fontWeight={700}>
                                     {m.label}
                                 </text>

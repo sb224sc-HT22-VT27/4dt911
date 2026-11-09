@@ -46,8 +46,13 @@ export const fetchPredictions = (rounds: string[], params: Params) => {
 export const fetchStats = (kind: 'driver' | 'constructor', round: string) =>
     getJson<PlayerStats[]>(`${kind === 'driver' ? ENDPOINTS.driverStats : ENDPOINTS.constructorStats}?round=${round}`);
 
-export const evaluateTeam = (drivers: string[], constructors: string[], rounds: string[], params: Params) =>
-    postJson<TeamEvaluation>(ENDPOINTS.evaluateTeam, { drivers, constructors, ...paramsBody(rounds, params) });
+export const evaluateTeam = (
+    drivers: string[],
+    constructors: string[],
+    drs: string | null,
+    rounds: string[],
+    params: Params
+) => postJson<TeamEvaluation>(ENDPOINTS.evaluateTeam, { drivers, constructors, drs, ...paramsBody(rounds, params) });
 
 export const optimizeTeam = (budget: number, rounds: string[], params: Params) =>
     postJson<OptimizeResult>(ENDPOINTS.optimize, { budget, ...paramsBody(rounds, params) });
@@ -89,6 +94,7 @@ export function toCards(
                 ratings: s?.ratings,
                 season: s?.season,
                 trackAvg: s?.trackAvg,
+                recentFinishes: s?.recentFinishes,
             };
         });
 }
