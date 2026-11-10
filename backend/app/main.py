@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 logging.basicConfig(level=logging.INFO)
 
-from app.api.routes import driver, constructor, races, prediction
+from app.api.routes import driver, constructor, races, prediction, stats, teams
 from app.api.routes.races import RACES
 from app.services.prediction import load_predictions
 
@@ -45,6 +45,8 @@ app.include_router(driver.router)
 app.include_router(constructor.router)
 app.include_router(races.router)
 app.include_router(prediction.router)
+app.include_router(stats.router)
+app.include_router(teams.router)
 
 logging.info(load_predictions)
 

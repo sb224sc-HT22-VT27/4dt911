@@ -17,5 +17,18 @@ class DriverPrediction(BaseModel):
     race_name: str
     date: str
     driver: str  # driver slug from the feature store
-    predictions: PredictionsPredictions
+    predictions: Predictions
+    fantasy_points: FantasyPoints
+
+class ConstructorBreakdown(BaseModel):
+    qualifying_points: float
+    race_points: float
+    qualifying_bonus: float
+
+class ConstructorPrediction(BaseModel):
+    race_name: str
+    date: str
+    constructor: str  # team_key, e.g. "ferrari"
+    drivers: list[str]  # driver slugs
+    breakdown: ConstructorBreakdown  # expected (P50) scenario
     fantasy_points: FantasyPoints

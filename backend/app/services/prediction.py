@@ -1,15 +1,20 @@
 import json
 import os
+import re
+import unicodedata
 
 import numpy as np
 import pandas as pd
 import mlflow
 from mlflow.tracking import MlflowClient
 
-from app.schemas.prediction import DriverPrediction, FantasyPoints, Predictions
+from app.schemas.prediction import DriverPrediction, FantasyPoints, Predictions, ConstructorBreakdown, ConstructorPrediction
 
 # {season: {round: {driver_slug: DriverPrediction}}}
 PREDICTION_CACHE: dict[str, dict[str, dict[str, DriverPrediction]]] = {}
+
+CONSTRUCTOR_CACHE: dict[str, dict[str, dict[str, ConstructorPrediction]]] = {}
+DRIVERS_CSV = "../data/f1-fantasy-data/drivers.csv"
 
 EXPERIMENT_NAME = "F1_Fantasy_Baseline"
 GRID_SIZE = 22
@@ -53,29 +58,49 @@ def calculate_fantasy_percentiles(row: pd.Series, mae: float = 3.5) -> pd.Series
     )
     return pd.Series([round(p10, 1), round(p50, 1), round(p90, 1)])
 
+def _load_lightgbm_model(experiment_id: str, run_id: str, name: str):
+    # DagsHub ignores/rejects filter_string here, so filter client-side
+    all_models = mlflow.search_logged_models(
+        experiment_ids=[experiment_id],
+        output_format="list",
+    )
+    candidates = [m for m in all_models if m.name == name]
+    if not candidates:
+        raise RuntimeError(f"No logged model named '{name}' found.")
+
+    match = next((m for m in candidates if m.source_run_id == run_id), None)
+    if match is None:
+        match = max(candidates, key=lambda m: m.creation_timestamp)
+        print(f"WARNING: no '{name}' linked to run {run_id}; using newest ({match.model_id}).")
+    else:
+        print(f"Loading {name} from {match.model_id}")
+    return mlflow.lightgbm.load_model(f"models:/{match.model_id}")
+
 
 def _load_latest_run_artifacts() -> tuple:
     """Needs MLFLOW_TRACKING_URI, MLFLOW_TRACKING_USERNAME and
     MLFLOW_TRACKING_PASSWORD in the environment (never hardcode them)."""
+    os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/SamuelFredricBerg/4dt911.mlflow"
     mlflow.set_tracking_uri(os.environ["MLFLOW_TRACKING_URI"])
     client = MlflowClient()
 
     experiment = client.get_experiment_by_name(EXPERIMENT_NAME)
     if experiment is None:
         raise RuntimeError(f"MLflow experiment '{EXPERIMENT_NAME}' not found.")
-    runs = client.search_runs(
-        experiment_ids=[experiment.experiment_id],
-        order_by=["start_time DESC"],
-        max_results=1,
-    )
+    runs = client.search_runs(experiment_ids=[experiment.experiment_id], order_by=["start_time DESC"], max_results=1)
     if not runs:
         raise RuntimeError("No MLflow runs found. Did you upload the models?")
     run_id = runs[0].info.run_id
     print(f"Using MLflow run {run_id}")
 
-    quali_model = mlflow.lightgbm.load_model(f"runs:/{run_id}/quali_ranker_model")
-    race_model = mlflow.lightgbm.load_model(f"runs:/{run_id}/race_ranker_model")
-    dnf_model = mlflow.lightgbm.load_model(f"runs:/{run_id}/dnf_classifier_model")
+    exp_id = experiment.experiment_id
+    quali_model = _load_lightgbm_model(exp_id, run_id, "quali_ranker_model")
+    race_model = _load_lightgbm_model(exp_id, run_id, "race_ranker_model")
+    dnf_model = _load_lightgbm_model(exp_id, run_id, "dnf_classifier_model")
+
+    #quali_model = mlflow.lightgbm.load_model(f"runs:/{run_id}/quali_ranker_model")
+    #race_model = mlflow.lightgbm.load_model(f"runs:/{run_id}/race_ranker_model")
+    #dnf_model = mlflow.lightgbm.load_model(f"runs:/{run_id}/dnf_classifier_model")
 
     local_path = client.download_artifacts(run_id, "feature_store/upcoming_race_features.json")
     with open(local_path, "r") as f:
@@ -129,6 +154,10 @@ def load_predictions(season: str, round_num: str, race_name: str, date: str) -> 
     PREDICTION_CACHE.setdefault(season, {})[round_num] = round_cache
     print(f"Cached predictions for {len(round_cache)} drivers ({season} R{round_num}).")
 
+    CONSTRUCTOR_CACHE.setdefault(season, {})[round_num] = _build_constructor_predictions(
+        grid_df, race_name, date
+    )
+
 
 def get_expected_points(driver_slug: str) -> int | None:
     """P50 points for the most recently loaded race, or None if unavailable.
@@ -136,6 +165,103 @@ def get_expected_points(driver_slug: str) -> int | None:
     for season in reversed(list(PREDICTION_CACHE)):
         for round_num in reversed(list(PREDICTION_CACHE[season])):
             pred = PREDICTION_CACHE[season][round_num].get(driver_slug)
+            if pred:
+                return round(pred.fantasy_points.expected_p50)
+    return None
+
+
+def _slugify(name: str) -> str:
+    s = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "_", s.lower()).strip("_")
+
+def _driver_team_map() -> dict[str, str]:
+    df = pd.read_csv(DRIVERS_CSV)
+    return {_slugify(str(r["driver_name"])): str(r["team_key"]) for _, r in df.iterrows()}
+
+def _quali_pts(q_pos: int) -> int:
+    return 11 - q_pos if q_pos <= 10 else 0
+
+def _driver_rule_points(q_pos: float, r: float, dnf: float) -> float:
+    q, r = int(round(q_pos)), int(round(r))
+    pts = _quali_pts(q)
+    if dnf:
+        return pts - 20
+    return pts + FINISH_PTS.get(r, 0) + (q - r)
+
+def _quali_bonus(q_ranks: list[float]) -> int:
+    in_q3 = sum(round(q) <= 10 for q in q_ranks)
+    in_q2 = sum(round(q) <= 16 for q in q_ranks)
+    if in_q3 == 2:
+        return 10
+    if in_q3 == 1:
+        return 5
+    if in_q2 == 2:
+        return 3
+    if in_q2 == 1:
+        return 1
+    return -1
+
+def _constructor_scenario(rows: list[tuple[float, float, float]], scenario: str, mae: float = 3.5) -> tuple[float, float, float]:
+    q_pts = r_pts = 0.0
+    q_ranks = []
+    for q, r, p in rows:
+        if scenario == "p10":
+            q, r = min(GRID_SIZE, q + mae), min(GRID_SIZE, r + mae)
+            dnf = p > 0.10
+            total = _driver_rule_points(q, r, dnf)
+        elif scenario == "p90":
+            q, r = max(1, q - mae), max(1, r - mae)
+            total = _driver_rule_points(q, r, False)
+        else:  # p50: probability-weighted DNF
+            total = (1 - p) * _driver_rule_points(q, r, False) + p * _driver_rule_points(q, r, True)
+        qp = _quali_pts(int(round(q)))
+        q_pts += qp
+        r_pts += total - qp
+        q_ranks.append(q)
+    return q_pts, r_pts, _quali_bonus(q_ranks)
+
+def _build_constructor_predictions(grid_df: pd.DataFrame, race_name: str, date: str
+                                   ) -> dict[str, ConstructorPrediction]:
+    team_map = _driver_team_map()
+    by_team: dict[str, list[pd.Series]] = {}
+    for _, row in grid_df.iterrows():
+        team = team_map.get(row["driver_slug"])
+        if team is None:
+            print(f"No team found for driver slug '{row['driver_slug']}', skipping.")
+            continue
+        by_team.setdefault(team, []).append(row)
+
+    out: dict[str, ConstructorPrediction] = {}
+    for team, drivers in by_team.items():
+        rows = [(d["predicted_quali_rank"], d["predicted_race_rank"], d["predicted_dnf_prob"])
+                for d in drivers]
+        totals = {}
+        for sc in ("p10", "p50", "p90"):
+            q, r, b = _constructor_scenario(rows, sc)
+            totals[sc] = (q, r, b)
+        q50, r50, b50 = totals["p50"]
+        out[team] = ConstructorPrediction(
+            race_name=race_name,
+            date=date,
+            constructor=team,
+            drivers=[d["driver_slug"] for d in drivers],
+            breakdown=ConstructorBreakdown(
+                qualifying_points=round(q50, 1),
+                race_points=round(r50, 1),
+                qualifying_bonus=float(b50),
+            ),
+            fantasy_points=FantasyPoints(
+                floor_p10=round(sum(totals["p10"]), 1),
+                expected_p50=round(sum(totals["p50"]), 1),
+                ceiling_p90=round(sum(totals["p90"]), 1),
+            ),
+        )
+    return out
+
+def get_constructor_expected_points(team_key: str) -> int | None:
+    for season in reversed(list(CONSTRUCTOR_CACHE)):
+        for round_num in reversed(list(CONSTRUCTOR_CACHE[season])):
+            pred = CONSTRUCTOR_CACHE[season][round_num].get(team_key)
             if pred:
                 return round(pred.fantasy_points.expected_p50)
     return None

@@ -2,7 +2,8 @@ import pandas as pd
 import datetime
 
 from app.schemas.race import Race
-
+from app.services.freeze import read_kaggle, season, freeze_date
+from app.services.track_types import track_type
 
 def load_uppcoming_races_from_csv(file_path: str) -> list[Race]:
     # Load the CSV file inot a DataFrame
@@ -43,6 +44,28 @@ def load_uppcoming_races_from_csv(file_path: str) -> list[Race]:
     print(f"Filtered {len(races)} upcoming races from {file_path}")
 
     return races
+
+def upcoming_races_view() -> list[dict]:
+    races = read_kaggle("races.csv")
+    races["date"] = pd.to_datetime(races["date"])
+    circuits = read_kaggle("circuits.csv").rename(columns={"name": "circuit"})
+    df = (
+        races[(races["year"] == season()) & (races["date"] > freeze_date())]
+        .merge(circuits[["circuitId", "circuitRef", "circuit", "location"]], on="circuitId", how="left")
+        .sort_values("round")
+    )
+    return [
+        {
+            "round": str(int(r["round"])),
+            "name": str(r["name"]),
+            "date": r["date"].strftime("%Y-%m-%d"),
+            "circuit": str(r["circuit"]),
+            "location": str(r["location"]),
+            "trackType": track_type(r["circuitRef"]),
+        }
+        for _, r in df.iterrows()
+    ]
+
 
 
 
