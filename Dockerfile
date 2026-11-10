@@ -13,6 +13,6 @@ COPY package.json package-lock.json /app/
 COPY frontend/package.json frontend/package-lock.json /app/frontend/
 
 RUN python3 -m venv /opt/venv \
-    && pip install --no-cache-dir -r /app/requirements.txt fastapi uvicorn \
+    && pip install --no-cache-dir -r /app/requirements.txt fastapi uvicorn mlflow httpx2 lightgbm\
     && npm --prefix /app ci \
     && npm --prefix /app/frontend ci
