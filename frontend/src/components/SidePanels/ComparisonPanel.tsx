@@ -23,7 +23,6 @@ interface Metric {
     label: string;
     value: (d: CardItem) => number | null | undefined;
     format: (v: number) => string;
-    lowerIsBetter?: boolean;
 }
 
 const MODES: { id: Mode; label: string }[] = [
@@ -39,25 +38,25 @@ const TABS: { id: Tab; label: string }[] = [
 ];
 
 const FANTASY_METRICS: Metric[] = [
-    { label: 'Price', value: (d) => d.price, format: (v) => `€${v}M`, lowerIsBetter: true },
+    { label: 'Price', value: (d) => d.price, format: (v) => `€${v}M` },
     { label: 'Floor pts (P10)', value: (d) => d.floor, format: (v) => `${v}` },
     { label: 'Expected pts (P50)', value: (d) => d.expectedPoints, format: (v) => `${v}` },
     { label: 'Ceiling pts (P90)', value: (d) => d.ceiling, format: (v) => `${v}` },
     { label: 'Points per €M', value: (d) => d.ppm, format: (v) => v.toFixed(2) },
     { label: 'Ownership', value: (d) => d.ownership, format: (v) => `${v}%` },
-    { label: 'DNF chance', value: (d) => d.dnfChance, format: (v) => `${v}%`, lowerIsBetter: true },
+    { label: 'DNF chance', value: (d) => d.dnfChance, format: (v) => `${v}%` },
 ];
 
 const f1Metrics = (race: Race): Metric[] => [
     { label: 'Championship pts', value: (d) => d.season?.points, format: (v) => `${v}` },
     { label: 'Wins', value: (d) => d.season?.wins, format: (v) => `${v}` },
     { label: 'Podiums', value: (d) => d.season?.podiums, format: (v) => `${v}` },
-    { label: 'Avg quali', value: (d) => d.season?.avgQuali, format: (v) => `P${v}`, lowerIsBetter: true },
-    { label: 'Avg finish', value: (d) => d.season?.avgFinish, format: (v) => `P${v}`, lowerIsBetter: true },
+    { label: 'Avg quali', value: (d) => d.season?.avgQuali, format: (v) => `P${v}` },
+    { label: 'Avg finish', value: (d) => d.season?.avgFinish, format: (v) => `P${v}` },
     { label: 'Positions gained', value: (d) => d.season?.avgGained, format: (v) => `${v > 0 ? '+' : ''}${v}` },
-    { label: 'DNFs', value: (d) => d.season?.dnfs, format: (v) => `${v}`, lowerIsBetter: true },
-    { label: 'Avg pit lane time', value: (d) => d.season?.avgPitStop, format: (v) => `${v}s`, lowerIsBetter: true },
-    { label: `Avg finish at ${race.location}`, value: (d) => d.trackAvg, format: (v) => `P${v}`, lowerIsBetter: true },
+    { label: 'DNFs', value: (d) => d.season?.dnfs, format: (v) => `${v}` },
+    { label: 'Avg pit lane time', value: (d) => d.season?.avgPitStop, format: (v) => `${v}s` },
+    { label: `Avg finish at ${race.location}`, value: (d) => d.trackAvg, format: (v) => `P${v}` },
 ];
 
 export const ComparisonPanel: React.FC<ComparisonPanelProps> = ({
@@ -91,7 +90,7 @@ export const ComparisonPanel: React.FC<ComparisonPanelProps> = ({
             const va = m.value(a);
             const vb = m.value(b);
             if (va == null || vb == null) return null;
-            return <CompareRow key={m.label} label={m.label} a={va} b={vb} format={m.format} lowerIsBetter={m.lowerIsBetter} />;
+            return <CompareRow key={m.label} label={m.label} a={va} b={vb} format={m.format} />;
         });
 
     const diff = a && b ? Number((a.expectedPoints - b.expectedPoints).toFixed(1)) : 0;

@@ -9,19 +9,17 @@ interface CompareRowProps {
     a: number;
     b: number;
     format: (v: number) => string;
-    lowerIsBetter?: boolean;
 }
 
-// Bar share for A: 50% when equal, leaning towards whoever is better
-const shareA = (a: number, b: number, lowerIsBetter?: boolean) => {
+// Bar share for A: 50% when equal, leaning towards the larger value
+const shareA = (a: number, b: number) => {
     if (a === b) return 50;
-    const better = lowerIsBetter ? a < b : a > b;
     const gap = Math.min(Math.abs(a - b) / Math.max(Math.abs(a), Math.abs(b), 1), 1);
-    return better ? 50 + 45 * gap : 50 - 45 * gap;
+    return a > b ? 50 + 45 * gap : 50 - 45 * gap;
 };
 
-export const CompareRow: React.FC<CompareRowProps> = ({ label, a, b, format, lowerIsBetter }) => {
-    const share = shareA(a, b, lowerIsBetter);
+export const CompareRow: React.FC<CompareRowProps> = ({ label, a, b, format }) => {
+    const share = shareA(a, b);
     return (
         <div className="compare-row">
             <div className="compare-row-head">

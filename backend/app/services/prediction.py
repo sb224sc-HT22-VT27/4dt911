@@ -29,6 +29,14 @@ RACE_FEATURES = ["target_quali_pos"] + QUALI_FEATURES
 
 FINISH_PTS = {1: 25, 2: 18, 3: 15, 4: 12, 5: 10, 6: 8, 7: 6, 8: 4, 9: 2, 10: 1}
 
+# prediction.py
+KEY_ALIASES = {"alexander_albon": "alex_albon", "kimi_antonelli": "andrea_kimi_antonelli"}
+
+def _driver_team_map() -> dict[str, str]:
+    df = pd.read_csv(DRIVERS_CSV)
+    df = df[df["is_active_seat"] == True]
+    return {KEY_ALIASES.get(_slugify(n), _slugify(n)): str(t)
+            for n, t in zip(df["driver_name"], df["team_key"])}
 
 def _get_points(q_pos: float, r_pos: float, beat_teammate: bool, is_dnf: bool) -> float:
     pts = 0.0

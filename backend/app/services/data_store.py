@@ -4,13 +4,20 @@ from dataclasses import dataclass
 import pandas as pd
  
 from app.services.freeze import FANTASY, read_kaggle
-from app.services.prediction import _slugify
+
+from app.services.prediction import KEY_ALIASES, _slugify
  
 # helpers.teams keys that differ from Kaggle constructorRef
 TEAM_ALIASES = {
     "racing_bulls": ["rb", "racing_bulls", "alphatauri"],
     "audi": ["audi", "sauber"],
 }
+TEAM_ALIASES = {
+    "racing_bulls": ["rb", "racing_bulls", "alphatauri"],
+    "audi": ["audi", "sauber"],
+}
+# fantasy CSV name -> name used by the ML predictions
+KEY_ALIASES = {"alexander_albon": "alex_albon", "kimi_antonelli": "andrea_kimi_antonelli"}
 
 @dataclass(frozen=True)
 class Player:
@@ -28,6 +35,8 @@ class Player:
 @functools.cache
 def players() -> dict[str, Player]:
     out: dict[str, Player] = {}
+
+    
  
     kd = read_kaggle("drivers.csv")
     kd["slug"] = (kd["forename"] + " " + kd["surname"]).map(_slugify)
@@ -42,15 +51,17 @@ def players() -> dict[str, Player]:
         return hit.iloc[0] if len(hit) == 1 else None
  
     drv = pd.read_csv(FANTASY + "drivers.csv")
+    drv = drv[drv["is_active_seat"] == True]
     drv["fantasy_points_total"] = pd.to_numeric(drv["fantasy_points_total"], errors="coerce").fillna(0)
     for _, r in drv.iterrows():
         name = str(r["driver_name"])
+        key = KEY_ALIASES.get(_slugify(name), _slugify(name))
         m = match_driver(name)
         if m is None:
             print(f"[data_store] no Kaggle match for driver '{name}'")
         out[str(r["player_id"])] = Player(
             id=str(r["player_id"]), kind="driver", name=name, price=float(r["price_m"]),
-            key=_slugify(name), team_key=str(r["team_key"]),
+            key=key, team_key=str(r["team_key"]),
             kaggle_id=int(m["driverId"]) if m is not None else None,
             code=str(m["code"]) if m is not None and pd.notna(m["code"]) else None,
             fantasy_points=float(r["fantasy_points_total"]),

@@ -80,7 +80,6 @@ export const TeammatesView: React.FC<TeammatesViewProps> = ({ teammates, driverI
                         a={pair.avgQuali[0]}
                         b={pair.avgQuali[1]}
                         format={(v) => `P${v}`}
-                        lowerIsBetter
                     />
                 )}
                 {pair.avgFinish[0] !== null && pair.avgFinish[1] !== null && (
@@ -89,10 +88,9 @@ export const TeammatesView: React.FC<TeammatesViewProps> = ({ teammates, driverI
                         a={pair.avgFinish[0]}
                         b={pair.avgFinish[1]}
                         format={(v) => `P${v}`}
-                        lowerIsBetter
                     />
                 )}
-                <CompareRow label="DNFs" a={pair.dnfs[0]} b={pair.dnfs[1]} format={(v) => `${v}`} lowerIsBetter />
+                <CompareRow label="DNFs" a={pair.dnfs[0]} b={pair.dnfs[1]} format={(v) => `${v}`} />
             </div>
         </div>
     );
