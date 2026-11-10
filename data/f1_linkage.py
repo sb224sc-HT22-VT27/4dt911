@@ -101,7 +101,7 @@ GRID_2026 = [
     ("VER", "Max Verstappen", 3, "red_bull"),
 ]
 
-NAME_ALIASES = {"andrea kimi antonelli": "kimi antonelli"}
+NAME_ALIASES = {"andrea kimi antonelli": "kimi antonelli", "alexander_albon": "alex_albon"}
 
 
 def driver_key(name) -> str:

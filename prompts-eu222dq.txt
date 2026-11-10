@@ -1,1 +1,3 @@
 If i want to create a backend for a react frontend which should comunicate with a python backend, how should i structure the backend. do not give me any code and just how the structure that could be used for a FASTAPI endpoint.
+
+With the given files of the backend create a test output to verify that the backend works as intended by the endpoint restrictions of the endpoint. 

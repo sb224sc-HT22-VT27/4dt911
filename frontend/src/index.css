@@ -6,19 +6,67 @@
   padding: 0;
 }
 
+:root {
+  --bg: #0a0e13;
+  --panel: #111821;
+  --panel-2: #0c1218;
+  --panel-3: #16202b;
+  --border: #1e2a37;
+  --border-strong: #2a3a4b;
+  --text: #e8eef4;
+  --muted: #8494a5;
+  --dim: #56677a;
+  --accent: #2dd4bf;
+  --danger: #f43f5e;
+  /* Floor -> ceiling is an ordered scale, so one hue from dark to light */
+  --floor: #256abf;
+  --expected: #3987e5;
+  --ceiling: #86b6ef;
+  /* Two compared series (validated for colour-blind separation) */
+  --series-a: #3987e5;
+  --series-b: #d95926;
+}
+
 html,
 body,
 #root {
   min-height: 100vh;
   width: 100%;
-  margin: 0;
-  padding: 0
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  background-color: #0f172a;
-  color: #f8fafc;
+  background: radial-gradient(1200px 600px at 50% -200px, #12202b 0%, var(--bg) 60%);
+  color: var(--text);
+}
+
+button,
+select,
+input {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+/* Shared risk colours */
+.risk-floor {
+  --risk: var(--floor);
+}
+
+.risk-expected {
+  --risk: var(--expected);
+}
+
+.risk-ceiling {
+  --risk: var(--ceiling);
 }

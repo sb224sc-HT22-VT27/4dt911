@@ -1,0 +1,168 @@
+/* src/components/Guide/GuideTour.css */
+
+/* The tour never blocks the page, only the card takes clicks.
+   The dimming sits below pop-ups (z-index 1000) and the card above them,
+   so a pop-up opened during the tour and the tour card are both readable. */
+.guide-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 990;
+    pointer-events: none;
+}
+
+.guide-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 8, 12, 0.72);
+}
+
+.guide-spotlight {
+    position: absolute;
+    border-radius: 14px;
+    box-shadow:
+        0 0 0 2px var(--accent),
+        0 0 0 9999px rgba(5, 8, 12, 0.72);
+    transition: all 0.25s ease;
+}
+
+.guide-card {
+    position: fixed;
+    z-index: 1100;
+    pointer-events: auto;
+    background: var(--panel);
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+    padding: 14px 16px 12px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition:
+        left 0.25s ease,
+        top 0.25s ease;
+}
+
+.guide-progress {
+    display: flex;
+    gap: 3px;
+}
+
+.guide-progress span {
+    flex: 1;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--panel-3);
+}
+
+.guide-progress span.done {
+    background: var(--accent);
+}
+
+.guide-count {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--dim);
+}
+
+.guide-card h3 {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.guide-card p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+}
+
+.guide-card p.guide-try {
+    font-size: 0.75rem;
+    color: var(--muted);
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 6px 9px;
+}
+
+.guide-try strong {
+    color: var(--text);
+}
+
+.guide-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.guide-actions div {
+    display: flex;
+    gap: 6px;
+}
+
+.guide-actions button {
+    border-radius: 7px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.guide-skip {
+    border: none;
+    background: none;
+    color: var(--dim);
+    padding-left: 0 !important;
+}
+
+.guide-skip:hover {
+    color: var(--text);
+}
+
+.guide-back {
+    border: 1px solid var(--border-strong);
+    background: none;
+    color: var(--muted);
+}
+
+.guide-next {
+    border: none;
+    background: var(--accent);
+    color: #041014;
+}
+
+/* Header button that starts the guide */
+.guide-btn {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border-strong);
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.guide-btn:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+.guide-btn span {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #041014;
+    font-size: 0.7rem;
+    font-weight: 900;
+}
