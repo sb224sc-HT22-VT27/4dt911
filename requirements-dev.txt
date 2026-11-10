@@ -34,3 +34,4 @@ httpx2
 lightgbm
 black
 flake8
+pydantic
