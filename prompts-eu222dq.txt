@@ -1,1 +1,102 @@
+Prompts separated by a blank line
+
 If i want to create a backend for a react frontend which should comunicate with a python backend, how should i structure the backend. do not give me any code and just how the structure that could be used for a FASTAPI endpoint.
+
+main.py, helpers.py, constructor_loader.py, driver_loader.py, prediction.py, upcomming_race.py, constructor.py, driver.py, prediction_1.py, race.py, constructor_1.py, driver_1.py, prediction.py, races.py
+This is the code i have and i would like to add in constructor results from the extraction of predictions from the model given how the drivers have scored. "What’s New for 2026
+Sprint
+Not Classified / DSQ penalties have been reduced to -10 points.
+Scoring
+Points will be awarded/deducted based on the Driver/Constructor’s performance at the Grand Prix. Classifications through the weekend are based on decisions made by the FIA and Formula 1®
+For details on how multipliers and chips will affect scoring please visit the FAQs page
+Qualifying
+Drivers
+Qualifying Result
+Pole position (1st place)	10 points
+2nd place	9 points
+3rd place	8 points
+4th place	7 points
+5th place	6 points
+6th place	5 points
+7th place	4 points
+8th place	3 points
+9th place	2 points
+10th place	1 point
+11th - 22nd place	0 points
+NC/DSQ/No time set *	-5 points
+*Drivers who do not set a time in Q1 will be given a 5 point penalty. This includes inactive drivers.
+Constructors
+Constructors will score the combined total of their two drivers in Qualifying, as listed above.
+Constructors will also score points for achieving one of the following:
+Neither driver reaches Q2	-1 point
+One driver reaches Q2	1 point
+Both drivers reach Q2	3 points
+One driver reaches Q3	5 points
+Both drivers reach Q3	10 points
+Disqualified Drivers	-5 points per driver
+Sprint
+Drivers
+Positions Gained *	1 point per position
+Positions Lost	-1 point per position (max. -10 points)
+Overtakes made **	1 point per overtake
+Fastest Lap	5 points
+Sprint Result
+1st place	8 points
+2nd place	7 points
+3rd place	6 points
+4th place	5 points
+5th place	4 points
+6th place	3 points
+7th place	2 points
+8th place	1 point
+9th - 22nd place	0 points
+Not Classified / DSQ*	-10 points
+*DNF/Not Classified penalties apply to all drivers, including those classed as inactive or otherwise not included in the final starting grid list for the race
+Constructors
+Constructors will score the combined total of their two drivers in the Sprint, as listed above.
+Constructors will also score points for achieving any of the following:
+Disqualified Driver	-10 points per driver
+Race
+Drivers
+Positions Gained *	1 point per position
+Positions Lost	-1 point per position
+Overtakes made **	1 point per overtake
+Fastest Lap	10 points
+Driver Of The Day ***	10 points (Driver only)
+Race Result
+1st place	25 points
+2nd place	18 points
+3rd place	15 points
+4th place	12 points
+5th place	10 points
+6th place	8 points
+7th place	6 points
+8th place	4 points
+9th place	2 points
+10th place	1 point
+11th - 22th place	0 points
+Not Classified / DSQ*	-20 points
+*DNF/Not Classified penalties apply to all drivers, including those classed as inactive or otherwise not included in the final starting grid list for the race
+Constructors
+Constructors will score the combined total of their two drivers in the Race as listed above, with the exception of the Driver Of The Day bonus.
+Constructors will also score points for the following:
+Pitstop times
+Over 3.0s	0 points
+2.50 - 2.99s	2 points
+2.20 - 2.49s	5 points
+2.00 - 2.19s	10 points
+Under 2.0s	20 points
+Fastest Pitstop	5 points
+15 point bonus - Awarded to any team that sets a new world record time (current record 1.8s set by McLaren in Qatar 2023).
+Disqualified	-20 points per driver
+Team Management
+Exceeding the free transfer allowance	-10 points (per additional transfer)
+Please refer to FAQs for details about managing transfer allowances.
+* Positions gained/lost are calculated based on the official FIA starting grid and race finish classifications for the driver, not their qualifying result. Unclassified drivers will not have any lost positions calculated, instead they will receive the -20 point penalty for the race (-10 for the Sprint). Cars listed as starting from the pitlane, in the starting grid classification, will be considered to have started from a position relative to the last car on the grid. The maximum amount of positions lost during the Sprint will be capped at 10 places.
+** Overtakes are considered valid when one driver legally passes another on track, and the driver passed was not entering or in the pit lane or suffering a car failure or going unreasonably slow.
+*** Driver Of The Day is the result of the official F1® Driver Of The Day award.", here are the rules. do not add start with only qualifying and race results for point distribution and do not add from any of the other extras
+
+endpointsneeded.md
+Help me develope the endpoints to match the requirements from the frontend so the backend lines up with the expected endpoints.
+
+Create a test file that include the expected outputs from the endpoints to verify that the endpoints work as intended.

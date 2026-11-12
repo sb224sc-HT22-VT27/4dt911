@@ -1,71 +1,77 @@
 // src/components/AnalyticsPanel/AnalyticsPanel.tsx
 import React, { useState } from 'react';
-import { DistGraph } from './DistGraph';
-import { PpmEfficiencyView } from './PpmEfficiencyView';
-import { TeamBreakdownView } from './TeamBreakdownView';
-import type { CardItem } from '../../types/f1';
+import { ValueBubbleChart } from './ValueBubbleChart';
+import { RacePlanner } from './RacePlanner';
+import type { CardItem, Race, Risk, RoundPoints } from '../../types/f1';
 import './AnalyticsPanel.css';
 
-export type AnalyticsTab = 'distribution' | 'efficiency' | 'breakdown';
+type Tab = 'value' | 'planner';
 
 interface AnalyticsPanelProps {
-    drivers: (CardItem | null)[];
-    constructors: (CardItem | null)[];
-    totalPredictedPoints: number;
+    team: CardItem[];
+    allDrivers: CardItem[];
+    allConstructors: CardItem[];
+    plannerRaces: Race[];
+    plannerCount: number;
+    plannerMax: number;
+    onPlannerCountChange: (count: number) => void;
+    plannerData: RoundPoints[];
+    risk: Risk;
+    addBlocker: (item: CardItem) => string | null;
+    onAdd: (item: CardItem) => void;
+    onRemove: (id: string) => void;
 }
 
 export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
-    drivers,
-    constructors,
-    totalPredictedPoints,
+    team,
+    allDrivers,
+    allConstructors,
+    plannerRaces,
+    plannerCount,
+    plannerMax,
+    onPlannerCountChange,
+    plannerData,
+    risk,
+    addBlocker,
+    onAdd,
+    onRemove,
 }) => {
-    const [activeTab, setActiveTab] = useState<AnalyticsTab>('distribution');
+    const [tab, setTab] = useState<Tab>('value');
+    const teamIds = new Set(team.map((i) => i.id));
 
     return (
-
         <div className="analytics-container">
-            {/* Tab Switcher Header */}
-            <div className="analytics-header">
-                <div className="analytics-tabs">
-                    <button
-                        type="button"
-                        className={`analytics-tab-btn ${activeTab === 'distribution' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('distribution')}
-                    >
-                        Distribution Graph
-                    </button>
-                    <button
-                        type="button"
-                        className={`analytics-tab-btn ${activeTab === 'efficiency' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('distribution')}
-                    >
-                        PPM Graph (TBD)
-                    </button>
-                    <button
-                        type="button"
-                        className={`analytics-tab-btn ${activeTab === 'breakdown' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('breakdown')}
-                    >
-                        Other
-                    </button>
-                </div>
+            <div className="analytics-tabs">
+                <button type="button" className={tab === 'value' ? 'active' : ''} onClick={() => setTab('value')}>
+                    Value finder
+                </button>
+                <button type="button" className={tab === 'planner' ? 'active' : ''} onClick={() => setTab('planner')}>
+                    Race planner
+                </button>
             </div>
-
-            {/* Tab Content Views */}
             <div className="analytics-content">
-                {activeTab === 'distribution' && (
-                    <DistGraph p50={totalPredictedPoints} />
-                )}
-
-                {activeTab === 'efficiency' && (
-                    <PpmEfficiencyView drivers={drivers} constructors={constructors} />
-                )}
-
-                {activeTab === 'breakdown' && (
-                    <TeamBreakdownView
-                        drivers={drivers}
-                        constructors={constructors}
-                        totalPredictedPoints={totalPredictedPoints}
+                {tab === 'value' ? (
+                    <ValueBubbleChart
+                        allDrivers={allDrivers}
+                        allConstructors={allConstructors}
+                        teamIds={teamIds}
+                        risk={risk}
+                        addBlocker={addBlocker}
+                        onAdd={onAdd}
+                        onRemove={onRemove}
+                    />
+                ) : (
+                    <RacePlanner
+                        races={plannerRaces}
+                        raceCount={plannerCount}
+                        maxRaces={plannerMax}
+                        onRaceCountChange={onPlannerCountChange}
+                        data={plannerData}
+                        players={new Map([...allDrivers, ...allConstructors].map((p) => [p.id, p]))}
+                        teamIds={teamIds}
+                        risk={risk}
+                        addBlocker={addBlocker}
+                        onAdd={onAdd}
                     />
                 )}
             </div>

@@ -17,7 +17,6 @@ def load_drivers_from_csv(file_path: str) -> list[Driver]:
     # Convert the DataFrame to a list of Team objects
     drivers = []
     for _, row in df.iterrows():
-        predicted = rd.randint(10,40)
         driver = Driver(
             # Info
             id=str(row['player_id']),
@@ -33,7 +32,7 @@ def load_drivers_from_csv(file_path: str) -> list[Driver]:
             ownership=row['selected_by_pct'],
             fantasyPoints=row['fantasy_points_total'],
             # Swap to real prediction
-            predictedPoints=predicted, #row[''],
+            predictedPoints=10000, #row[''],
             championshipPoints=0, #row[''],
         )
         drivers.append(driver)
