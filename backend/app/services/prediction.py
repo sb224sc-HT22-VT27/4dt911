@@ -9,6 +9,7 @@ import mlflow
 from mlflow.tracking import MlflowClient
 
 from app.schemas.prediction import DriverPrediction, FantasyPoints, Predictions, ConstructorBreakdown, ConstructorPrediction
+from app.services.freeze import read_kaggle, season, freeze_date
 
 # {season: {round: {driver_slug: DriverPrediction}}}
 PREDICTION_CACHE: dict[str, dict[str, dict[str, DriverPrediction]]] = {}
@@ -28,6 +29,33 @@ QUALI_FEATURES = [
 RACE_FEATURES = ["target_quali_pos"] + QUALI_FEATURES
 
 FINISH_PTS = {1: 25, 2: 18, 3: 15, 4: 12, 5: 10, 6: 8, 7: 6, 8: 4, 9: 2, 10: 1}
+
+STREET_CIRCUITS = [1, 6, 15, 73, 77, 79, 80]      # Kaggle circuitIds, same as the ML notebook
+LOW_DOWNFORCE_CIRCUITS = [14, 13, 73, 77, 80]
+SLUG_TO_KAGGLE = {"alex_albon": "alexander_albon"}  # ML name -> Kaggle "forename surname"
+
+
+def _track_affinity(circuit_id: int) -> dict[str, float]:
+    """Average past finish per driver at this circuit, only races before the freeze."""
+    drivers = read_kaggle("drivers.csv")
+    drivers["slug"] = (drivers["forename"] + " " + drivers["surname"]).map(_slugify)
+    races = read_kaggle("races.csv")
+    races["date"] = pd.to_datetime(races["date"])
+    races = races[races["date"] < pd.Timestamp(freeze_date())][["raceId", "circuitId"]]
+    res = (read_kaggle("results.csv")
+           .merge(races, on="raceId")
+           .merge(drivers[["driverId", "slug"]], on="driverId"))
+    return res[res["circuitId"] == circuit_id].groupby("slug")["positionOrder"].mean().to_dict()
+
+
+def _set_track_features(grid_df: pd.DataFrame, circuit_id: int) -> None:
+    """Swap the track features in the feature store for the given circuit."""
+    grid_df["is_street_circuit"] = int(circuit_id in STREET_CIRCUITS)
+    grid_df["is_low_downforce"] = int(circuit_id in LOW_DOWNFORCE_CIRCUITS)
+    affinity = _track_affinity(circuit_id)
+    kaggle_slug = grid_df["driver_slug"].map(lambda s: SLUG_TO_KAGGLE.get(s, s))
+    # first race at a track -> recent form, like the notebook
+    grid_df["driver_track_affinity"] = kaggle_slug.map(affinity).fillna(grid_df["driver_form_5_race"])
 
 # prediction.py
 KEY_ALIASES = {"alexander_albon": "alex_albon", "kimi_antonelli": "andrea_kimi_antonelli"}
@@ -117,12 +145,15 @@ def _load_latest_run_artifacts() -> tuple:
     return quali_model, race_model, dnf_model, feature_dict
 
 
-def load_predictions(season: str, round_num: str, race_name: str, date: str) -> None:
-    """Run the models for the upcoming race and fill PREDICTION_CACHE."""
-    quali_model, race_model, dnf_model, feature_dict = _load_latest_run_artifacts()
+def load_predictions(season: str, round_num: str, race_name: str, date: str,
+                     circuit_id: int | None = None, artifacts: tuple | None = None) -> None:
+    """Run the models for one race and fill PREDICTION_CACHE."""
+    quali_model, race_model, dnf_model, feature_dict = artifacts or _load_latest_run_artifacts()
 
     grid_df = pd.DataFrame.from_dict(feature_dict, orient="index").reset_index()
     grid_df = grid_df.rename(columns={"index": "driver_slug"})
+    if circuit_id is not None:
+        _set_track_features(grid_df, circuit_id)
 
     grid_df["predicted_quali_score"] = quali_model.predict(grid_df[QUALI_FEATURES])
     # method="first" avoids fractional ranks (3.5) on ties
@@ -167,6 +198,17 @@ def load_predictions(season: str, round_num: str, race_name: str, date: str) -> 
     )
 
 
+def load_all_predictions(races: list[dict]) -> None:
+    """Predict every upcoming race. Models are downloaded once, only track features change."""
+    artifacts = _load_latest_run_artifacts()
+    kaggle = read_kaggle("races.csv")
+    kaggle = kaggle[kaggle["year"] == season()]
+    circuit_of = dict(zip(kaggle["round"].astype(int).astype(str), kaggle["circuitId"].astype(int)))
+    for r in races:
+        load_predictions(str(season()), r["round"], r["name"], r["date"],
+                         circuit_id=circuit_of.get(r["round"]), artifacts=artifacts)
+
+
 def get_expected_points(driver_slug: str) -> int | None:
     """P50 points for the most recently loaded race, or None if unavailable.
     Use this to replace the random placeholders in the loaders."""
@@ -181,10 +223,6 @@ def get_expected_points(driver_slug: str) -> int | None:
 def _slugify(name: str) -> str:
     s = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
     return re.sub(r"[^a-z0-9]+", "_", s.lower()).strip("_")
-
-def _driver_team_map() -> dict[str, str]:
-    df = pd.read_csv(DRIVERS_CSV)
-    return {_slugify(str(r["driver_name"])): str(r["team_key"]) for _, r in df.iterrows()}
 
 def _quali_pts(q_pos: int) -> int:
     return 11 - q_pos if q_pos <= 10 else 0

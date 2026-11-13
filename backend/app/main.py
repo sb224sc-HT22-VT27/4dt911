@@ -7,22 +7,17 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 from app.api.routes import driver, constructor, races, prediction, stats, teams
-from app.api.routes.races import RACES
-from app.services.prediction import load_predictions
+from app.services.upcomming_race import upcoming_races_view
+from app.services.prediction import load_all_predictions
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Predict for the next upcoming race. A failure here (MLflow down, bad token)
+    # Predict every upcoming race. A failure here (MLflow down, bad token)
     # should not take the rest of the API down.
     try:
-        if RACES:
-            nxt = min(RACES, key=lambda r: r.date)
-            load_predictions(
-                season=str(nxt.year),
-                round_num=str(nxt.round),
-                race_name=nxt.name,
-                date=nxt.date[:10],
-            )
+        races = upcoming_races_view()
+        if races:
+            load_all_predictions(races)
         else:
             print("No upcoming races found; skipping predictions.")
     except Exception as e:
@@ -48,7 +43,6 @@ app.include_router(prediction.router)
 app.include_router(stats.router)
 app.include_router(teams.router)
 
-logging.info(load_predictions)
 
 
 @app.get("/")
