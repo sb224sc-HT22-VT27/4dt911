@@ -51,6 +51,9 @@ export const fetchPredictions = (rounds: string[], params: Params) =>
 export const fetchPredictionsByRound = (rounds: string[], params: Params) =>
     getJson<RoundPoints[]>(`${ENDPOINTS.predictionsByRound}?${settingsQuery(rounds, params)}`);
 
+// Extra stats entry with the grid averages; it has no roster player, so toCards never turns it into a card
+export const GRID_AVERAGE_ID = 'grid-average';
+
 export const fetchStats = (kind: 'driver' | 'constructor', round: string) =>
     getJson<PlayerStats[]>(`${kind === 'driver' ? ENDPOINTS.driverStats : ENDPOINTS.constructorStats}?round=${round}`);
 

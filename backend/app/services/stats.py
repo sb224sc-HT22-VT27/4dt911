@@ -9,6 +9,7 @@ from app.services.track_types import track_type
 
 HISTORY_FROM = 2023
 TRACK_FIT_SCALE = 5.0   # finishing 1 place better than own average on this track type = +5 rating
+GRID_AVERAGE_ID = "grid-average"
 MAX_PIT_SECONDS = 60    # drops red-flag "pit stops"
 
 
@@ -142,7 +143,27 @@ def _build(kind: str, round_num: int) -> tuple[dict, ...]:
                 for row in recent[k].itertuples()
             ],
         })
-    return tuple(out)
+    return (*out, _grid_average(out))
+
+
+def _mean(values: list, nd: int = 1):
+    vals = [v for v in values if v is not None]
+    return round(sum(vals) / len(vals), nd) if vals else None
+
+
+def _grid_average(rows: list[dict]) -> dict:
+    """Extra entry (id 'grid-average') with the mean of every stat over the players in rows."""
+    return {
+        "id": GRID_AVERAGE_ID,
+        "code": None,
+        "ratings": {c: round(_mean([r["ratings"][c] for r in rows], 0)) for c in rows[0]["ratings"]},
+        "season": {
+            c: _mean([r["season"][c] for r in rows], 2 if c in ("avgPitStop", "fantasyPpm") else 1)
+            for c in rows[0]["season"]
+        },
+        "trackAvg": _mean([r["trackAvg"] for r in rows]),
+        "recentFinishes": [],
+    }
 
 
 @functools.lru_cache(maxsize=64)
@@ -151,7 +172,7 @@ def stats_for(kind: str, round_num: int) -> tuple[dict, ...]:
 
 
 def ratings_lookup(kind: str, round_num: int) -> dict[str, dict]:
-    return {row["id"]: row["ratings"] for row in stats_for(kind, round_num)}
+    return {row["id"]: row["ratings"] for row in stats_for(kind, round_num) if row["id"] != GRID_AVERAGE_ID}
 
 
 @functools.cache

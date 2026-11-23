@@ -1,6 +1,7 @@
 // src/components/AnalyticsPanel/RacePlanner.tsx
-import React, { useState } from 'react';
-import { RISK_LABELS, type CardItem, type Race, type Risk, type RoundPoints, type TrackType } from '../../types/f1';
+import React, { useEffect, useRef, useState } from 'react';
+import { TeamBadge } from '../TeamPanel/TeamBadge';
+import { linkClass, RISK_LABELS, type PlayerLink, type CardItem, type Race, type Risk, type RoundPoints, type TrackType } from '../../types/f1';
 
 type Filter = 'team' | 'driver' | 'constructor';
 
@@ -12,6 +13,7 @@ interface RacePlannerProps {
     data: RoundPoints[];
     players: Map<string, CardItem>;
     teamIds: Set<string>;
+    link: PlayerLink;
     risk: Risk;
     addBlocker: (item: CardItem) => string | null;
     onAdd: (item: CardItem) => void;
@@ -41,6 +43,7 @@ export const RacePlanner: React.FC<RacePlannerProps> = ({
     data,
     players,
     teamIds,
+    link,
     risk,
     addBlocker,
     onAdd,
@@ -48,6 +51,11 @@ export const RacePlanner: React.FC<RacePlannerProps> = ({
     const [filter, setFilter] = useState<Filter>('driver');
     // 'total' or a round number
     const [sortBy, setSortBy] = useState('total');
+
+    const selectedRow = useRef<HTMLTableRowElement>(null);
+    useEffect(() => {
+        selectedRow.current?.scrollIntoView({ block: 'nearest' });
+    }, [link.selectedId, filter]);
 
     const sortValue = (row: RoundPoints) => (sortBy === 'total' ? row.total : row.points[sortBy] ?? -Infinity);
     const rows = data
@@ -113,12 +121,15 @@ export const RacePlanner: React.FC<RacePlannerProps> = ({
                             const inTeam = teamIds.has(row.id);
                             const blocker = inTeam ? null : addBlocker(player);
                             return (
-                                <tr key={row.id} className={inTeam ? 'in-team' : ''}>
-                                    <td className="planner-player">
-                                        <span
-                                            className={`planner-dot ${player.kind === 'constructor' ? 'striped' : ''}`}
-                                            style={{ '--dot': player.avatarColor } as React.CSSProperties}
-                                        />
+                                <tr
+                                    key={row.id}
+                                    ref={row.id === link.selectedId ? selectedRow : undefined}
+                                    className={`${inTeam ? 'in-team' : ''} ${link.fade(row.id) ? 'faded' : ''} ${linkClass(link, row.id)}`}
+                                    onMouseEnter={() => link.onHover(row.id)}
+                                    onMouseLeave={() => link.onHover(null)}
+                                >
+                                    <td className="planner-player" onClick={(e) => link.onPick(row.id, e)}>
+                                        <TeamBadge item={player} />
                                         <span className="planner-name">{player.name}</span>
                                         <span className="planner-price">€{player.price}M</span>
                                     </td>
@@ -134,7 +145,7 @@ export const RacePlanner: React.FC<RacePlannerProps> = ({
                                     })}
                                     <td className="planner-total">{row.total}</td>
                                     <td className="planner-action">
-                                        {inTeam ? (
+                                        {link.replacing ? null : inTeam ? (
                                             <span className="planner-owned" title="In your team">
                                                 ✓
                                             </span>

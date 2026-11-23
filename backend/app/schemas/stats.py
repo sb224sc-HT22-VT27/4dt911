@@ -12,14 +12,14 @@ class Ratings(BaseModel):
 
 class SeasonStats(BaseModel):
     points: float
-    wins: int
-    podiums: int
+    wins: int | float
+    podiums: int | float
     avgQuali: float | None
     avgFinish: float | None
     avgGained: float | None
-    dnfs: int
+    dnfs: int | float
     avgPitStop: float | None
-    fantasyPoints: int
+    fantasyPoints: int | float
     fantasyPpm: float
 
 

@@ -8,11 +8,12 @@ interface DistGraphProps {
     p50: number;
     p90: number;
     risk: Risk;
+    ghost?: { p10: number; p50: number; p90: number };
 }
 
 const Z90 = 1.2816; // z-score of the 90th percentile
 
-export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => {
+export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk, ghost }) => {
     const width = 280;
     const height = 100;
     const margin = { top: 20, right: 14, bottom: 20, left: 14 };
@@ -20,22 +21,31 @@ export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => 
     const innerHeight = height - margin.top - margin.bottom;
 
     // Split normal: separate spread below and above the median so P10/P90 can be asymmetric
-    const sigmaLow = Math.max((p50 - p10) / Z90, 1);
-    const sigmaHigh = Math.max((p90 - p50) / Z90, 1);
-    const density = (x: number) => {
-        const z = (x - p50) / (x < p50 ? sigmaLow : sigmaHigh);
-        return Math.exp(-0.5 * z * z);
+    const shape = (lo: number, mid: number, hi: number) => {
+        const sigmaLow = Math.max((mid - lo) / Z90, 1);
+        const sigmaHigh = Math.max((hi - mid) / Z90, 1);
+        return { sigmaLow, sigmaHigh, mid, density: (x: number) => {
+            const z = (x - mid) / (x < mid ? sigmaLow : sigmaHigh);
+            return Math.exp(-0.5 * z * z);
+        } };
     };
+    const main = shape(p10, p50, p90);
+    const old = ghost ? shape(ghost.p10, ghost.p50, ghost.p90) : null;
+    const density = main.density;
 
-    const minX = p50 - 3 * sigmaLow;
-    const maxX = p50 + 3 * sigmaHigh;
+    const minX = Math.min(p50 - 3 * main.sigmaLow, old ? old.mid - 3 * old.sigmaLow : Infinity);
+    const maxX = Math.max(p50 + 3 * main.sigmaHigh, old ? old.mid + 3 * old.sigmaHigh : -Infinity);
     const xScale = d3.scaleLinear().domain([minX, maxX]).range([0, innerWidth]);
     const yScale = d3.scaleLinear().domain([0, 1]).range([innerHeight, 0]);
-    const points = d3.range(0, 101).map((i) => {
-        const val = minX + (i / 100) * (maxX - minX);
-        return [val, density(val)] as [number, number];
-    });
-    const linePath = d3.line<[number, number]>().x((d) => xScale(d[0])).y((d) => yScale(d[1])).curve(d3.curveBasis)(points) ?? '';
+    const curve = (f: (x: number) => number) =>
+        d3.range(0, 101).map((i) => {
+            const val = minX + (i / 100) * (maxX - minX);
+            return [val, f(val)] as [number, number];
+        });
+    const lineOf = d3.line<[number, number]>().x((d) => xScale(d[0])).y((d) => yScale(d[1])).curve(d3.curveBasis);
+    const points = curve(density);
+    const linePath = lineOf(points) ?? '';
+    const ghostPath = old ? lineOf(curve(old.density)) ?? '' : '';
     const areaPath =
         d3
             .area<[number, number]>()
@@ -74,6 +84,9 @@ export const DistGraph: React.FC<DistGraphProps> = ({ p10, p50, p90, risk }) => 
                         opacity={0.06}
                     />
                     <line x1={0} y1={innerHeight} x2={innerWidth} y2={innerHeight} stroke="#253140" strokeWidth={1.5} />
+                    {ghostPath && (
+                        <path d={ghostPath} fill="none" stroke="#8a97a8" strokeWidth={1.5} strokeDasharray="4 3" opacity={0.7} />
+                    )}
                     <path d={areaPath} fill="url(#distGradient)" />
                     <path d={linePath} fill="none" stroke="#3987e5" strokeWidth={2} strokeLinecap="round" />
 

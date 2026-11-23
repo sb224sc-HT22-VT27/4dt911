@@ -8,7 +8,6 @@ interface Step {
     text: string;
     tryIt?: string;
     click?: string; // element to click before showing the step (e.g. switch tab)
-    corner?: boolean; // show the card in the bottom-left corner so pop-ups opened during the step stay readable
 }
 
 const STEPS: Step[] = [
@@ -36,25 +35,29 @@ const STEPS: Step[] = [
     {
         target: '.panel-team',
         title: 'My Team',
-        text: '5 drivers and 2 constructors. Each card shows the P10 / P50 / P90 points, with the current risk highlighted. Empty slots have a + to pick a player.',
+        text: '5 drivers and 2 constructors, one slim row each with the points for the risk you picked. Empty rows have a + to pick a player.',
     },
     {
-        target: '.team-grid-5 .f1-card',
-        title: 'Player cards',
-        text: 'DRS gives a driver double points (one per team). i opens a detailed view with the points range, ratings, last 5 races and season stats. ✕ removes the player.',
-        tryIt: 'Press i on a card. This card stays down here so you can read both.',
-        corner: true,
+        target: '.team-row',
+        title: 'Player rows',
+        text: 'DRS gives a driver double points (one per team). ⇄ replaces the player: pick a new one from the chart, planner or list and every view shows the swap before you confirm. ✕ removes the player. Clicking a row shows that player in the Driver info panel on the right.',
+        tryIt: 'Click a row and watch the Driver info panel change.',
     },
     {
-        target: '.budget-pill-container',
+        target: '.panel-info',
+        title: 'Driver info',
+        text: 'The details of the selected player: points range, predicted result, DNF chance, ratings, last 5 races and season stats.',
+    },
+    {
+        target: '.team-budget-row',
         title: 'Budget',
-        text: 'Shows how much budget is left. Click the total to change it, it turns red if your team costs too much.',
+        text: 'Shows how much budget is left. Click the total to change it, it turns red if your team costs too much. Clear team empties all slots.',
     },
     {
         target: '.panel-helper',
         title: 'Value finder',
-        text: 'Every player by price and points. Up and to the left is good value, the dashed lines mark points per €1M. Blue bubbles are your players, striped ones are constructors and bigger bubbles are more owned. Switch between predicted points and points scored so far this season.',
-        tryIt: 'Double-click a bubble to add that player.',
+        text: 'Every player by price and points. Up and to the left is good value, green rings mark the top 5 by points per €M, the dashed lines mark points per €1M. Blue bubbles are your players, striped ones are constructors and bigger bubbles are more owned. Switch between predicted points and points scored so far this season.',
+        tryIt: 'Click a bubble to select a player everywhere, Ctrl/⌘-click to compare, double-click to add.',
         click: '.analytics-tabs button:first-child',
     },
     {
@@ -67,13 +70,13 @@ const STEPS: Step[] = [
     {
         target: '.panel-comparison',
         title: 'Comparison',
-        text: 'Compare two drivers or two teams on ratings, F1 stats and fantasy numbers. Teammates shows how the two drivers of a team stack up head to head.',
-        click: '.segmented button:first-child',
+        text: 'Compare two drivers or two teams on ratings, F1 stats and fantasy numbers. Teammates shows how the two drivers of a team stack up head to head, and Grid average compares anyone with the whole grid.',
+        click: '.compare-header .segmented button:first-child',
     },
     {
         target: '.panel-saved',
         title: 'Saved teams',
-        text: 'Save up to 3 teams to try different ideas. Each slot shows its points with the current settings, click a slot to load it.',
+        text: 'Save up to 3 teams to try different ideas. Pick a slot in the list, it shows its points with the current settings, then Save, Load or Delete it.',
     },
     {
         target: '.panel-summary',
@@ -131,7 +134,6 @@ export const GuideTour: React.FC<GuideTourProps> = ({ onClose }) => {
 
     // Place the card beside the highlighted area: right, left, below, above, in that order
     const cardStyle = (): React.CSSProperties => {
-        if (step.corner) return { left: 16, bottom: 16 };
         if (!rect) return { left: '50%', top: '50%', transform: 'translate(-50%, -50%)' };
         const vw = window.innerWidth;
         const vh = window.innerHeight;

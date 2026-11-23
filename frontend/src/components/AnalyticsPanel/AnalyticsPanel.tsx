@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import { ValueBubbleChart } from './ValueBubbleChart';
 import { RacePlanner } from './RacePlanner';
-import type { CardItem, Race, Risk, RoundPoints } from '../../types/f1';
+import type { CardItem, PlayerLink, Race, Risk, RoundPoints } from '../../types/f1';
 import './AnalyticsPanel.css';
 
 type Tab = 'value' | 'planner';
 
 interface AnalyticsPanelProps {
     team: CardItem[];
+    link: PlayerLink;
     allDrivers: CardItem[];
     allConstructors: CardItem[];
     plannerRaces: Race[];
@@ -19,11 +20,11 @@ interface AnalyticsPanelProps {
     risk: Risk;
     addBlocker: (item: CardItem) => string | null;
     onAdd: (item: CardItem) => void;
-    onRemove: (id: string) => void;
 }
 
 export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
     team,
+    link,
     allDrivers,
     allConstructors,
     plannerRaces,
@@ -34,7 +35,6 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
     risk,
     addBlocker,
     onAdd,
-    onRemove,
 }) => {
     const [tab, setTab] = useState<Tab>('value');
     const teamIds = new Set(team.map((i) => i.id));
@@ -55,10 +55,10 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
                         allDrivers={allDrivers}
                         allConstructors={allConstructors}
                         teamIds={teamIds}
+                        link={link}
                         risk={risk}
                         addBlocker={addBlocker}
                         onAdd={onAdd}
-                        onRemove={onRemove}
                     />
                 ) : (
                     <RacePlanner
@@ -69,6 +69,7 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({
                         data={plannerData}
                         players={new Map([...allDrivers, ...allConstructors].map((p) => [p.id, p]))}
                         teamIds={teamIds}
+                        link={link}
                         risk={risk}
                         addBlocker={addBlocker}
                         onAdd={onAdd}

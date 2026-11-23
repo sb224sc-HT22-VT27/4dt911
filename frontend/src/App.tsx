@@ -2,6 +2,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import { TeamPanel } from './components/TeamPanel/TeamPanel';
+import { BudgetPill } from './components/TeamPanel/BudgetPill';
+import { DriverInfoPanel } from './components/F1Card/DriverInfoPanel';
 import { AnalyticsPanel } from './components/AnalyticsPanel/AnalyticsPanel';
 import { TeamSummary } from './components/SidePanels/TeamSummary';
 import { TransfersModal } from './components/TeamPanel/TransfersModal';
@@ -12,6 +14,7 @@ import { PredictorModal } from './components/Info/PredictorModal';
 import { ComparisonPanel } from './components/SidePanels/ComparisonPanel';
 import { SettingsPanel } from './components/SidePanels/SettingsPanel';
 import { RaceSelect } from './components/Header/RaceSelect';
+import { PickerModal } from './components/TeamPanel/PickerModal';
 import {
   evaluateTeam,
   fetchConstructors,
@@ -21,6 +24,7 @@ import {
   fetchStats,
   fetchTeammates,
   fetchUpcomingRaces,
+  GRID_AVERAGE_ID,
   optimizeTeam,
   toCards,
 } from './api/fantasyApi';
@@ -35,6 +39,7 @@ import {
   type ItemKind,
   type OptimizeResult,
   type OptimizerMode,
+  type PlayerLink,
   type Params,
   type PlayerStats,
   type Prediction,
@@ -89,6 +94,12 @@ function App() {
   const [driverIds, setDriverIds] = useState<(string | null)[]>(EMPTY_DRIVERS);
   const [constructorIds, setConstructorIds] = useState<(string | null)[]>(EMPTY_CONSTRUCTORS);
   const [drsId, setDrsId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [compareId, setCompareId] = useState<string | null>(null);
+  const [hoverId, setHoverId] = useState<string | null>(null);
+  const [replace, setReplace] = useState<{ kind: ItemKind; slot: number; outId: string; candidateId: string | null } | null>(null);
+  const [replaceListOpen, setReplaceListOpen] = useState(false);
+  const [candidateEval, setCandidateEval] = useState<{ key: string; evaluation: TeamEvaluation } | null>(null);
   const [budget, setBudget] = useState(100);
   const [params, setParams] = useState<Params>(DEFAULT_PARAMS);
   const [horizon, setHorizon] = useState<Horizon>(1);
@@ -190,8 +201,95 @@ function App() {
   const drivers = driverIds.map((id) => allDrivers.find((d) => d.id === id) ?? null);
   const constructors = constructorIds.map((id) => allConstructors.find((c) => c.id === id) ?? null);
   const team = [...drivers, ...constructors].filter(Boolean) as CardItem[];
+  // The selected player (any player, not only team members), or the first driver by default
+  const everyone = useMemo(() => [...allDrivers, ...allConstructors], [allDrivers, allConstructors]);
+  const selected = everyone.find((i) => i.id === selectedId) ?? drivers.find(Boolean) ?? team[0];
+  // The comparison target only counts when it is the same kind as the selected player
+  const compared = everyone.find((i) => i.id === compareId);
+  const activeCompareId =
+    compareId === GRID_AVERAGE_ID || (compared && selected && compared.kind === selected.kind && compared.id !== selected.id)
+      ? compareId
+      : null;
   const remainingBudget = Number((budget - team.reduce((sum, i) => sum + i.price, 0)).toFixed(1));
+
+  // Replace mode ends by itself when the player going out is no longer in that slot
+  const slotIds = replace?.kind === 'driver' ? driverIds : constructorIds;
+  const replacing = replace && slotIds[replace.slot] === replace.outId ? replace : null;
+  const outItem = replacing ? everyone.find((i) => i.id === replacing.outId) : undefined;
+  const isEligible = (i: CardItem) =>
+    !!replacing &&
+    !!outItem &&
+    i.kind === replacing.kind &&
+    !team.some((t) => t.id === i.id) &&
+    i.price <= Number((remainingBudget + outItem.price).toFixed(1));
+  const candidate = replacing ? everyone.find((i) => i.id === replacing.candidateId && isEligible(i)) : undefined;
+  const hoverCandidate = replacing ? everyone.find((i) => i.id === hoverId && isEligible(i)) : undefined;
+  const endReplace = () => {
+    setReplace(null);
+    setReplaceListOpen(false);
+  };
+
+  const link: PlayerLink = {
+    selectedId: outItem?.id ?? selected?.id ?? null,
+    compareId: replacing ? candidate?.id ?? activeCompareId : activeCompareId,
+    hoverId,
+    replacing: !!replacing,
+    fade: (id) => {
+      const item = everyone.find((i) => i.id === id);
+      return !!replacing && !!item && id !== replacing.outId && !isEligible(item);
+    },
+    onPick: (id, e) => {
+      if (replacing) {
+        if (e.ctrlKey || e.metaKey || e.shiftKey) setCompareId(id);
+        else if (everyone.some((i) => i.id === id && isEligible(i))) setReplace({ ...replacing, candidateId: id });
+        return;
+      }
+      if ((e.ctrlKey || e.metaKey || e.shiftKey) && id !== selected?.id) setCompareId(id);
+      else setSelectedId(id);
+    },
+    onHover: setHoverId,
+  };
   const race = races.find((r) => r.round === round);
+
+  // The team with the candidate swapped in, DRS stays on the slot when a driver replaces the DRS driver
+  const swapIn = (list: (string | null)[]) => list.map((id) => (id === replacing?.outId ? candidate!.id : id));
+  const newDriverIds = candidate && replacing?.kind === 'driver' ? swapIn(driverIds) : driverIds;
+  const newConstructorIds = candidate && replacing?.kind === 'constructor' ? swapIn(constructorIds) : constructorIds;
+  const newDrsId = candidate && drsId === replacing?.outId ? (replacing.kind === 'driver' ? candidate.id : null) : drsId;
+  const newTeam = candidate ? [...newDriverIds, ...newConstructorIds].map((id) => everyone.find((i) => i.id === id)).filter(Boolean) as CardItem[] : team;
+  const candidateKey = candidate ? JSON.stringify([newDriverIds, newConstructorIds, newDrsId, rounds, params]) : '';
+  const newEvaluation = candidate && candidateEval?.key === candidateKey ? candidateEval.evaluation : null;
+
+  useEffect(() => {
+    if (!candidateKey) return;
+    let active = true;
+    const [d, c, drs, r, p] = JSON.parse(candidateKey);
+    evaluateTeam(ids(d), ids(c), drs, r, p)
+      .then((e) => active && setCandidateEval({ key: candidateKey, evaluation: e }))
+      .catch(fail);
+    return () => {
+      active = false;
+    };
+  }, [candidateKey]);
+
+  const confirmSwap = () => {
+    if (!replacing || !candidate) return;
+    setSlot(replacing.kind, replacing.slot, candidate.id);
+    setDrsId(newDrsId);
+    setSelectedId(candidate.id);
+    endReplace();
+  };
+
+  useEffect(() => {
+    if (!replace) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setReplace(null);
+      setReplaceListOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [replace]);
 
   useEffect(() => {
     if (!rounds.length) return;
@@ -237,6 +335,16 @@ function App() {
     setDriverIds(saved.drivers);
     setConstructorIds(saved.constructors);
     setDrsId(saved.drs);
+  };
+
+  const deleteSlot = (slot: number) => {
+    const next = slots.map((s, i) => (i === slot ? null : s));
+    setSlots(next);
+    try {
+      localStorage.setItem(SLOTS_KEY, JSON.stringify(next));
+    } catch {
+      // storage unavailable, the slot is still cleared until reload
+    }
   };
 
   const clearTeam = () => {
@@ -333,7 +441,7 @@ function App() {
           <>
             <p className="status-error">{error}</p>
             <p className="status-hint">
-              Start the backend on port 8000 and the mock API with <code>python3 frontend/mock_api/mock_server.py</code>.
+              Start the backend on port 8000.
             </p>
             <button type="button" className="status-retry" onClick={() => window.location.reload()}>
               Retry
@@ -353,7 +461,7 @@ function App() {
           <span className="brand-mark" />
           <h1>OptiGrid</h1>
         </div>
-        <RaceSelect races={races} selectedRound={round} rounds={rounds} onSelect={setRound} />
+        <RaceSelect races={races} selectedRound={round} rounds={rounds} onSelect={(r) => { endReplace(); setRound(r); }} />
         <div className="header-actions">
           <button type="button" className="header-link" onClick={() => setInfoOpen('rules')}>
             F1 Fantasy rules
@@ -368,66 +476,7 @@ function App() {
       </header>
 
       <div className="dashboard-grid">
-        <aside className="panel panel-comparison">
-          <ComparisonPanel
-            drivers={allDrivers}
-            constructors={allConstructors}
-            teamDrivers={drivers}
-            teamConstructors={constructors}
-            teammates={teammates}
-            driverInfo={driverInfo}
-            race={race}
-          />
-        </aside>
-
-        <main className="panel panel-team">
-          <TeamPanel
-            drivers={drivers}
-            constructors={constructors}
-            allDrivers={allDrivers}
-            allConstructors={allConstructors}
-            budget={budget}
-            remainingBudget={remainingBudget}
-            onBudgetChange={setBudget}
-            params={params}
-            onClearTeam={clearTeam}
-            drsId={drsId}
-            onToggleDrs={(id) => setDrsId((prev) => (prev === id ? null : id))}
-            onSelect={(kind, slot, item) => setSlot(kind, slot, item.id)}
-            onRemove={removeFromTeam}
-          />
-        </main>
-
-        <section className="panel panel-helper">
-          <AnalyticsPanel
-            team={team}
-            allDrivers={allDrivers}
-            allConstructors={allConstructors}
-            plannerRaces={plannerRaces}
-            plannerCount={plannerCount}
-            plannerMax={plannerMax}
-            onPlannerCountChange={setPlannerCount}
-            plannerData={plannerData}
-            risk={params.risk}
-            addBlocker={addBlocker}
-            onAdd={addToTeam}
-            onRemove={removeFromTeam}
-          />
-        </section>
-
-        <div className="side-column">
-          <section className="panel panel-settings">
-            <SettingsPanel
-              params={params}
-              trackType={race.trackType}
-              horizon={horizon}
-              optimizerMode={optimizerMode}
-              onChange={setParams}
-              onHorizonChange={setHorizon}
-              onModeChange={setOptimizerMode}
-              onOptimize={optimize}
-            />
-          </section>
+        <div className="grid-col col-left">
           <section className="panel panel-saved">
             <SavedSlots
               slots={slots}
@@ -436,17 +485,155 @@ function App() {
               risk={params.risk}
               onSave={saveSlot}
               onLoad={loadSlot}
+              onDelete={deleteSlot}
             />
           </section>
-          <aside className="panel panel-summary">
-            <TeamSummary
-              team={team}
-              evaluation={evaluation}
-              risk={params.risk}
+          <section className="panel panel-team">
+            <TeamPanel
+              budgetRow={
+                <div className="team-budget-row">
+                  <BudgetPill totalBudget={budget} remainingBudget={remainingBudget} onBudgetChange={setBudget} />
+                  <button type="button" className="clear-team-btn" onClick={clearTeam}>
+                    Clear team
+                  </button>
+                </div>
+              }
+              drivers={drivers}
+              constructors={constructors}
+              allDrivers={allDrivers}
+              allConstructors={allConstructors}
+              remainingBudget={remainingBudget}
+              params={params}
+              drsId={drsId}
+              link={link}
+              replacingOutId={replacing?.outId ?? null}
+              candidate={candidate ?? null}
+              onReplace={(kind, slot, outId) => {
+                setReplace({ kind, slot, outId, candidateId: null });
+                setSelectedId(outId);
+              }}
+              onToggleDrs={(id) => setDrsId((prev) => (prev === id ? null : id))}
+              onSelect={(kind, slot, item) => setSlot(kind, slot, item.id)}
+              onRemove={removeFromTeam}
             />
-          </aside>
+          </section>
+          <section className="panel panel-settings">
+            <SettingsPanel
+              params={params}
+              trackType={race.trackType}
+              horizon={horizon}
+              optimizerMode={optimizerMode}
+              onChange={(p) => { endReplace(); setParams(p); }}
+              onHorizonChange={(h) => { endReplace(); setHorizon(h); }}
+              onModeChange={setOptimizerMode}
+              onOptimize={optimize}
+            />
+          </section>
+        </div>
+
+        <div className="grid-col col-main">
+          {replacing && outItem && (
+            <div className="replace-bar">
+              <span className="replace-text">
+                {candidate ? (
+                  <>
+                    Swapping <strong>{outItem.name}</strong> (€{outItem.price}M) → <strong>{candidate.name}</strong> (€{candidate.price}M)
+                  </>
+                ) : (
+                  <>
+                    Replacing <strong>{outItem.name}</strong> (€{outItem.price}M) — pick a {replacing.kind} from the chart, the planner or the list
+                  </>
+                )}
+              </span>
+              <button type="button" className="replace-btn" onClick={() => setReplaceListOpen(true)}>
+                Pick from list
+              </button>
+              {candidate && (
+                <button type="button" className="replace-btn confirm" onClick={confirmSwap}>
+                  Confirm swap
+                </button>
+              )}
+              <button type="button" className="replace-btn" onClick={endReplace}>
+                Cancel
+              </button>
+            </div>
+          )}
+          <section className="panel panel-helper">
+            <AnalyticsPanel
+              team={team}
+              link={link}
+              allDrivers={allDrivers}
+              allConstructors={allConstructors}
+              plannerRaces={plannerRaces}
+              plannerCount={plannerCount}
+              plannerMax={plannerMax}
+              onPlannerCountChange={setPlannerCount}
+              plannerData={plannerData}
+              risk={params.risk}
+              addBlocker={addBlocker}
+              onAdd={addToTeam}
+            />
+          </section>
+          <section className="panel panel-comparison">
+            <ComparisonPanel
+              drivers={allDrivers}
+              constructors={allConstructors}
+              teamDrivers={drivers}
+              teamConstructors={constructors}
+              teammates={teammates}
+              selectedId={link.selectedId}
+              compareId={replacing ? hoverCandidate?.id ?? link.compareId : link.compareId}
+              onSelect={setSelectedId}
+              onCompare={setCompareId}
+              driverStats={driverStats}
+              constructorStats={constructorStats}
+              driverInfo={driverInfo}
+              race={race}
+            />
+          </section>
+        </div>
+
+        <div className="grid-col col-right">
+          <section className="panel panel-info">
+            <DriverInfoPanel
+              item={selected}
+              gridRatings={
+                (selected?.kind === 'constructor' ? constructorStats : driverStats).find((s) => s.id === GRID_AVERAGE_ID)
+                  ?.ratings
+              }
+              inTeam={!!selected && team.some((i) => i.id === selected.id)}
+              blocker={selected && !replacing ? addBlocker(selected) : 'Swap in progress'}
+              onAdd={addToTeam}
+              onRemove={removeFromTeam}
+            />
+          </section>
+          <section className="panel panel-summary">
+            <TeamSummary
+              team={newTeam}
+              evaluation={newEvaluation ?? evaluation}
+              baseEvaluation={candidate && newEvaluation ? evaluation : null}
+              swapping={!!candidate}
+              risk={params.risk}
+              onConfirm={confirmSwap}
+            />
+          </section>
         </div>
       </div>
+
+      {replacing && replaceListOpen && (
+        <PickerModal
+          type={replacing.kind}
+          items={replacing.kind === 'driver' ? allDrivers : allConstructors}
+          selectedIds={new Set(team.map((i) => i.id))}
+          remainingBudget={Number((remainingBudget + (outItem?.price ?? 0)).toFixed(1))}
+          risk={params.risk}
+          onSelect={(item) => {
+            setReplace({ ...replacing, candidateId: item.id });
+            setReplaceListOpen(false);
+          }}
+          onClose={() => setReplaceListOpen(false)}
+        />
+      )}
 
       {guideOpen && <GuideTour onClose={closeGuide} />}
       {infoOpen === 'rules' && <RulesModal onClose={() => setInfoOpen(null)} />}

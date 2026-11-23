@@ -1,38 +1,41 @@
 // src/components/TeamPanel/TeamPanel.tsx
 import React, { useState } from 'react';
-import { F1Card } from '../F1Card/F1Card';
 import { PickerModal } from './PickerModal';
-import { BudgetPill } from './BudgetPill';
-import type { CardItem, ItemKind, Params } from '../../types/f1';
+import { TeamBadge } from './TeamBadge';
+import { linkClass, pointsFor, type CardItem, type PlayerLink, type ItemKind, type Params } from '../../types/f1';
 import './TeamPanel.css';
 
 interface TeamPanelProps {
+    budgetRow: React.ReactNode; // budget pill + clear button, shown under the title
     drivers: (CardItem | null)[];
     constructors: (CardItem | null)[];
     allDrivers: CardItem[];
     allConstructors: CardItem[];
-    budget: number;
     remainingBudget: number;
-    onBudgetChange: (budget: number) => void;
     params: Params;
-    onClearTeam: () => void;
     drsId: string | null;
+    link: PlayerLink;
+    replacingOutId: string | null;
+    candidate: CardItem | null;
+    onReplace: (kind: ItemKind, slot: number, outId: string) => void;
     onToggleDrs: (id: string) => void;
     onSelect: (kind: ItemKind, slot: number, item: CardItem) => void;
     onRemove: (id: string) => void;
 }
 
 export const TeamPanel: React.FC<TeamPanelProps> = ({
+    budgetRow,
     drivers,
     constructors,
     allDrivers,
     allConstructors,
-    budget,
     remainingBudget,
-    onBudgetChange,
     params,
-    onClearTeam,
     drsId,
+    link,
+    replacingOutId,
+    candidate,
+    onReplace,
     onToggleDrs,
     onSelect,
     onRemove,
@@ -42,47 +45,88 @@ export const TeamPanel: React.FC<TeamPanelProps> = ({
 
     const selectedIds = new Set([...drivers, ...constructors].filter(Boolean).map((i) => i!.id));
 
+    const renderRow = (item: CardItem | null, kind: ItemKind, slot: number) => {
+        if (!item) {
+            return (
+                <button
+                    key={`${kind}-slot-${slot}`}
+                    type="button"
+                    className="team-row team-row-empty"
+                    onClick={() => setPicker({ kind, slot })}
+                >
+                    + Add {kind}
+                </button>
+            );
+        }
+        const isDrs = item.id === drsId;
+        return (
+            <div
+                key={item.id}
+                className={`team-row ${linkClass(link, item.id)} ${isDrs ? 'is-drs' : ''} ${item.id === replacingOutId ? 'is-replacing' : ''}`}
+                onClick={(e) => link.onPick(item.id, e)}
+                onMouseEnter={() => link.onHover(item.id)}
+                onMouseLeave={() => link.onHover(null)}
+            >
+                <TeamBadge item={item} />
+                <span className="team-row-name" title={item.id === replacingOutId && candidate ? `${item.name} → ${candidate.name}` : item.name}>
+                    {item.id === replacingOutId && candidate ? `${item.name} → ${candidate.name}` : item.name}
+                </span>
+                <span className="team-row-price">
+                    €{item.id === replacingOutId && candidate ? candidate.price : item.price}M
+                </span>
+                <span className={`team-row-pts risk-${risk}`} title="Expected points for the chosen risk">
+                    {pointsFor(item.id === replacingOutId && candidate ? candidate : item, risk)}
+                </span>
+                {kind === 'driver' ? (
+                    <button
+                        type="button"
+                        className={`drs-btn ${isDrs ? 'active' : ''}`}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onToggleDrs(item.id);
+                        }}
+                        title={isDrs ? 'Remove DRS Boost' : 'Give DRS Boost (2x points)'}
+                    >
+                        DRS
+                    </button>
+                ) : (
+                    <span className="drs-btn-space" />
+                )}
+                <button
+                    type="button"
+                    className="row-replace-btn"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onReplace(kind, slot, item.id);
+                    }}
+                    title="Replace this player"
+                    aria-label="Replace"
+                >
+                    ⇄
+                </button>
+                <button
+                    type="button"
+                    className="row-remove-btn"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onRemove(item.id);
+                    }}
+                    aria-label="Remove"
+                >
+                    ✕
+                </button>
+            </div>
+        );
+    };
+
     return (
         <div className="team-workspace">
-            <div className="team-header-bar">
-                <h2 className="team-title">My Team</h2>
-
-                <div className="team-header-actions">
-                    <BudgetPill totalBudget={budget} remainingBudget={remainingBudget} onBudgetChange={onBudgetChange} />
-                    <button type="button" className="clear-team-btn" onClick={onClearTeam}>
-                        Clear team
-                    </button>
-                </div>
-            </div>
-
-            <div className="team-grid-5">
-                {drivers.map((driver, index) => (
-                    <F1Card
-                        key={driver ? driver.id : `driver-slot-${index}`}
-                        item={driver ?? undefined}
-                        type="driver"
-                        slotIndex={index}
-                        risk={risk}
-                        isDrs={!!driver && driver.id === drsId}
-                        onToggleDrs={onToggleDrs}
-                        onRemove={onRemove}
-                        onAdd={(slot, kind) => setPicker({ slot, kind })}
-                    />
-                ))}
-            </div>
-
-            <div className="team-grid-2">
-                {constructors.map((c, index) => (
-                    <F1Card
-                        key={c ? c.id : `constructor-slot-${index}`}
-                        item={c ?? undefined}
-                        type="constructor"
-                        slotIndex={index}
-                        risk={risk}
-                        onRemove={onRemove}
-                        onAdd={(slot, kind) => setPicker({ slot, kind })}
-                    />
-                ))}
+            <h3 className="side-title">My Team</h3>
+            {budgetRow}
+            <div className="team-rows">
+                {drivers.map((d, i) => renderRow(d, 'driver', i))}
+                <div className="team-rows-gap" />
+                {constructors.map((c, i) => renderRow(c, 'constructor', i))}
             </div>
 
             {picker && (

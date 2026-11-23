@@ -1,6 +1,5 @@
 // src/components/SidePanels/TeammatesView.tsx
 import React, { useState } from 'react';
-import { HexChart } from '../Charts/HexChart';
 import { COLOR_A, COLOR_B, CompareRow } from './CompareRow';
 import type { CardItem, DriverInfo, TeammateStats } from '../../types/f1';
 
@@ -40,39 +39,31 @@ export const TeammatesView: React.FC<TeammatesViewProps> = ({ teammates, driverI
 
     return (
         <div className="teammates-view">
-            <select className="team-select" value={pair.constructorId} onChange={(e) => setConstructorId(e.target.value)}>
-                {teams.map((c) => (
-                    <option key={c.id} value={c.id}>
-                        {c.name}
-                    </option>
-                ))}
-            </select>
+            <div className="h2h-top">
+                <select className="team-select" value={pair.constructorId} onChange={(e) => setConstructorId(e.target.value)}>
+                    {teams.map((c) => (
+                        <option key={c.id} value={c.id}>
+                            {c.name}
+                        </option>
+                    ))}
+                </select>
 
-            <div className="h2h-names">
-                <span>
-                    <i className="name-dot" style={{ backgroundColor: COLOR_A }} />
-                    {nameA}
-                </span>
-                <span className="compare-vs">{pair.races} races together</span>
-                <span>
-                    <i className="name-dot" style={{ backgroundColor: COLOR_B }} />
-                    {nameB}
-                </span>
+                <div className="h2h-names">
+                    <span>
+                        <i className="name-dot" style={{ backgroundColor: COLOR_A }} />
+                        {nameA}
+                    </span>
+                    <span className="compare-vs">{pair.races} races together</span>
+                    <span>
+                        <i className="name-dot" style={{ backgroundColor: COLOR_B }} />
+                        {nameB}
+                    </span>
+                </div>
             </div>
 
-            {h2h('Qualifying head-to-head', pair.quali)}
-            {h2h('Race head-to-head', pair.race)}
-
-            {a?.ratings && b?.ratings && (
-                <HexChart
-                    series={[
-                        { label: nameA, color: COLOR_A, values: a.ratings },
-                        { label: nameB, color: COLOR_B, values: b.ratings },
-                    ]}
-                />
-            )}
-
-            <div className="compare-group">
+            <div className="compare-grid">
+                {h2h('Qualifying head-to-head', pair.quali)}
+                {h2h('Race head-to-head', pair.race)}
                 <CompareRow label="Points together" a={pair.points[0]} b={pair.points[1]} format={(v) => `${v}`} />
                 {pair.avgQuali[0] !== null && pair.avgQuali[1] !== null && (
                     <CompareRow

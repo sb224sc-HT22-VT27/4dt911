@@ -8,7 +8,7 @@
 
 .analytics-tabs {
     display: flex;
-    gap: 18px;
+    gap: 22px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -16,22 +16,22 @@
     border: none;
     background: none;
     color: var(--dim);
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 0 0 6px;
+    padding: 0 0 7px;
     margin-bottom: -1px;
     border-bottom: 2px solid transparent;
     cursor: pointer;
 }
 
-.analytics-tabs button:hover {
+.analytics-tabs button:hover,
+.analytics-tabs button.active {
     color: var(--text);
 }
 
 .analytics-tabs button.active {
-    color: var(--text);
     border-bottom-color: var(--accent);
 }
 
@@ -55,6 +55,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .ppm-kind-toggle {
@@ -79,80 +80,10 @@
 }
 
 .ppm-axis-hint {
+    color: var(--muted);
+    flex: 1 1 auto;
     font-size: 0.65rem;
     color: var(--dim);
-}
-
-.ppm-detail {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--panel-2);
-    border: 1px solid var(--border);
-    border-left: 3px solid;
-    border-radius: 8px;
-    padding: 6px 10px;
-}
-
-.ppm-detail-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.ppm-detail-name {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-}
-
-.ppm-detail-name strong {
-    font-size: 0.85rem;
-    white-space: nowrap;
-}
-
-.ppm-detail-name span,
-.ppm-detail-stat span {
-    font-size: 0.6rem;
-    color: var(--dim);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
-
-.ppm-detail-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.ppm-detail-stat strong {
-    font-size: 0.85rem;
-}
-
-.ppm-action {
-    border: none;
-    border-radius: 6px;
-    background: var(--accent);
-    color: #041014;
-    font-size: 0.72rem;
-    font-weight: 800;
-    padding: 6px 12px;
-    cursor: pointer;
-    min-width: 110px;
-}
-
-.ppm-action:disabled {
-    background: var(--panel-3);
-    color: var(--dim);
-    cursor: not-allowed;
-}
-
-.ppm-action.remove {
-    background: none;
-    border: 1px solid var(--danger);
-    color: var(--danger);
 }
 
 .bubble-wrapper {
@@ -180,13 +111,13 @@
 }
 
 .bubble-tick {
-    fill: var(--dim);
-    font-size: 10px;
+    fill: var(--muted);
+    font-size: 13px;
 }
 
 .bubble-axis-title {
-    fill: var(--muted);
-    font-size: 10px;
+    fill: var(--text);
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -200,8 +131,8 @@
 }
 
 .bubble-guide text {
-    fill: var(--dim);
-    font-size: 9px;
+    fill: var(--muted);
+    font-size: 11px;
 }
 
 .bubble {
@@ -223,23 +154,63 @@
     fill-opacity: 0.95;
 }
 
-.bubble.selected circle {
+.bubble.link-hover circle {
     fill-opacity: 0.95;
-    stroke: var(--text);
-    stroke-width: 2;
-    stroke-dasharray: 4 2;
 }
 
-.bubble text {
-    fill: var(--muted);
-    font-size: 10px;
-    font-weight: 800;
+.bubble circle.link-ring {
+    fill: none;
+    stroke: var(--text);
+    stroke-opacity: 0.55;
+    stroke-width: 1.5;
     pointer-events: none;
 }
 
-.bubble.in-team text,
-.bubble.selected text {
+.bubble.link-sel circle.link-ring {
+    stroke: #3987e5;
+    stroke-opacity: 1;
+    stroke-width: 3;
+}
+
+.bubble.link-cmp circle.link-ring {
+    stroke: #d95926;
+    stroke-opacity: 1;
+    stroke-width: 3;
+}
+
+.bubble-labels text.link-sel {
+    fill: #3987e5;
+}
+
+.bubble-labels text.link-cmp {
+    fill: #d95926;
+}
+
+.bubble-labels text {
     fill: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+    pointer-events: none;
+    paint-order: stroke;
+    stroke: var(--panel);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+}
+
+.bubble circle.value-ring {
+    fill: none;
+    stroke: #4ade80;
+    stroke-width: 2.5;
+    pointer-events: none;
+}
+
+.legend-ring {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    vertical-align: -1px;
+    border: 2px solid #4ade80;
 }
 
 .legend-dot {
@@ -371,8 +342,34 @@
     border-radius: 0 6px 6px 0;
 }
 
+.planner-table tbody tr.link-sel td.planner-player {
+    box-shadow: inset 3px 0 0 #3987e5;
+}
+
+.planner-table tbody tr.link-cmp td.planner-player {
+    box-shadow: inset 3px 0 0 #d95926;
+}
+
+.planner-table tbody tr.link-sel td.planner-player,
+.planner-table tbody tr.link-sel td.planner-total {
+    background: rgba(57, 135, 229, 0.18);
+}
+
+.planner-table tbody tr.link-cmp td.planner-player,
+.planner-table tbody tr.link-cmp td.planner-total {
+    background: rgba(217, 89, 38, 0.18);
+}
+
+.planner-table td.planner-player {
+    cursor: pointer;
+}
+
 .planner-table tbody tr.in-team td {
     background: rgba(255, 255, 255, 0.04);
+}
+
+.planner-table tbody tr.link-hover td {
+    background: rgba(255, 255, 255, 0.09);
 }
 
 td.planner-player {
@@ -380,19 +377,6 @@ td.planner-player {
     align-items: center;
     gap: 7px;
     white-space: nowrap;
-}
-
-.planner-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    background: var(--dot);
-}
-
-.planner-dot.striped {
-    background: repeating-linear-gradient(45deg, var(--dot) 0 2px, transparent 2px 4px);
-    border: 1px solid var(--dot);
 }
 
 .planner-name {
@@ -496,4 +480,22 @@ tr.in-team .planner-name {
 
 .planner-table th.sorted .planner-race {
     color: var(--accent);
+}
+
+/* Replace mode: players that can't take the slot */
+.bubble.faded {
+    opacity: 0.15;
+    cursor: not-allowed;
+}
+
+.bubble-labels text.faded {
+    opacity: 0.2;
+}
+
+.planner-table tbody tr.faded {
+    opacity: 0.25;
+}
+
+.planner-table tbody tr.faded td.planner-player {
+    cursor: not-allowed;
 }

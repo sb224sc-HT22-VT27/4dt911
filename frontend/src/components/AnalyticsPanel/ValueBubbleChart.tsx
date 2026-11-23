@@ -1,7 +1,7 @@
 // src/components/AnalyticsPanel/ValueBubbleChart.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import { pointsFor, RISK_LABELS, type CardItem, type Risk } from '../../types/f1';
+import { linkClass, pointsFor, RISK_LABELS, type CardItem, type PlayerLink, type Risk } from '../../types/f1';
 
 type Filter = 'driver' | 'constructor' | 'all';
 type Mode = 'predicted' | 'season';
@@ -10,15 +10,16 @@ type Mode = 'predicted' | 'season';
 // (Ferrari and Haas red are almost identical), names come from the labels and tooltips instead.
 const TEAM_FILL = '#3987e5';
 const OTHER_FILL = '#56677a';
+const CHAR_W = 8;
 
 interface ValueBubbleChartProps {
     allDrivers: CardItem[];
     allConstructors: CardItem[];
     teamIds: Set<string>;
+    link: PlayerLink;
     risk: Risk;
     addBlocker: (item: CardItem) => string | null;
     onAdd: (item: CardItem) => void;
-    onRemove: (id: string) => void;
 }
 
 const FILTERS: { id: Filter; label: string }[] = [
@@ -26,20 +27,19 @@ const FILTERS: { id: Filter; label: string }[] = [
     { id: 'constructor', label: 'Constructors' },
     { id: 'all', label: 'All' },
 ];
-const MARGIN = { top: 10, right: 18, bottom: 34, left: 46 };
+const MARGIN = { top: 12, right: 24, bottom: 48, left: 60 };
 
 export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
     allDrivers,
     allConstructors,
     teamIds,
+    link,
     risk,
     addBlocker,
     onAdd,
-    onRemove,
 }) => {
     const [filter, setFilter] = useState<Filter>('driver');
     const [mode, setMode] = useState<Mode>('predicted');
-    const [selectedId, setSelectedId] = useState<string | null>(null);
     const plotRef = useRef<HTMLDivElement>(null);
     const [size, setSize] = useState({ width: 700, height: 260 });
 
@@ -56,15 +56,12 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
 
     // Predicted points for the chosen risk, or fantasy points scored so far this season
     const yOf = (i: CardItem) => (mode === 'predicted' ? pointsFor(i, risk) : i.season?.fantasyPoints ?? 0);
-    const ppmOf = (i: CardItem) => (mode === 'predicted' ? i.ppm : i.season?.fantasyPpm ?? 0);
     const yLabel = mode === 'predicted' ? `${RISK_LABELS[risk]} pts` : 'Season pts';
+    const ppmOf = (i: CardItem) => (mode === 'predicted' ? i.ppm : i.season?.fantasyPpm ?? 0);
 
     const items =
         filter === 'driver' ? allDrivers : filter === 'constructor' ? allConstructors : [...allDrivers, ...allConstructors];
     const byValue = [...items].sort((a, b) => ppmOf(b) - ppmOf(a));
-    const selected = items.find((i) => i.id === selectedId) ?? byValue.find((i) => !teamIds.has(i.id)) ?? byValue[0];
-    const inTeam = selected ? teamIds.has(selected.id) : false;
-    const blocker = selected && !inTeam ? addBlocker(selected) : null;
 
     const width = Math.max(size.width, 200);
     const height = Math.max(size.height, 120);
@@ -97,10 +94,43 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
         return { k, x2: x(endX), y2: y(endX * k) };
     });
 
-    // Label your team, the selection and the standout picks so the chart stays readable
-    const topValue = new Set(byValue.slice(0, 4).map((i) => i.id));
-    const topPoints = new Set([...items].sort((a, b) => yOf(b) - yOf(a)).slice(0, 4).map((i) => i.id));
-    const showLabel = (i: CardItem) => teamIds.has(i.id) || i.id === selected?.id || topValue.has(i.id) || topPoints.has(i.id);
+    // Top 5 by the backend's points per €M among the shown players
+    const topValue = new Set(byValue.slice(0, 5).map((i) => i.id));
+
+    // Label team + top value picks; skip a label that would overlap one already placed
+    const priority = (id: string) =>
+        id === link.selectedId ? 3 : id === link.compareId ? 2 : teamIds.has(id) ? 1 : 0;
+    const labels = new Map<string, { x: number; y: number; anchor: 'start' | 'end' }>();
+    const placed: { x1: number; x2: number; y1: number; y2: number }[] = [];
+    const candidates = items
+        .filter((i) => teamIds.has(i.id) || topValue.has(i.id) || i.id === link.selectedId || i.id === link.compareId)
+        .sort((a, b) => priority(b.id) - priority(a.id));
+    for (const item of candidates) {
+        const w = item.code.length * CHAR_W;
+        const rad = r(item.ownership) + 8;
+        const cx = x(item.price);
+        const cy = y(yOf(item));
+        const options = [
+            { x: cx + rad, anchor: 'start' as const, y: cy },
+            { x: cx - rad, anchor: 'end' as const, y: cy },
+            { x: cx + rad, anchor: 'start' as const, y: cy - 14 },
+            { x: cx + rad, anchor: 'start' as const, y: cy + 14 },
+        ];
+        const fits = (o: (typeof options)[number]) => {
+            const x1 = o.anchor === 'start' ? o.x : o.x - w;
+            const box = { x1, x2: x1 + w, y1: o.y - 8, y2: o.y + 8 };
+            const free = !placed.some((p) => box.x1 < p.x2 && box.x2 > p.x1 && box.y1 < p.y2 && box.y2 > p.y1);
+            return free ? box : null;
+        };
+        for (const o of options) {
+            const box = fits(o);
+            if (box) {
+                placed.push(box);
+                labels.set(item.id, o);
+                break;
+            }
+        }
+    }
 
     return (
         <div className="bubble-wrapper">
@@ -123,61 +153,20 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                             key={f.id}
                             type="button"
                             className={filter === f.id ? 'active' : ''}
-                            onClick={() => {
-                                setFilter(f.id);
-                                setSelectedId(null);
-                            }}
+                            onClick={() => setFilter(f.id)}
                         >
                             {f.label}
                         </button>
                     ))}
                 </div>
-                <span className="ppm-axis-hint">
+                <span
+                    className="ppm-axis-hint"
+                    title="Click = select · ⌘/Ctrl-click = compare · double-click = add · bubble size = ownership"
+                >
                     <span className="legend-dot team" /> your team <span className="legend-dot" /> others{' '}
-                    <span className="legend-stripes" /> constructor · size = ownership · double-click to add
+                    <span className="legend-stripes" /> constructor <span className="legend-ring" /> top 5 points per €M
                 </span>
             </div>
-
-            {selected && (
-                <div className="ppm-detail" style={{ borderColor: selected.avatarColor }}>
-                    <span className="ppm-detail-dot" style={{ backgroundColor: selected.avatarColor }} />
-                    <div className="ppm-detail-name">
-                        <strong>{selected.name}</strong>
-                        <span>{selected.kind === 'driver' ? selected.team : 'Constructor'}</span>
-                    </div>
-                    <div className="ppm-detail-stat">
-                        <strong>€{selected.price}M</strong>
-                        <span>Price</span>
-                    </div>
-                    <div className="ppm-detail-stat">
-                        <strong>{yOf(selected)}</strong>
-                        <span>{yLabel}</span>
-                    </div>
-                    <div className="ppm-detail-stat">
-                        <strong>{ppmOf(selected).toFixed(2)}</strong>
-                        <span>Pts / €M</span>
-                    </div>
-                    <div className="ppm-detail-stat">
-                        <strong>{selected.ownership}%</strong>
-                        <span>Owned</span>
-                    </div>
-                    {inTeam ? (
-                        <button type="button" className="ppm-action remove" onClick={() => onRemove(selected.id)}>
-                            Remove
-                        </button>
-                    ) : (
-                        <button
-                            type="button"
-                            className="ppm-action"
-                            disabled={!!blocker}
-                            title={blocker ?? ''}
-                            onClick={() => onAdd(selected)}
-                        >
-                            {blocker ?? '+ Add to team'}
-                        </button>
-                    )}
-                </div>
-            )}
 
             <div className="bubble-plot" ref={plotRef}>
                 <svg width={width} height={height}>
@@ -211,22 +200,22 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                         {x.ticks(7).map((t) => (
                             <g key={`x${t}`}>
                                 <line x1={x(t)} x2={x(t)} y1={0} y2={innerH} className="bubble-grid" />
-                                <text x={x(t)} y={innerH + 14} className="bubble-tick" textAnchor="middle">
+                                <text x={x(t)} y={innerH + 20} className="bubble-tick" textAnchor="middle">
                                     €{t}M
                                 </text>
                             </g>
                         ))}
-                        <text x={innerW} y={innerH + 29} className="bubble-axis-title" textAnchor="end">
+                        <text x={innerW} y={innerH + 42} className="bubble-axis-title" textAnchor="end">
                             Price →
                         </text>
-                        <text x={6} y={4} className="bubble-axis-title" dominantBaseline="hanging">
+                        <text x={8} y={6} className="bubble-axis-title" dominantBaseline="hanging">
                             ↑ {mode === 'predicted' ? `${RISK_LABELS[risk]} points` : 'Season fantasy points'}
                         </text>
 
                         {guides.map((g) => (
                             <g key={g.k} className="bubble-guide">
                                 <line x1={x(0)} y1={y(0)} x2={g.x2} y2={g.y2} />
-                                <text x={g.x2 - 4} y={g.y2 + 12} textAnchor="end">
+                                <text x={g.x2 - 4} y={g.y2 + 14} textAnchor="end">
                                     {g.k.toFixed(1)} pts/€M
                                 </text>
                             </g>
@@ -234,9 +223,10 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
 
                         {[...items]
                             .sort((a, b) => b.ownership - a.ownership)
+                            .sort((a, b) => priority(a.id) - priority(b.id))
                             .map((item) => {
                                 const isTeam = teamIds.has(item.id);
-                                const isSelected = item.id === selected?.id;
+                                const ringed = [link.selectedId, link.compareId, link.hoverId].includes(item.id);
                                 const cx = x(item.price);
                                 const cy = y(yOf(item));
                                 const fill =
@@ -248,9 +238,11 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                                 return (
                                     <g
                                         key={item.id}
-                                        className={`bubble ${item.kind} ${isTeam ? 'in-team' : ''} ${isSelected ? 'selected' : ''}`}
-                                        onClick={() => setSelectedId(item.id)}
-                                        onDoubleClick={() => !addBlocker(item) && onAdd(item)}
+                                        className={`bubble ${item.kind} ${isTeam ? 'in-team' : ''} ${link.fade(item.id) ? 'faded' : ''} ${linkClass(link, item.id)}`}
+                                        onClick={(e) => link.onPick(item.id, e)}
+                                        onMouseEnter={() => link.onHover(item.id)}
+                                        onMouseLeave={() => link.onHover(null)}
+                                        onDoubleClick={() => !link.replacing && !addBlocker(item) && onAdd(item)}
                                     >
                                         <title>{`${item.name} · €${item.price}M · ${yOf(item)} ${yLabel.toLowerCase()} · ${item.ownership}% owned`}</title>
                                         <circle
@@ -259,14 +251,39 @@ export const ValueBubbleChart: React.FC<ValueBubbleChartProps> = ({
                                             r={r(item.ownership)}
                                             fill={fill}
                                         />
-                                        {showLabel(item) && (
-                                            <text x={cx + r(item.ownership) + 3} y={cy} dominantBaseline="middle">
-                                                {item.code}
-                                            </text>
+                                        {ringed && (
+                                            <circle cx={cx} cy={cy} r={r(item.ownership) + 7} className="link-ring" />
+                                        )}
+                                        {topValue.has(item.id) && (
+                                            <circle
+                                                cx={cx}
+                                                cy={cy}
+                                                r={r(item.ownership) + 4}
+                                                className="value-ring"
+                                            />
                                         )}
                                     </g>
                                 );
                             })}
+                        <g className="bubble-labels">
+                            {items
+                                .filter((i) => labels.has(i.id))
+                                .map((item) => {
+                                    const l = labels.get(item.id)!;
+                                    return (
+                                        <text
+                                            key={item.id}
+                                            x={l.x}
+                                            y={l.y}
+                                            textAnchor={l.anchor}
+                                            dominantBaseline="middle"
+                                            className={`${linkClass(link, item.id)} ${link.fade(item.id) ? 'faded' : ''}`}
+                                        >
+                                            {item.code}
+                                        </text>
+                                    );
+                                })}
+                        </g>
                     </g>
                 </svg>
             </div>

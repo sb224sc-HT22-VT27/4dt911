@@ -48,8 +48,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         { key: 'form', label: 'Recent form', hint: 'Boost drivers with strong last 5 races' },
         {
             key: 'track',
-            label: horizon === 1 ? `Track fit · ${TRACK_LABELS[trackType]}` : 'Track fit · per race',
-            hint: "Boost drivers who over-perform on the race's track type",
+            label: 'Track fit',
+            hint: horizon === 1
+                ? `Boost drivers who over-perform on ${TRACK_LABELS[trackType].toLowerCase()} tracks`
+                : "Boost drivers who over-perform on each race's track type",
         },
         { key: 'dnf', label: 'DNF penalty', hint: 'Reduce points by the chance of not finishing' },
     ];
@@ -58,6 +60,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         <div className="settings">
             <div className="settings-head">
                 <h3 className="side-title">Settings</h3>
+                {message && (
+                    <span className="optimize-msg" title={message}>
+                        {message}
+                    </span>
+                )}
                 <button
                     type="button"
                     className="settings-reset"
@@ -70,20 +77,15 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 </button>
             </div>
 
-            <div className="setting-row">
-                <span className="setting-label">Horizon</span>
-                <div className="toggle horizon">
+            <div className="setting-pair">
+                <div className="toggle horizon" title="Horizon: how many races to plan for">
                     {([1, 3] as Horizon[]).map((h) => (
                         <button key={h} type="button" className={horizon === h ? 'active' : ''} onClick={() => onHorizonChange(h)}>
                             {h === 1 ? '1 race' : '3 races'}
                         </button>
                     ))}
                 </div>
-            </div>
-
-            <div className="setting-row">
-                <span className="setting-label">Risk</span>
-                <div className="toggle">
+                <div className="toggle" title="Risk: plan for the floor (P10), middle (P50) or ceiling (P90)">
                     {RISKS.map((r) => (
                         <button
                             key={r}
@@ -99,10 +101,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
             {sliders.map((s) => (
                 <label key={s.key} className="setting-slider" title={s.hint}>
-                    <span className="setting-label">
-                        {s.label}
-                        <strong>{params[s.key]}%</strong>
-                    </span>
+                    <span className="setting-label">{s.label}</span>
                     <input
                         type="range"
                         min={0}
@@ -111,33 +110,30 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         value={params[s.key]}
                         onChange={(e) => onChange({ ...params, [s.key]: Number(e.target.value) })}
                     />
+                    <strong className="setting-value">{params[s.key]}%</strong>
                 </label>
             ))}
 
             <div className="settings-optimizer">
-                <div className="setting-row">
-                    <span className="setting-label">Optimizer</span>
-                    <div className="toggle horizon">
-                        {(['best', 'transfers'] as OptimizerMode[]).map((m) => (
-                            <button
-                                key={m}
-                                type="button"
-                                className={optimizerMode === m ? 'active' : ''}
-                                onClick={() => {
-                                    onModeChange(m);
-                                    setMessage('');
-                                }}
-                            >
-                                {m === 'best' ? 'Best team' : 'Transfers'}
-                            </button>
-                        ))}
-                    </div>
+                <div className="toggle horizon" title="Optimizer: best team from scratch, or the best transfers for your current team">
+                    {(['best', 'transfers'] as OptimizerMode[]).map((m) => (
+                        <button
+                            key={m}
+                            type="button"
+                            className={optimizerMode === m ? 'active' : ''}
+                            onClick={() => {
+                                onModeChange(m);
+                                setMessage('');
+                            }}
+                        >
+                            {m === 'best' ? 'Best team' : 'Transfers'}
+                        </button>
+                    ))}
                 </div>
 
                 <button type="button" className="optimize-btn" onClick={handleOptimize} disabled={optimizing}>
-                    {optimizing ? 'Working…' : optimizerMode === 'best' ? 'Optimize team' : 'Suggest transfers'}
+                    {optimizing ? 'Working…' : optimizerMode === 'best' ? 'Optimize' : 'Suggest'}
                 </button>
-                {message && <span className="optimize-msg">{message}</span>}
             </div>
         </div>
     );

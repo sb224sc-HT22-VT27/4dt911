@@ -218,3 +218,17 @@ export const RATING_LABELS: Record<keyof Ratings, string> = {
 
 export const pointsFor = (item: CardItem, risk: Risk): number =>
     risk === 'floor' ? item.floor : risk === 'ceiling' ? item.ceiling : item.expectedPoints;
+
+// Shared selection: click selects, Ctrl/Cmd/Shift-click sets the comparison target
+export interface PlayerLink {
+  selectedId: string | null;
+  compareId: string | null;
+  hoverId: string | null;
+  replacing: boolean;
+  fade: (id: string) => boolean;
+  onPick: (id: string, e: { ctrlKey: boolean; metaKey: boolean; shiftKey: boolean }) => void;
+  onHover: (id: string | null) => void;
+}
+
+export const linkClass = (link: PlayerLink, id: string) =>
+  `${link.selectedId === id ? 'link-sel' : ''} ${link.compareId === id ? 'link-cmp' : ''} ${link.hoverId === id ? 'link-hover' : ''}`;

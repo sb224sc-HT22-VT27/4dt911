@@ -1,5 +1,6 @@
 // src/components/TeamPanel/TransfersModal.tsx
 import React, { useState } from 'react';
+import { TeamBadge } from './TeamBadge';
 import {
     pointsFor,
     RISK_LABELS,
@@ -26,7 +27,7 @@ const PlayerCell: React.FC<{ player?: CardItem; risk: Risk; empty?: boolean }> =
         <div className="move-player empty">Empty slot</div>
     ) : (
         <div className="move-player">
-            <span className="picker-color-strip" style={{ backgroundColor: player.avatarColor }} />
+            <TeamBadge item={player} />
             <div>
                 <strong>{player.name}</strong>
                 <span>

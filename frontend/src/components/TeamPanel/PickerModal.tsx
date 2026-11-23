@@ -1,5 +1,6 @@
 // src/components/TeamPanel/PickerModal.tsx
 import React from 'react';
+import { TeamBadge } from './TeamBadge';
 import { pointsFor, RISK_LABELS, type CardItem, type ItemKind, type Risk } from '../../types/f1';
 
 interface PickerModalProps {
@@ -48,7 +49,7 @@ export const PickerModal: React.FC<PickerModalProps> = ({
                                 className={`picker-row ${isDisabled ? 'picker-row-disabled' : ''}`}
                                 onClick={() => !isDisabled && onSelect(item)}
                             >
-                                <span className="picker-color-strip" style={{ backgroundColor: item.avatarColor }} />
+                                <TeamBadge item={item} />
                                 <div className="picker-meta">
                                     <strong>{item.name}</strong>
                                     <span>{type === 'driver' ? `${item.team} · #${item.number}` : item.code}</span>
